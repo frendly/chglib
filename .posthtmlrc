@@ -1,0 +1,12 @@
+{
+  "parser": "posthtml-sugarml",
+  "from": "/path/to/src/file.sml",
+  "to": "/path/to/dest/file.html",
+  "plugins": {
+    "posthtml-tidy": {
+      rules: {
+        "clean": 1,
+      }
+    },
+  }
+}
