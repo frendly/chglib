@@ -3,9 +3,11 @@ const include = require('gulp-include');
 const del = require('del');
 
 const paths = {
-  // input: 'src/',
-  input: '**/*.html',
+  input: 'src/',
   output: 'dist/',
+  html: {
+    input: 'src/**/*.html',
+  }
 }
 
 function cleanDist (done) {
@@ -19,11 +21,9 @@ function cleanDist (done) {
 };
 
 function htmlIncludes() {
-  // console.log('__dirname', __dirname);
-  return src(paths.input)
+  return src(paths.html.input)
           .pipe(include({
-            // extensions: 'html',
-            includePaths: 'src',
+            includePaths: paths.input,
           }))
             .on('error', console.log)
           .pipe(dest(paths.output))
