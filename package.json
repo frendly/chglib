@@ -1,0 +1,17 @@
+{
+  "name": "chglib",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@bitbucket.org:frendly/chglib.git",
+  "author": "frendly <www.zpdf@mail.ru>",
+  "license": "MIT",
+  "scripts": {
+    "start": "",
+    "build": "gulp"
+  },
+  "devDependencies": {
+    "del": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-include": "^2.4.1"
+  }
+}
