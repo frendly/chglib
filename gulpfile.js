@@ -1,5 +1,6 @@
 const {gulp, src, dest, watch, series, parallel} = require('gulp');
 const include = require('gulp-include');
+const prettyHtml = require('gulp-pretty-html');
 const del = require('del');
 
 const paths = {
@@ -29,7 +30,13 @@ function htmlIncludes() {
           .pipe(dest(paths.output))
 };
 
+function gulpPrettyHtml() {
+  return src(paths.html.input)
+          .pipe(prettyHtml())
+          .pipe(dest(paths.input))
+};
 
+exports.pretty = gulpPrettyHtml;
 exports.default = series(
   cleanDist,
   htmlIncludes,

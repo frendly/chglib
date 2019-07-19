@@ -7,11 +7,13 @@
   "license": "MIT",
   "scripts": {
     "start": "",
-    "build": "gulp"
+    "build": "gulp",
+    "pretty": "gulp pretty"
   },
   "devDependencies": {
     "del": "^5.0.0",
     "gulp": "^4.0.2",
-    "gulp-include": "^2.4.1"
+    "gulp-include": "^2.4.1",
+    "gulp-pretty-html": "^2.0.10"
   }
 }
