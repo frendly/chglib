@@ -3,12 +3,18 @@ const include = require('gulp-include');
 const prettyHtml = require('gulp-pretty-html');
 const del = require('del');
 const browserSync = require('browser-sync');
+const rev = require('gulp-rev-append');
+
 
 const paths = {
   input: 'src/',
   output: 'dist/',
   html: {
     input: 'src/**/*.html',
+  },
+  scripts: {
+    input: 'src/assets/js/*',
+    output: 'dist/assets/js/'
   },
   reload: './dist/'
 }
@@ -29,6 +35,7 @@ function htmlIncludes() {
             includePaths: paths.input,
           }))
             .on('error', console.log)
+          .pipe(rev())
           .pipe(dest(paths.output))
 };
 
@@ -36,6 +43,14 @@ function gulpPrettyHtml() {
   return src(paths.html.input)
           .pipe(prettyHtml())
           .pipe(dest(paths.input))
+};
+
+// Copy js files into output folder
+function copyJS (done) {
+
+  // Copy static files
+  return src(paths.scripts.input)
+          .pipe(dest(paths.scripts.output));
 };
 
 // Watch for changes to the src directory
@@ -69,6 +84,7 @@ exports.pretty = gulpPrettyHtml;
 exports.default = series(
   cleanDist,
   htmlIncludes,
+  copyJS,
 );
 
 // Watch and reload

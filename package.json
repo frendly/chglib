@@ -16,6 +16,7 @@
     "del": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-include": "^2.4.1",
-    "gulp-pretty-html": "^2.0.10"
+    "gulp-pretty-html": "^2.0.10",
+    "gulp-rev-append": "^0.1.8"
   }
 }
