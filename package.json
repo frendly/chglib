@@ -8,9 +8,11 @@
   "scripts": {
     "start": "",
     "build": "gulp",
-    "pretty": "gulp pretty"
+    "pretty": "gulp pretty",
+    "watch": "gulp watch"
   },
   "devDependencies": {
+    "browser-sync": "^2.26.7",
     "del": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-include": "^2.4.1",
