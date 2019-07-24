@@ -82,7 +82,7 @@ function watchSource (done) {
 };
 
 function tarball() {
-  return src('*', {base: paths.output})
+  return src(paths.output + '**/*')
     .pipe(tar('dist.tar'))
     .pipe(gzip())
     .pipe(dest(paths.output));

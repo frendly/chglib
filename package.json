@@ -10,8 +10,8 @@
     "build": "gulp",
     "pretty": "gulp pretty",
     "watch": "gulp watch",
-    "deploy": "gulp deploy",
-    "zip": "gulp tarball"
+    "zip": "gulp tarball",
+    "deploy": "yarn zip && cat ./dist/dist.tar.gz | ssh chglib@web.icp.ac.ru 'tar xzf - -C ~/.'"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
