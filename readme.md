@@ -1,5 +1,6 @@
 # Установка
 Видеоинструкция – https://youtu.be/oieJri78wDI
+
 1. Необходимо установить nodejs – https://nodejs.org/dist/v12.6.0/node-v12.6.0-x64.msi
 Скачиваем файл и устанавливаем по-умолчанию, ничего менять не нужно.
 2. Необходимо установить git – https://git-scm.com/download/win
@@ -29,6 +30,7 @@ git config --global user.name "chgbnc editor"
 
 #Разработка
 Видеоинструкция – https://youtu.be/aW1m1jvpEw0
+
 1. Перейти в папку с проектом `cd chglib`
 2. Запустить локальный сервер `yarn watch`, откроектся браузер с сайтом
 3. Открыть редактор vs code на рабочем столе
