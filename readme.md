@@ -20,11 +20,13 @@
 #Кто вносил изменения?
 Указываем имя и почту человека, который вносил изменения.
 Это разовое действие. Необходимо вставить в консоль.
-1. `git config --global user.email "chgbnc@gmail.com"`
-2. `git config --global user.name "chgbnc editor"`
+
+```
+git config --global user.email "chgbnc@gmail.com"
+git config --global user.name "chgbnc editor"
+```
 
 #Разработка
-
 1. Перейти в папку с проектом `cd chglib`
 2. Запустить локальный сервер `yarn watch`, откроектся браузер с сайтом
 3. Открыть редактор vs code на рабочем столе
