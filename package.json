@@ -9,14 +9,18 @@
     "start": "",
     "build": "gulp",
     "pretty": "gulp pretty",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "deploy": "gulp deploy",
+    "zip": "gulp tarball"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "del": "^5.0.0",
     "gulp": "^4.0.2",
+    "gulp-gzip": "^1.4.2",
     "gulp-include": "^2.4.1",
     "gulp-pretty-html": "^2.0.10",
-    "gulp-rev-append": "^0.1.8"
+    "gulp-rev-append": "^0.1.8",
+    "gulp-tar": "^2.1.0"
   }
 }

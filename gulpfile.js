@@ -4,6 +4,8 @@ const prettyHtml = require('gulp-pretty-html');
 const del = require('del');
 const browserSync = require('browser-sync');
 const rev = require('gulp-rev-append');
+const tar = require('gulp-tar');
+const gzip = require('gulp-gzip');
 
 
 const paths = {
@@ -79,8 +81,15 @@ function watchSource (done) {
   done();
 };
 
+function tarball() {
+  return src('*', {base: paths.output})
+    .pipe(tar('dist.tar'))
+    .pipe(gzip())
+    .pipe(dest(paths.output));
+};
 
 exports.pretty = gulpPrettyHtml;
+
 exports.default = series(
   cleanDist,
   htmlIncludes,
@@ -91,5 +100,11 @@ exports.default = series(
 exports.watch = series(
   exports.default,
   startServer,
-  watchSource
+  watchSource,
+);
+
+// gzip
+exports.tarball = series(
+  exports.default,
+  tarball,
 );
