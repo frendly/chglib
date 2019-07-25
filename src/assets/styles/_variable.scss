@@ -1,0 +1,11 @@
+$thin: 0.85;
+$IsCompact: 'screen and (max-width: 800px)';
+
+$linkColor: #0060a0;
+$linkUnderlineColor: transparentize($linkColor, $thin);
+
+$linkColorVisited: #70a0b0;
+$linkUnderlineColorVisited: transparentize($linkColorVisited, $thin);
+
+$hoverColor: #b03000;
+$hoverUnderlineColor: transparentize($hoverColor, $thin);

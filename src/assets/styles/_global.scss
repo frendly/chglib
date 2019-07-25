@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: $linkColor;
+  text-decoration: none;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: $linkUnderlineColor;
+  transition-property: border-bottom,border-color,background-color,color,fill;
+  transition-duration: .33s;
+  transition-timing-function: ease-out;
+
+  &:hover {
+    color: $hoverColor;
+    border-bottom-color: $hoverUnderlineColor;
+  }
+}

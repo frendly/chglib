@@ -1,0 +1,24 @@
+.menu {
+  padding: 0;
+  list-style: none;
+  
+  @media #{$IsCompact} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  &__link {
+    padding: 5px 0;
+    border-bottom-width: 0;
+    display: block;
+    
+    @media #{$IsCompact} {
+      padding: 5px;
+    }
+    
+    &--active {
+      color: $hoverColor;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+header {
+  position: fixed;
+  
+  @media #{$IsCompact} {
+    position: static;
+  }
+}
+
+main {
+  padding-left: 220px;
+  
+  @media #{$IsCompact} {
+    padding-left: 0;
+  }
+}
