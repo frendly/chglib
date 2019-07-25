@@ -1,0 +1,13 @@
+.news-page {
+  width: 100%;
+  max-width: 800px;
+
+  article {
+    h2 {
+      margin-bottom: 10px;
+    }
+    h2 + p {
+      margin-top: 0;
+    }
+  }
+}

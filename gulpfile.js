@@ -1,11 +1,21 @@
 const {gulp, src, dest, watch, series, parallel} = require('gulp');
-const include = require('gulp-include');
-const prettyHtml = require('gulp-pretty-html');
+
 const del = require('del');
 const browserSync = require('browser-sync');
 const rev = require('gulp-rev-append');
+
+// html
+const include = require('gulp-include');
+const prettyHtml = require('gulp-pretty-html');
+
+// zip
 const tar = require('gulp-tar');
 const gzip = require('gulp-gzip');
+
+// Styles
+var sass = require('gulp-sass');
+var prefix = require('gulp-autoprefixer');
+var minify = require('gulp-cssnano');
 
 
 const paths = {
@@ -17,6 +27,10 @@ const paths = {
   scripts: {
     input: 'src/assets/js/*',
     output: 'dist/assets/js/'
+  },
+  styles: {
+    input: 'src/assets/styles/**/*.scss',
+    output: 'dist/assets/styles/'
   },
   reload: './dist/'
 }
@@ -37,6 +51,11 @@ function htmlIncludes() {
             includePaths: paths.input,
           }))
             .on('error', console.log)
+          .pipe(dest(paths.output))
+};
+
+function addHash() {
+  return src(paths.output + '*.html')
           .pipe(rev())
           .pipe(dest(paths.output))
 };
@@ -81,11 +100,30 @@ function watchSource (done) {
   done();
 };
 
+// zip
 function tarball() {
   return src(paths.output + '**/*')
     .pipe(tar('dist.tar'))
     .pipe(gzip())
     .pipe(dest(paths.output));
+};
+
+// Process, lint, and minify Sass files
+function buildStyles (done) {
+  // Run tasks on all Sass files
+  return src(paths.styles.input)
+          .pipe(sass({
+            outputStyle: 'expanded',
+            sourceComments: true
+          }))
+          .pipe(prefix())
+          .pipe(dest(paths.styles.output))
+          .pipe(minify({
+            discardComments: {
+              removeAll: true,
+            }
+          }))
+          .pipe(dest(paths.styles.output));
 };
 
 exports.pretty = gulpPrettyHtml;
@@ -94,6 +132,8 @@ exports.default = series(
   cleanDist,
   htmlIncludes,
   copyJS,
+  buildStyles,
+  addHash,
 );
 
 // Watch and reload
