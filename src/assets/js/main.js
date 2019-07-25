@@ -1,3 +1,13 @@
+// Add css class to active menu
+function activeMenuItem() {
+  var path = window.location.pathname;
+  var activeMenuItem = document.querySelector('.menu__link[href*="' + path + '"]');
+
+  if (activeMenuItem) {
+    activeMenuItem.classList.add('menu__link--active');
+  }
+}
+
 // Add target="_blank" to external links
 function targetBlank() {
   var a = document.getElementsByTagName('a'); // grab every link on the page
@@ -19,4 +29,5 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelector(".current-year").innerHTML = new Date().getFullYear();
   
   targetBlank();
+  activeMenuItem();
 });
