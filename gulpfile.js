@@ -55,7 +55,7 @@ function htmlIncludes() {
 };
 
 function addHash() {
-  return src(paths.output + '*.html')
+  return src(paths.output + '**/*.html')
           .pipe(rev())
           .pipe(dest(paths.output))
 };
