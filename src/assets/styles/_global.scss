@@ -2,6 +2,16 @@
   box-sizing: border-box;
 }
 
+body.new-body {
+  width: 100%;
+  max-width: 1024px;
+  background-color: #fafaff; //deprecated
+  margin: 0 auto;
+  padding: 0 20px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
 a {
   color: $linkColor;
   text-decoration: none;
