@@ -22,7 +22,8 @@ a {
   transition-duration: .33s;
   transition-timing-function: ease-out;
 
-  &:hover {
+  &:hover,
+  &.active-link {
     color: $hoverColor;
     border-bottom-color: $hoverUnderlineColor;
   }
