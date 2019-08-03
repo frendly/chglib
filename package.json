@@ -25,5 +25,8 @@
     "gulp-rev-append": "^0.1.8",
     "gulp-sass": "^4.0.2",
     "gulp-tar": "^2.1.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1"
   }
 }
