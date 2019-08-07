@@ -6,8 +6,8 @@ header {
   }
 }
 
-main {
-  padding-left: 220px;
+main.content {
+  padding-left: 230px;
   min-height: calc(100vh - #{$footerHeight});
   
   @media #{$IsCompact} {

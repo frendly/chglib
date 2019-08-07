@@ -1,3 +1,4 @@
+
 // Add css class to active menu
 function activeMenuItem() {
   var path = window.location.pathname;
@@ -24,10 +25,29 @@ function targetBlank() {
   }
 };
 
+function openModal() {
+  $('.news-page a[href*="more/i"]').each(function() {
+    $(this).on('click', function(e) {
+      e.preventDefault();
+  
+      const url = this.href;
+      
+      $.get(url, function(response) {
+        const data = $(response).not('footer');
+        $('.modal__content').html(data);
+        
+        MicroModal.show('modal-1');
+        });
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function() {
   // set current year
   document.querySelector(".current-year").innerHTML = new Date().getFullYear();
   
   targetBlank();
   activeMenuItem();
+  MicroModal.init();
+  openModal();
 });
