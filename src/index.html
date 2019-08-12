@@ -1,43 +1,31 @@
 <!DOCTYPE html>
 <html>
-<script language="Javascript">
-    <!--
-    window.resizeTo(800, 670);
-    today = new Date();
-    mon = today.getMonth();
-    d = today.getDate();
-    location.replace("lib" + String(mon) + ".html");
-    if (mon == 0) {
-        if (d <= 11) location.replace("lib_ny.html");
-    }
-    if (mon == 2) {
-        if ((d >= 7) && (d <= 8)) location.replace("lib2_8.html");
-    }
-    if (mon == 4) {
-        if ((d >= 8) && (d <= 11)) location.replace("lib4_9.html");
-        if (d == 27) location.replace("lib4_27.html");
-    }
-    if (mon == 5) {
-        if (d == 3) location.replace("lib53.html");
-        if (d == 5) location.replace("lib55.html");
-        if (d == 7) location.replace("lib57.html");
-        if (d == 9) location.replace("lib59.html");
-        if (d == 11) location.replace("lib511.html");
-        if (d == 13) location.replace("lib513.html");
-        if (d == 15) location.replace("lib515.html");
-        if (d == 17) location.replace("lib517.html");
-        if (d == 19) location.replace("lib519.html");
-        if (d == 21) location.replace("lib521.html");
-        if (d == 23) location.replace("lib523.html");
-        if (d == 25) location.replace("lib525.html");
-        if (d == 27) location.replace("lib527.html");
-        if (d == 29) location.replace("lib529.html");
-    }
-    if (mon == 11) {
-        if (d >= 27) location.replace("lib_oy.html");
-    }
-    // 
-    -->
-</script>
+
+<head>
+<!--=include /components/header.html-->
+    <title>Библиотека Научного центра РАН в Черноголовке</title>
+    <!--=include /components/counters.html-->
+</head>
+
+<body class="new-body main-page">
+    <!--=include /components/menu.html-->
+    <main role="main">
+        <h1>
+            Библиотека Научного центра РАН
+            <small>в&nbsp;Черноголовке</small>
+        </h1>
+        
+        <div class="last-news">
+            <ul class="last-news-list">
+                <li class="last-news-list__item"><a href="http://bibliobus.chant.ru/">Электронный каталог книг с 1987 года</a></li>
+                <li class="last-news-list__item"><a href="/more/Perechen' VAK_izdanij_03.08.2018.pdf">Перечень ВАК изданий, входящих в межд. БД и системы цитирования на 03.08.2018</a></li>
+                <li class="last-news-list__item"><a href="/more/Perechen' VAK izdanij dlja dissertacij_30.11.2018.pdf">Перечень ВАК изданий для диссертаций на 30.11.2018</a></li>
+            </ul>
+        </div>
+    </main>
+
+<!--=include /components/footer.html-->
+<!--=include /components/scripts.html-->
+</body>
 
 </html>

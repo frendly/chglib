@@ -24,10 +24,30 @@ function targetBlank() {
   }
 };
 
+function createImageOnMainPage() {
+  var mainPage = document.querySelector('.main-page');
+
+  if (!mainPage) {
+    return;
+  }
+  
+  var lastNews = mainPage.querySelector('.last-news-list');
+  var parent = mainPage.querySelector('.last-news');
+  
+  var img = new Image();
+  var month = new Date().getMonth();
+  var imgWidth = '400px';
+  img.src = 'http://chglib.icp.ac.ru/face/' + month + '.jpg';
+  img.setAttribute('width', imgWidth);
+  
+  parent.insertBefore(img, lastNews);
+}
+
 document.addEventListener("DOMContentLoaded", function() {
   // set current year
   document.querySelector(".current-year").innerHTML = new Date().getFullYear();
   
   targetBlank();
   activeMenuItem();
+  createImageOnMainPage();
 });
