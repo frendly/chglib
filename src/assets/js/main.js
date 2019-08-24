@@ -1,3 +1,12 @@
+function getCurrentYear() {
+  return new Date().getFullYear(); // use _.once
+}
+
+// current year
+function currentYear() {
+  $('.current-year').text(getCurrentYear());
+}
+
 // Add css class to active menu
 function activeMenuItem() {
   var path = window.location.pathname;
@@ -24,6 +33,20 @@ function targetBlank() {
   }
 };
 
+function replaceText(data) {
+  return data.replace('#current_year#', getCurrentYear());
+}
+
+function showHolidaysInfo() {
+  var url = '/assets/data/holidays.json';
+
+  $.getJSON(url).done(function(data) {
+    var event = data[0];
+    var text = replaceText(event.text);
+    $('<section>').html(text).prependTo('.last-news');
+  });
+}
+
 function createImageOnMainPage() {
   var mainPage = document.querySelector('.main-page');
 
@@ -44,10 +67,9 @@ function createImageOnMainPage() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  // set current year
-  document.querySelector(".current-year").innerHTML = new Date().getFullYear();
-  
+  currentYear();
   targetBlank();
   activeMenuItem();
   createImageOnMainPage();
+  showHolidaysInfo();
 });
