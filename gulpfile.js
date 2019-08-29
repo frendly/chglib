@@ -74,6 +74,12 @@ function copyJS (done) {
           .pipe(dest(paths.scripts.output));
 };
 
+// Copy static files into output folder
+function copyStaticFiles (done) {
+  return src(paths.input + '.htaccess')
+          .pipe(dest(paths.output));
+};
+
 // Watch for changes to the src directory
 function startServer (done) {
 
@@ -102,7 +108,7 @@ function watchSource (done) {
 
 // zip
 function tarball() {
-  return src(paths.output + '**/*')
+  return src(paths.output + '**/*', {dot: true})
     .pipe(tar('dist.tar'))
     .pipe(gzip())
     .pipe(dest(paths.output));
@@ -132,6 +138,7 @@ exports.default = series(
   cleanDist,
   htmlIncludes,
   copyJS,
+  copyStaticFiles,
   buildStyles,
   addHash,
 );

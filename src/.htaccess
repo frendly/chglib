@@ -1,0 +1,14 @@
+Order Allow,Deny
+Allow from all
+
+Options +FollowSymLinks
+RewriteEngine On
+
+Redirect 301 /bncpost.html /BNP/
+Redirect 301 /bnp2018.html /BNP/2018/
+Redirect 301 /bnp2017.html /BNP/2017/
+Redirect 301 /bnp2016.html /BNP/2016/
+Redirect 301 /bnp2015.html /BNP/2015/
+Redirect 301 /bnp2014.html /BNP/2014/
+Redirect 301 /bnp2013.html /BNP/2013/
+Redirect 301 /bnp2012.html /BNP/2012/
