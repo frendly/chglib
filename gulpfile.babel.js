@@ -11,7 +11,7 @@ const paths = {
     watch: 'src/**/*.html',
   },
   scripts: {
-    input: 'src/assets/js/main.js',
+    input: 'src/assets/js/index.js',
     output: 'dist/assets/js/',
     watch: 'src/**/*.js',
   },
