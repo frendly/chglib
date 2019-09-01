@@ -16,9 +16,13 @@ const paths = {
     watch: 'src/**/*.js',
   },
   styles: {
-    input: 'src/assets/styles/main.scss',
+    input: 'src/assets/styles/index.scss',
     output: 'dist/assets/styles/',
     watch: 'src/**/*.scss',
+  },
+  data: {
+    input: 'src/assets/data/',
+    output: 'dist/assets/data/',
   },
   reload: './dist/'
 }

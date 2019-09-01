@@ -1,8 +1,18 @@
 import gulp from "gulp";
 
+import yaml from 'gulp-yaml';
+
 import { paths } from "../gulpfile.babel";
 
-gulp.task("static", () =>
-  gulp.src(paths.input + '.htaccess')
-      .pipe(gulp.dest(paths.output))
+gulp.task("static-copy-files", () => {
+  return gulp.src(paths.input + '.htaccess')
+      .pipe(gulp.dest(paths.output));
+});
+
+gulp.task("yaml2json", () =>
+  gulp.src(paths.data.input + '*.yml')
+      .pipe(yaml({ schema: 'DEFAULT_SAFE_SCHEMA' }))
+      .pipe(gulp.dest(paths.data.output))
 );
+
+gulp.task('static', gulp.parallel('static-copy-files', 'yaml2json'));
