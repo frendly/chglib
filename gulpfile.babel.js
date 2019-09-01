@@ -1,157 +1,38 @@
-const {gulp, src, dest, watch, series, parallel} = require('gulp');
+"use strict";
 
-const del = require('del');
-const browserSync = require('browser-sync');
-const rev = require('gulp-rev-append');
-
-// html
-const include = require('gulp-include');
-const prettyHtml = require('gulp-pretty-html');
-
-// zip
-const tar = require('gulp-tar');
-const gzip = require('gulp-gzip');
-
-// Styles
-var sass = require('gulp-sass');
-var prefix = require('gulp-autoprefixer');
-var minify = require('gulp-cssnano');
-
+import gulp from 'gulp';
+import requireDir from "require-dir";
 
 const paths = {
   input: 'src/',
   output: 'dist/',
-  html: {
+  views: {
     input: 'src/**/*.html',
+    watch: 'src/**/*.html',
   },
   scripts: {
-    input: 'src/assets/js/*',
-    output: 'dist/assets/js/'
+    input: 'src/assets/js/main.js',
+    output: 'dist/assets/js/',
+    watch: 'src/**/*.js',
   },
   styles: {
-    input: 'src/assets/styles/**/*.scss',
-    output: 'dist/assets/styles/'
+    input: 'src/assets/styles/main.scss',
+    output: 'dist/assets/styles/',
+    watch: 'src/**/*.scss',
   },
   reload: './dist/'
 }
 
-function cleanDist (done) {
-  // Clean the dist folder
-  del.sync([
-    paths.output
-  ]);
+requireDir("./gulp-tasks/");
 
-  // Signal completion
-  return done();
-};
-
-function htmlIncludes() {
-  return src(paths.html.input)
-          .pipe(include({
-            includePaths: paths.input,
-          }))
-            .on('error', console.log)
-          .pipe(dest(paths.output))
-};
-
-function addHash() {
-  return src(paths.output + '**/*.html')
-          .pipe(rev())
-          .pipe(dest(paths.output))
-};
-
-function gulpPrettyHtml() {
-  return src(paths.html.input)
-          .pipe(prettyHtml())
-          .pipe(dest(paths.input))
-};
-
-// Copy js files into output folder
-function copyJS (done) {
-
-  // Copy static files
-  return src(paths.scripts.input)
-          .pipe(dest(paths.scripts.output));
-};
-
-// Copy static files into output folder
-function copyStaticFiles (done) {
-  return src(paths.input + '.htaccess')
-          .pipe(dest(paths.output));
-};
-
-// Watch for changes to the src directory
-function startServer (done) {
-
-  // Initialize BrowserSync
-  browserSync.init({
-    server: {
-      baseDir: paths.reload
-    }
-  });
-
-  // Signal completion
-  done();
-};
-
-// Reload the browser when files change
-function reloadBrowser (done) {
-  browserSync.reload();
-  done();
-};
-
-// Watch for changes
-function watchSource (done) {
-  watch(paths.input, series(exports.default, reloadBrowser));
-  done();
-};
-
-// zip
-function tarball() {
-  return src(paths.output + '**/*', {dot: true})
-    .pipe(tar('dist.tar'))
-    .pipe(gzip())
-    .pipe(dest(paths.output));
-};
-
-// Process, lint, and minify Sass files
-function buildStyles (done) {
-  // Run tasks on all Sass files
-  return src(paths.styles.input)
-          .pipe(sass({
-            outputStyle: 'expanded',
-            sourceComments: true
-          }))
-          .pipe(prefix())
-          .pipe(dest(paths.styles.output))
-          .pipe(minify({
-            discardComments: {
-              removeAll: true,
-            }
-          }))
-          .pipe(dest(paths.styles.output));
-};
-
-exports.pretty = gulpPrettyHtml;
-
-exports.default = series(
-  cleanDist,
-  htmlIncludes,
-  copyJS,
-  copyStaticFiles,
-  buildStyles,
-  addHash,
+export { paths };
+export const development = gulp.series("clean",
+  gulp.parallel(["scripts", "styles", "static"]),
+  gulp.parallel("views"),
+  gulp.parallel("serve"),
 );
 
-// Watch and reload
-exports.watch = series(
-  exports.default,
-  startServer,
-  watchSource,
-);
+// export const prod = gulp.series("clean",
+//     gulp.series(["views", "styles", "gzip"]));
 
-// gzip
-exports.tarball = series(
-  exports.default,
-  tarball,
-);
+export default development;
