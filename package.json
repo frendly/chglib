@@ -8,10 +8,9 @@
   "scripts": {
     "start": "",
     "build": "gulp",
-    "pretty": "gulp pretty",
     "watch": "gulp watch",
-    "zip": "gulp tarball",
-    "deploy": "yarn zip && cat ./dist/dist.tar.gz | ssh chglib@web.icp.ac.ru 'tar xzf - -C ~/.'"
+    "gzip": "gulp gzip",
+    "deploy": "yarn gzip && cat ./dist/dist.tar.gz | ssh chglib@web.icp.ac.ru 'tar xzf - -C ~/.'"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

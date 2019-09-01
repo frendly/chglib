@@ -1,6 +1,6 @@
 "use strict";
 
-import gulp from 'gulp';
+import { series, parallel } from 'gulp';
 import requireDir from "require-dir";
 
 const paths = {
@@ -25,14 +25,21 @@ const paths = {
 
 requireDir("./gulp-tasks/");
 
-export { paths };
-export const development = gulp.series("clean",
-  gulp.parallel(["scripts", "styles", "static"]),
-  gulp.parallel("views"),
-  gulp.parallel("serve"),
+const build = series("clean",
+  parallel(["scripts", "styles", "static"]),
+  "views",
 );
 
-// export const prod = gulp.series("clean",
-//     gulp.series(["views", "styles", "gzip"]));
+const watch = series("clean",
+  parallel(["scripts", "styles", "static"]),
+  "views",
+  "serve",
+);
 
-export default development;
+const gzip = series("clean",
+  parallel(["scripts", "styles", "static"]),
+  "views",
+  "gzip",
+);
+
+export { build as default, watch, gzip, paths };
