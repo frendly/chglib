@@ -6,9 +6,7 @@ import { paths } from "../gulpfile.babel";
 
 gulp.task("serve", () => {
     browsersync.init({
-        server: {
-            baseDir: paths.reload,
-        }
+        server: { baseDir: paths.reload }
     });
 
     gulp.watch(paths.views.watch, gulp.parallel("views"));

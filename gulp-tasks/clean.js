@@ -3,6 +3,6 @@ import del from "del";
 
 import { paths } from "../gulpfile.babel";
 
-gulp.task("clean", () => {
-  return del([paths.output]);
-});
+gulp.task("clean", () =>
+  del([paths.output])
+);

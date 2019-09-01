@@ -5,9 +5,9 @@ import gzip from "gulp-gzip";
 
 import { paths } from "../gulpfile.babel";
 
-gulp.task("gzip", () => {
-  return gulp.src(paths.output + '**/*', {dot: true})
+gulp.task("gzip", () =>
+  gulp.src(paths.output + '**/*', {dot: true})
       .pipe(tar('dist.tar'))
       .pipe(gzip())
-      .pipe(gulp.dest(paths.output));
-});
+      .pipe(gulp.dest(paths.output))
+);

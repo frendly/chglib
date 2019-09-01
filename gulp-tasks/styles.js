@@ -7,8 +7,8 @@ import browsersync from "browser-sync";
 
 import { paths } from "../gulpfile.babel";
 
-gulp.task("styles", () => {
-  return gulp.src(paths.styles.input)
+gulp.task("styles", () =>
+  gulp.src(paths.styles.input)
       .pipe(sass({
         outputStyle: 'expanded',
         sourceComments: true
@@ -21,5 +21,5 @@ gulp.task("styles", () => {
         }
       }))
       .pipe(gulp.dest(paths.styles.output))
-      .pipe(browsersync.stream());
-});
+      .pipe(browsersync.stream())
+);
