@@ -1,8 +1,7 @@
 import $ from "jquery";
 
-function getCurrentYear() {
-  return new Date().getFullYear(); // use _.once
-}
+import { getCurrentYear } from "./utils";
+import holidays from './holidays';
 
 // current year
 function currentYear() {
@@ -35,20 +34,6 @@ function targetBlank() {
   }
 };
 
-function replaceText(data) {
-  return data.replace('#current_year#', getCurrentYear());
-}
-
-function showHolidaysInfo() {
-  var url = '/assets/data/holidays.json';
-
-  $.getJSON(url).done(function(data) {
-    var event = data[0];
-    var text = replaceText(event.text);
-    $('<section>').html(text).prependTo('.last-news');
-  });
-}
-
 function createImageOnMainPage() {
   var mainPage = document.querySelector('.main-page');
 
@@ -73,5 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
   targetBlank();
   activeMenuItem();
   createImageOnMainPage();
-  showHolidaysInfo();
+  
+  holidays();
 });
