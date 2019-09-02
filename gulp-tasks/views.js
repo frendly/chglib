@@ -18,7 +18,7 @@ gulp.task("views-add-hash", () =>
   gulp.src(paths.output + '**/*.html')
       .pipe(rev())
       .pipe(gulp.dest(paths.output))
-      .pipe(browsersync.stream())
+      .on("end", browsersync.reload)
 );
 
 gulp.task('views', gulp.series('views-includes', 'views-add-hash'));
