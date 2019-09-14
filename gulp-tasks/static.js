@@ -1,6 +1,7 @@
 import gulp from "gulp";
 
 import yaml from 'gulp-yaml';
+import browsersync from "browser-sync";
 
 import { paths } from "../gulpfile.babel";
 
@@ -13,6 +14,7 @@ gulp.task("yaml2json", () =>
   gulp.src(paths.data.input + '*.yml')
       .pipe(yaml({ schema: 'DEFAULT_SAFE_SCHEMA' }))
       .pipe(gulp.dest(paths.data.output))
+      .on("end", browsersync.reload)
 );
 
 gulp.task('static', gulp.parallel('static-copy-files', 'yaml2json'));
