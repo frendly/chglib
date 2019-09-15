@@ -11,14 +11,19 @@ const paths = {
     watch: 'src/**/*.html',
   },
   scripts: {
-    input: 'src/assets/js/main.js',
+    input: 'src/assets/js/index.js',
     output: 'dist/assets/js/',
     watch: 'src/**/*.js',
   },
   styles: {
-    input: 'src/assets/styles/main.scss',
+    input: 'src/assets/styles/index.scss',
     output: 'dist/assets/styles/',
     watch: 'src/**/*.scss',
+  },
+  data: {
+    input: 'src/assets/data/',
+    output: 'dist/assets/data/',
+    watch: 'src/**/*.*',
   },
   reload: './dist/'
 }

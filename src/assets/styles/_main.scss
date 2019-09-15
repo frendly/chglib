@@ -1,0 +1,22 @@
+.main-page {}
+
+.last-news {
+  display: flex;
+  flex-wrap: wrap;
+  
+  img {
+    max-width: 400px;
+    margin-right: 10px;
+    width: 100%;
+  }
+}
+
+.last-news-list {
+  padding: 0;
+  list-style: none;
+  flex: 1 1 300px;
+  
+  &__item {
+    margin-bottom: 20px;
+  }
+}

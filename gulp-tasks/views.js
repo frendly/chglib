@@ -7,7 +7,11 @@ import browsersync from "browser-sync";
 import { paths } from "../gulpfile.babel";
 
 gulp.task("views-includes", () =>
-  gulp.src(paths.views.input)
+  gulp.src([
+    paths.views.input,
+    '!src/components/**/*',
+    '!src/OLD/**/*',
+  ])
       .pipe(include({
         includePaths: paths.input,
       })).on('error', console.log)

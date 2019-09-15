@@ -1,3 +1,13 @@
+import $ from "jquery";
+
+import { getCurrentYear } from "./utils";
+import holidays from './holidays';
+
+// current year
+function currentYear() {
+  $('.current-year').text(getCurrentYear());
+}
+
 // Add css class to active menu
 function activeMenuItem() {
   var path = window.location.pathname;
@@ -25,9 +35,9 @@ function targetBlank() {
 };
 
 document.addEventListener("DOMContentLoaded", function() {
-  // set current year
-  document.querySelector(".current-year").innerHTML = new Date().getFullYear();
-  
+  currentYear();
   targetBlank();
   activeMenuItem();
+  
+  holidays();
 });
