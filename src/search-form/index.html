@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--=include /components/header.html-->
+    <title>Поиск литературы</title>
+    <!--=include /components/counters.html-->
+</head>
+
+<body class="new-body search-form-page">
+    <!--=include /components/menu.html-->
+    <main role="main">
+        <h1>Поиск литературы</h1>
+        <p>Заполните форму и мы найдем материал в течении 5 дней.</p>
+        
+        <form
+          method="POST"
+          class="ajax-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSdcT9kfssPGs-3SKiFEz60xBxa8xd2qP3qVrJ-zDs03OLMLIg/formResponse"
+        >
+          <!--
+            <div class="form-group">
+            <select>
+              <option>Value 1</option>
+              <option>Value 2</option>
+            </select>
+            <label for="select" class="control-label">Selectbox</label><i class="bar"></i>
+          </div>
+          
+          <div class="form-group">
+            <textarea required="required"></textarea>
+            <label for="textarea" class="control-label">Textarea</label><i class="bar"></i>
+          </div>
+        -->
+          
+          <div class="form-group">
+            <input type="text" name="entry.846378689" required="required"/>
+            <label for="input" class="control-label" placeholder=" ">ФИО читателя</label><i class="bar"></i>
+          </div>
+          
+          <div class="form-group">
+            <input type="email" name="entry.12152610" required="required"/>
+            <label for="input" class="control-label">Email</label><i class="bar"></i>
+          </div>
+          
+          <div class="form-group">
+            <input type="text" name="entry.409945835" required="required"/>
+            <label for="input" class="control-label">Название издания</label><i class="bar"></i>
+          </div>
+          
+          <div class="form-group">
+            <input type="text" name="entry.69988770" required="required"/>
+            <label for="input" class="control-label">Год</label><i class="bar"></i>
+          </div>
+          
+          <div class="form-group">
+            <input type="text" name="entry.967506978" required="required"/>
+            <label for="input" class="control-label">Том</label><i class="bar"></i>
+          </div>
+          
+          <div class="form-group">
+            <input type="text" name="entry.1017181514" />
+            <label for="input" class="control-label" placeholder=" ">Номер</label><i class="bar"></i>
+          </div>
+          
+          <div class="form-group">
+            <input type="text" name="entry.1662147363" required="required"/>
+            <label for="input" class="control-label">Страницы</label><i class="bar"></i>
+          </div>
+          
+          <div class="form-group">
+            <input type="text" name="entry.905813611" />
+            <label for="input" class="control-label">DOI статьи</label><i class="bar"></i>
+          </div>
+          
+          <div class="form-group">
+            <input type="text" name="entry.616964992" required="required"/>
+            <label for="input" class="control-label">Авторы статьи</label><i class="bar"></i>
+            <div class="form-help">Укажите автора, можно нескольких</div>
+          </div>
+          
+          <div class="form-group">
+            <input type="text" name="entry.1881304788" />
+            <label for="input" class="control-label">Название статьи</label><i class="bar"></i>
+          </div>
+          
+          <p>Звездочкой <sup>*</sup> помечены поля обязательные для заполнения.</p>
+          
+          <div class="button-container">
+            <button type="submit" class="button"><span>Отправить заявку</span></button>
+
+          </div>
+
+          
+          <!-- <div class="checkbox">
+            <label>
+              <input type="checkbox" checked="checked"/><i class="helper"></i>I'm the label from a checkbox
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"/><i class="helper"></i>I'm the label from a checkbox
+            </label>
+          </div>
+          <div class="form-radio">
+            <div class="radio">
+              <label>
+                <input type="radio" name="radio" checked="checked"/><i class="helper"></i>I'm the label from a radio button
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="radio"/><i class="helper"></i>I'm the label from a radio button
+              </label>
+            </div>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"/><i class="helper"></i>I'm the label from a checkbox
+            </label>
+          </div> -->
+        </form>
+    </main>
+
+<!--=include /components/footer.html-->
+<!--=include /components/scripts.html-->
+</body>
+
+</html>

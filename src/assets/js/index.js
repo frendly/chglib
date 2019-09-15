@@ -2,6 +2,7 @@ import $ from "jquery";
 
 import { getCurrentYear } from "./utils";
 import holidays from './holidays';
+import form from './form';
 
 // current year
 function currentYear() {
@@ -40,4 +41,5 @@ document.addEventListener("DOMContentLoaded", function() {
   activeMenuItem();
   
   holidays();
+  form();
 });
