@@ -10,6 +10,11 @@ gulp.task("static-copy-files", () => {
       .pipe(gulp.dest(paths.output));
 });
 
+gulp.task("static-copy-images", () => {
+  return gulp.src(paths.images.input)
+    .pipe(gulp.dest(paths.images.output));
+});
+
 gulp.task("yaml2json", () =>
   gulp.src(paths.data.input + '*.yml')
       .pipe(yaml({ schema: 'DEFAULT_SAFE_SCHEMA' }))
@@ -17,4 +22,4 @@ gulp.task("yaml2json", () =>
       .on("end", browsersync.reload)
 );
 
-gulp.task('static', gulp.parallel('static-copy-files', 'yaml2json'));
+gulp.task('static', gulp.parallel('static-copy-files', 'static-copy-images', 'yaml2json'));

@@ -23,7 +23,12 @@ const paths = {
   data: {
     input: 'src/assets/data/',
     output: 'dist/assets/data/',
-    watch: 'src/**/*.*',
+    watch: 'src/assets/data/*.*',
+  },
+  images: {
+    input: 'src/assets/images/**/*',
+    output: 'dist/assets/images/',
+    watch: 'src/assets/images/**/*.*',
   },
   reload: './dist/'
 }
