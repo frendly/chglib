@@ -1,4 +1,7 @@
 User-agent: *
 Disallow: 
 
+Disallow: /*.db$
+Disallow: /*.pdf$
+
 Sitemap: /sitemap.xml
