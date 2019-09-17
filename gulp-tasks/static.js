@@ -6,7 +6,11 @@ import browsersync from "browser-sync";
 import { paths } from "../gulpfile.babel";
 
 gulp.task("static-copy-files", () => {
-  return gulp.src(paths.input + '.htaccess')
+  return gulp.src([
+    paths.input + '.htaccess',
+    paths.input + 'robots.txt',
+    paths.input + 'sitemap.xml',
+  ])
       .pipe(gulp.dest(paths.output));
 });
 
