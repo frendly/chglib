@@ -1,5 +1,4 @@
 nav.menu {
-  text-align: center;
   position: relative;
   padding-top: 10px;
 }
@@ -11,7 +10,6 @@ nav.menu {
   @media #{$isCompact} {
     display: none;
     flex-direction: column;
-    text-align: left;
   }
   
   &__link {
@@ -34,20 +32,27 @@ nav.menu {
 }
 
 .menu-mobile {
-  opacity: 0;
+  display: none;
   border: none;
   background-color: transparent;
-  font-size: 3rem;
+  font-size: 2.6rem;
   cursor: pointer;
-  position: absolute;
-  left: 0;
+
   @media #{$isCompact} {
-    opacity: 1;
+    display: inline-block;
   }
 }
 
 .benran-logo {
   @media #{$isCompact} {
     display: none;
+  }
+}
+
+.bnc-logo {
+  @media #{$isCompact} {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
