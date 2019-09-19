@@ -1,11 +1,17 @@
-.menu {
+nav.menu {
+  text-align: center;
+  position: relative;
+  padding-top: 10px;
+}
+
+.menu-list {
   padding: 0;
   list-style: none;
   
-  @media #{$IsCompact} {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  @media #{$isCompact} {
+    display: none;
+    flex-direction: column;
+    text-align: left;
   }
   
   &__link {
@@ -13,12 +19,35 @@
     border-bottom-width: 0;
     display: block;
     
-    @media #{$IsCompact} {
+    @media #{$isCompact} {
       padding: 5px;
     }
     
     &--active {
       color: $hoverColor;
     }
+  }
+  
+  &--open {
+    display: flex;
+  }
+}
+
+.menu-mobile {
+  opacity: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 3rem;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  @media #{$isCompact} {
+    opacity: 1;
+  }
+}
+
+.benran-logo {
+  @media #{$isCompact} {
+    display: none;
   }
 }

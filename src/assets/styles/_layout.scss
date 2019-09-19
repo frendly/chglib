@@ -1,7 +1,7 @@
 header {
   position: fixed;
   
-  @media #{$IsCompact} {
+  @media #{$isCompact} {
     position: static;
   }
 }
@@ -10,7 +10,7 @@ main {
   padding-left: 220px;
   min-height: calc(100vh - #{$footerHeight});
   
-  @media #{$IsCompact} {
+  @media #{$isCompact} {
     padding-left: 0;
   }
 }
