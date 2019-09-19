@@ -3,4 +3,4 @@ Disallow:
 
 Disallow: /*.db$
 
-Sitemap: /sitemap.xml
+Sitemap: http://chglib.icp.ac.ru/sitemap.xml
