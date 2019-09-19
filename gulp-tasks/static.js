@@ -10,6 +10,7 @@ gulp.task("static-copy-files", () => {
     paths.input + '.htaccess',
     paths.input + 'robots.txt',
     paths.input + 'sitemap.xml',
+    paths.input + 'favicon.ico',
   ])
       .pipe(gulp.dest(paths.output));
 });
