@@ -1,8 +1,15 @@
 import $ from "jquery";
 
 const form = () => {
-  const form = $('.ajax-form')
+  const input = $('.form-group input');
+  input.blur(function() {
+    const val = $(this).val();
+    if (val.length > 0) {
+      $(this).addClass('has-value');
+    }
+  });
 
+  const form = $('.ajax-form')
   form.on('submit', (e) => {
     e.preventDefault();
   

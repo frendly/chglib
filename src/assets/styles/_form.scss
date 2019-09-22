@@ -20,7 +20,7 @@ fieldset {
   padding: 5px 5px;
   
   &:hover {
-    background: rgba(238, 238, 238, .7);
+    // background: rgba(238, 238, 238, .7);
   }
   
   input {
@@ -50,7 +50,7 @@ fieldset {
     z-index: 1;
     // color: #b3b3b3;
     color: #000;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: normal;
     transition: all 0.28s ease;
   }
@@ -117,16 +117,16 @@ fieldset {
 
   select ~ .control-label,
   input:focus ~ .control-label,
-  input:valid ~ .control-label,
+  // input:valid ~ .control-label,
   input.form-file ~ .control-label,
   input.has-value ~ .control-label,
   textarea:focus ~ .control-label,
   textarea:valid ~ .control-label,
   textarea.form-file ~ .control-label,
   textarea.has-value ~ .control-label {
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: gray;
-    top: -1rem;
+    top: -1.2rem;
     left: 0;
   }
 
@@ -160,8 +160,10 @@ fieldset {
 .form-help {
   margin-top: 0.125rem;
   margin-left: 0.125rem;
-  color: #b3b3b3;
-  font-size: 0.8rem;
+  // color: #b3b3b3;
+  // font-size: 0.8rem;
+  font-size: .95rem;
+  font-style: italic;
 }
 
 .checkbox .form-help,
