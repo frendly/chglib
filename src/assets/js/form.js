@@ -9,22 +9,23 @@ const form = () => {
     }
   });
 
-  const form = $('.ajax-form')
-  form.on('submit', (e) => {
+  const form = $('.ajax-form');
+
+  form.on('submit', function(e) {
     e.preventDefault();
+
+    const isValid = form[0].checkValidity();
+
+    if(isValid) {
+      form.find('.ajax-form__done').css('display', 'flex');
+    }
   
     $.ajax({
       url: form.attr('action'),
       type: form.attr('method'),
       data: form.serialize(),
-      statusCode: {
-          0: function() {
-              //Success message
-          },
-          200: function() {
-            console.log('//Success Message');
-              //Success Message
-          }
+      success: function(data) { //Success Message
+        console.log('//Success Message');
       }
     });
   });

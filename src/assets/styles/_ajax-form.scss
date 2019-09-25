@@ -1,0 +1,19 @@
+.ajax-form {
+  position: relative;
+
+  &__done {
+    display: none;
+
+    position: absolute;
+    background-color: rgba(255, 255, 255, .85);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+    font-size: 1.5rem;
+  }
+}
