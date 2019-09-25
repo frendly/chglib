@@ -6,8 +6,18 @@ import browsersync from "browser-sync";
 import { paths } from "../gulpfile.babel";
 
 gulp.task("static-copy-files", () => {
-  return gulp.src(paths.input + '.htaccess')
+  return gulp.src([
+    paths.input + '.htaccess',
+    paths.input + 'robots.txt',
+    paths.input + 'sitemap.xml',
+    paths.input + 'favicon.ico',
+  ])
       .pipe(gulp.dest(paths.output));
+});
+
+gulp.task("static-copy-images", () => {
+  return gulp.src(paths.images.input)
+    .pipe(gulp.dest(paths.images.output));
 });
 
 gulp.task("yaml2json", () =>
@@ -17,4 +27,4 @@ gulp.task("yaml2json", () =>
       .on("end", browsersync.reload)
 );
 
-gulp.task('static', gulp.parallel('static-copy-files', 'yaml2json'));
+gulp.task('static', gulp.parallel('static-copy-files', 'static-copy-images', 'yaml2json'));

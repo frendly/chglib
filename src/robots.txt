@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: 
+
+Disallow: /*.db$
+
+Sitemap: http://chglib.icp.ac.ru/sitemap.xml

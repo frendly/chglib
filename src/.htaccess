@@ -3,6 +3,7 @@ Allow from all
 
 Options +FollowSymLinks
 RewriteEngine On
+RewriteBase /
 
 Redirect 301 /bncpost.html /BNP/
 Redirect 301 /bnp2018.html /BNP/2018/
@@ -13,55 +14,58 @@ Redirect 301 /bnp2014.html /BNP/2014/
 Redirect 301 /bnp2013.html /BNP/2013/
 Redirect 301 /bnp2012.html /BNP/2012/
 
+# Редирект с http://chglib.icp.ac.ru/index.html на http://chglib.icp.ac.ru/
+RewriteRule ^index\.html$ / [NC,R,L]
+
 # Редирект старых главных страниц
-Redirect 301 /lib0.html /index.html
-Redirect 301 /lib0_e.html /index.html
-Redirect 301 /lib1.html /index.html
-Redirect 301 /lib10.html /index.html
-Redirect 301 /lib10_e.html /index.html
-Redirect 301 /lib11.html /index.html
-Redirect 301 /lib11_e.html /index.html
-Redirect 301 /lib1_23.html /index.html
-Redirect 301 /lib1_e.html /index.html
-Redirect 301 /lib2.html /index.html
-Redirect 301 /lib2_0.html /index.html
-Redirect 301 /lib2_8.html /index.html
-Redirect 301 /lib2_e.html /index.html
-Redirect 301 /lib3.html /index.html
-Redirect 301 /lib3_e.html /index.html
-Redirect 301 /lib4.html /index.html
-Redirect 301 /lib4_27.html /index.html
-Redirect 301 /lib4_9.html /index.html
-Redirect 301 /lib4_e.html /index.html
-Redirect 301 /lib5.html /index.html
-Redirect 301 /lib511.html /index.html
-Redirect 301 /lib513.html /index.html
-Redirect 301 /lib515.html /index.html
-Redirect 301 /lib517.html /index.html
-Redirect 301 /lib519.html /index.html
-Redirect 301 /lib521.html /index.html
-Redirect 301 /lib523.html /index.html
-Redirect 301 /lib525.html /index.html
-Redirect 301 /lib527.html /index.html
-Redirect 301 /lib529.html /index.html
-Redirect 301 /lib53.html /index.html
-Redirect 301 /lib55.html /index.html
-Redirect 301 /lib57.html /index.html
-Redirect 301 /lib59.html /index.html
-Redirect 301 /lib5_e.html /index.html
-Redirect 301 /lib6.html /index.html
-Redirect 301 /lib6_e.html /index.html
-Redirect 301 /lib7.html /index.html
-Redirect 301 /lib7_e.html /index.html
-Redirect 301 /lib8.html /index.html
-Redirect 301 /lib8_e.html /index.html
-Redirect 301 /lib9.html /index.html
-Redirect 301 /lib9_e.html /index.html
-Redirect 301 /lib_ny.html /index.html
-Redirect 301 /lib_ny1.html /index.html
-Redirect 301 /lib_ny2.html /index.html
-Redirect 301 /lib_ny2015.html /index.html
-Redirect 301 /lib_ny2017.html /index.html
-Redirect 301 /lib_nyold.html /index.html
-Redirect 301 /lib_oy.html /index.html
-Redirect 301 /lib_oy2016.html /index.html
+Redirect 301 /lib0.html /
+Redirect 301 /lib0_e.html /
+Redirect 301 /lib1.html /
+Redirect 301 /lib10.html /
+Redirect 301 /lib10_e.html /
+Redirect 301 /lib11.html /
+Redirect 301 /lib11_e.html /
+Redirect 301 /lib1_23.html /
+Redirect 301 /lib1_e.html /
+Redirect 301 /lib2.html /
+Redirect 301 /lib2_0.html /
+Redirect 301 /lib2_8.html /
+Redirect 301 /lib2_e.html /
+Redirect 301 /lib3.html /
+Redirect 301 /lib3_e.html /
+Redirect 301 /lib4.html /
+Redirect 301 /lib4_27.html /
+Redirect 301 /lib4_9.html /
+Redirect 301 /lib4_e.html /
+Redirect 301 /lib5.html /
+Redirect 301 /lib511.html /
+Redirect 301 /lib513.html /
+Redirect 301 /lib515.html /
+Redirect 301 /lib517.html /
+Redirect 301 /lib519.html /
+Redirect 301 /lib521.html /
+Redirect 301 /lib523.html /
+Redirect 301 /lib525.html /
+Redirect 301 /lib527.html /
+Redirect 301 /lib529.html /
+Redirect 301 /lib53.html /
+Redirect 301 /lib55.html /
+Redirect 301 /lib57.html /
+Redirect 301 /lib59.html /
+Redirect 301 /lib5_e.html /
+Redirect 301 /lib6.html /
+Redirect 301 /lib6_e.html /
+Redirect 301 /lib7.html /
+Redirect 301 /lib7_e.html /
+Redirect 301 /lib8.html /
+Redirect 301 /lib8_e.html /
+Redirect 301 /lib9.html /
+Redirect 301 /lib9_e.html /
+Redirect 301 /lib_ny.html /
+Redirect 301 /lib_ny1.html /
+Redirect 301 /lib_ny2.html /
+Redirect 301 /lib_ny2015.html /
+Redirect 301 /lib_ny2017.html /
+Redirect 301 /lib_nyold.html /
+Redirect 301 /lib_oy.html /
+Redirect 301 /lib_oy2016.html /
