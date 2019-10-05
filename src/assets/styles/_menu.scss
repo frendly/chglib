@@ -44,6 +44,11 @@ nav.menu {
 }
 
 .benran-logo {
+  background-color: #0d3b8b;
+  border-radius: 50%;
+  display: inline-block;
+  height: 51px;
+
   @media #{$isCompact} {
     display: none;
   }
