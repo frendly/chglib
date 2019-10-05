@@ -1,0 +1,18 @@
+.journal-list {
+  cursor: pointer;
+  
+  &:before {
+    content: "▼";
+    font-size: .65rem;
+    margin-right: .3rem;
+    opacity: .5;
+  }
+
+  &__items {
+    display: none;
+  }
+  
+  &--open:before {
+    content: "▲";
+  }
+}

@@ -4,6 +4,7 @@ import { getCurrentYear } from "./utils";
 import holidays from './holidays';
 import analytics from './analytics';
 import menu from './menu';
+import elcatToggleList from './pages/elcat';
 
 // current year
 function currentYear() {
@@ -44,4 +45,5 @@ document.addEventListener("DOMContentLoaded", function() {
   holidays();
   analytics();
   menu();
+  elcatToggleList();
 });
