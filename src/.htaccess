@@ -69,3 +69,6 @@ Redirect 301 /lib_ny2017.html /
 Redirect 301 /lib_nyold.html /
 Redirect 301 /lib_oy.html /
 Redirect 301 /lib_oy2016.html /
+
+# Редирект Электронный каталог
+Redirect 301 /elcat.html /ec/

@@ -3,22 +3,12 @@ import $ from "jquery";
 import { getCurrentYear } from "./utils";
 import holidays from './holidays';
 import analytics from './analytics';
-import menu from './menu';
+import { menuMobile, activeMenuItem } from './menu';
 import elcatToggleList from './pages/elcat';
 
 // current year
 function currentYear() {
   $('.current-year').text(getCurrentYear());
-}
-
-// Add css class to active menu
-function activeMenuItem() {
-  var path = window.location.pathname;
-  var activeMenuItem = document.querySelector('.menu__link[href*="' + path + '"]');
-
-  if (activeMenuItem) {
-    activeMenuItem.classList.add('menu__link--active');
-  }
 }
 
 // Add target="_blank" to external links
@@ -41,9 +31,9 @@ document.addEventListener("DOMContentLoaded", function() {
   currentYear();
   targetBlank();
   activeMenuItem();
+  menuMobile();
   
   holidays();
   analytics();
-  menu();
   elcatToggleList();
 });
