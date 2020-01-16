@@ -72,3 +72,6 @@ Redirect 301 /lib_oy2016.html /
 
 # Редирект Электронный каталог
 Redirect 301 /elcat.html /ec/
+
+# Редирект Выставка журналов из БЕН РАН
+Redirect 301 /BENex.html /BENex/
