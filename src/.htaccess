@@ -78,3 +78,6 @@ Redirect 301 /BENex.html /BENex/
 
 # Редирект О библиотеке
 Redirect 301 /onas.html /about/
+
+# Редирект Контакты
+Redirect 301 /adres.html /contacts/
