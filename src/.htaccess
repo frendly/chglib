@@ -75,3 +75,6 @@ Redirect 301 /elcat.html /ec/
 
 # Редирект Выставка журналов из БЕН РАН
 Redirect 301 /BENex.html /BENex/
+
+# Редирект О библиотеке
+Redirect 301 /onas.html /about/
