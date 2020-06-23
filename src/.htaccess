@@ -81,3 +81,15 @@ Redirect 301 /onas.html /about/
 
 # Редирект Контакты
 Redirect 301 /adres.html /contacts/
+
+# Редирект Тематические выставки
+Redirect 301 /subjex.html /subjex/
+Redirect 301 /subjex/2017/subjex.html /subjex/2017/
+Redirect 301 /subjex/2015/subjex.html /subjex/2015/
+Redirect 301 /subjex/2014/subjex.html /subjex/2014/
+Redirect 301 /subjex/2013/subjex.html /subjex/2013/
+Redirect 301 /subjex/2012/subjex.html /subjex/2012/
+Redirect 301 /subjex/2011/subjex.html /subjex/2011/
+Redirect 301 /subjex/2010/subjex.html /subjex/2010/
+Redirect 301 /subjex/2009/subjex.html /subjex/2009/
+Redirect 301 /subjex/2008/subjex.html /subjex/2008/
