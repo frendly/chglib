@@ -1,12 +1,3 @@
-# Изменить репозиторий
-1. В пуске найти приложение git bash и запустить его
-2. Перейти в папку с проектом `cd chglib`
-3. Переименовать оригинальный репощиторий `git remote rename origin bitbucket`
-4. Добавить новый репозиторий как оригинальный `git remote add origin https://github.com/frendly/chglib.git`
-5. Удалить старый репозиторий `git remote rm bitbucket`
-6. Связать репозиторий и локальную ветку `git branch --set-upstream-to=origin/master master`
-7. Получить все изменения из репозитория `git reset --hard origin/master`
-
 # Разработка
 1. В пуске найти приложение git bash и запустить его
 2. Перейти в папку с проектом `cd chglib`
@@ -43,6 +34,15 @@
 9. Переходим в каталог с сайтом `cd chglib/`
 10. Устанавливаем yarn `npm i -g yarn`
 11. Устанавливаем зависимости проекта `yarn`
+
+# Изменить репозиторий
+1. В пуске найти приложение git bash и запустить его
+2. Перейти в папку с проектом `cd chglib`
+3. Переименовать оригинальный репощиторий `git remote rename origin bitbucket`
+4. Добавить новый репозиторий как оригинальный `git remote add origin https://github.com/frendly/chglib.git`
+5. Удалить старый репозиторий `git remote rm bitbucket`
+6. Связать репозиторий и локальную ветку `git branch --set-upstream-to=origin/master master`
+7. Получить все изменения из репозитория `git reset --hard origin/master`
 
 # Кто вносил изменения?
 Указываем имя и почту человека, который вносил изменения.
