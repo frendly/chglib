@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: github-actions
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install # will run `yarn install` command
