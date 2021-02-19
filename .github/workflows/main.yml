@@ -14,3 +14,6 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: gzip # will run `yarn install` command
+      - name: Deploy
+        run: |
+          cat ./dist/dist.tar.gz
