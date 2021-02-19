@@ -1,19 +1,11 @@
-name: 'test my project'
-on:
-  push:
-    branches:
-    - github-actions
+name: CI
+on: [push]
 jobs:
-  test-job:
-    runs-on: ubuntu-16.04
+  build:
+    name: Test
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: github-actions
-
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: install # will run `yarn install` command
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: gzip
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install # will run `yarn install` command
