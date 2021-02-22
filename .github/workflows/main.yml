@@ -23,9 +23,11 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
+          log-level: verbose
           dry-run: true
           local-dir: './dist/'
           server-dir: './assets/data/test/'
+          protocol: ftps
           server: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_NAME }}
           password: ${{ secrets.SSH_PASS }}
