@@ -20,14 +20,12 @@ jobs:
         with:
           cmd: build # will run `yarn install` command
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      - name: 📂 deploy file
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
-          log-level: verbose
-          dry-run: true
-          local-dir: './dist/'
-          server-dir: './assets/data/test/'
-          protocol: ftps
-          server: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_NAME }}
-          password: ${{ secrets.SSH_PASS }}
+          username: ${{ secrets.SSH_NAME }} 
+          server: ${{ secrets.SSH_HOST }} 
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
+          local_path: './dist/*'
+          remote_path: '/www/chglib/assets/data/test/'
+          args: '-o ConnectTimeout=5'
