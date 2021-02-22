@@ -1,19 +1,31 @@
-name: CI
-on: [push]
+name: Deploy website on push
+on: push
 jobs:
-  build:
-    name: Test
+  web-deploy:
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
         with:
           ref: github-actions
-      - uses: borales/actions-yarn@v2.0.0
+
+      - name: 🔨 Install deps    
+        uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install # will run `yarn install` command
-      - uses: borales/actions-yarn@v2.0.0
+
+      - name: 🔨 Build Project
+        uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: gzip # will run `yarn install` command
-      - name: Deploy
-        run: |
-          cat ./dist/dist.tar.gz
+          cmd: build # will run `yarn install` command
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          dry-run: true
+          local-dir: './dist/'
+          server-dir: './assets/data/test/'
+          server: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_NAME }}
+          password: ${{ secrets.SSH_PASS }}
