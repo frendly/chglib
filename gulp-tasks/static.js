@@ -11,6 +11,7 @@ gulp.task("static-copy-files", () => {
     paths.input + 'robots.txt',
     paths.input + 'sitemap.xml',
     paths.input + 'favicon.ico',
+    paths.input + '.ftp-deploy-sync-state.json',
   ])
       .pipe(gulp.dest(paths.output));
 });
