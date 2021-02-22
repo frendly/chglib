@@ -10,15 +10,15 @@ jobs:
         with:
           ref: github-actions
 
-      - name: 🔨 Install deps    
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: install # will run `yarn install` command
+      # - name: 🔨 Install deps    
+      #   uses: borales/actions-yarn@v2.0.0
+      #   with:
+      #     cmd: install # will run `yarn install` command
 
-      - name: 🔨 Build Project
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: build # will run `yarn install` command
+      # - name: 🔨 Build Project
+      #   uses: borales/actions-yarn@v2.0.0
+      #   with:
+      #     cmd: build # will run `yarn install` command
 
       - name: 📂 deploy file
         uses: wlixcc/SFTP-Deploy-Action@v1.0
@@ -26,6 +26,7 @@ jobs:
           username: ${{ secrets.SSH_NAME }} 
           server: ${{ secrets.SSH_HOST }} 
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
-          local_path: './dist/*'
+          # local_path: './dist/*'
+          local_path: './src/about/*'
           remote_path: '/www/chglib/assets/data/test/'
           args: '-o ConnectTimeout=5'
