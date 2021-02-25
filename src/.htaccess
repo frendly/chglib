@@ -93,3 +93,19 @@ Redirect 301 /subjex/2011/subjex.html /subjex/2011/
 Redirect 301 /subjex/2010/subjex.html /subjex/2010/
 Redirect 301 /subjex/2009/subjex.html /subjex/2009/
 Redirect 301 /subjex/2008/subjex.html /subjex/2008/
+
+# Редирект Новостей
+Redirect 301 /news.html /news/
+Redirect 301 /more/news2008.html /news/2008/
+Redirect 301 /more/news2009.html /news/2009/
+Redirect 301 /more/news2010.html /news/2010/
+Redirect 301 /more/news2011.html /news/2011/
+Redirect 301 /more/news2012.html /news/2012/
+Redirect 301 /more/news2013.html /news/2013/
+Redirect 301 /more/news2014.html /news/2014/
+Redirect 301 /more/news2015.html /news/2015/
+Redirect 301 /more/news2016.html /news/2016/
+Redirect 301 /more/news2017.html /news/2017/
+Redirect 301 /more/news2018.html /news/2018/
+Redirect 301 /more/news2019.html /news/2019/
+Redirect 301 /more/news2020.html /news/2020/
