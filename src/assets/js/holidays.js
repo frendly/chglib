@@ -50,7 +50,7 @@ const getCurrentEvent = (data) => {
  * Если событий нет, выводит изображение месяца
 */
 const setEvent = (event) => {
-  if(!event) {
+  if (!event) {
     createImage(defaultMonthPicture);
     return;
   }
@@ -59,7 +59,7 @@ const setEvent = (event) => {
   $('<div>').html(text).prependTo('.last-news');
 
   createImage(event.image);
-  
+
 }
 
 /**
@@ -67,7 +67,7 @@ const setEvent = (event) => {
 */
 const createImage = (src) => {
   const domain = 'http://chglib.icp.ac.ru';
-  
+
   $('<img />')
     .addClass('last-news-image13')
     .attr('src', `${domain}/${src}`)

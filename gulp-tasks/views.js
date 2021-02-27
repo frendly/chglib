@@ -12,17 +12,17 @@ gulp.task("views-includes", () =>
     '!src/components/**/*',
     '!src/OLD/**/*',
   ])
-      .pipe(include({
-        includePaths: paths.input,
-      })).on('error', console.log)
-      .pipe(gulp.dest(paths.output))
+    .pipe(include({
+      includePaths: paths.input,
+    })).on('error', console.log)
+    .pipe(gulp.dest(paths.output))
 );
 
 gulp.task("views-add-hash", () =>
   gulp.src(paths.output + '**/*.html')
-      .pipe(rev())
-      .pipe(gulp.dest(paths.output))
-      .on("end", browsersync.reload)
+    .pipe(rev())
+    .pipe(gulp.dest(paths.output))
+    .on("end", browsersync.reload)
 );
 
 gulp.task('views', gulp.series('views-includes', 'views-add-hash'));
