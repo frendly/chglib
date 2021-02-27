@@ -12,7 +12,7 @@ gulp.task("static-copy-files", () => {
     paths.input + 'sitemap.xml',
     paths.input + 'favicon.ico',
   ])
-      .pipe(gulp.dest(paths.output));
+    .pipe(gulp.dest(paths.output));
 });
 
 gulp.task("static-copy-images", () => {
@@ -22,9 +22,9 @@ gulp.task("static-copy-images", () => {
 
 gulp.task("yaml2json", () =>
   gulp.src(paths.data.input + '*.yml')
-      .pipe(yaml({ schema: 'DEFAULT_SAFE_SCHEMA' }))
-      .pipe(gulp.dest(paths.data.output))
-      .on("end", browsersync.reload)
+    .pipe(yaml({ schema: 'DEFAULT_SAFE_SCHEMA' }))
+    .pipe(gulp.dest(paths.data.output))
+    .on("end", browsersync.reload)
 );
 
 gulp.task('static', gulp.parallel('static-copy-files', 'static-copy-images', 'yaml2json'));
