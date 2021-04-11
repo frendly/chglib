@@ -109,3 +109,10 @@ Redirect 301 /more/news2017.html /news/2017/
 Redirect 301 /more/news2018.html /news/2018/
 Redirect 301 /more/news2019.html /news/2019/
 Redirect 301 /more/news2020.html /news/2020/
+
+# Редирект веб-библиотеки (libweb)
+Redirect 301 /libweb.html /libweb/
+Redirect 301 /e-jour.html /libweb/e-jour.html
+Redirect 301 /ResBNC.html /libweb/ResBNC.html
+Redirect 301 /Restmp.html /libweb/Restmp.html
+Redirect 301 /science.html /libweb/science.html
