@@ -3,6 +3,7 @@ import $ from "jquery";
 import { getCurrentYear } from "./utils";
 import holidays from './holidays';
 import analytics from './analytics';
+import modal from './modal';
 import { menuMobile, activeMenuItem } from './menu';
 import elcatToggleList from './pages/elcat';
 import getLastNews from './pages/home';
@@ -28,6 +29,7 @@ function targetBlank() {
   }
 };
 
+
 document.addEventListener("DOMContentLoaded", function () {
   currentYear();
   targetBlank();
@@ -38,4 +40,5 @@ document.addEventListener("DOMContentLoaded", function () {
   analytics();
   elcatToggleList();
   getLastNews();
+  modal();
 });
