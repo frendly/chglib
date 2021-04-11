@@ -1,7 +1,7 @@
 import $ from "jquery";
 
 const getLastNews = () => {
-  $('.get-last-news__list').load('/news.html main>article:nth-child(-n+2)')
+  $('.get-last-news__list').load('/news/ article:nth-of-type(-n+2)')
 }
 
 export default getLastNews;
