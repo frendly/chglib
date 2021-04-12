@@ -10,7 +10,8 @@
     "build": "gulp",
     "watch": "gulp watch",
     "gzip": "gulp gzip",
-    "deploy": "yarn gzip && cat ./dist/dist.tar.gz | ssh chglib@web.icp.ac.ru 'tar xzf - -C ~/.'"
+    "deploy": "yarn gzip && cat ./dist/dist.tar.gz | ssh chglib@web.icp.ac.ru 'tar xzf - -C ~/.'",
+    "bundle-report": "yarn build && webpack-bundle-analyzer --port 4200 stats.json"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -31,11 +32,12 @@
     "gulp-yaml": "^2.0.4",
     "require-dir": "^1.2.0",
     "webpack": "^4.39.3",
+    "webpack-bundle-analyzer": "^4.4.0",
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {
     "jbox": "^1.2.14",
-    "jquery": "^3.4.1",
+    "jquery": "^3.6.0",
     "moment": "^2.24.0"
   }
 }
