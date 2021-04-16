@@ -38,6 +38,7 @@
   "dependencies": {
     "jbox": "^1.2.14",
     "jquery": "^3.6.0",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "tingle.js": "^0.16.0"
   }
 }
