@@ -1,0 +1,26 @@
+---
+title: Home
+eleventyNavigation:
+  key: Home
+  order: 1
+
+pagination:
+  data: collections.all
+  size: 1000
+  alias: entries
+permalink: /
+---
+<table>
+  <thead>
+    <th>URL</th>
+    <th>Page Title</th>
+  </thead>
+  <tbody>
+{%- for entry in entries %}
+  <tr>
+    <td><a href="{{ entry.url }}"><code>{{ entry.url }}</code></a></td>
+    <td>{{ entry.data.title }}</td>
+  </tr>
+{%- endfor %}
+  </tbody>
+</table>
