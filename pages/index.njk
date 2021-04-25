@@ -1,7 +1,7 @@
 ---
-title: Home
+title: Главная
 eleventyNavigation:
-  key: Home
+  key: Главная
   order: 1
 
 pagination:
@@ -10,17 +10,18 @@ pagination:
   alias: entries
 permalink: /
 ---
+
 <table>
   <thead>
     <th>URL</th>
     <th>Page Title</th>
   </thead>
   <tbody>
-{%- for entry in entries %}
-  <tr>
-    <td><a href="{{ entry.url }}"><code>{{ entry.url }}</code></a></td>
-    <td>{{ entry.data.title }}</td>
-  </tr>
-{%- endfor %}
+  {%- for entry in entries %}
+    <tr>
+      <td><a href="{{ entry.url }}"><code>{{ entry.url }}</code></a></td>
+      <td>{{ entry.data.title }}</td>
+    </tr>
+  {%- endfor %}
   </tbody>
 </table>

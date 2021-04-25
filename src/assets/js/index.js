@@ -1,3 +1,5 @@
+import '../styles/index.scss';
+
 import $ from "jquery";
 
 import { getCurrentYear } from "./utils";

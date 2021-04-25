@@ -2,33 +2,16 @@
 <html lang="en">
 {%- set pageTitle %}{% if title %}{{ title }} | {% endif %}{{ meta.siteName }}{% endset -%}
 {%- set pageDescription %}{% if description %}{{ description }}{% else %}{{ meta.siteDescription }}{% endif %}{% endset -%}
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{pageTitle}}</title>
-    <meta
-      name="description"
-      content="{{pageDescription}}"
-    />
-    <link rel="icon" href="{{ '/favicon.png' | url }}" />
-    <link href="{{ '/css/style.css' | url }}" rel="stylesheet" />
-  </head>
-  <body>
-    <header>
-      <ul class="nav">
-      {%- for entry in collections.all | eleventyNavigation %}
-        <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}">
-          <a href="{{ entry.url | url }}">{{ entry.title }}</a>
-        </li>
-      {%- endfor %}
-      </ul>
 
+  {% include "components/head.njk" %}
+
+  <body class='new-body'>
+    {% include "components/nav.njk" %}
+    <main role="main">
       <h1>{{ title }}</h1>
+      {{ content | safe }}
+    </main>
 
-    </header>
-    {{ content | safe }}
-
-    <footer class="tdbc-background--secondary">
-    </footer>
+    {% include "components/footer.njk" %}
   </body>
 </html>
