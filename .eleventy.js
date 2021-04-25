@@ -9,8 +9,8 @@ const manifest = JSON.parse(
 );
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.setDataDeepMerge(true);
-  eleventyConfig.setDynamicPermalinks(false);
+  // Copy all images directly to dist.
+  eleventyConfig.addPassthroughCopy({ "src/assets/images": "assets/images" });
 
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
