@@ -12,7 +12,7 @@ module.exports = {
     ],
   },
   output: {
-    filename: '[name].js',
+    filename: '[name].[contenthash].js',
     // filename: "[name].js",
     // chunkFilename: "[name].js",
     // chunkLoading: false,
@@ -78,7 +78,7 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new WebpackManifestPlugin({ publicPath: "/assets/" }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: '[name].[contenthash].css',
     }),
   ],
 };
