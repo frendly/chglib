@@ -11,6 +11,8 @@ const manifest = JSON.parse(
 module.exports = function(eleventyConfig) {
   // Copy all images directly to dist.
   eleventyConfig.addPassthroughCopy({ "src/assets/images": "assets/images" });
+  // Copy robots.txt, etc to dist.
+  eleventyConfig.addPassthroughCopy({"src/assets/static/*": "/"});
 
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
