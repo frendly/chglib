@@ -1,4 +1,4 @@
-import $ from "jquery";
+// import $ from "jquery";
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -60,7 +60,7 @@ const getCurrentEvent = (data) => {
 */
 const setEvent = (event) => {
   if (!event) {
-    createImage(defaultMonthPicture);
+    createImage({ src: defaultMonthPicture });
     return;
   }
 
@@ -69,20 +69,22 @@ const setEvent = (event) => {
     $('<div>').html(text).prependTo('.last-news');
   }
 
-  createImage(event.image);
-
+  createImage({ src: event.image });
 }
 
 /**
  * Выводит переданное изображение
 */
-const createImage = (src) => {
-  const domain = 'http://chglib.icp.ac.ru';
+const createImage = ({
+  domain = 'http://chglib.icp.ac.ru',
+  src,
+}) => {
+  const img = document.createElement("img");
+  img.classList.add('last-news-image13');
+  img.setAttribute(src, `${domain}/${src}`);
 
-  $('<img />')
-    .addClass('last-news-image13')
-    .attr('src', `${domain}/${src}`)
-    .insertBefore('.last-news-list');
+  const parent = document.querySelector('.last-news');
+  parent.insertBefore(img, parent.firstChild);
 }
 
 export default getHolidays;
