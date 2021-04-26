@@ -16,6 +16,9 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
+  // Reload the page every time the JS/CSS are changed.
+  eleventyConfig.setBrowserSyncConfig({ files: [manifestPath] });
+
   eleventyConfig.addFilter("filterTagList", tags => {
     // should match the list in tags.njk
     return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
