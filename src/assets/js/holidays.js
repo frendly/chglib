@@ -1,20 +1,25 @@
 import $ from "jquery";
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import { getCurrentYear } from "./utils";
 
 import holidays from '../data/holidays.yml';
 
 dayjs.extend(isBetween);
+dayjs.extend(customParseFormat);
 
 const defaultMonthPicture = `/face/${dayjs().month()}.jpg`;
 
 /**
  * Возвращает дату добавляя текущий год
- * 15-01 -> 15-01-2019
+ * DD-MM -> YYYY-MM-DD
 */
-const getFullDate = (date) => dayjs(date, 'DD-MM').format('DD-MM-YYYY');
+const getFullDate = (date) => {
+  const fullDate = dayjs(date, 'DD-MM').format('YYYY-MM-DD');
+  return fullDate;
+}
 
 /**
  * Заменяет текст
