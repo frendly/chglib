@@ -1,5 +1,5 @@
 const path = require("path");
-const webpack = require('webpack');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
@@ -12,6 +12,7 @@ module.exports = {
     ],
   },
   output: {
+    // filename: '[name].js',
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist/assets'),
   },
@@ -28,7 +29,6 @@ module.exports = {
       }
     }
   },
-
   module: {
     rules: [
       {
@@ -43,11 +43,15 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader',
+      },
+      {
+        test: /\.ya?ml$/,
+        type: 'json',
+        use: 'yaml-loader'
       }
     ]
   },
   plugins: [
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new WebpackManifestPlugin({ publicPath: "/assets/" }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
