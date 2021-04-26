@@ -7,10 +7,12 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn dev:assets && yarn dev:html",
+    "watch": "yarn start",
     "dev:html": "eleventy --serve --watch",
     "dev:assets": "webpack --mode=development",
-    "build": "gulp",
-    "watch": "gulp watch",
+    "dev:html_debug": "DEBUG=Eleventy:Benchmark* eleventy",
+    "build:assets": "webpack --mode=production",
+    "build": "yarn build:assets && eleventy",
     "gzip": "gulp gzip",
     "deploy": "yarn gzip && cat ./dist/dist.tar.gz | ssh chglib@web.icp.ac.ru 'tar xzf - -C ~/.'"
   },
