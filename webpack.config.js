@@ -16,19 +16,6 @@ module.exports = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist/assets'),
   },
-
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /node_modules/,
-          chunks: "initial",
-          name: "vendor",
-          enforce: true
-        }
-      }
-    }
-  },
   module: {
     rules: [
       {
