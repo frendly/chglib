@@ -1,0 +1,5 @@
+.contats-map img {
+  @media #{$isCompact} {
+    width: 100%;
+  }
+}
