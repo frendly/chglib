@@ -81,7 +81,7 @@ const createImage = ({
 }) => {
   const img = document.createElement("img");
   img.classList.add('last-news-image13');
-  img.setAttribute(src, `${domain}/${src}`);
+  img.src = `${domain}/${src}`;
 
   const parent = document.querySelector('.last-news');
   parent.insertBefore(img, parent.firstChild);
