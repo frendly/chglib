@@ -1,45 +1,31 @@
 const fs = require("fs");
 const path = require("path");
-
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 
-const manifestPath = path.resolve(__dirname, "dist", "assets", "manifest.json");
-const manifest = JSON.parse(
-  fs.readFileSync(manifestPath, { encoding: "utf8" })
-);
+const isProduction = process.env.ELEVENTY_ENV === 'production';
+
+const assetPath = (value) => {
+  if (isProduction) {
+    const manifestPath = path.resolve(__dirname, "dist", "assets", 'manifest.json');
+    const manifest = JSON.parse(fs.readFileSync(manifestPath));
+    return `/assets/${manifest[value]}`;
+  }
+  return `/assets/${value}`;
+}
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
+
   // Copy all images directly to dist.
-  eleventyConfig.addPassthroughCopy({ "src/assets/images": "assets/images" });
+  eleventyConfig.addPassthroughCopy({"src/assets/images": "images"});
   // Copy robots.txt, etc to dist.
   eleventyConfig.addPassthroughCopy({"src/assets/static/*": "/"});
 
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
-
-  // Reload the page every time the JS/CSS are changed.
-  eleventyConfig.setBrowserSyncConfig({ files: [manifestPath] });
-
-  eleventyConfig.addFilter("filterTagList", tags => {
-    // should match the list in tags.njk
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
-  })
-
-  // Adds a universal shortcode to return the URL to a webpack asset. In Nunjack templates:
-  // {% webpackAsset 'main.js' %} or {% webpackAsset 'main.css' %}
-  eleventyConfig.addShortcode("webpackAsset", function(name) {
-    if (!manifest[name]) {
-      throw new Error(`The asset ${name} does not exist in ${manifestPath}`);
-    }
-    return manifest[name];
-  });
+  // Adds a universal shortcode to return the URL to a webpack asset in template
+  eleventyConfig.addFilter('assetPath', assetPath);
 
   return {
-    templateFormats: [
-      "md",
-      "njk",
-      "html",
-      "liquid"
-    ],
+    templateFormats: [ "md", "njk", "html" ],
     dir: {
       input: "pages",
       output: "dist",

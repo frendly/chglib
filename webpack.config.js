@@ -8,6 +8,7 @@ module.exports = (env, options) => {
   const isProduction = options.mode === 'production';
 
   return {
+    watch: isProduction ? false : true,
     target: ["web"],
     entry: {
       index: [
