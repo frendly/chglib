@@ -1,11 +1,13 @@
-import $ from "jquery";
-
 const elcatToggleList = () => {
-  $('.journal-list').on('click', function () {
-    $(this).toggleClass('journal-list--open');
-    $(this).nextAll('.journal-list__items').first().toggle();
-  })
-}
+  const baseCls = 'journal-item';
+  const expandedCls = `${baseCls}--expanded`;
 
+  const selectors = document.querySelectorAll(`.${baseCls}`);
+
+  selectors.forEach(item => item.addEventListener("click", (event) => {
+    const element = event.currentTarget;
+    element.classList.toggle(expandedCls);
+  }));
+}
 
 export default elcatToggleList;

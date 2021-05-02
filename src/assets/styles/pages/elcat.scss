@@ -1,18 +1,29 @@
-.journal-list {
+.journal-item {
+  padding: 10px 0 10px 15px;
   cursor: pointer;
-  
+  position: relative;
+
   &:before {
-    content: "▼";
-    font-size: .65rem;
-    margin-right: .3rem;
-    opacity: .5;
+    top: 15px;
+    left: 0;
+    position: absolute;
+    content: "▶";
+    font-size: 0.65rem;
+    margin-right: 0.3rem;
+    opacity: 0.5;
   }
 
-  &__items {
-    display: none;
+  &--expanded {
+    &:before {
+      content: "▼";
+    }
+
+    .journal-list__items {
+      display: block;
+    }
   }
-  
-  &--open:before {
-    content: "▲";
-  }
+}
+
+.journal-list__items {
+  display: none;
 }
