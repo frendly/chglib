@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
-import { getCurrentYear } from "./utils";
+import { getCurrentYear, isMainPage } from "./utils";
 
 import holidays from '../data/holidays.yml';
 
@@ -32,6 +32,9 @@ function replaceText(data) {
  * Возвращает список праздников из файла
 */
 const getHolidays = () => {
+  if(!isMainPage) {
+    return null;
+  }
   return getCurrentEvent(holidays)
 }
 
