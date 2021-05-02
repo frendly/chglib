@@ -8,7 +8,7 @@ const assetPath = (value) => {
   if (isProduction) {
     const manifestPath = path.resolve(__dirname, "dist", "assets", 'manifest.json');
     const manifest = JSON.parse(fs.readFileSync(manifestPath));
-    return `/assets/${manifest[value]}`;
+    return manifest[value];
   }
   return `/assets/${value}`;
 }
