@@ -1,16 +1,26 @@
-import $ from 'jquery';
+const baseCls = 'menu-list';
 
 const menuMobile = () => {
-  $('.menu-mobile').on('click', () => $('.menu-list').toggleClass('menu-list--open'));
+  const expandedCls = `${baseCls}--open`;
+
+  const selector = document.querySelector('.menu-mobile');
+
+  selector.addEventListener('click', () => {
+    const menu = document.querySelector(`.${baseCls}`);
+    menu.classList.toggle(expandedCls);
+  });
 }
 
 // Add css class to active menu
 function activeMenuItem() {
+  const menuItemCls = `${baseCls}__link`;
+  const activeMenuItemCls = `${menuItemCls}--active`;
+
   const path = window.location.pathname.split('/')[1];
-  const activeMenuItem = $(`.menu-list__link[href*='${path}']`);
+  const activeMenuItem = document.querySelector(`.${menuItemCls}[href*='${path}']`);
 
   if (activeMenuItem) {
-    activeMenuItem.addClass('menu-list__link--active');
+    activeMenuItem.classList.add(activeMenuItemCls);
   }
 }
 
