@@ -1,5 +1,3 @@
-import $ from "jquery";
-
 import { getCurrentYear } from "./utils";
 import holidays from './holidays';
 import analytics from './analytics';
@@ -7,9 +5,11 @@ import { menuMobile, activeMenuItem } from './menu';
 import elcatToggleList from './pages/elcat';
 import setLastNews from './pages/home';
 
-// current year
-function currentYear() {
-  $('.current-year').text(getCurrentYear());
+
+function setCurrentYear() {
+  const selector = document.querySelector('.current-year');
+  const currentYear = getCurrentYear();
+  selector.innerText = `– ${currentYear}`
 }
 
 // Add target="_blank" to external links
@@ -29,7 +29,7 @@ function targetBlank() {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  currentYear();
+  setCurrentYear();
   targetBlank();
   activeMenuItem();
   menuMobile();
