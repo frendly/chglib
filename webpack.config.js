@@ -2,6 +2,7 @@ const path = require("path");
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   target: ["web"],
@@ -39,6 +40,7 @@ module.exports = {
     ]
   },
   plugins: [
+      new CleanWebpackPlugin(),
     new WebpackManifestPlugin({ publicPath: "/assets/" }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
