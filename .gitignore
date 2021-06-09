@@ -1,6 +1,5 @@
 dist/
 node_modules/
 yarn-error.log
-*.pdf
 *.db
 Thumbs.db
