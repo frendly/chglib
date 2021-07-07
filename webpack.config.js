@@ -1,6 +1,8 @@
 const path = require("path");
 const webpack = require('webpack');
 
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
 module.exports = {
   entry: {
     index: "./src/assets/js/index.js",
@@ -45,6 +47,10 @@ module.exports = {
   },
 
   plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled',
+      generateStatsFile: true,
+    }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
 };
