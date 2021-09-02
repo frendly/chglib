@@ -4,3 +4,4 @@ yarn-error.log
 *.pdf
 *.db
 Thumbs.db
+.DS_Store
