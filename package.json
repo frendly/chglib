@@ -6,7 +6,7 @@
   "author": "frendly <www.zpdf@mail.ru>",
   "license": "MIT",
   "scripts": {
-    "start": "",
+    "start": "yarn watch",
     "build": "gulp",
     "watch": "gulp watch",
     "gzip": "gulp gzip",
