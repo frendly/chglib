@@ -1,6 +1,6 @@
 {
   "name": "chglib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "git@bitbucket.org:frendly/chglib.git",
   "author": "frendly <www.zpdf@mail.ru>",
