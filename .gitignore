@@ -5,3 +5,4 @@ yarn-error.log
 *.db
 Thumbs.db
 .DS_Store
+*.stackdump
