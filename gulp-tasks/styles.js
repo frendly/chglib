@@ -1,11 +1,13 @@
 import gulp from "gulp";
-
-import sass from "gulp-sass";
 import prefix from "gulp-autoprefixer";
 import minify from "gulp-cssnano";
 import browsersync from "browser-sync";
+import dartSass from "sass";
+import gulpSass from "gulp-sass";
 
 import { paths } from "../gulpfile.babel";
+
+const sass = gulpSass(dartSass);
 
 gulp.task("styles", () =>
   gulp.src(paths.styles.input)

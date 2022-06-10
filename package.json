@@ -26,10 +26,11 @@
     "gulp-include": "^2.4.1",
     "gulp-pretty-html": "^2.0.10",
     "gulp-rev-append": "^0.1.8",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^5.1.0",
     "gulp-tar": "^2.1.0",
     "gulp-yaml": "^2.0.4",
     "require-dir": "^1.2.0",
+    "sass": "^1.52.3",
     "webpack": "^4.39.3",
     "webpack-stream": "^5.2.1"
   },
