@@ -35,19 +35,19 @@ const paths = {
 
 requireDir("./gulp-tasks/");
 
-const build = series("clean",
-  parallel(["scripts", "styles", "static"]),
+const build = series(
+  "static",
   "views",
 );
 
-const watch = series("clean",
-  parallel(["scripts", "styles", "static"]),
+const watch = series(
+  "static",
   "views",
   "serve",
 );
 
-const gzip = series("clean",
-  parallel(["scripts", "styles", "static"]),
+const gzip = series(
+  "static",
   "views",
   "gzip",
 );

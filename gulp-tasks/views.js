@@ -1,8 +1,10 @@
 import gulp from "gulp";
 
 import include from "gulp-include";
-import rev from "gulp-rev-append";
 import browsersync from "browser-sync";
+import replace from "gulp-manifest-replace";
+
+import manifestJson from '../dist/assets/manifest.json';
 
 import { paths } from "../gulpfile.babel";
 
@@ -11,6 +13,10 @@ gulp.task("views-includes", () =>
     paths.views.input,
     '!src/components/**/*',
     '!src/OLD/**/*',
+    '!src/_data/**/*',
+    '!src/_includes/**/*',
+    '!src/_about/**/*',
+    '!src/_contacts/**/*',
   ])
     .pipe(include({
       includePaths: paths.input,
@@ -20,7 +26,7 @@ gulp.task("views-includes", () =>
 
 gulp.task("views-add-hash", () =>
   gulp.src(paths.output + '**/*.html')
-    .pipe(rev())
+    .pipe(replace({ manifest: manifestJson }))
     .pipe(gulp.dest(paths.output))
     .on("end", browsersync.reload)
 );

@@ -1,0 +1,25 @@
+<header>
+  <nav class="menu">
+    <button class="menu-mobile">☰</button>
+
+    <a class="benran-logo" href="http://www.benran.ru/" title="Перейти на сайт БЕН РАН">
+      <img width="49" height="51" src="/images/logos/benran.png" alt="БЕН РАН">
+    </a>
+    <a class="bnc-logo" href="/">
+      <img width="57" height="51" src="/images/logos/bnc.gif"
+        alt="Библиотека Научного центра РАН в Черноголовке">
+    </a>
+
+    <ul class="menu-list">
+    {%- for entry in collections.all | eleventyNavigation %}
+      <li>
+        <a
+          class="menu-list__link{% if entry.url == page.url %} menu-list__link--active{% endif %}"
+          href="{{ entry.url | url }}">
+          {{ entry.title }}
+        </a>
+      </li>
+    {%- endfor %}
+    </ul>
+  </nav>
+</header>
