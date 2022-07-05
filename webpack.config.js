@@ -2,7 +2,6 @@ const path = require("path");
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env, options) => {
   const isProduction = options.mode === 'production';
@@ -38,13 +37,11 @@ module.exports = (env, options) => {
         },
         {
           test: /\.ya?ml$/,
-          type: 'json',
           use: 'yaml-loader'
         }
       ]
     },
     plugins: [
-      new CleanWebpackPlugin(),
       new WebpackManifestPlugin({ publicPath: "/assets/" }),
       new MiniCssExtractPlugin({
         filename: isProduction ? '[name].[contenthash].css' : '[name].css',
