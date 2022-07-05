@@ -17,7 +17,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
   // Copy all images directly to dist.
-  eleventyConfig.addPassthroughCopy({"src/assets/images": "images"});
+  eleventyConfig.addPassthroughCopy({"src/assets/images": "/assets/images"});
   // Copy robots.txt, etc to dist.
   eleventyConfig.addPassthroughCopy({"src/assets/static/*": "/"});
 
