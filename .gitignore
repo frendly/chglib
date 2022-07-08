@@ -1,4 +1,5 @@
 dist/
+dist.tar.gz
 node_modules/
 yarn-error.log
 *.pdf
