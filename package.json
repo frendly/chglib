@@ -7,17 +7,14 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn watch",
-    "_build": "gulp",
-    "gzip": "gulp gzip",
-    "deploy": "yarn gzip && cat ./dist/dist.tar.gz | ssh chglib@web.icp.ac.ru 'tar xzf - -C ~/.'",
-    "_": "_",
+    "gzip": "yarn build && tar -czf dist.tar.gz -C dist .",
+    "deploy": "yarn gzip && cat ./dist.tar.gz | ssh chglib@web.icp.ac.ru 'tar xzf - -C ~/.'",
     "dev:html": "ELEVENTY_ENV=development eleventy --serve --watch",
     "dev:assets": "webpack --mode development",
-    "11ty:start": "yarn dev:assets & yarn dev:html",
     "build:assets": "webpack --mode production",
     "build:html": "ELEVENTY_ENV=production eleventy",
-    "watch": "yarn dev:assets && gulp watch",
-    "build": "yarn build:assets && gulp"
+    "watch": "yarn dev:assets && yarn dev:html",
+    "build": "yarn build:assets && yarn build:html"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
