@@ -1,6 +1,8 @@
 import $ from "jquery";
 import moment from 'moment';
 
+import holidays from '../data/holidays.yml';
+
 import { getCurrentYear } from "./utils";
 
 const defaultMonthPicture = `/face/${moment().month()}.jpg`;
@@ -22,8 +24,7 @@ function replaceText(data) {
  * Возвращает список праздников из файла
 */
 const getHolidays = () => {
-  const url = '/assets/data/holidays.json';
-  $.getJSON(url).done(data => getCurrentEvent(data));
+  getCurrentEvent(holidays);
 }
 
 /**

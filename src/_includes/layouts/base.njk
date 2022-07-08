@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+{%- set pageTitle %}{% if title %}{{ title }} | {% endif %}{{ meta.siteName }}{% endset -%}
+{%- set pageDescription %}{% if description %}{{ description }}{% else %}{{ meta.siteDescription }}{% endif %}{% endset -%}
+
+  {% include "components/head.njk" %}
+
+  <body class="new-body">
+    {% include "components/nav.njk" %}
+    <main>
+      <h1>{{ title }}</h1>
+      {{ content | safe }}
+    </main>
+
+    {% include "components/footer.njk" %}
+    {% include "components/counters.njk" %}
+  </body>
+</html>
