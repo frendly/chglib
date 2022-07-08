@@ -1,4 +1,3 @@
-import $ from "jquery";
 import moment from 'moment';
 
 import holidays from '../data/holidays.yml';
@@ -57,10 +56,13 @@ const setEvent = (event) => {
   }
 
   const text = replaceText(event.text);
-  $('<div>').html(text).prependTo('.last-news');
+
+  const eventElement = document.createElement('div');
+  eventElement.innerHTML = text;
+
+  document.querySelector('.last-news').prepend(eventElement);
 
   createImage(event.image);
-
 }
 
 /**
@@ -69,10 +71,11 @@ const setEvent = (event) => {
 const createImage = (src) => {
   const domain = 'http://chglib.icp.ac.ru';
 
-  $('<img />')
-    .addClass('last-news-image13')
-    .attr('src', `${domain}/${src}`)
-    .insertBefore('.last-news-list');
+  const image = document.createElement('img');
+  image.setAttribute('src', `${domain}/${src}`);
+  image.classList.add('last-news-image');
+
+  document.querySelector('.last-news').prepend(image);
 }
 
 export default getHolidays;
