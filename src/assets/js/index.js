@@ -1,5 +1,3 @@
-import $ from "jquery";
-
 import { getCurrentYear } from "./utils";
 import holidays from './holidays';
 import analytics from './analytics';
@@ -9,7 +7,9 @@ import getLastNews from './pages/home';
 
 // current year
 function currentYear() {
-  $('.current-year').text(getCurrentYear());
+  const selector = document.querySelector('.current-year');
+  const currentYear = getCurrentYear();
+  selector.innerText = `– ${currentYear}`
 }
 
 // Add target="_blank" to external links
