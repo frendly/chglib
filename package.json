@@ -6,6 +6,7 @@
   "author": "frendly <www.zpdf@mail.ru>",
   "license": "MIT",
   "scripts": {
+    "clear": "rm -rf ./dist dist.tar.gz",
     "start": "yarn watch",
     "gzip": "yarn build && tar -czf dist.tar.gz -C dist .",
     "deploy": "yarn gzip && cat ./dist.tar.gz | ssh chglib@web.icp.ac.ru 'tar xzf - -C ~/.'",
@@ -13,8 +14,8 @@
     "dev:assets": "webpack --mode development",
     "build:assets": "webpack --mode production",
     "build:html": "ELEVENTY_ENV=production eleventy",
-    "watch": "yarn dev:assets && yarn dev:html",
-    "build": "yarn build:assets && yarn build:html"
+    "watch": "yarn clear && yarn dev:assets && yarn dev:html",
+    "build": "yarn clear && yarn build:assets && yarn build:html"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
