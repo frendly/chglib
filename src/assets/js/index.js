@@ -1,7 +1,7 @@
 import { getCurrentYear } from "./utils";
 import holidays from './holidays';
 import analytics from './analytics';
-import { menuMobile, activeMenuItem } from './menu';
+import { menuMobile } from './menu';
 import elcatToggleList from './pages/elcat';
 import getLastNews from './pages/home';
 
@@ -31,7 +31,6 @@ function targetBlank() {
 document.addEventListener("DOMContentLoaded", function () {
   currentYear();
   targetBlank();
-  activeMenuItem();
   menuMobile();
 
   holidays();

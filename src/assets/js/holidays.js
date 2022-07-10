@@ -80,7 +80,7 @@ const createImage = (src) => {
   image.setAttribute('src', `${domain}/${src}`);
   image.classList.add('last-news-image');
 
-  document.querySelector('.last-news').prepend(image);
+  document.querySelector('.last-news')?.prepend(image);
 }
 
 export default getHolidays;
