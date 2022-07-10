@@ -7,6 +7,9 @@ const isProduction = process.env.ELEVENTY_ENV === 'production';
 const now = String(Date.now());
 
 module.exports = function(eleventyConfig) {
+  // Enable quiet mode to reduce console noise
+  eleventyConfig.setQuietMode(true);
+
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
   // Copy all images directly to dist.
