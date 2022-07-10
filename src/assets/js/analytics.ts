@@ -1,7 +1,7 @@
 const analytics = () => {
   const selector = document.querySelector('.benran-logo');
 
-  selector.addEventListener('click', () => {
+  selector?.addEventListener('click', () => {
     window.ym(55357015, 'reachGoal', 'benran-logo-click');
   });
 }

@@ -21,7 +21,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.on("afterBuild", () => {
     return esbuild.build({
-      entryPoints: ["src/assets/js/index.js", "src/assets/styles/index.scss"],
+      entryPoints: ["src/assets/js/index.ts", "src/assets/styles/index.scss"],
       bundle: true,
       outdir: "dist/assets",
       minify: isProduction,
