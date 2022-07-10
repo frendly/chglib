@@ -1,6 +1,7 @@
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const esbuild = require("esbuild");
 const { sassPlugin } = require("esbuild-sass-plugin");
+const { yamlPlugin } = require("esbuild-plugin-yaml");
 
 const isProduction = process.env.ELEVENTY_ENV === 'production';
 const now = String(Date.now());
@@ -26,7 +27,10 @@ module.exports = function(eleventyConfig) {
       minify: isProduction,
       sourcemap: !isProduction,
       target: 'es6',
-      plugins: [sassPlugin()]
+      plugins: [
+        sassPlugin(),
+        yamlPlugin(),
+      ]
     });
   });
 

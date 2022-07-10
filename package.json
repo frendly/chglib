@@ -26,6 +26,7 @@
     "babel-loader": "^8.0.6",
     "css-loader": "^6.7.1",
     "esbuild": "^0.14.48",
+    "esbuild-plugin-yaml": "^0.0.1",
     "esbuild-sass-plugin": "^2.2.6",
     "mini-css-extract-plugin": "^2.6.1",
     "sass": "^1.52.3",
