@@ -1,17 +1,9 @@
-const fs = require("fs");
-const path = require("path");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+const esbuild = require("esbuild");
+const { sassPlugin } = require("esbuild-sass-plugin");
 
 const isProduction = process.env.ELEVENTY_ENV === 'production';
-
-const assetPath = (value) => {
-  if (isProduction) {
-    const manifestPath = path.resolve(__dirname, "dist", "assets", 'manifest.json');
-    const manifest = JSON.parse(fs.readFileSync(manifestPath));
-    return manifest[value];
-  }
-  return `/assets/${value}`;
-}
+const now = String(Date.now());
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
@@ -21,8 +13,22 @@ module.exports = function(eleventyConfig) {
   // Copy robots.txt, etc to dist.
   eleventyConfig.addPassthroughCopy({"src/assets/static/*": "/"});
 
-  // Adds a universal shortcode to return the URL to a webpack asset in template
-  eleventyConfig.addFilter('assetPath', assetPath);
+  // Add cache busting with {% version %} time string
+  eleventyConfig.addShortcode('version', function () {
+    return now;
+  });
+
+  eleventyConfig.on("afterBuild", () => {
+    return esbuild.build({
+      entryPoints: ["src/assets/js/index.js", "src/assets/styles/index.scss"],
+      bundle: true,
+      outdir: "dist/assets",
+      minify: isProduction,
+      sourcemap: !isProduction,
+      target: 'es6',
+      plugins: [sassPlugin()]
+    });
+  });
 
   return {
     templateFormats: [ "md", "njk", "html" ],

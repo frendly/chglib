@@ -14,7 +14,7 @@
     "dev:assets": "webpack --mode development",
     "build:assets": "webpack --mode production",
     "build:html": "ELEVENTY_ENV=production eleventy",
-    "watch": "yarn clear && yarn dev:assets && yarn dev:html",
+    "watch": "yarn clear && yarn dev:html",
     "build": "yarn clear && yarn build:assets && yarn build:html"
   },
   "devDependencies": {
@@ -25,6 +25,8 @@
     "@babel/register": "^7.5.5",
     "babel-loader": "^8.0.6",
     "css-loader": "^6.7.1",
+    "esbuild": "^0.14.48",
+    "esbuild-sass-plugin": "^2.2.6",
     "mini-css-extract-plugin": "^2.6.1",
     "sass": "^1.52.3",
     "sass-loader": "^13.0.2",
