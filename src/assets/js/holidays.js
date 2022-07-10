@@ -1,16 +1,19 @@
-import moment from 'moment';
-
-import holidays from '../data/holidays.yml';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
 
 import { getCurrentYear } from "./utils";
 
-const defaultMonthPicture = `/face/${moment().month()}.jpg`;
+import holidays from '../data/holidays.yml';
+
+dayjs.extend(isBetween);
+
+const defaultMonthPicture = `/face/${dayjs().month()}.jpg`;
 
 /**
  * Возвращает дату добавляя текущий год
- * 15-01 -> 15-01-2019
+ * MM-DD -> YYYY-MM-DD
 */
-const getFullDate = (date) => moment(date, 'DD-MM');
+const getFullDate = (date) => dayjs(date).format('YYYY-MM-DD');
 
 /**
  * Заменяет текст
@@ -23,21 +26,21 @@ function replaceText(data) {
  * Возвращает список праздников из файла
 */
 const getHolidays = () => {
-  getCurrentEvent(holidays);
+  return getCurrentEvent(holidays)
 }
 
 /**
  * Фильтрует массив праздников по текущей дате
 */
 const getCurrentEvent = (data) => {
-  const today = moment().format('YYYY-MM-DD');
+  const today = dayjs().format('YYYY-MM-DD');
 
   const event = data.find(item => {
-    const { start_date: startDate, end_date: endDate } = item;
+    const { startDate, endDate } = item;
 
     const start = getFullDate(startDate);
     const end = getFullDate(endDate);
-    const isShowing = moment(today).isBetween(start, end, null, '[]');
+    const isShowing = dayjs(today).isBetween(start, end, null, '[]');
 
     return isShowing && item;
   });
@@ -55,12 +58,14 @@ const setEvent = (event) => {
     return;
   }
 
-  const text = replaceText(event.text);
+  if(event.text) {
+    const text = replaceText(event.text);
 
-  const eventElement = document.createElement('div');
-  eventElement.innerHTML = text;
+    const eventElement = document.createElement('div');
+    eventElement.innerHTML = text;
 
-  document.querySelector('.last-news').prepend(eventElement);
+    document.querySelector('.last-news').prepend(eventElement);
+  }
 
   createImage(event.image);
 }

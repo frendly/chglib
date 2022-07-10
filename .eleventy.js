@@ -33,6 +33,7 @@ module.exports = function(eleventyConfig) {
       ]
     });
   });
+  eleventyConfig.addWatchTarget("./src/assets/");
 
   return {
     templateFormats: [ "md", "njk", "html" ],
