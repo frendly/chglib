@@ -23,6 +23,6 @@
     "esbuild-sass-plugin": "^2.2.6"
   },
   "dependencies": {
-    "moment": "^2.24.0"
+    "moment": "^2.29.4"
   }
 }
