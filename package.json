@@ -11,11 +11,9 @@
     "gzip": "yarn build && tar -czf dist.tar.gz -C dist .",
     "deploy": "yarn gzip && cat ./dist.tar.gz | ssh chglib@web.icp.ac.ru 'tar xzf - -C ~/.'",
     "dev:html": "ELEVENTY_ENV=development eleventy --serve --watch",
-    "dev:assets": "webpack --mode development",
-    "build:assets": "webpack --mode production",
     "build:html": "ELEVENTY_ENV=production eleventy",
     "watch": "yarn clear && yarn dev:html",
-    "build": "yarn clear && yarn build:assets && yarn build:html"
+    "build": "yarn clear && yarn build:html"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
