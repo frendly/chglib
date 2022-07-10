@@ -11,9 +11,9 @@ const defaultMonthPicture = `/face/${dayjs().month()}.jpg`;
 
 /**
  * Возвращает дату добавляя текущий год
- * 15-01 -> 15-01-2019
+ * MM-DD -> YYYY-MM-DD
 */
-const getFullDate = (date) => dayjs(date, 'DD-MM').format('DD-MM-YYYY');
+const getFullDate = (date) => dayjs(date).format('YYYY-MM-DD');
 
 /**
  * Заменяет текст
@@ -36,7 +36,7 @@ const getCurrentEvent = (data) => {
   const today = dayjs().format('YYYY-MM-DD');
 
   const event = data.find(item => {
-    const { start_date: startDate, end_date: endDate } = item;
+    const { startDate, endDate } = item;
 
     const start = getFullDate(startDate);
     const end = getFullDate(endDate);
@@ -58,12 +58,14 @@ const setEvent = (event) => {
     return;
   }
 
-  const text = replaceText(event.text);
+  if(event.text) {
+    const text = replaceText(event.text);
 
-  const eventElement = document.createElement('div');
-  eventElement.innerHTML = text;
+    const eventElement = document.createElement('div');
+    eventElement.innerHTML = text;
 
-  document.querySelector('.last-news').prepend(eventElement);
+    document.querySelector('.last-news').prepend(eventElement);
+  }
 
   createImage(event.image);
 }
