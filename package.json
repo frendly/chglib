@@ -23,7 +23,6 @@
     "esbuild-sass-plugin": "^2.2.6"
   },
   "dependencies": {
-    "dayjs": "^1.11.3",
-    "moment": "^2.24.0"
+    "dayjs": "^1.11.3"
   }
 }
