@@ -10,10 +10,8 @@ eleventyNavigation:
 <nobr>142432 г.Черноголовка, Московской обл.</nobr>
 <nobr>проспект академика Н. Семенова, дом. 1</nobr>
 
-<div class="contats-map">
-
-![map](https://static-maps.yandex.ru/1.x/?l=map&ll=38.38538497882056%2C56.01277995589854&pt=38.38728398280303%2C56.013438059753234%2Cpm2bll&size=500%2C280&z=15)
-
+<div class="contacts-map">
+  <img src="https://static-maps.yandex.ru/1.x/?l=map&amp;ll=38.38538497882056%2C56.01277995589854&amp;pt=38.38728398280303%2C56.013438059753234%2Cpm2bll&amp;size=500%2C280&amp;z=15" alt="map">
 </div>
 
 ## Режим работы для читателей
