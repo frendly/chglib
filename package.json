@@ -16,13 +16,13 @@
     "build": "yarn clear && yarn build:html"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.1",
-    "@11ty/eleventy-navigation": "^0.3.3",
-    "esbuild": "^0.14.48",
+    "@11ty/eleventy": "^1.0.2",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "esbuild": "^0.15.12",
     "esbuild-plugin-yaml": "^0.0.1",
-    "esbuild-sass-plugin": "^2.2.6"
+    "esbuild-sass-plugin": "^2.4.0"
   },
   "dependencies": {
-    "dayjs": "^1.11.3"
+    "dayjs": "^1.11.6"
   }
 }
