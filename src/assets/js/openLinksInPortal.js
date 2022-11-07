@@ -10,7 +10,8 @@ const fetchData = (data) => {
 }
 
 export const openLinksInPortal = () => {
-  const links = document.querySelectorAll('main [href*=".html"]');
+  // исключаем открытие ссылок /libweb/* в портале
+  const links = document.querySelectorAll('main a[href*=".html"]:not([href*="ResBNC.html"]):not([href*="Restmp.html"]):not([href*="e-jour.html"])');
 
   links.forEach(link => {
     link.addEventListener('click', (e) => {
