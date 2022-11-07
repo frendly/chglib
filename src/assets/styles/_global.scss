@@ -9,6 +9,8 @@ body.new-body {
   margin: 0 auto;
   padding: 0 20px;
   font-size: 18px;
+  position: relative;
+  padding-top: 1em;
 }
 
 a {
@@ -26,4 +28,8 @@ a {
     color: $hoverColor;
     border-bottom-color: $hoverUnderlineColor;
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
 }

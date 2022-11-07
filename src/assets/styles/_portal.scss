@@ -1,0 +1,46 @@
+.portal {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color: #000, $alpha: 0.2);
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  &__close {
+    box-shadow: -4px 2px 3px rgba($color: #000, $alpha: 0.2);
+    position: absolute;
+    left: -25px;
+    border: 0;
+    width: 25px;
+    background: #fff;
+    height: 25px;
+    top: 100px;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  &__content {
+    position: absolute;
+    right: 0;
+    max-width: calc(100% - 220px - 310px);
+    height: 100vh;
+
+    top: 0;
+    z-index: 1;
+    background: #fff;
+    padding: 0 5px;
+    box-shadow: 1px 0 10px #000;
+
+    & > main {
+      padding: unset;
+      min-height: unset;
+      overflow: scroll;
+      height: 100%;
+    }
+  }
+}
