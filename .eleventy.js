@@ -1,3 +1,4 @@
+const { EleventyRenderPlugin } = require("@11ty/eleventy");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const esbuild = require("esbuild");
 const { sassPlugin } = require("esbuild-sass-plugin");
@@ -11,6 +12,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setQuietMode(true);
 
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
+
+  // https://www.11ty.dev/docs/plugins/render/#renderfile
+  eleventyConfig.addPlugin(EleventyRenderPlugin);
 
   // Copy all images directly to dist.
   eleventyConfig.addPassthroughCopy({"src/assets/images": "/assets/images"});
