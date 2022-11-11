@@ -18,8 +18,11 @@
 <p>Доступ возможен из электронного читального зала в Центральной библиотеке (КОН ИПХФ, 3&nbsp;этаж).</p>
 
 <hr>
-{% renderFile './pages/libweb/resbnc/a1.md' %}
-{% include './a2.html' %}
-{% include './a3.html' %}
-{% include './a4.html' %}
-{% include './a5.html' %}
+
+<div class="libweb-list">
+  {% renderFile './pages/libweb/resbnc/a1.md' %}
+  {% include './a2.html' %}
+  {% include './a3.html' %}
+  {% include './a4.html' %}
+  {% renderFile './pages/libweb/resbnc/a5.md' %}
+</div>
