@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
-import { getCurrentYear } from "./utils";
+import { getCurrentYear } from "./utils/currentYear";
 
 import holidays from '../data/holidays.yml';
 
