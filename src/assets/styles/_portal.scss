@@ -25,13 +25,13 @@
   }
 
   &__content {
-    position: absolute;
-    right: 0;
+    position: fixed;
+    top: 0;
+    right: 10px;
+    z-index: 1;
+
     max-width: calc(100% - 220px - 310px);
     height: 100vh;
-
-    top: 0;
-    z-index: 1;
     background: #fff;
     padding: 0 5px;
     box-shadow: 1px 0 10px #000;
