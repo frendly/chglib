@@ -5,7 +5,7 @@ const fetchData = (data) => {
   const container = document.querySelector('.portal__content');
 
   const htmlDocument = new DOMParser().parseFromString(data, "text/html");
-  const trimData = htmlDocument.querySelector('main');
+  const trimData = htmlDocument.querySelector('main') || htmlDocument.body;
 
   container.appendChild(trimData);
 }
