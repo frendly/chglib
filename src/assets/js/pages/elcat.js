@@ -4,10 +4,12 @@ const elcatToggleList = () => {
 
   const selectors = document.querySelectorAll(`.${baseCls}`);
 
-  selectors.forEach(item => item.addEventListener("click", (event) => {
+  const handler = (event) => {
     const element = event.currentTarget;
     element.classList.toggle(expandedCls);
-  }));
+  }
+
+  selectors.forEach(item => item.addEventListener("click", handler));
 }
 
 export default elcatToggleList;

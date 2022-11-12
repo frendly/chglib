@@ -1,8 +1,8 @@
 .journal-list {
   cursor: pointer;
-  
+
   &:before {
-    content: "▼";
+    content: "ᐳ";
     font-size: .65rem;
     margin-right: .3rem;
     opacity: .5;
@@ -11,8 +11,13 @@
   &__items {
     display: none;
   }
-  
-  &--open:before {
-    content: "▲";
+}
+
+.journal-item--expanded {
+  .journal-list:before {
+    content: "⌃";
+  }
+  .journal-list__items {
+    display: block;
   }
 }
