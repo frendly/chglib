@@ -1,4 +1,4 @@
-.libweb-list {
+.libweb-resbnc {
   em {
     float: right;
     font-style: normal;
@@ -13,6 +13,71 @@
   ol {
     & > li:nth-child(odd) p {
       background-color: rgba(238, 238, 238, 0.5);
+    }
+  }
+}
+
+.resbnc-db-table {
+  th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    background-color: #fafaff;
+    padding: 10px 0;
+    border: 1px solid;
+  }
+
+  td {
+    padding: 5px;
+    border: 1px solid;
+    vertical-align: middle;
+
+    // ячейка База данных
+    &:nth-child(2) {
+      min-width: 300px;
+    }
+
+    // ячейка с номером
+    &:nth-child(4) {
+      text-align: center;
+      max-width: 150px;
+    }
+  }
+
+  @media #{$isCompact} {
+    thead {
+      display: none;
+    }
+
+    tr {
+      display: block;
+      margin-bottom: .625em;
+      border-bottom: 3px solid #ddd;
+
+      td:nth-child(1) {
+        display: none;
+      }
+    }
+
+    td {
+      display: block;
+      font-size: .8em;
+      border: none;
+      text-align: unset !important;
+      min-width: unset !important;
+      max-width: unset !important;
+
+      &:empty {
+        display: none;
+      }
+
+      &::before {
+        content: attr(data-title);
+        display: block;
+        font-weight: bold;
+        font-size: 1.1em;
+      }
     }
   }
 }
