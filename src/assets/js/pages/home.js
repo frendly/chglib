@@ -1,4 +1,4 @@
-import {isMainPage} from '../utils';
+import { isMainPage } from '../utils';
 
 const fetchNews = () => fetch('/news/').then(response => response.text());
 
@@ -16,8 +16,6 @@ const setLastNews = () => {
 
     parent.append(...lastNewsSelector);
   })
-
-
 }
 
 export default setLastNews;
