@@ -34,4 +34,4 @@ eleventyNavigation:
 
 [chglib@icp.ac.ru](mailto:chglib@icp.ac.ru)
 
-[chgbnc@gmail.com](mailto:chgbnc@gmail.com)
+
