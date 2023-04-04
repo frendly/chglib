@@ -10,8 +10,8 @@
     "start": "yarn watch",
     "gzip": "yarn build && tar -czf dist.tar.gz -C dist .",
     "deploy": "yarn gzip && cat ./dist.tar.gz | ssh chglib@web.icp.ac.ru 'tar xzf - -C ~/.'",
-    "dev:html": "set ELEVENTY_ENV=development && eleventy --serve --watch",
-    "build:html": "set ELEVENTY_ENV=production && eleventy",
+    "dev:html": "eleventy --serve --watch",
+    "build:html": "eleventy",
     "watch": "yarn clear && yarn dev:html",
     "build": "yarn clear && yarn build:html"
   },
