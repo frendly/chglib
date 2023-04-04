@@ -6,7 +6,7 @@ const { yamlPlugin } = require("esbuild-plugin-yaml");
 const htmlMinifier = require ("html-minifier");
 
 
-const isProduction = process.env.ELEVENTY_ENV === 'production';
+const isProduction = process.env.ELEVENTY_RUN_MODE === 'build';
 const now = String(Date.now());
 
 module.exports = function(eleventyConfig) {
