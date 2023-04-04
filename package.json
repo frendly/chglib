@@ -18,9 +18,9 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-navigation": "^0.3.5",
-    "esbuild": "^0.15.12",
+    "esbuild": "^0.17.15",
     "esbuild-plugin-yaml": "^0.0.1",
-    "esbuild-sass-plugin": "^2.4.0"
+    "esbuild-sass-plugin": "^2.8.0"
   },
   "dependencies": {
     "dayjs": "^1.11.6"
