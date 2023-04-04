@@ -3,6 +3,8 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const esbuild = require("esbuild");
 const { sassPlugin } = require("esbuild-sass-plugin");
 const { yamlPlugin } = require("esbuild-plugin-yaml");
+const htmlMinifier = require ("html-minifier");
+
 
 const isProduction = process.env.ELEVENTY_ENV === 'production';
 const now = String(Date.now());
@@ -25,6 +27,20 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addShortcode('version', function () {
     return now;
   });
+
+  // Minify html for production build
+  eleventyConfig.addTransform ('htmlMinifier', content => {
+    if (!isProduction) return content;
+
+    return htmlMinifier.minify (content, {
+      useShortDoctype: true,
+      removeComments: true,
+      collapseWhitespace: true,
+      continueOnParseError: true,
+      minifyJS: true,
+    });
+  });
+
 
   eleventyConfig.on("afterBuild", () => {
     return esbuild.build({
