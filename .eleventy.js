@@ -1,9 +1,7 @@
 const { EleventyRenderPlugin } = require("@11ty/eleventy");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const esbuild = require("esbuild");
-const { sassPlugin } = require("esbuild-sass-plugin");
-const { yamlPlugin } = require("esbuild-plugin-yaml");
-const htmlMinifier = require ("html-minifier");
+const htmlMinifier = require("html-minifier");
+const esbuild = require("./esbuild.config")
 
 
 const isProduction = process.env.ELEVENTY_RUN_MODE === 'build';
@@ -41,20 +39,9 @@ module.exports = function(eleventyConfig) {
     });
   });
 
-
+  // Build JS and CSS assets
   eleventyConfig.on("afterBuild", () => {
-    return esbuild.build({
-      entryPoints: ["src/assets/js/index.js", "src/assets/styles/index.scss"],
-      bundle: true,
-      outdir: "dist/assets",
-      minify: isProduction,
-      sourcemap: !isProduction,
-      target: 'es6',
-      plugins: [
-        sassPlugin(),
-        yamlPlugin(),
-      ]
-    });
+    esbuild(isProduction);
   });
   eleventyConfig.addWatchTarget("./src/assets/");
 
