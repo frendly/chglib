@@ -8,5 +8,10 @@
   "files.trimTrailingWhitespace": true,
   "[markdown]": {
     "files.trimTrailingWhitespace": false
-},
+  },
+  "eslint.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "html"
+  ]
 }
