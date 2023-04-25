@@ -13,7 +13,8 @@
     "dev:html": "eleventy --serve --watch",
     "build:html": "eleventy",
     "watch": "yarn clear && yarn dev:html",
-    "build": "yarn clear && yarn build:html"
+    "build": "yarn clear && yarn build:html",
+    "postinstall": "code --install-extension html-validate.vscode-html-validate"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
