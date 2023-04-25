@@ -2,6 +2,6 @@
   "elements": ["html5"],
   "extends": ["html-validate:recommended"],
   "rules": {
-    "no-self-closing": false
+    "no-self-closing": "off"
   }
 }
