@@ -1,8 +1,11 @@
 dist/
 dist.tar.gz
+*.pdf
+
+.env
 node_modules/
 yarn-error.log
-*.pdf
+
 *.db
 Thumbs.db
 .DS_Store
