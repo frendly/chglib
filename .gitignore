@@ -2,7 +2,7 @@ dist/
 dist.tar.gz
 *.pdf
 
-.env
+*.env
 node_modules/
 yarn-error.log
 
