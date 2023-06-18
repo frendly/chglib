@@ -16,11 +16,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
+          cache: 'yarn'
 
       - name: yarn install
         uses: borales/actions-yarn@v4
         with:
-          cmd: install # will run `yarn install` command
+          cmd: install --frozen-lockfile # will run `yarn install` command with immutable yarn.lock file
 
       - name: yarn build
         uses: borales/actions-yarn@v4
