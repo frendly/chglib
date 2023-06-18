@@ -12,7 +12,7 @@
     "build": "yarn clear && yarn eleventy",
     "deploy": "yarn build && yarn transfer",
     "transfer": "env-cmd -x rsync -az ./dist/ \\$SSH_HOST:\\$SSH_PATH",
-    "postinstall": "code --install-extension html-validate.vscode-html-validate"
+    "extension": "code --install-extension html-validate.vscode-html-validate"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
