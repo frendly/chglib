@@ -1,0 +1,9 @@
+.ec-page {
+  a {
+    margin-right: .3rem;
+
+    @media #{$isCompact} {
+      line-height: 1.5;
+    }
+  }
+}
