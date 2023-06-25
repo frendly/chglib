@@ -25,7 +25,7 @@ module.exports = function(eleventyConfig) {
   });
 
   // Build JS and CSS assets
-  eleventyConfig.on("afterBuild", () => {
+  eleventyConfig.on("beforeBuild", () => {
     esbuild(isProduction);
   });
   eleventyConfig.addWatchTarget("./src/assets/");
