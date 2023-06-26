@@ -1,0 +1,9 @@
+{# @see src/assets/styles/critical.scss #}
+
+{% set css %}
+  {% include "dist/assets/styles/critical.css" %}
+{% endset %}
+
+<style>
+  {{ css | safe }}
+</style>

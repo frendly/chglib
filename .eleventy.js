@@ -2,7 +2,6 @@ const { EleventyRenderPlugin } = require("@11ty/eleventy");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const esbuild = require("./esbuild.config")
 
-const isProduction = process.env.ELEVENTY_RUN_MODE === 'build';
 const now = String(Date.now());
 
 module.exports = function(eleventyConfig) {
@@ -25,9 +24,8 @@ module.exports = function(eleventyConfig) {
   });
 
   // Build JS and CSS assets
-  eleventyConfig.on("afterBuild", () => {
-    esbuild(isProduction);
-  });
+  eleventyConfig.on("beforeBuild", esbuild);
+
   eleventyConfig.addWatchTarget("./src/assets/");
 
   return {
