@@ -28,6 +28,8 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addWatchTarget("./src/assets/");
 
+  eleventyConfig.addNunjucksGlobal("NODE_ENV", process.env.NODE_ENV);
+
   return {
     templateFormats: [ "md", "njk", "html" ],
     dir: {

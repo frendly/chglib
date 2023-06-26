@@ -1,2 +1,6 @@
-{% include "components/counters/yandex_metrika.njk" %}
-{% include "components/counters/other_counters.njk" %}
+{% if NODE_ENV == 'production' %}
+  {% include "./yandex_metrika.njk" %}
+  {% include "./google.njk" %}
+  {% include "./other_counters.njk" %}
+{% endif %}
+
