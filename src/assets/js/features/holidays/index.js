@@ -1,0 +1,1 @@
+export { getHolidays } from './holidays'

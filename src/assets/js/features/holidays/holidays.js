@@ -2,9 +2,9 @@ import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
-import { getCurrentYear } from "./utils/currentYear";
+import { getCurrentYear } from "../../utils/currentYear";
 
-import holidays from '../data/holidays.yml';
+import holidays from './data/holidays.yml';
 
 dayjs.extend(isBetween);
 dayjs.extend(customParseFormat);
@@ -79,10 +79,10 @@ const createImage = (src) => {
   const domain = 'http://chglib.icp.ac.ru';
 
   const image = document.createElement('img');
-  image.setAttribute('src', `${domain}/${src}`);
+  image.setAttribute('src', `${domain}${src}`);
   image.classList.add('last-news-image');
 
   document.querySelector('.last-news')?.prepend(image);
 }
 
-export default getHolidays;
+export { getHolidays };
