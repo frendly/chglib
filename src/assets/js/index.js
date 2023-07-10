@@ -1,7 +1,5 @@
-import holidays from './holidays';
+import { menuMobile, openLinksInPortal, getHolidays } from './features';
 import analytics from './analytics';
-import { menuMobile } from './menu';
-import { openLinksInPortal } from './openLinksInPortal';
 
 import elcatToggleList from './pages/elcat';
 import getLastNews from './pages/home';
@@ -16,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   menuMobile();
   openLinksInPortal();
 
-  holidays();
+  getHolidays();
   analytics();
   elcatToggleList();
   getLastNews();

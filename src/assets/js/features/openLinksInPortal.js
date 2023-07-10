@@ -1,5 +1,5 @@
 import { createPortal } from './portal';
-import { isMobile } from './utils';
+import { isMobile } from '../utils';
 
 const fetchData = (data) => {
   const container = document.querySelector('.portal__content');
