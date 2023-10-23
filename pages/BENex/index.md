@@ -8,6 +8,7 @@ eleventyNavigation:
 Смена выставки производится по средам.
 
 ## 2023 год
+- [16 октября](/BENex/2023/BENex14.html)
 - [28 сентября](/BENex/2023/BENex13.html)
 - [13 сентября](/BENex/2023/BENex12.html)
 - [21 августа](/BENex/2023/BENex11.html)
