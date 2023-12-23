@@ -21,8 +21,8 @@
 
 ---
 - name: Новый год
-  startDate: 23-12
-  endDate: 31-12
+  startDate: 12-23
+  endDate: 12-31
   image: "/face/ny.jpg"
 
 - name: 23 февраля
