@@ -76,7 +76,7 @@ const setEvent = (event) => {
  * Выводит переданное изображение
 */
 const createImage = (src) => {
-  const domain = 'http://chglib.icp.ac.ru';
+  const domain = '/assets/images';
 
   const image = document.createElement('img');
   image.setAttribute('src', `${domain}${src}`);
