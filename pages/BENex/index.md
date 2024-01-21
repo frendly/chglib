@@ -7,23 +7,8 @@ eleventyNavigation:
 
 Смена выставки производится по средам.
 
-## 2023 год
-- [13 декабря](/BENex/2023/BENex16.html)
-- [22 ноября](/BENex/2023/BENex15.html)
-- [16 октября](/BENex/2023/BENex14.html)
-- [28 сентября](/BENex/2023/BENex13.html)
-- [13 сентября](/BENex/2023/BENex12.html)
-- [21 августа](/BENex/2023/BENex11.html)
-- [14 июля](/BENex/2023/BENex10.html)
-- [28 июня](/BENex/2023/BENex09.html)
-- [15 июня](/BENex/2023/BENex08.html)
-- [17 мая](/BENex/2023/BENex07.html)
-- [24 апреля](/BENex/2023/BENex06.html)
-- [05 апреля](/BENex/2023/BENex05.html)
-- [21 марта](/BENex/2023/BENex04.html)
-- [21 февраля](/BENex/2023/BENex03.html)
-- [31 января](/BENex/2023/BENex02.html)
-- [19 января](/BENex/2023/BENex01.html)
+## 2024 год
+- [18 января](/BENex/2024/BENex01.html)
 
 ## Архив
 [2015](/BENex/2015/)
@@ -34,3 +19,4 @@ eleventyNavigation:
 [2020](/BENex/2020/)
 [2021](/BENex/2021/)
 [2022](/BENex/2022/)
+[2023](/BENex/2023/)
