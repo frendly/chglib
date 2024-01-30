@@ -1,15 +1,13 @@
-// Add target="_blank" to external links
+/**
+ * Добавляем target='_blank'
+ * - для внешних ссылок
+ * - для внутренних ссылок на файлы pdf, jpg
+ */
 export const targetBlank = () => {
-  var a = document.getElementsByTagName('a'); // grab every link on the page
-  var internal = location.host.replace("www.", ""); // remove subdomain of current site's url and setup regex
+  const urls = document.querySelectorAll("a");
+  const host = location.host.replace("www.", "");
+  const pattern = new RegExp('^(https?:\\/\\/)?' + host + '(?!.*\\.(pdf|jpg))', 'i');
 
-  internal = new RegExp(internal, "i");
-
-  for (var i = 0; i < a.length; i++) {
-    var href = a[i].host; // set the host of each link
-
-    if (!internal.test(href)) { // make sure the href doesn't contain current site's host
-      a[i].setAttribute('target', '_blank'); // if it doesn't, set attributes
-    }
-  }
+  const externalAndResourceUrls = Array.from(urls).filter((url) => !url.href.match(pattern));
+  externalAndResourceUrls.forEach(link => link.setAttribute('target', '_blank'));
 };
