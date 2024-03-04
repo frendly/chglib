@@ -80,6 +80,7 @@ const createImage = (src) => {
 
   const image = document.createElement('img');
   image.setAttribute('src', `${domain}${src}`);
+  image.setAttribute('loading', 'lazy');
   image.classList.add('last-news-image');
 
   document.querySelector('.last-news')?.prepend(image);
