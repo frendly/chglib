@@ -27,5 +27,7 @@ title: Тематические выставки 2008
 <a href="/subjex/2015/">2015</a>
 <a href="/subjex/2017/">2017</a>
 <a href="/subjex/2019/">2019</a>
+<a href="/subjex/2022/">2022</a>
+<a href="/subjex/2023/">2023</a>
 
 <p>Виртуальные выставки в <a href="http://www.benran.ru/exh/">БЕН РАН</a></p>
