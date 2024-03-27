@@ -1,12 +1,8 @@
 ---
-title: Тематические выставки
-eleventyNavigation:
-  key: Тематические выставки
-  order: 6
+title: Тематические выставки 2023
 ---
 
-<h2>2023</h2>
- Виртуальная выставка научной литературы из фондов ЦБС БЕН РАН:<br>
+Виртуальная выставка научной литературы из фондов ЦБС БЕН РАН:<br>
 * <a href="https://www.benran.ru/resources/virtualnye-vystavki/elektrofizicheskie-svoystva-polimernykh-kompozitov-soderzhashchikh-uglerodnye-nanorazmernye-struktur/">Электрофизические свойства полимерных композитов, содержащих углеродные наноразмерные структуры</a>
 
 <p>
@@ -16,12 +12,7 @@ eleventyNavigation:
 <p>
 При необходимости, для более детального знакомства с представленными книгами, на электронный адрес <a href="chglib@icp.ac.ru">chglib@icp.ac.ru</a> можно направлять заказ(ы) по МБА для выполнения.
 </p>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <br>
 Для организации выставок необходимо заявить интересующие Вас темы и ключевые слова на русском и
 английском языках (не менее 10 слов) по адресу <a href="mailto:popova@icp.ac.ru">БНЦ/НЦЧ</a>
@@ -40,5 +31,6 @@ eleventyNavigation:
 <a href="/subjex/2017/">2017</a>
 <a href="/subjex/2019/">2019</a>
 <a href="/subjex/2022/">2022</a>
+<a class="active-link" href="/subjex/2023/">2023</a>
 
 
