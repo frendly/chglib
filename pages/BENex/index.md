@@ -8,6 +8,7 @@ eleventyNavigation:
 Смена выставки производится по средам.
 
 ## 2024 год
+- [09 апреля](/BENex/2024/BENex04.html)
 - [20 марта](/BENex/2024/BENex03.html)
 - [21 февраля](/BENex/2024/BENex02.html)
 - [18 января](/BENex/2024/BENex01.html)
