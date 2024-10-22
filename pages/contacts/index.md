@@ -7,6 +7,10 @@ eleventyNavigation:
 
 ## E-mail
 [chglib@icp.ac.ru](mailto:chglib@icp.ac.ru)
+
+[chglib@internet.ru](mailto:chglib@internet.ru)
+
+
 ## Телефоны
 [(495) 02-02-289 доб. *25-04](tel:84950202289) <nobr>заведующая (Попова Елена Ивановна)</nobr>
 
