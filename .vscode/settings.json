@@ -1,12 +1,32 @@
+// {
+//   "editor.linkedEditing": true,
+//   "editor.formatOnSave": true,
+//   "editor.tabSize": 2,
+//   "editor.detectIndentation": false,
+//   "files.insertFinalNewline": true,
+//   "files.trimTrailingWhitespace": true,
+//   "[markdown]": {
+//     "files.trimTrailingWhitespace": false
+//   },
+//   "eslint.enable": true,
+//   "eslint.validate": [
+//     "javascript", // ...
+//     "html" // Add "html" to enable linting `.html` files.
+//   ]
+// }
+
 {
-  "editor.linkedEditing": true,
-  // "editor.formatOnSave": true,
-  "editor.formatOnSave": false,
-  "editor.tabSize": 2,
-  "editor.detectIndentation": false,
-  "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true,
-  "[markdown]": {
-    "files.trimTrailingWhitespace": false
-},
+  "editor.codeActionsOnSave": [
+    "source.addMissingImports", // VSCode
+    "source.formatDocument", // Extension: Format Code Action
+    "source.fixAll.eslint", // Extension: ESLint
+    "source.fixAll.stylelint" // Extension: StyleLint
+  ],
+  "editor.formatOnSave": false, // Enabled via codeActionsOnSave (known order)
+  "eslint.validate": [
+    "javascript",
+    "html"
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

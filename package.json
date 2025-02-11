@@ -1,5 +1,6 @@
 {
   "name": "chglib",
+  "type": "module",
   "version": "2.1.0",
   "main": "index.js",
   "repository": "git@github.com:frendly/chglib.git",
@@ -17,10 +18,13 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-navigation": "^0.3.5",
+    "@html-eslint/eslint-plugin": "^0.34.0",
+    "@html-eslint/parser": "^0.34.0",
     "env-cmd": "^10.1.0",
     "esbuild": "^0.17.15",
     "esbuild-plugin-yaml": "^0.0.1",
-    "esbuild-sass-plugin": "^2.8.0"
+    "esbuild-sass-plugin": "^2.8.0",
+    "eslint": "^9.20.0"
   },
   "dependencies": {
     "dayjs": "^1.11.6"
