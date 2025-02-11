@@ -1,4 +1,8 @@
-module.exports = {
+/**
+ * @see https://prettier.io/docs/en/configuration.html
+ * @type {import("prettier").Config}
+ */
+const config = {
   // Максимальная длина строки
   printWidth: 100,
   // Количество пробелов в табуляции
@@ -8,9 +12,11 @@ module.exports = {
   // Использование одинарных кавычек вместо двойных
   singleQuote: true,
   // Добавление запятой в конце списка свойств объекта или элементов массива
-  trailingComma: "es5",
+  trailingComma: 'es5',
   // Использование пробелов вместо табуляции
   useTabs: false,
   // Добавление пробела между скобками в объектах и массивах
-  bracketSpacing: true
+  bracketSpacing: true,
 };
+
+export default config;

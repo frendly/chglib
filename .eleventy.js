@@ -1,10 +1,10 @@
-const { EleventyRenderPlugin } = require("@11ty/eleventy");
-const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const esbuild = require("./esbuild.config")
+import { EleventyRenderPlugin } from '@11ty/eleventy';
+import eleventyNavigationPlugin from '@11ty/eleventy-navigation';
+import esbuild from './esbuild.config';
 
 const now = String(Date.now());
 
-module.exports = function(eleventyConfig) {
+export default (eleventyConfig) => {
   // Enable quiet mode to reduce console noise
   eleventyConfig.setQuietMode(true);
 
@@ -14,28 +14,26 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(EleventyRenderPlugin);
 
   // Copy all images directly to dist.
-  eleventyConfig.addPassthroughCopy({"src/assets/images": "/assets/images"});
+  eleventyConfig.addPassthroughCopy({ 'src/assets/images': '/assets/images' });
   // Copy robots.txt, etc to dist.
-  eleventyConfig.addPassthroughCopy({"src/assets/static/*": "/"});
+  eleventyConfig.addPassthroughCopy({ 'src/assets/static/*': '/' });
 
   // Add cache busting with {% version %} time string
-  eleventyConfig.addShortcode('version', function () {
-    return now;
-  });
+  eleventyConfig.addShortcode('version', () => now);
 
   // Build JS and CSS assets
-  eleventyConfig.on("beforeBuild", esbuild);
+  eleventyConfig.on('beforeBuild', esbuild);
 
-  eleventyConfig.addWatchTarget("./src/assets/");
+  eleventyConfig.addWatchTarget('./src/assets/');
 
   return {
-    templateFormats: [ "md", "njk", "html" ],
+    templateFormats: ['md', 'njk', 'html'],
     dir: {
-      input: "pages",
-      output: "dist",
-      includes: "../src/_includes",
-      data: "../src/_data",
-      layouts: "../src/_includes/layouts",
+      input: 'pages',
+      output: 'dist',
+      includes: '../src/_includes',
+      data: '../src/_data',
+      layouts: '../src/_includes/layouts',
     },
-  }
-}
+  };
+};
