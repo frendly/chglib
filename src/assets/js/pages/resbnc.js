@@ -9,8 +9,8 @@ export const resbncBbTable = () => {
   const tableCols = table.querySelectorAll('td');
 
   // массив заголовков таблицы
-  const titles = Array.from(tableTitles).map(node => node.textContent);
+  const titles = Array.from(tableTitles).map((node) => node.textContent);
 
   // добавляем data атрибут с текстом заголовка, для отображения в мобильной версии таблицы
-  Array.from(tableCols).map((col, index) => col.dataset.title = titles[index % 4]);
-}
+  Array.from(tableCols).map((col, index) => (col.dataset.title = titles[index % 4]));
+};

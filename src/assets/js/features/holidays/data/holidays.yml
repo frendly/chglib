@@ -23,17 +23,17 @@
 - name: Новый год
   startDate: 12-23
   endDate: 12-31
-  image: "/face/ny.jpg"
+  image: '/face/ny.jpg'
 
 - name: 23 февраля
   startDate: 02-23
   endDate: 02-23
-  image: "/face/1_23.jpg"
+  image: '/face/1_23.jpg'
 
 - name: 8 марта
   startDate: 03-08
   endDate: 03-08
-  image: "/face/8mar.jpg"
+  image: '/face/8mar.jpg'
   text: |-
     Дорогие, чудесные, симпатичные, умные, славные!<br>
     С праздником!<br>
@@ -43,7 +43,7 @@
 - name: День победы
   startDate: 05-09
   endDate: 05-09
-  image: "/face/may9.jpg"
+  image: '/face/may9.jpg'
   text: |-
     День Победы - особенный праздник, светлый и грустный одновременно.<br>
     Давайте будем помнить эти дни и людей, прошедших через страшные испытания, благодаря которым живы и мы.
@@ -51,7 +51,7 @@
 - name: Общероссийский День библиотек
   startDate: 05-27
   endDate: 05-27
-  image: "/face/may27.jpg"
+  image: '/face/may27.jpg'
   text: |-
     <p>27 мая - общероссийский День библиотек.</p>
     <p>Поздравляем всех, кто любит книгу, кто работает в различных библиотеках,

@@ -1,1 +1,1 @@
-export { getHolidays } from './holidays'
+export { getHolidays } from './holidays';
