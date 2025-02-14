@@ -1,6 +1,6 @@
 import { EleventyRenderPlugin } from '@11ty/eleventy';
 import eleventyNavigationPlugin from '@11ty/eleventy-navigation';
-import esbuild from './esbuild.config';
+import esbuild from './esbuild.config.js';
 
 const now = String(Date.now());
 
