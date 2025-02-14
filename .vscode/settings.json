@@ -16,6 +16,7 @@
 // }
 
 {
+  "editor.tabSize": 2,
   "editor.codeActionsOnSave": [
     "source.addMissingImports", // VSCode
     "source.formatDocument", // Extension: Format Code Action
@@ -23,10 +24,7 @@
     "source.fixAll.stylelint" // Extension: StyleLint
   ],
   "editor.formatOnSave": false, // Enabled via codeActionsOnSave (known order)
-  "eslint.validate": [
-    "javascript",
-    "html"
-  ],
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "eslint.validate": ["javascript", "html"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // "typescript.tsdk": "node_modules/typescript/lib"
 }
