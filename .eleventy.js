@@ -36,7 +36,7 @@ module.exports = function (eleventyConfig) {
 
   // папки для создания авто-коллекций
   // @see makeCollection
-  const folders = ["data", "news"];
+  const folders = ["news"];
   folders.forEach((folderName) => {
     eleventyConfig.addCollection(`${folderName}ByYear`, (collection) =>
       makeCollection(collection, folderName)
@@ -57,7 +57,9 @@ module.exports = function (eleventyConfig) {
 
   // фильтр обрезает коллекцию
   // @example {{ collection | limit(2) }}
-  eleventyConfig.addNunjucksFilter("limit", (array, limit) => array.slice(0, limit));
+  eleventyConfig.addNunjucksFilter("limit", (array, limit) =>
+    array.slice(0, limit)
+  );
 
   // TODO: фильтр для создания архива по годам
   // eleventyConfig.addFilter("getYears", function (collection) {
