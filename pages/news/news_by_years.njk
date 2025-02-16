@@ -8,6 +8,12 @@ eleventyComputed:
   title: "Новости {{year}}"
 ---
 
+{##
+⚠️ ВНИМАНИЕ!
+Этот файл генерирует страницу новостей автоматически.
+Чтобы добавить новость, создайте файл с датой и расширением .md, пример: 2025-02-16.md
+##}
+
 {% set posts = collections.newsByYear[year] %}
 {% include "pages/news/_news-list.njk" %}
 {% include "pages/news/_archive.njk" %}
