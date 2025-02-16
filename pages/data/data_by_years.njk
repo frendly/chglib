@@ -1,0 +1,27 @@
+---
+pagination:
+  data: collections.postsByYear
+  size: 1
+  alias: year
+permalink: "/data/{{year}}/"
+---
+
+{% set posts = collections.postsByYear[year] %}
+{% set title = year %}
+
+{% if posts %}
+  <h1>Посты {{ title }}</h1>
+
+  <ul class="post-list">
+    {% for post in posts %}
+      <li>
+        <a href="{{ post.url | url }}">
+          {{ post.data.title or post.stem }}
+        </a>
+        <small>{{ post.date }}</small>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Постов нет.</p>
+{% endif %}
