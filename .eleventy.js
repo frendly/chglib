@@ -44,6 +44,7 @@ module.exports = function (eleventyConfig) {
   });
 
   // Отображаем дату в человеко-понятном виде, например 11 февраля
+  // @example {{ post.date | getHumanDate }}
   eleventyConfig.addFilter("getHumanDate", function (dateObj) {
     const date = new Date(dateObj);
     const options = {
@@ -53,6 +54,10 @@ module.exports = function (eleventyConfig) {
     };
     return date.toLocaleDateString("ru-RU", options);
   });
+
+  // фильтр обрезает коллекцию
+  // @example {{ collection | limit(2) }}
+  eleventyConfig.addNunjucksFilter("limit", (array, limit) => array.slice(0, limit));
 
   // TODO: фильтр для создания архива по годам
   // eleventyConfig.addFilter("getYears", function (collection) {

@@ -5,8 +5,12 @@ eleventyNavigation:
   order: 1
 ---
 
+{% set year = getGlobalCurrentYear %}
+{% set news = collections.newsByYear[year] %}
+{% set posts = news | limit(2) %}
+
 <section class="get-last-news">
-  <div class="get-last-news__list"></div>
+  {% include "pages/news/_news-list.njk" %}
   <a href="/news/">Все новости</a>
 </section>
 
@@ -18,3 +22,7 @@ eleventyNavigation:
 <a href="https://app.myloft.xyz/user/login?institute=cm3r6rnbv0dgm6c41y2lkl2y5">
   <img loading="lazy" src="/assets/images/libweb/myLoft.jpg" alt="удобный доступ к подписным электронным ресурсам БЕН РАН" />
 </a>
+
+
+
+
