@@ -1,7 +1,12 @@
 {% if posts %}
   {% for post in posts %}
     <article>
-      <h2>{{ post.date | getHumanDate }}</h2>
+      <h2>
+        <time datetime="{{post.date}}">
+          {{ post.date | getHumanDate }}
+        </time>
+      </h2>
+
       {{ post.content | safe }}
     </article>
   {% endfor %}
