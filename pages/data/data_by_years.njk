@@ -1,12 +1,12 @@
 ---
 pagination:
-  data: collections.postsByYear
+  data: collections.dataByYear
   size: 1
   alias: year
 permalink: "/data/{{year}}/"
 ---
 
-{% set posts = collections.postsByYear[year] %}
+{% set posts = collections.dataByYear[year] %}
 {% set title = year %}
 
 {% if posts %}

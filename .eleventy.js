@@ -1,3 +1,6 @@
+
+const dayjs = require('dayjs');
+require('dayjs/locale/ru');
 const path = require('path');
 const { EleventyRenderPlugin } = require("@11ty/eleventy");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
@@ -22,6 +25,19 @@ const now = String(Date.now());
 //   });
 //   return postsByDate;
 // }
+const makeCollection = (collection, folderName) => {
+  const files = collection.getFilteredByGlob(`./pages/${folderName}/**/*.md`)
+  return files
+      .reduce((years, post) => {
+        const year = path.dirname(post.inputPath).split('/').pop();
+        if (!years[year]) years[year] = [];
+
+        // добавляем в начало
+        // years[year].push(post);
+        years[year].unshift(post);
+        return years;
+      }, {});
+}
 
 module.exports = function(eleventyConfig) {
   // Enable quiet mode to reduce console noise
@@ -40,15 +56,30 @@ module.exports = function(eleventyConfig) {
   // ===
   // ===
   // ===
-  eleventyConfig.addCollection('postsByYear', (collection) => {
-    return collection.getFilteredByGlob('./pages/data/**/*.md')
-      .reduce((years, post) => {
-        const year = path.dirname(post.inputPath).split('/').pop();
-        if (!years[year]) years[year] = [];
-        years[year].push(post);
-        return years;
-      }, {});
+  const folders = ['data', 'news'];
+  folders.forEach(folderName => {
+    eleventyConfig.addCollection(`${folderName}ByYear`, (collection) => makeCollection(collection, folderName));
   });
+  eleventyConfig.addFilter("getHumanDate", function(dateObj) {
+    return dayjs(dateObj)
+        .locale('ru')
+        .format('DD MMMM');
+  });
+
+  eleventyConfig.addFilter("getYears", function(collection) {
+    return Object.keys(collection);
+  });
+  // eleventyConfig.addCollection('postsByYear', (collection) => makeCollection(collection, 'data'));
+
+  // eleventyConfig.addCollection('postsByYear', (collection) => {
+  //   return collection.getFilteredByGlob('./pages/data/**/*.md')
+  //     .reduce((years, post) => {
+  //       const year = path.dirname(post.inputPath).split('/').pop();
+  //       if (!years[year]) years[year] = [];
+  //       years[year].push(post);
+  //       return years;
+  //     }, {});
+  // });
 
   eleventyConfig.addGlobalData("getGlobalCurrentYear", new Date().getFullYear().toString());
 

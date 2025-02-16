@@ -1,0 +1,13 @@
+---
+pagination:
+  data: collections.newsByYear
+  size: 1
+  alias: year
+permalink: "/news/{{year}}/"
+eleventyComputed:
+  title: "Новости {{year}}"
+---
+
+{% set posts = collections.newsByYear[year] %}
+{% include "./_news-list.njk" %}
+{% include "./_archive.njk" %}
