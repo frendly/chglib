@@ -7,5 +7,5 @@ eleventyNavigation:
 
 {% set year = getGlobalCurrentYear %}
 {% set posts = collections.newsByYear[year] %}
-{% include "./_news-list.njk" %}
-{% include "./_archive.njk" %}
+{% include "pages/news/_news-list.njk" %}
+{% include "pages/news/_archive.njk" %}
