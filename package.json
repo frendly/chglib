@@ -1,11 +1,12 @@
 {
   "name": "chglib",
-  "version": "2.1.0",
-  "main": "index.js",
+  "version": "3.0.0",
+  "main": ".eleventy.js",
   "type": "module",
   "repository": "git@github.com:frendly/chglib.git",
   "author": "frendly <www.zpdf@mail.ru>",
   "license": "MIT",
+  "engines": {"node": ">=20"},
   "scripts": {
     "clear": "rm -rf ./dist",
     "start": "yarn watch",
