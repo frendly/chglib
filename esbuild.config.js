@@ -1,6 +1,6 @@
 import { build } from "esbuild";
 import { sassPlugin } from "esbuild-sass-plugin";
-import yamlPlugin from "esbuild-plugin-yaml";
+import { YAMLPlugin } from "esbuild-yaml";
 
 export default () => {
     const isProduction = process.env.NODE_ENV === 'production';
@@ -11,10 +11,7 @@ export default () => {
         minify: isProduction,
         sourcemap: !isProduction,
         target: 'es6',
-        plugins: [
-            sassPlugin(),
-            yamlPlugin(),
-        ]
+        plugins: [sassPlugin(), YAMLPlugin()],
     }).catch(() => process.exit(1));
 };
 
