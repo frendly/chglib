@@ -6,7 +6,9 @@
   "repository": "git@github.com:frendly/chglib.git",
   "author": "frendly <www.zpdf@mail.ru>",
   "license": "MIT",
-  "engines": {"node": ">=20"},
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "clear": "rm -rf ./dist",
     "start": "yarn watch",
@@ -25,5 +27,6 @@
   },
   "dependencies": {
     "dayjs": "^1.11.6"
-  }
+  },
+  "packageManager": "yarn@4.6.0"
 }

@@ -20,7 +20,7 @@ jobs:
       - name: yarn install
         uses: borales/actions-yarn@v5
         with:
-          cmd: install --frozen-lockfile
+          cmd: install --immutable
 
       - name: yarn build
         uses: borales/actions-yarn@v5
