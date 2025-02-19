@@ -1,7 +1,7 @@
-const path = require("path");
-const { EleventyRenderPlugin } = require("@11ty/eleventy");
-const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const esbuild = require("./esbuild.config");
+import path from "path";
+import { EleventyRenderPlugin } from "@11ty/eleventy";
+import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
+import esbuild from "./esbuild.config.js";
 
 const now = String(Date.now());
 
@@ -20,7 +20,7 @@ const makeCollection = (collection, folderName) => {
   }, {});
 };
 
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
   // Enable quiet mode to reduce console noise
   eleventyConfig.setQuietMode(true);
 
