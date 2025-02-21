@@ -11,11 +11,19 @@
     </a>
 
     <ul class="menu-list">
+      <li>
+        <a class="menu-list__link" href="/">Главная</a>
+      </li>
+
     {%- for entry in collections.all | eleventyNavigation %}
+      {## Проверяем, что у страницы указан eleventyNavigation или это вложенная страница ##}
+      {%- set isActive = entry.url == page.url or page.filePathStem.startsWith(entry.url) -%}
+
       <li>
         <a
-          class="menu-list__link{% if entry.url == page.url %} menu-list__link--active{% endif %}"
-          href="{{ entry.url | url }}">
+          class="menu-list__link{% if isActive %} menu-list__link--active{% endif %}"
+          href="{{ entry.url | url }}"
+        >
           {{ entry.title }}
         </a>
       </li>
