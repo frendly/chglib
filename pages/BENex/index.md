@@ -8,6 +8,7 @@ eleventyNavigation:
 Смена выставки производится по средам.
 
 ## 2025 год
+- [24 марта](/BENex/2025/BENex05.html)
 - [13 марта](/BENex/2025/BENex04.html)
 - [26 февраля](/BENex/2025/BENex03.html)
 - [10 февраля](/BENex/2025/BENex02.html)
