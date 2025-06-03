@@ -33,7 +33,7 @@ async function buildStyles(isProduction) {
     ].join(' ');
 
     const noMapOption = isProduction ? '' : '--no-map';
-    const postcssCommand = `postcss ${postcssInputs} --dir ${output}/styles --config postcss.config.cjs ${noMapOption}`;
+    const postcssCommand = `./node_modules/.bin/postcss ${postcssInputs} --dir ${output}/styles --config postcss.config.cjs ${noMapOption}`;
 
     return new Promise((resolve, reject) => {
         exec(postcssCommand, (error, stdout, stderr) => {
