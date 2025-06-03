@@ -19,8 +19,9 @@
     "lib": ["ESNext", "DOM"] // Include DOM if any client-side types creep into build scripts, otherwise just ESNext
   },
   "include": [
-    "build-assets.ts", // To be created
-    ".eleventy.ts"     // To be created
+    "build-assets.ts",
+    ".eleventy.ts",
+    "postcss.config.ts"
     // Add other TS files or patterns like "src/**/*.ts" if client-side TS was in scope
   ],
   "exclude": [
