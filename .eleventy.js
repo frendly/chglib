@@ -24,7 +24,7 @@ export default function (eleventyConfig) {
   // Enable quiet mode to reduce console noise
   eleventyConfig.setQuietMode(true);
 
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  eleventyConfig.addPlugin(eleventyNavigationPlugin, { useAriaCurrentAttr: true });
 
   // https://www.11ty.dev/docs/plugins/render/#renderfile
   eleventyConfig.addPlugin(EleventyRenderPlugin);
