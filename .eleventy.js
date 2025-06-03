@@ -1,7 +1,7 @@
 import path from "path";
 import { EleventyRenderPlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
-import esbuild from "./esbuild.config.js";
+import buildAssets from "./build-assets.js";
 
 const now = String(Date.now());
 
@@ -78,7 +78,7 @@ export default function (eleventyConfig) {
   });
 
   // Build JS and CSS assets
-  eleventyConfig.on("beforeBuild", esbuild);
+  eleventyConfig.on("beforeBuild", buildAssets);
 
   eleventyConfig.addWatchTarget("./src/assets/");
 

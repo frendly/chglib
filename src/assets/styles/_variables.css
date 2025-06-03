@@ -1,0 +1,13 @@
+:root {
+  --thin: 0.85;
+  --footerHeight: 50px;
+  --linkColor: #0060a0;
+  --linkUnderlineColor: rgba(0, 96, 160, 0.15);
+  --linkColorVisited: #70a0b0;
+  --linkUnderlineColorVisited: rgba(112, 160, 176, 0.15);
+  --hoverColor: #b03000;
+  --hoverUnderlineColor: rgba(176, 48, 0, 0.15);
+}
+
+/* записываем размер медиа-запроса в переменную */
+@custom-media --media-compact (max-width: 800px);

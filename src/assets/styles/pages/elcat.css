@@ -1,16 +1,14 @@
 .journal-list {
   cursor: pointer;
-
-  &:before {
-    content: "ᐳ";
-    font-size: .65rem;
-    margin-right: .3rem;
-    opacity: .5;
-  }
-
-  &__items {
-    display: none;
-  }
+}
+.journal-list__items {
+  display: none;
+}
+.journal-list:before {
+  content: "ᐳ";
+  font-size: .65rem;
+  margin-right: .3rem;
+  opacity: .5;
 }
 
 .journal-item--expanded {

@@ -22,8 +22,12 @@
     "@11ty/eleventy-navigation": "^0.3.5",
     "env-cmd": "^10.1.0",
     "esbuild": "^0.25.0",
-    "esbuild-sass-plugin": "^2.8.0",
-    "esbuild-yaml": "^2.0.0"
+    "esbuild-yaml": "^2.0.0",
+    "postcss": "^8.5.4",
+    "postcss-cli": "^11.0.1",
+    "postcss-custom-media": "^10.0.4",
+    "postcss-import": "^16.1.0",
+    "postcss-preset-env": "^10.2.0"
   },
   "dependencies": {
     "dayjs": "^1.11.6"

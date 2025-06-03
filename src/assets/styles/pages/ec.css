@@ -2,7 +2,7 @@
   a {
     margin-right: .3rem;
 
-    @media #{$isCompact} {
+    @media (--media-compact) {
       line-height: 1.5;
     }
   }
