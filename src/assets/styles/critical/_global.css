@@ -5,7 +5,7 @@
 body.new-body {
   width: 100%;
   max-width: 1024px;
-  background-color: #fafaff; //deprecated
+  background-color: #fafaff; /*deprecated*/
   margin: 0 auto;
   padding: 0 20px;
   font-size: 18px;
@@ -14,20 +14,20 @@ body.new-body {
 }
 
 a {
-  color: $linkColor;
+  color: var(--linkColor);
   text-decoration: none;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: $linkUnderlineColor;
+  border-bottom-color: var(--linkUnderlineColor);
   transition-property: border-bottom,border-color,background-color,color,fill;
   transition-duration: .33s;
   transition-timing-function: ease-out;
+}
 
-  &:hover,
-  &.active-link {
-    color: $hoverColor;
-    border-bottom-color: $hoverUnderlineColor;
-  }
+a:hover,
+a.active-link {
+  color: var(--hoverColor);
+  border-bottom-color: var(--hoverUnderlineColor);
 }
 
 h1 {

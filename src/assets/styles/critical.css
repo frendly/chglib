@@ -1,0 +1,8 @@
+@import "_variables.css";
+
+@import "critical/_global.css";
+@import "critical/_layout.css";
+@import "critical/_menu.css";
+
+@import "critical/_main.css";
+@import "critical/_news.css";

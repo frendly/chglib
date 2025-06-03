@@ -6,29 +6,29 @@ nav.menu {
 .menu-list {
   padding: 0;
   list-style: none;
-  
-  @media #{$isCompact} {
+
+  @media (--media-compact) {
     display: none;
     flex-direction: column;
   }
-  
-  &__link {
-    padding: 5px 0;
-    border-bottom-width: 0;
-    display: block;
-    
-    @media #{$isCompact} {
-      padding: 5px;
-    }
-    
-    &--active {
-      color: $hoverColor;
-    }
+}
+
+.menu-list--open {
+  display: flex;
+}
+
+.menu-list__link {
+  padding: 5px 0;
+  border-bottom-width: 0;
+  display: block;
+
+  @media (--media-compact) {
+    padding: 5px;
   }
-  
-  &--open {
-    display: flex;
-  }
+}
+
+.menu-list__link--active {
+  color: var(--hoverColor);
 }
 
 .menu-mobile {
@@ -38,7 +38,7 @@ nav.menu {
   font-size: 2.6rem;
   cursor: pointer;
 
-  @media #{$isCompact} {
+  @media (--media-compact) {
     display: inline-block;
   }
 }
@@ -49,13 +49,13 @@ nav.menu {
   display: inline-block;
   height: 51px;
 
-  @media #{$isCompact} {
+  @media (--media-compact) {
     display: none;
   }
 }
 
 .bnc-logo {
-  @media #{$isCompact} {
+  @media (--media-compact) {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
