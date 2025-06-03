@@ -1,9 +1,9 @@
-@import "variable";
+@use "variable" as *;
 
-@import "tables";
-@import "portal";
+@use "tables";
+@use "portal";
 
-@import "pages/elcat";
-@import "pages/libweb";
-@import "pages/ec";
-@import "pages/contacts";
+@use "pages/elcat";
+@use "pages/libweb";
+@use "pages/ec";
+@use "pages/contacts";

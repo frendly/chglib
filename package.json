@@ -18,15 +18,16 @@
     "transfer": "env-cmd -x rsync -az ./dist/ \\$SSH_HOST:\\$SSH_PATH"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-navigation": "^0.3.5",
+    "@11ty/eleventy": "3.1.0",
+    "@11ty/eleventy-navigation": "1.0.4",
     "env-cmd": "^10.1.0",
-    "esbuild": "^0.25.0",
-    "esbuild-sass-plugin": "^2.8.0",
-    "esbuild-yaml": "^2.0.0"
+    "esbuild": "0.25.5",
+    "esbuild-sass-plugin": "3.3.1",
+    "esbuild-yaml": "3.0.1"
   },
   "dependencies": {
-    "dayjs": "^1.11.6"
+    "dayjs": "1.11.13",
+    "sass-embedded": "^1.71.1"
   },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

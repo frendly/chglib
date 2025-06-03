@@ -1,8 +1,8 @@
-@import "variable";
+@use "variable" as *;
 
-@import "critical/global";
-@import "critical/layout";
-@import "critical/menu";
+@use "critical/global";
+@use "critical/layout";
+@use "critical/menu";
 
-@import "critical/main";
-@import "critical/news";
+@use "critical/main";
+@use "critical/news";

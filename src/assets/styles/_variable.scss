@@ -3,10 +3,10 @@ $isCompact: 'screen and (max-width: 800px)';
 $footerHeight: 50px;
 
 $linkColor: #0060a0;
-$linkUnderlineColor: transparentize($linkColor, $thin);
+$linkUnderlineColor: rgba($linkColor, 1 - $thin);
 
 $linkColorVisited: #70a0b0;
-$linkUnderlineColorVisited: transparentize($linkColorVisited, $thin);
+$linkUnderlineColorVisited: rgba($linkColorVisited, 1 - $thin);
 
 $hoverColor: #b03000;
-$hoverUnderlineColor: transparentize($hoverColor, $thin);
+$hoverUnderlineColor: rgba($hoverColor, 1 - $thin);
