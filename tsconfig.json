@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler", // Or "NodeNext", Bundler is often good with esbuild
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true, // Good for esbuild
+    "strict": true,
+    "noEmit": true, // True if tsc is only for type checking, esbuild handles transpile
+    "skipLibCheck": true, // Optional: Speeds up compilation by not checking lib files
+    "forceConsistentCasingInFileNames": true,
+    "rootDir": ".", // Or specify more granularly if needed
+    "baseUrl": ".", // Helps with path resolution if you use paths
+    "paths": { // Example, adjust if needed
+      "*": ["node_modules/*"]
+    },
+    "lib": ["ESNext", "DOM"] // Include DOM if any client-side types creep into build scripts, otherwise just ESNext
+  },
+  "include": [
+    "build-assets.ts",
+    ".eleventy.ts",
+    "postcss.config.ts"
+    // Add other TS files or patterns like "src/**/*.ts" if client-side TS was in scope
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/LEGACY", // Exclude legacy JS
+    "pages/**/*.js" // Exclude existing JS page data for now
+  ]
+}
