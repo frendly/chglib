@@ -12,6 +12,7 @@ eleventyNavigation:
 - [18 июня](/BENex/2025/BENex10.html)
 - [04 июня](/BENex/2025/BENex09.html)
 - [21 мая](/BENex/2025/BENex08.html)
+- [12 мая](/BENex/2025/BENex07.html)
 - [14 апреля](/BENex/2025/BENex06.html)
 - [24 марта](/BENex/2025/BENex05.html)
 - [13 марта](/BENex/2025/BENex04.html)
