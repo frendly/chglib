@@ -45,7 +45,7 @@ export default function (eleventyConfig) {
 
   // Отображаем дату в человеко-понятном виде, например 11 февраля
   // @example {{ post.date | getHumanDate }}
-  eleventyConfig.addFilter('getHumanDate', function (dateObj) {
+  eleventyConfig.addFilter('getHumanDate', (dateObj) => {
     const date = new Date(dateObj);
     const options = {
       day: '2-digit',
@@ -73,9 +73,7 @@ export default function (eleventyConfig) {
   );
 
   // Add cache busting with {% version %} time string
-  eleventyConfig.addShortcode('version', function () {
-    return now;
-  });
+  eleventyConfig.addShortcode('version', () => now);
 
   // Build JS and CSS assets
   eleventyConfig.on('beforeBuild', buildAssets);

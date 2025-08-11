@@ -6,7 +6,7 @@ import { resbncBbTable } from './pages/resbnc';
 
 import { mutationObserver, targetBlank, setCurrentYear } from './utils';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
   setCurrentYear();
   targetBlank();
   menuMobile();
