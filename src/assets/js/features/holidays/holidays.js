@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import isBetween from 'dayjs/plugin/isBetween';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import isBetween from 'dayjs/plugin/isBetween';
 
 import { getCurrentYear } from '../../utils/currentYear';
 

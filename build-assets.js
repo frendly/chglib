@@ -1,6 +1,6 @@
+import { exec } from 'node:child_process';
 import { build } from 'esbuild';
 import { YAMLPlugin } from 'esbuild-yaml';
-import { exec } from 'child_process';
 
 const input = 'src/assets';
 const output = 'dist/assets';

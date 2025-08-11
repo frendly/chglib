@@ -1,10 +1,10 @@
-import { menuMobile, openLinksInPortal, getHolidays } from './features';
 import analytics from './analytics';
+import { getHolidays, menuMobile, openLinksInPortal } from './features';
 
 import elcatToggleList from './pages/elcat';
 import { resbncBbTable } from './pages/resbnc';
 
-import { mutationObserver, targetBlank, setCurrentYear } from './utils';
+import { mutationObserver, setCurrentYear, targetBlank } from './utils';
 
 document.addEventListener('DOMContentLoaded', () => {
   setCurrentYear();

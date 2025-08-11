@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import { EleventyRenderPlugin } from '@11ty/eleventy';
 import eleventyNavigationPlugin from '@11ty/eleventy-navigation';
 import buildAssets from './build-assets.js';

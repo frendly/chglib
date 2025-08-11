@@ -14,7 +14,7 @@
     "start": "yarn watch",
     "biome:format": "biome format --write",
     "biome:lint": "biome lint --write",
-    "biome:check": "biome check",
+    "biome:check": "biome check --write",
     "watch": "yarn clear && eleventy --serve --watch",
     "build": "yarn clear && NODE_ENV=production eleventy",
     "deploy": "yarn build && yarn transfer",
