@@ -4,10 +4,9 @@ import analytics from './analytics';
 import elcatToggleList from './pages/elcat';
 import { resbncBbTable } from './pages/resbnc';
 
-import { mutationObserver, targetBlank, setCurrentYear } from './utils'
+import { mutationObserver, targetBlank, setCurrentYear } from './utils';
 
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   setCurrentYear();
   targetBlank();
   menuMobile();

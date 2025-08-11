@@ -9,10 +9,10 @@ export default {
   permalink: (data) => {
     const isMarkdown = data.page.inputPath.endsWith('.md');
 
-    if(isMarkdown) {
+    if (isMarkdown) {
       return false;
     }
 
     return data.page.filePathStem + '.html';
-  }
+  },
 };

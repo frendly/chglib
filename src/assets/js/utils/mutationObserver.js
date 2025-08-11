@@ -7,4 +7,4 @@ export const mutationObserver = (callback, node = document.body) => {
 
   const observer = new MutationObserver(callback);
   observer.observe(node, config);
-}
+};

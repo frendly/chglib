@@ -1,7 +1,7 @@
-import path from "path";
-import { EleventyRenderPlugin } from "@11ty/eleventy";
-import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
-import buildAssets from "./build-assets.js";
+import path from 'path';
+import { EleventyRenderPlugin } from '@11ty/eleventy';
+import eleventyNavigationPlugin from '@11ty/eleventy-navigation';
+import buildAssets from './build-assets.js';
 
 const now = String(Date.now());
 
@@ -10,7 +10,7 @@ const now = String(Date.now());
 const makeCollection = (collection, folderName) => {
   const files = collection.getFilteredByGlob(`./pages/${folderName}/**/*.md`);
   return files.reduce((years, post) => {
-    const year = path.dirname(post.inputPath).split("/").pop();
+    const year = path.dirname(post.inputPath).split('/').pop();
     if (!years[year]) years[year] = [];
 
     // добавляем в начало
@@ -30,35 +30,35 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyRenderPlugin);
 
   // Copy all images directly to dist.
-  eleventyConfig.addPassthroughCopy({ "src/assets/images": "/assets/images" });
+  eleventyConfig.addPassthroughCopy({ 'src/assets/images': '/assets/images' });
   // Copy robots.txt, etc to dist.
-  eleventyConfig.addPassthroughCopy({ "src/assets/static/*": "/" });
+  eleventyConfig.addPassthroughCopy({ 'src/assets/static/*': '/' });
 
   // папки для создания авто-коллекций
   // @see makeCollection
-  const folders = ["news"];
+  const folders = ['news'];
   folders.forEach((folderName) => {
     eleventyConfig.addCollection(`${folderName}ByYear`, (collection) =>
-      makeCollection(collection, folderName)
+      makeCollection(collection, folderName),
     );
   });
 
   // Отображаем дату в человеко-понятном виде, например 11 февраля
   // @example {{ post.date | getHumanDate }}
-  eleventyConfig.addFilter("getHumanDate", function (dateObj) {
+  eleventyConfig.addFilter('getHumanDate', function (dateObj) {
     const date = new Date(dateObj);
     const options = {
-      day: "2-digit",
-      month: "long",
-      locale: "ru-RU",
+      day: '2-digit',
+      month: 'long',
+      locale: 'ru-RU',
     };
-    return date.toLocaleDateString("ru-RU", options);
+    return date.toLocaleDateString('ru-RU', options);
   });
 
   // фильтр обрезает коллекцию
   // @example {{ collection | limit(2) }}
-  eleventyConfig.addNunjucksFilter("limit", (array, limit) =>
-    array.slice(0, limit)
+  eleventyConfig.addNunjucksFilter('limit', (array, limit) =>
+    array.slice(0, limit),
   );
 
   // TODO: фильтр для создания архива по годам
@@ -68,28 +68,28 @@ export default function (eleventyConfig) {
 
   // текущий год доступен глобально
   eleventyConfig.addGlobalData(
-    "getGlobalCurrentYear",
-    new Date().getFullYear().toString()
+    'getGlobalCurrentYear',
+    new Date().getFullYear().toString(),
   );
 
   // Add cache busting with {% version %} time string
-  eleventyConfig.addShortcode("version", function () {
+  eleventyConfig.addShortcode('version', function () {
     return now;
   });
 
   // Build JS and CSS assets
-  eleventyConfig.on("beforeBuild", buildAssets);
+  eleventyConfig.on('beforeBuild', buildAssets);
 
-  eleventyConfig.addWatchTarget("./src/assets/");
+  eleventyConfig.addWatchTarget('./src/assets/');
 
   return {
-    templateFormats: ["md", "njk", "html"],
+    templateFormats: ['md', 'njk', 'html'],
     dir: {
-      input: "pages",
-      output: "dist",
-      includes: "../src/_includes",
-      data: "../src/_data",
-      layouts: "../src/_includes/layouts",
+      input: 'pages',
+      output: 'dist',
+      includes: '../src/_includes',
+      data: '../src/_data',
+      layouts: '../src/_includes/layouts',
     },
   };
-};
+}

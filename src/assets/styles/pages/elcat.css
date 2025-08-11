@@ -6,9 +6,9 @@
 }
 .journal-list:before {
   content: "ᐳ";
-  font-size: .65rem;
-  margin-right: .3rem;
-  opacity: .5;
+  font-size: 0.65rem;
+  margin-right: 0.3rem;
+  opacity: 0.5;
 }
 
 .journal-item--expanded {

@@ -19,8 +19,9 @@ a {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: var(--linkUnderlineColor);
-  transition-property: border-bottom,border-color,background-color,color,fill;
-  transition-duration: .33s;
+  transition-property:
+    border-bottom, border-color, background-color, color, fill;
+  transition-duration: 0.33s;
   transition-timing-function: ease-out;
 }
 

@@ -24,13 +24,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(0, 0, 0, 0.2);
   overflow: hidden;
   cursor: pointer;
 }
 
 .portal__close {
-  box-shadow: -4px 2px 3px rgba(0, 0, 0, .2);
+  box-shadow: -4px 2px 3px rgba(0, 0, 0, 0.2);
   position: absolute;
   left: -25px;
   border: 0;

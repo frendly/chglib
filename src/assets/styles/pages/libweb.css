@@ -50,7 +50,7 @@
 
     tr {
       display: block;
-      margin-bottom: .625em;
+      margin-bottom: 0.625em;
       border-bottom: 3px solid #ddd;
 
       td:nth-child(1) {
@@ -60,7 +60,7 @@
 
     td {
       display: block;
-      font-size: .8em;
+      font-size: 0.8em;
       border: none;
       text-align: unset !important;
       min-width: unset !important;

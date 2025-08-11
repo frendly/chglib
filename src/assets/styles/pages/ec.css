@@ -1,6 +1,6 @@
 .ec-page {
   a {
-    margin-right: .3rem;
+    margin-right: 0.3rem;
 
     @media (--media-compact) {
       line-height: 1.5;
