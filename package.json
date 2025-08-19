@@ -11,9 +11,10 @@
   },
   "scripts": {
     "clear": "rm -rf ./dist",
+    "compile:config": "esbuild .eleventy.ts --outfile=.eleventy.js --platform=node --format=esm --bundle --external:path --external:@11ty/eleventy --external:@11ty/eleventy-navigation --external:./build-assets.js && esbuild build-assets.ts --outfile=build-assets.js --platform=node --format=esm --bundle --external:child_process --external:esbuild --external:esbuild-yaml && esbuild postcss.config.ts --outfile=postcss.config.js --platform=node --format=esm --bundle --external:postcss-import --external:postcss-custom-media --external:postcss-preset-env",
     "start": "yarn watch",
-    "watch": "yarn clear && eleventy --serve --watch",
-    "build": "yarn clear && NODE_ENV=production eleventy",
+    "watch": "yarn clear && yarn compile:config && eleventy --serve --watch",
+    "build": "yarn clear && yarn compile:config && NODE_ENV=production eleventy",
     "deploy": "yarn build && yarn transfer",
     "transfer": "env-cmd -x rsync -az ./dist/ \\$SSH_HOST:\\$SSH_PATH"
   },
@@ -27,7 +28,10 @@
     "postcss-cli": "^11.0.1",
     "postcss-custom-media": "^10.0.4",
     "postcss-import": "^16.1.0",
-    "postcss-preset-env": "^10.2.0"
+    "postcss-preset-env": "^10.2.0",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "tsx": "^4.7.0"
   },
   "dependencies": {
     "dayjs": "^1.11.6"
