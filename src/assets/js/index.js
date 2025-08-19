@@ -1,10 +1,14 @@
-import { menuMobile, openLinksInPortal, getHolidays } from './features';
-import analytics from './analytics';
+import { getHolidays } from './components/holidays/holidays';
+import { menuMobile } from './components/menu';
+import { openLinksInPortal } from './components/openLinksInPortal';
+import analytics from './utils/analytics';
 
 import elcatToggleList from './pages/elcat';
 import { resbncBbTable } from './pages/resbnc';
 
-import { mutationObserver, targetBlank, setCurrentYear } from './utils'
+import { mutationObserver } from './utils/mutationObserver';
+import { targetBlank } from './utils/targetBlank';
+import { setCurrentYear } from './utils/currentYear';
 
 
 document.addEventListener("DOMContentLoaded", function () {
