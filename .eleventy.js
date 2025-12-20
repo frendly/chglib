@@ -33,6 +33,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets/images": "/assets/images" });
   // Copy robots.txt, etc to dist.
   eleventyConfig.addPassthroughCopy({ "src/assets/static/*": "/" });
+  // Copy admin folder to dist.
+  eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
 
   // папки для создания авто-коллекций
   // @see makeCollection
