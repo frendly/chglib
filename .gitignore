@@ -5,6 +5,7 @@ dist.tar.gz
 *.env
 node_modules/
 yarn-error.log
+*.log
 
 *.db
 Thumbs.db
