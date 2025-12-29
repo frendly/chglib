@@ -1,0 +1,1 @@
+Новости за 2024 год: вебинары Wiley, Springer Nature, Bentham, SAGE, JSTOR и CNKI, тестовый доступ к журналам RAN, Wiley, IMechE, EBSCO, CABI, Orbit Chemistry, выставки к 300‑летию РАН и Нобелевским лауреатам ФИАН.
