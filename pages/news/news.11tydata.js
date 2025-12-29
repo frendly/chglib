@@ -6,13 +6,5 @@ export default {
    * Если новость в старом формате, те .html файл с новостями за год
    * устанавливаем permalink с путем до файла
    */
-  permalink: (data) => {
-    const isMarkdown = data.page.inputPath.endsWith('.md');
-
-    if(isMarkdown) {
-      return false;
-    }
-
-    return data.page.filePathStem + '.html';
-  }
+  permalink: false,
 };
