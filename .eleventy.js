@@ -1,6 +1,7 @@
 import path from "path";
 import { EleventyRenderPlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
+import dayjs from 'dayjs';
 import buildAssets from "./build-assets.js";
 
 const now = String(Date.now());
@@ -10,6 +11,15 @@ const now = String(Date.now());
 const makeCollection = (collection, folderName) => {
   const files = collection.getFilteredByGlob(`./pages/${folderName}/**/*.md`);
   return files.reduce((years, post) => {
+    /**
+     * В коллекцию попадают только файлы с маской 'YYYY-MM-DD'
+     * - Проверяем валидность даты
+     */
+    const date = dayjs(post.fileSlug, 'YYYY-MM-DD', true);
+    if (!date.isValid()) {
+      return years;
+    }
+
     const year = path.dirname(post.inputPath).split("/").pop();
     if (!years[year]) years[year] = [];
 
