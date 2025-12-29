@@ -6,6 +6,7 @@ pagination:
 permalink: "/news/{{year}}/"
 eleventyComputed:
   title: "Новости {{year}}"
+  description: "{{ meta.getNewsDescription(year) }}"
 ---
 
 {##
