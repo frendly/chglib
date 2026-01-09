@@ -6,10 +6,13 @@ title: Библиотека Научного центра РАН в Черног
 {% set news = collections.newsByYear[year] %}
 {% set posts = news | limit(2) %}
 
-<section class="get-last-news">
-  {% include "pages/news/_news-list.njk" %}
-  <a href="/news/">Все новости</a>
-</section>
+
+{% if posts %}
+  <section class="get-last-news">
+    {% include "pages/news/_news-list.njk" %}
+    <a href="/news/">Все новости</a>
+  </section>
+{% endif %}
 
 <div class="last-news">
   <ul class="last-news-list">

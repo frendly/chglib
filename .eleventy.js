@@ -67,8 +67,9 @@ export default function (eleventyConfig) {
 
   // фильтр обрезает коллекцию
   // @example {{ collection | limit(2) }}
-  eleventyConfig.addNunjucksFilter("limit", (array, limit) =>
-    array.slice(0, limit)
+  eleventyConfig.addNunjucksFilter("limit", (array, limit) => {
+    return array?.slice(0, limit);
+  }
   );
 
   // TODO: фильтр для создания архива по годам
