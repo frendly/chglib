@@ -3,193 +3,50 @@ title: Бюллетень № 4 (13 апреля - 17 мая 2022)
 ---
 
 1. **В мире науки.**\-2022.- [№ 3](https://www.elibrary.ru/contents.asp?id=48169237) .
-
-* * *
-
 2. **Вопросы онкологии.**\-2022.-Т.68, [№ 1](https://elibrary.ru/contents.asp?titleid=7710) .
-
-* * *
-
 3. **Высокомолекулярные соединения сер. А.**\-2022.-Т. 64, [№ 1](https://elibrary.ru/contents.asp?id=47696696) .
-
-* * *
-
 4. **Высокомолекулярные соединения сер Б..**\-2022.-Т. 64, [№ 1](https://elibrary.ru/contents.asp?titleid=25479) .
-
-* * *
-
 5. **Геология рудных месторождений.**\-2021-Т.63, [№ 6](https://elibrary.ru/contents.asp?id=47295566) .
-
-* * *
-
 6\. **Геология рудных месторождений.**\-2022-Т.64, [№ 1](https://www.elibrary.ru/contents.asp?id=47695619) .
-
-* * *
-
 7. **Доклады Российской АН. Науки о жизни.** -2022.-Т.502, [январь-февраль](https://elibrary.ru/contents.asp?titleid=71078) .
-
-* * *
-
 8. **Доклады Российской АН. Науки о земле.**\-2021.-Т.501, [№ 2](https://elibrary.ru/contents.asp?id=47249544) .
-
-* * *
-
 9. **Доклады Российской АН. Науки о земле.**\-2022.-Т.502, [№ 1](https://elibrary.ru/contents.asp?id=47488304) .
-
-* * *
-
 10. **Доклады Российской АН. Науки о земле.**\-2022.-Т.502, [№ 2](https://elibrary.ru/contents.asp?id=47563811) .
-
-* * *
-
 11. **Доклады Российской АН. Математика, информатика, процессы управления..**\-2021.-Т.501, [ноябрь-декабрь](https://elibrary.ru/contents.asp?id=47371407) .
-
-* * *
-
 12. **Доклады Российской АН. Физика, технические науки.** -2021.-Т.501, [ноябрь-декабрь](https://elibrary.ru/contents.asp?id=47371390) .
-
-* * *
-
 13. **Доклады Российской АН. Химия, науки о материалах.**\-2021.-Т.500, [сентябрь-октябрь](https://elibrary.ru/contents.asp?id=47326688) .
-
-* * *
-
 14. **Доклады Российской АН. Химия, науки о материалах.**\-2021.-Т.501, [ноябрь-декабрь](https://elibrary.ru/contents.asp?id=47494687) .
-
-* * *
-
 15. **Журнал вычислительной математики и математической физики.**\-2021.-Т.61, [№ 12](https://elibrary.ru/contents.asp?id=46713020) .
-
-* * *
-
 16. **Журнал вычислительной математики и математической физики.**\-2022.-Т.62, [№ 1](https://elibrary.ru/contents.asp?id=47423712) .
-
-* * *
-
 17. **Журнал вычислительной математики и математической физики.**\-2022.-Т.62, [№ 2](https://elibrary.ru/contents.asp?id=47563733) .
-
-* * *
-
 18. **Журнал неорганической химии.**\-2021.-Т.66, [№ 12](https://elibrary.ru/contents.asp?id=47115643) .
-
-* * *
-
 19. **Журнал неорганической химии.**\-2022.-Т.67, [№ 1](https://elibrary.ru/contents.asp?id=47423702) .
-
-* * *
-
 20. **Журнал неорганической химии.**\-2022.-Т.67, [№ 2](https://elibrary.ru/contents.asp?id=47695902) .
-
-* * *
-
 21. **Журнал общей химии.**\-2022-Т.92, [№ 1](https://elibrary.ru/contents.asp?id=47455868) .
-
-* * *
-
 22. **Журнал общей химии.**\-2022-Т.92, [№ 2](https://elibrary.ru/contents.asp?id=47835249) .
-
-* * *
-
 23. **Журнал органической химии.**\-2021-Т.57, [№ 12](https://elibrary.ru/contents.asp?id=47215168) .
-
-* * *
-
 24. **Журнал органической химии.**\-2022-Т.58, [№ 1](https://elibrary.ru/contents.asp?id=47459803) .
-
-* * *
-
 25. **Журнал органической химии.**\-2022-Т.58, [№ 2](https://elibrary.ru/contents.asp?id=47787429) .
-
-* * *
-
 26. **Журнал прикладной химии.**\-2021-Т.94, [№ 10-11](https://elibrary.ru/contents.asp?id=47392389) .
-
-* * *
-
 27. **Журнал прикладной химии.**\-2021-Т.94, [№ 12](https://elibrary.ru/contents.asp?id=47424439) .
-
-* * *
-
 28. **Журнал физической химии.**\-2021-Т.95, [№ 12](https://elibrary.ru/contents.asp?id=46687853) .
-
-* * *
-
 29. **Журнал физической химии.**\-2022-Т.96, [№ 1](https://elibrary.ru/contents.asp?id=47424037) .
-
-* * *
-
 30. **Журнал физической химии- 2022.**\-Т.96, [№ 2](https://elibrary.ru/contents.asp?id=47423679) .
-
-* * *
-
 31. **Журнал экспериментальной и теоретической физики-2021.**\-Т.160, [№ 6](https://elibrary.ru/contents.asp?id=47248944) .
-
-* * *
-
 32. **Заводская лаборатория. Диагностика материалов**\-2022.-Т.88, [№ 2](https://www.elibrary.ru/contents.asp?id=47984362) .
-
-* * *
-
 33. **Известия ВУЗов. Серия: химия и химическая технология.**\-2022.-Т.65, [№ 2](http://i.uran.ru/webcab/system/files/journalspdf/izvestiya-vuzov-ser-himiya-i-himicheskaya-tehnologiya/izvestiya-vuzov-ser-himiya-i-himicheskaya-tehnologiya-2022-t65-no-2/himiyaihim.pdf) .
-
-* * *
-
 34\. **Известия ВУЗов. Серия: химия и химическая технология.**\-2022.-Т.65, [№ 3](http://i.uran.ru/webcab/system/files/journalspdf/izvestiya-vuzov-ser-himiya-i-himicheskaya-tehnologiya/izvestiya-vuzov-ser-himiya-i-himicheskaya-tehnologiya-2022-t65-no-3/himiyaihim.pdf) .
-
-* * *
-
 35. **Математическое моделирование.**\-2022.-Т.34, [№ 1](http://www.mathnet.ru/php/archive.phtml?jrnid=mm&wshow=issue&year=2022&volume=34&volume_alt=&issue=1&issue_alt=&option_lang=rus) .
-
-* * *
-
 36. **Математическое моделирование-2021.**\-Т.34, [№ 2](http://www.mathnet.ru/php/archive.phtml?jrnid=mm&wshow=issue&year=2022&volume=34&volume_alt=&issue=2&issue_alt=&option_lang=rus) .
-
-* * *
-
 37\. **Математическое моделирование.**\-2022.-Т.34, [№ 3](http://www.mathnet.ru/php/archive.phtml?jrnid=mm&wshow=issue&year=2022&volume=34&volume_alt=&issue=3&issue_alt=&option_lang=rus) .
-
-* * *
-
 38. **Петрология.**\-2022.-Т.30, [№ 1](https://elibrary.ru/contents.asp?id=47423828) .
-
-* * *
-
 39. **Прикладная математика и механика.**\-2021-Т.85, [№ 6](https://elibrary.ru/contents.asp?id=47371126) .
-
-* * *
-
 40. **Прикладная математика и механика.**\-2022.-Т.86, [№ 1](https://elibrary.ru/contents.asp?id=47957998) .
-
-* * *
-
 41\. **Успехи физических наук.**\-2022.-Т.192, [№ 1](https://ufn.ru/ru/articles/2022/1/) .
-
-* * *
-
 42\. **Успехи физических наук.**\-2022.-Т.192, [№ 2](https://ufn.ru/ru/articles/2022/2/) .
-
-* * *
-
 43. **Успехи химии.**\-2022-Т.91. [№ 1](https://elibrary.ru/contents.asp?id=47626653) .
-
-* * *
-
 44\. **Успехи химии.**\-2022.-Т.91, [№ 2](https://www.elibrary.ru/contents.asp?id=47626767) .
-
-* * *
-
 45. **Физика горения и взрыва.**\-2022.-Т.58, [№ 1](https://elibrary.ru/contents.asp?id=47630797) .
-
-* * *
-
 46. **Химическая физика.**\-2021.-40, [№ 12](https://elibrary.ru/contents.asp?id=47295792) .
-
-* * *
-
 47. **Химическая физика.**\-2022.-41, [№ 1](https://elibrary.ru/contents.asp?id=47563772) .
-
-* * *
-
 48. **Химия высоких энергий.**\-2022.-Т.56, [№ 1](https://elibrary.ru/contents.asp?id=47423332) .
-
-* * *

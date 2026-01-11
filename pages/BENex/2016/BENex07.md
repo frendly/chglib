@@ -2,112 +2,30 @@
 title: Бюллетень новых поступлений N 7 (6 - 19 апреля 2016 г.)
 ---
 
-* * *
-
 1. **Геология рудных месторождений.** -2015.-N 57, 6.
-
-* * *
-
 2. **Заводская лаборатория.** -2016.-N 1, 2.
-
-* * *
-
 3. **Нефтепереработка и нефтехимия.** -2015.-N 12.
-
-* * *
-
 4. **Стекло и керамика.** -2016.-N 2.
-
-* * *
-
 5. **Успехи физических наук.** -2016.-Т.186, N 1.
-
-* * *
-
 6. **Химическая промышленность сегодня.** -2016.-N 2.
-
-* * *
-
 7. **AIAA Journal.** -2015.-V.53, N 9.
-
-* * *
-
 8. **Applied and Environmental Microbiology.** -2015.-V.81, N 18, 19.
-
-* * *
-
 9. **Astronomy and Astrophysics.** -2015.-V.579, N 1.
-
-* * *
-
 10. **Astronomy and Astrophysics.** -2015.-V.580, N 1, 2.
-
-* * *
-
 11. **Astronomy and Astrophysics.** -2015.-V.583, N 1, 2.
-
-* * *
-
 12. **Astronomy and Astrophysics.** -2015.-V.584, N 1, 2.
-
-* * *
-
 13. **Bulletin of the Chemical Society of Japan.** -2015.-V.88, N 12.
-
-* * *
-
 14. **Bulletin of the Chemical Society of Japan.** -2016.-V.89, N 1.
-
-* * *
-
 15. **Chemistry Letters.** -2016.-V.45, N 1.
-
-* * *
-
 16. **Chemistry and Chemical Industry.** -2015.-V.68, N 4, 5, 6, 7, 8.
-
-* * *
-
 17. **Electronics Letters.** -2016.-V.52, N 2.
-
-* * *
-
 18. **EPL.** -2015.-V.111, N 3-4.
-
-* * *
-
 19. **EPL.** -2015.-V.112, N 5-6.
-
-* * *
-
 20. **Geological Society of America Bulletin.** -2016.-V.128, N 1-2.
-
-* * *
-
 21. **Geology.** -2016.-V.44, N 1.
-
-* * *
-
 22. **International Journal of Radiation Biology.** -2016.-V.92, N 1.
-
-* * *
-
 23. **Journal of Structural Chemistry.** -2015.-V.56, N 4, 5.
-
-* * *
-
 24. **Journal of Vacuum Science and Technology. A.** -2015.-V.33, N 6.
-
-* * *
-
 25. **Mendeleev Communications.** -2016.-V.26, N 1.
-
-* * *
-
 26. **Microbiology.** -2015.-V.161, N 11.
-
-* * *
-
 27. **Scientific American.** -2016.-V.314, N 2.
-
-* * *
