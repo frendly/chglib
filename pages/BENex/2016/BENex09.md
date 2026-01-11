@@ -1,0 +1,141 @@
+---
+title: Бюллетень новых поступлений N 9 (11 - 24 мая 2016 г.)
+---
+
+* * *
+
+1. **Вестник Российской Академии наук.** -2016.-Т.86, N 1, 2.
+
+* * *
+
+2. **Высокомолекулярные соединения.** -2016.-Т.58, N 2.
+
+* * *
+
+3. **Доклады Российской Академии наук.** -2016.-Т.467, N 2.
+
+* * *
+
+4. **Журнал общей химии.** -2016.-Т.86, N 3.
+
+* * *
+
+5. **Журнал физической химии.** -2016.-Т.90, N 3.
+
+* * *
+
+6. **Кинетика и катализ.** -2016.-Т.57, N 1.
+
+* * *
+
+7. **Масс-спектрометрия.** -2016.-Т.13, N 1,
+
+* * *
+
+8. **Математическое моделирование.** -2016.-Т.28, N 2, 3.
+
+* * *
+
+9. **Нефтепереработка и нефтехимия.** -2016.-N 1
+
+* * *
+
+10. **Прикладная математика и механика.** -2016.-Т.80, N 1.
+
+* * *
+
+11. **Природа.** -2016.-N 1, 2, 3.
+
+* * *
+
+12. **Полимерные материалы.** -2016.-N 1, 2.
+
+* * *
+
+13. **Успехи математических наук.** -2016.-Т.71, N 1.
+
+* * *
+
+14. **Химическая промышленность сегодня.** -2016.-N 3.
+
+* * *
+
+15. **American Mineralogist.** -2015.-V.100, N 11, 12.
+
+* * *
+
+16. **Applied and Environmental Microbiology.** -2015.-V.81, N 16, 17, 20, 21.
+
+* * *
+
+17. **Astronomy and Astrophysics.** -2015.-V.582, N 1, 2.
+
+* * *
+
+18. **ECS Electrochemistry Letters.** -2015.-V.4, N 9, 10, 11, 12.
+
+* * *
+
+19. **ECS Journal of Solid State Science and Technology.** -2015.-V.4, N 8, 9, 10, 11, 12.
+
+* * *
+
+20. **ECS Solid State Letters.** -2015.-V.4, N 9, 10, 11, 12.
+
+* * *
+
+21. **Electrochemical Society Interface.** -2015.-V.24, N 1, 2, 3.
+
+* * *
+
+22. **Electronics Letters.** -2015.-V.51, N 24, 25.
+
+* * *
+
+23. **Electronics Letters.** -2016.-V.52, N 1, 3, 4.
+
+* * *
+
+24. **Elements (An International Magazine of Mineralogy, Geochemistry and Petrology).** -2015.-V.11, N 4, 5.
+
+* * *
+
+25. **Elements (An International Magazine of Mineralogy, Geochemistry and Petrology).** -2016.-V.12, N 1.
+
+* * *
+
+26. **EPL.** -2015.-V.112, N 1-2, 3-4.
+
+* * *
+
+27. **Journal of Radioanalytical and Nuclear Chemistry.** -2015.-V.305, N 3.
+
+* * *
+
+28. **Journal of Radioanalytical and Nuclear Chemistry.** -2015.-V.306, N 1, 2, 3.
+
+* * *
+
+29. **Journal of Radioanalytical and Nuclear Chemistry.** -2016.-V.307, N 1, 2.
+
+* * *
+
+30. **Journal of Structural Chemistry.** -2015.-V.56, N 3.
+
+* * *
+
+31. **Journal of the Electrochemical Society.** -2015.-V.162, N 9, 10, 12, 14.
+
+* * *
+
+32. **Journal of the Geological Society.** -2015.-V.172, N 5, 6.
+
+* * *
+
+33. **Journal of the Geological Society.** -2016.-V.173, N 2.
+
+* * *
+
+34. **Journal of Thermophysics and Heat Transfer.** -2015.-V.29, N 4.
+
+* * *

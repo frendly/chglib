@@ -1,0 +1,59 @@
+---
+title: Бюллетень № 16 (08 - 27 декабря 2022)
+---
+
+1. **Биохимия.**\-2022.-Т.87, [№ 9](https://www.elibrary.ru/contents.asp?id=49396064).
+
+* * *
+
+2. **В мире науки.**\-2022.- [9-10](/BENex/2022/pdf16/V mire nauki-2022-\(9-10\).pdf).
+
+* * *
+
+3. **Вопросы онкологии.**\-2022.-Т.68, [№ 5](ttps://www.elibrary.ru/contents.asp?id=49585972).
+
+* * *
+
+4. **Журнал структурной химии.**\-2022.-Т. 63 [№ 8](https://www.elibrary.ru/contents.asp?id=49585972).
+
+* * *
+
+5. **Заводская лаборатория. Диагностика материалов (ВАК).**\-2022.-Т.88, [№ 10](https://www.elibrary.ru/contents.asp?id=49572243).
+
+* * *
+
+6. **Иммунология.**\-2022.-Т.4, [№ 4](https://www.elibrary.ru/contents.asp?id=49345755).
+
+* * *
+
+7. **Литосфера.**\-2022.-Т.22, [№ 4](https://www.elibrary.ru/contents.asp?id=49370014).
+
+* * *
+
+8. **Математическое моделирование.**\-2022.-Т.34, [№ 10](https://www.mathnet.ru/php/archive.phtml?jrnid=mm&wshow=issue&year=2022&volume=34&issue=10&option_lang=rus).
+
+* * *
+
+9. **Прикладная физика.**\-2022.- [№ 4](https://www.elibrary.ru/contents.asp?id=49424553).
+
+* * *
+
+10. **Природа.**\-2022.- [№ 5](https://www.elibrary.ru/contents.asp?id=49179091).
+
+* * *
+
+11. **Природа.**\-2022.- [№ 6](https://www.elibrary.ru/contents.asp?id=49251022).
+
+* * *
+
+12. **Успехи математических наук.**\-2022.-Т.77, [№ 4](https://www.mathnet.ru/php/archive.phtml?jrnid=rm&wshow=issue&year=2022&volume=77&issue=4&option_lang=rus).
+
+* * *
+
+13. **Успехи физических наук.**\-2022.-Т.192, [№ 9](https://ufn.ru/ru/articles/2022/9/).
+
+* * *
+
+14. **Цитология.**\-2022.-Т.64, [№ 4](https://www.elibrary.ru/contents.asp?id=49211909).
+
+* * *

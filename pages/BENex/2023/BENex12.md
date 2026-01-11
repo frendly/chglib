@@ -1,0 +1,113 @@
+---
+title: Бюллетень № 12  (13 сентября - 16 октября 2023)
+---
+
+* * *
+
+1. **Биоорганическая химия.**\-2023.-Т.49, [№ 3.](https://elibrary.ru/contents.asp?id=53738599)
+
+* * *
+
+2. **Бюллетень экспериментальной биологии и медицины.**\-2023.-Т.176, [№ 7.](https://elibrary.ru/contents.asp?id=54264964)
+
+* * *
+
+3. **Высокомолекулярные соединения. Серия А. Физика полимеров.**\-2023.-Т.65, [№ 1,](https://elibrary.ru/contents.asp?id=53770033) [№ 2.](https://elibrary.ru/contents.asp?id=54045316)
+
+* * *
+
+4. **Высокомолекулярные соединения. Серия Б. Химия полимеров.**\-2023.-Т.65, [№ 2.](https://elibrary.ru/contents.asp?id=53986660)
+
+* * *
+
+5. **Геология рудных месторождений.**\-2023.-Т.65, [№ 3.](https://elibrary.ru/contents.asp?id=53738142)
+
+* * *
+
+6. **Доклады Российской Академии Наук. Науки о жизни.**\-2023.-Т.509, [№ 1.](https://elibrary.ru/contents.asp?id=50731590)
+
+* * *
+
+7. **Доклады Российской Академии Наук. Науки о Земле.**\-2023.-Т.509, [№ 2,](https://elibrary.ru/contents.asp?id=50502374) Т.510, [№ 1,](https://elibrary.ru/contents.asp?id=53214263) [№ 2.](https://elibrary.ru/contents.asp?id=53835958)
+
+* * *
+
+8. **Доклады Российской Академии Наук. Физика, технические науки.**\-2023.-Т.510, [май-июнь.](https://elibrary.ru/contents.asp?id=53986679)
+
+* * *
+
+9. **Доклады Российской Академии Наук. Химия, науки о материалах.**\-2023.-Т.509, [март-апрель.](https://elibrary.ru/contents.asp?id=53986693)
+
+* * *
+
+10. **Журнал вычислительной математики и математической физики.**\-2023.-Т.63, [№ 4,](https://elibrary.ru/contents.asp?id=50502001) [№ 5.](https://elibrary.ru/contents.asp?id=53738561)
+
+* * *
+
+11. **Журнал неорганической химии.**\-2023.-Т.68, [№ 4,](https://elibrary.ru/contents.asp?id=50501984) [№ 5.](https://elibrary.ru/contents.asp?id=52259571)
+
+* * *
+
+12. **Журнал общей химии.**\-2023.-Т.93, [№ 4,](https://elibrary.ru/contents.asp?id=50733600) [№ 5,](https://elibrary.ru/contents.asp?id=53760349) [№ 6.](https://elibrary.ru/contents.asp?id=53982870)
+
+* * *
+
+13. **Журнал органической химии.**\-2023.-Т.59, [№ 4,](https://elibrary.ru/contents.asp?id=50751129) [№ 5,](https://elibrary.ru/contents.asp?id=53802729) [№ 6.](https://elibrary.ru/contents.asp?id=53971680)
+
+* * *
+
+14. **Журнал структурной химии.**\-2023.-Т.64, [№ 5.](https://elibrary.ru/contents.asp?id=53805640)
+
+* * *
+
+15. **Журнал физической химии.**\-2023.-Т.97, [№ 4,](https://elibrary.ru/contents.asp?id=50731445) [№ 5,](https://elibrary.ru/contents.asp?id=50731467) [№ 6.](https://elibrary.ru/contents.asp?id=52258664)
+
+* * *
+
+16. **Заводская лаборатория. Диагностика материалов.**\-2023.-Т.89, [№ 6.](https://elibrary.ru/contents.asp?id=54011533)
+
+* * *
+
+17. **Известия Вузов. Физика.**\-2023.-Т.66, [№ 7.](https://elibrary.ru/contents.asp?id=54250275)
+
+* * *
+
+18. **Известия Вузов. Химия и химическая технология.**\-2023.Т.-66, [№ 8.](https://elibrary.ru/contents.asp?id=54098420)
+
+* * *
+
+19. **Известия РАН. Серия Биологическая.**\-2023.- [№ 7.](https://elibrary.ru/contents.asp?titleid=7823)
+
+* * *
+
+20. **Иммунология.**\-2023.-Т.44, [№ 2,](https://elibrary.ru/contents.asp?id=53116015) [№ 3.](https://elibrary.ru/contents.asp?id=54128490)
+
+* * *
+
+21. **Математическое моделирование.**\-2023.-Т.35, [№ 6.](https://elibrary.ru/contents.asp?id=54039427)
+
+* * *
+
+22. **Петрология.**\-2023.-Т.31, [№ 2.](https://elibrary.ru/contents.asp?id=50502292)
+
+* * *
+
+23. **Прикладная математика и механика.**\-2023.-Т.87, [№ 2.](https://elibrary.ru/contents.asp?id=53770087)
+
+* * *
+
+24. **Природа.**\-2023.- [№ 4.](https://elibrary.ru/contents.asp?id=54336401)
+
+* * *
+
+25. **Успехи математических наук.**\-2023.-Т.78, [№ 3.](https://www.mathnet.ru/php/archive.phtml?jrnid=rm&wshow=issue&year=2023&volume=78&issue=3&option_lang=rus)
+
+* * *
+
+26. **Химическая физика.**\-2023.-Т.42, [№ 4,](https://elibrary.ru/contents.asp?id=50502068) [№ 5.](https://elibrary.ru/contents.asp?id=50502080)
+
+* * *
+
+27. **Химия высоких энергий.**\-2023.-Т.57, [№ 3.](https://elibrary.ru/contents.asp?id=50766815)
+
+* * *
