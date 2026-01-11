@@ -1,0 +1,5 @@
+---
+title: Бюллетень новых поступлений N 15 (9 - 22 августа 2017 г.)
+---
+
+1. **Высокомолекулярные соединения.** -2017.-Т.59, N 1. 2. **Литосфера.** -2017.- N 1, 2. 3. **Петрология.** -2017.-Т.25, N 2. 4. **Applied Spectroscopy.** -2017.-V.71, N 2, 3, 5, 6. 5. **Cell.** -2017.-V.169, N 1, 2, 3. 6. **Chemistry Letters.** -2017.-V.46, N 5. 7. **Electronics Letters.** -2017.-V.53, N 11. 8. **Geology.** -2017.-V.45, N 5. 9. **Journal of Cell Biology.** -2017.-V.216, N 2, 3, 4. 10. **Mendeleev Communications.** -2017.-V.27, N 3. 11. **Microbiology.** -2017.-V.163, N 1, 2, 3, 4. 12. **Scientific American.** -2015.-V.312, N 5. 13. **Scientific American.** -2017.-V.316, N 4.
