@@ -30,6 +30,30 @@ const makeCollection = (collection, folderName) => {
   }, {});
 };
 
+// создаем коллекцию для BENex на основе папок
+// например benexByYear = { 2025: [{}], 2024: [{}], ... }
+const makeBENexCollection = (collection, folderName) => {
+  const files = collection.getFilteredByGlob(`./pages/${folderName}/**/*.md`);
+  return files.reduce((years, post) => {
+    /**
+     * В коллекцию попадают только файлы с маской 'BENex*.md'
+     * - Извлекаем год из пути к папке
+     * - Сортируем файлы по имени (BENex01, BENex02, ...)
+     */
+    const fileName = path.basename(post.filePathStem);
+    if (!fileName.startsWith('BENex')) {
+      return years;
+    }
+
+    const year = path.dirname(post.inputPath).split("/").pop();
+    if (!years[year]) years[year] = [];
+
+    // добавляем в начало для обратного порядка (новые первыми)
+    years[year].unshift(post);
+    return years;
+  }, {});
+};
+
 export default function (eleventyConfig) {
   // Enable quiet mode to reduce console noise
   eleventyConfig.setQuietMode(true);
@@ -52,6 +76,11 @@ export default function (eleventyConfig) {
       makeCollection(collection, folderName)
     );
   });
+
+  // коллекция для BENex (использует другую функцию, т.к. файлы не датированные)
+  eleventyConfig.addCollection("benexByYear", (collection) =>
+    makeBENexCollection(collection, "BENex")
+  );
 
   // Отображаем дату в человеко-понятном виде, например 11 февраля
   // @example {{ post.date | getHumanDate }}

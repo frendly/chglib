@@ -1,0 +1,20 @@
+---
+title: Выставка журналов из БЕН РАН
+permalink: "/BENex/"
+eleventyNavigation:
+  key: Журналы БЕН
+  order: 5
+---
+
+{##
+⚠️ ВНИМАНИЕ!
+Этот файл генерирует страницу бюллетеней BENex автоматически.
+Чтобы добавить бюллетень, создайте файл с именем BENexNN.md в соответствующей папке года, пример: pages/BENex/2025/BENex01.md
+##}
+
+Смена выставки производится по средам.
+
+{% set year = getGlobalCurrentYear %}
+{% set posts = collections.benexByYear[year] %}
+{% include "pages/BENex/_benex-list.njk" %}
+{% include "pages/BENex/_archive.njk" %}

@@ -1,0 +1,19 @@
+---
+pagination:
+  data: collections.benexByYear
+  size: 1
+  alias: year
+permalink: "/BENex/{{year}}/"
+eleventyComputed:
+  title: "Выставка журналов из БЕН РАН – {{year}}"
+---
+
+{##
+⚠️ ВНИМАНИЕ!
+Этот файл генерирует страницу бюллетеней BENex автоматически.
+Чтобы добавить бюллетень, создайте файл с именем BENexNN.md в соответствующей папке года, пример: pages/BENex/2025/BENex01.md
+##}
+
+{% set posts = collections.benexByYear[year] %}
+{% include "pages/BENex/_benex-list.njk" %}
+{% include "pages/BENex/_archive.njk" %}
