@@ -1,0 +1,53 @@
+---
+title: Бюллетень № 02 (21 февраля - 19 марта 2024)
+---
+
+* * *
+
+1. **Биофизика.**\-2023.-Т.68, [№ 4](https://www.elibrary.ru/contents.asp?id=54405940).
+
+* * *
+
+2. **Геология и геофизика.**\-2023.-Т.64, [№ 9](https://elibrary.ru/contents.asp?id=54376335).
+
+* * *
+
+3. **Геология рудных месторождений.**\-2023.-Т.65, [№ 5](https://elibrary.ru/contents.asp?id=54313486).
+
+* * *
+
+4. **Журнал аналитической химии.**\-2023.-Т.78, [№ 7](https://www.elibrary.ru/contents.asp?id=53738172).
+
+* * *
+
+5. **Журнал неорганической химии.**\-2023.-Т.68, [№ 9](https://elibrary.ru/contents.asp?id=54313914).
+
+* * *
+
+6. **Журнал структурной химии.**\-2023.-Т.64, [№ 10](https://www.elibrary.ru/contents.asp?id=54722839).
+
+* * *
+
+7. **Иммунология.**\-2023.-Т.44, [№ 4](https://elibrary.ru/contents.asp?id=54502162).
+
+* * *
+
+8. **Заводская лаборатория. Диагностика материалов.**\-2023.-Т.89, [№ 12](https://www.elibrary.ru/contents.asp?id=55927461).
+
+* * *
+
+9. **Кинетика и катализ.**\-2023.-Т.64, [№ 5](https://elibrary.ru/contents.asp?id=54378875).
+
+* * *
+
+10. **Природа.**\-2023.- [№ 8](https://elibrary.ru/contents.asp?id=54774948), [№ 9](https://www.elibrary.ru/contents.asp?id=54798843).
+
+* * *
+
+11. **Химическая физика.**\-2023.-Т.42, [№ 7](https://elibrary.ru/contents.asp?id=54045253).
+
+* * *
+
+12. **Цитология.**\-2023.-Т.65, [№ 4](https://www.elibrary.ru/contents.asp?id=54095727), [№ 5](https://www.elibrary.ru/contents.asp?id=54378728).
+
+* * *

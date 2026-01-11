@@ -1,0 +1,69 @@
+---
+title: Бюллетень № 15 (22 ноября - 12 декабря 2023)
+---
+
+* * *
+
+1. **Биоорганическая химия-2023.**\-Т.49, [№ 5.](https://www.elibrary.ru/contents.asp?id=54271491)
+
+* * *
+
+2. **Вопросы онкологии.**\-2023.-Т.69, [№ 4.](https://elibrary.ru/contents.asp?id=54389427)
+
+* * *
+
+3. **Журнал вычислительной математики и математической физики.**\-2023.-Т.63, [№ 8.](https://www.elibrary.ru/contents.asp?id=54270652)
+
+* * *
+
+4. **Журнал неорганической химии.**\-2023.-Т.68, [№ 7.](https://www.elibrary.ru/contents.asp?id=53987147)
+
+* * *
+
+5. **Журнал общей химии.**\-2023.-Т.93, [№ 7,](https://www.elibrary.ru/contents.asp?id=54166630) [№ 9.](https://www.elibrary.ru/contents.asp?id=54398804)
+
+* * *
+
+6. **Журнал органической химии.**\-2023.-Т.59, [№ 8,](https://www.elibrary.ru/contents.asp?id=54307807) [№ 9.](https://www.elibrary.ru/contents.asp?id=54491317)
+
+* * *
+
+7. **Журнал прикладной химии.**\-2022.-Т.95, [№ 10,](https://www.elibrary.ru/contents.asp?id=50496660) [№ 11-12;](https://www.elibrary.ru/contents.asp?id=54216643) 2023.-Т.96, [№ 1.](https://www.elibrary.ru/contents.asp?id=54307220)
+
+* * *
+
+8. **Журнал физической химии.**\-2023.-Т.97, [№ 7.](https://www.elibrary.ru/contents.asp?id=53835645)
+
+* * *
+
+9. **Математическое моделирование.**\-2023.-Т.35, [№ 8.](https://www.elibrary.ru/contents.asp?id=54222496)
+
+* * *
+
+10. **Прикладная математика и механика.**\-2023.-Т.87, [№ 4.](https://www.elibrary.ru/contents.asp?id=54378699)
+
+* * *
+
+11. **Прикладная физика-2023.**\- [№ 4.](https://www.elibrary.ru/contents.asp?id=54369997)
+
+* * *
+
+12. **Природа.**\-2023.- [№ 6.](https://www.elibrary.ru/contents.asp?id=54756639)
+
+* * *
+
+13. **Успехи физических наук.**\-2023.-Т.193, [№ 9.](https://www.elibrary.ru/contents.asp?id=54486017)
+
+* * *
+
+14. **Успехи химии.**\-2023.-Т.92, [№ 9.](https://www.elibrary.ru/contents.asp?id=54519538)
+
+* * *
+
+15. **Физика горения и взрыва.**\-2023.-Т.59, [№ 4.](https://www.elibrary.ru/contents.asp?id=54119584)
+
+* * *
+
+16. **Химия высоких энергий.**\-2023.-Т.57, [№ 5.](https://www.elibrary.ru/contents.asp?id=54293537)
+
+* * *
