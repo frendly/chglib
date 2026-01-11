@@ -2,108 +2,29 @@
 title: Бюллетень № 03 (21 февраля - 20 марта 2023)
 ---
 
-* * *
-
 1. **Биоорганическая химия-2022.**\-Т.48, [№ 6](https://www.elibrary.ru/contents.asp?titleid=7678).
-
-* * *
-
 2. **Биохимия.**\-2022.-Т.87, [№ 8](https://www.elibrary.ru/contents.asp?id=49299472).
-
-* * *
-
 3. **Бюллетень экспериментальной биологии и медицины.**\-2023.-Т.174, [№ 11](https://www.elibrary.ru/contents.asp?id=49834743).
-
-* * *
-
 4. **Вестник РАН.**\-2022.-Т.92, [№ 7](https://www.elibrary.ru/contents.asp?id=48870445).
-
-* * *
-
 5. **Высокомолекулярные соединения. Серия А. Физика полимеров.**\-2022.-Т.64, [№ 6](https://www.elibrary.ru/contents.asp?id=49937908).
-
-* * *
-
 6. **Высокомолекулярные соединения. Серия Б. Химия полимеров.**\-2022.-Т.64, [№ 5](https://www.elibrary.ru/contents.asp?id=49897575).
-
-* * *
-
 7. **Геология рудных месторождений.**\-2022.-Т.64, [№ 6](https://www.elibrary.ru/contents.asp?titleid=7764).
-
-* * *
-
 8. **Доклады Российской Академии Наук. Науки о жизни.**\-2022.-Т.506, [№ 1](https://www.elibrary.ru/contents.asp?id=49546653), Т.507, [№ 1](https://www.elibrary.ru/contents.asp?id=49820610).
-
-* * *
-
 9. **Доклады Российской Академии Наук. Науки о Земле.**\-2022.-Т.506, [№ 2](https://www.elibrary.ru/contents.asp?id=49421252), Т.507, [№ 1](https://www.elibrary.ru/contents.asp?id=49771508), [№ 2](https://www.elibrary.ru/contents.asp?id=49820630).
-
-* * *
-
 10. **Журнал вычислительной математики и математической физики.**\-2022.-Т.62, [№ 10](https://www.elibrary.ru/contents.asp?id=49344321). [№ 11](https://www.elibrary.ru/contents.asp?id=49455073). [№ 12](https://www.elibrary.ru/contents.asp?id=49581394).
-
-* * *
-
 11. **Журнал неорганической химии.**\-2022.-Т.67, [№ 10](https://www.elibrary.ru/contents.asp?id=49273331), [№ 11](https://www.elibrary.ru/contents.asp?id=49515192), [№ 12](https://www.elibrary.ru/contents.asp?id=49515214).
-
-* * *
-
 12. **Журнал общей химии.**\-2022.-Т.92, [№ 12](https://www.elibrary.ru/contents.asp?titleid=7796).
-
-* * *
-
 13. **Журнал органической химии.**\-2022.-Т.58, [№ 10](https://www.elibrary.ru/contents.asp?id=49432456), [№ 11](https://www.elibrary.ru/contents.asp?id=49613149), [№ 12](https://www.elibrary.ru/contents.asp?id=49878644).
-
-* * *
-
 14. **Журнал прикладной химии.**\-2022.-Т.95, [№ 6](https://www.elibrary.ru/contents.asp?id=49533898), [№ 7](https://www.elibrary.ru/contents.asp?id=49715380).
-
-* * *
-
 15. **Журнал структурной химии.**\-2022.-Т.63, [№ 10](https://www.elibrary.ru/contents.asp?id=49570623), [№ 11](https://www.elibrary.ru/contents.asp?id=49798495).
-
-* * *
-
 16. **Журнал физической химии.**\-2022.-Т.96, [№ 10](https://www.elibrary.ru/contents.asp?id=49420292), [№ 11](https://www.elibrary.ru/contents.asp?id=49487627), [№ 12](https://www.elibrary.ru/contents.asp?id=49581378).
-
-* * *
-
 17. **Журнал экспериментальной и теоретической физики.**\-2022.-Т.162, [№ 4](https://www.elibrary.ru/contents.asp?id=49583116), [№ 5](https://www.elibrary.ru/contents.asp?id=49850914), [№ 6](https://www.elibrary.ru/contents.asp?id=49858401),
-
-* * *
-
 18. **Заводская лаборатория. Диагностика материалов.**\-2022.-Т.88, [№ 12](https://www.elibrary.ru/contents.asp?id=49959083).
-
-* * *
-
 19. **Иммунология.**\-2022.-Т.43, [№ 5](https://www.elibrary.ru/contents.asp?id=49586120).
-
-* * *
-
 20. **Кинетика и катализ.**\-2022.-Т.63, [№ 4](https://www.elibrary.ru/contents.asp?id=48621916), [№ 5](https://www.elibrary.ru/contents.asp?id=49344457).
-
-* * *
-
 21. **Математическое моделирование.**\-2022.-Т.34, [№ 12](https://www.elibrary.ru/contents.asp?id=50200329).
-
-* * *
-
 22. **Прикладная математика и механика-2022.**\-Т.86, [№ 5](https://www.elibrary.ru/contents.asp?id=49515138).
-
-* * *
-
 23. **Природа.**\-2022.- [№ 8](https://www.elibrary.ru/contents.asp?id=49800150), [№ 9](https://www.elibrary.ru/contents.asp?id=50037203).
-
-* * *
-
 24. **Успехи физических наук.**\-2022.-Т.192, [№ 11](https://www.elibrary.ru/contents.asp?id=50148693) [№ 12](https://www.elibrary.ru/contents.asp?id=50148760).
-
-* * *
-
 25. **Химическая физика-2022.**\-Т.41, [№ 10](https://www.elibrary.ru/contents.asp?id=49487656), [№ 11](https://www.elibrary.ru/contents.asp?id=49718872), [№ 12](https://www.elibrary.ru/contents.asp?id=49856193).
-
-* * *
-
 26. **Химия высоких энергий.**\-2022.-Т.56, [№ 6](https://www.elibrary.ru/contents.asp?titleid=9242).
-
-* * *

@@ -2,112 +2,30 @@
 title: Бюллетень № 07  (17 мая - 14 июня 2023)
 ---
 
-* * *
-
 1. **Биоорганическая химия.**\-2023.-Т.49, [№ 1,](https://elibrary.ru/contents.asp?id=50435793) [№ 2.](https://elibrary.ru/contents.asp?id=50435804)
-
-* * *
-
 2. **Биохимия.**\-20223.-Т.87, [№ 12.](https://elibrary.ru/contents.asp?id=50000042)
-
-* * *
-
 3. **Бюллетень экспериментальной биологии и медицины.**\-2023.-Т.175, [№ 2,](https://elibrary.ru/contents.asp?id=50264212) [№ 3.](https://elibrary.ru/contents.asp?id=50402642)
-
-* * *
-
 4. **Вестник Российской Академии Наук.**\-2022.-Т.92, [№ 11.](https://elibrary.ru/contents.asp?id=49787686)
-
-* * *
-
 5. **Высокомолекулярные соединения. Серия Б. Химия полимеров.**\-2023.-Т.65, [№ 1.](https://elibrary.ru/contents.asp?titleid=25479)
-
-* * *
-
 6. **Геология рудных месторождений.**\-2023.-Т.65, [№ 1,](https://elibrary.ru/contents.asp?id=50403531) [№ 2.](https://elibrary.ru/contents.asp?id=50434427)
-
-* * *
-
 7. **Доклады Российской Академии Наук. Науки о жизни.**\-2023.-Т.508, [№ 1.](https://elibrary.ru/contents.asp?id=50436139)
-
-* * *
-
 8. **Доклады Российской Академии Наук. Науки о Земле.**\-2023.-Т.508, [№ 1,](https://elibrary.ru/contents.asp?id=50436159) [№ 2,](https://elibrary.ru/contents.asp?id=50436370) Т.509, [№ 1.](https://elibrary.ru/contents.asp?id=50450654)
-
-* * *
-
 9. **Журнал аналитической химии.**\-2022.-Т.77, [№ 12.](https://elibrary.ru/contents.asp?id=49515152)
-
-* * *
-
 10. **Журнал вычислительной математики и математической физики.**\-2023.-Т.63, [№ 1,](https://elibrary.ru/contents.asp?id=50398519) [№ 2,](https://elibrary.ru/contents.asp?id=50435446) [№ 3.](https://elibrary.ru/contents.asp?id=50435446)
-
-* * *
-
 11. **Журнал неорганической химии.**\-2023.-Т.68 [№ 2,](https://elibrary.ru/contents.asp?id=50435214) [№ 3.](https://elibrary.ru/contents.asp?id=50435306)
-
-* * *
-
 12. **Журнал общей химии.**\-2023.-Т.93, [№ 1,](https://elibrary.ru/contents.asp?id=50436213) [№ 2,](https://elibrary.ru/contents.asp?id=50440035) [№ 3.](https://elibrary.ru/contents.asp?id=50433052)
-
-* * *
-
 13. **Журнал органической химии.**\-2023.-Т.59, [№ 1,](https://elibrary.ru/contents.asp?id=50427550) [№ 2.](https://elibrary.ru/contents.asp?id=50428036)
-
-* * *
-
 14. **Журнал структурной химии.**\-2022.-Т.63 [№ 12,](https://elibrary.ru/contents.asp?id=49958180) 2023.-Т.64 [№ 1.](https://elibrary.ru/contents.asp?id=50122546)
-
-* * *
-
 15. **Журнал физической химии.**\-2023.-Т.97, [№ 1,](https://elibrary.ru/contents.asp?id=50404539) [№ 2,](https://elibrary.ru/contents.asp?id=50435287) [№ 3.](https://elibrary.ru/contents.asp?id=50435147)
-
-* * *
-
 16. **Журнал экспериментальной и теоретической физики.**\-2023.-Т.163 [№ 1.](https://elibrary.ru/contents.asp?id=50439407)
-
-* * *
-
 17. **Заводская лаборатория. Диагностика материалов.**\-2023.-Т.89 [№ 2,](https://elibrary.ru/contents.asp?id=50281132) [№ 3.](https://elibrary.ru/contents.asp?id=50392740)
-
-* * *
-
 18. **Кинетика и катализ.**\-2022.-Т.63 [№ 6.](https://elibrary.ru/contents.asp?id=49546597)
-
-* * *
-
 19. **Литосфера.**\-2023.-Т.23 [№ 1.](https://elibrary.ru/contents.asp?id=50317124)
-
-* * *
-
 20. **Петрология.**\-2023.-Т.31 [№ 1.](https://elibrary.ru/contents.asp?id=50404907)
-
-* * *
-
 21. **Прикладная математика и механика.**\-2023.-Т.87, [№ 1.](https://elibrary.ru/contents.asp?titleid=7956)
-
-* * *
-
 22. **Природа.**\-2022.- [№ 11,](https://elibrary.ru/contents.asp?id=50117417) [№ 12,](https://elibrary.ru/contents.asp?id=50120449) 2023.- [№ 1.](https://elibrary.ru/contents.asp?id=50364995)
-
-* * *
-
 23. **Успехи математических наук.**\-2023.-Т.78 [№ 1.](https://www.mathnet.ru/php/archive.phtml?jrnid=rm&wshow=issue&year=2023&volume=78&issue=1&option_lang=rus)
-
-* * *
-
 24. **Успехи химии.**\-2023.-Т.92 [№ 3.](https://elibrary.ru/contents.asp?titleid=7581)
-
-* * *
-
 25. **Химическая физика.**\-2023.-Т.42 [№ 1,](https://elibrary.ru/contents.asp?id=50404711) [№ 2,](https://elibrary.ru/contents.asp?id=50404725) [№ 3.](https://elibrary.ru/contents.asp?id=50404736)
-
-* * *
-
 26. **Химия высоких энергий.**\-2023.-Т.57 [№ 1,](https://elibrary.ru/contents.asp?id=50403935) [№ 2.](https://elibrary.ru/contents.asp?id=50434476)
-
-* * *
-
 27. **Цитология.**\-2022.-Т.64, [№ 7.](https://elibrary.ru/contents.asp?id=49799252)
-
-* * *
