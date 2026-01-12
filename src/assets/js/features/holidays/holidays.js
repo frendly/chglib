@@ -3,7 +3,7 @@ import isBetween from 'dayjs/plugin/isBetween';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import { getCurrentYear } from "../../utils/currentYear";
-import { DATE_FORMAT_ISO, DATE_FORMAT_MONTH_DAY } from "../../../../const/dateFormats.js";
+import { DATE_FORMAT_ISO, DATE_FORMAT_MONTH_DAY } from "../../../../const/dateFormats";
 
 import holidays from './data/holidays.yml';
 

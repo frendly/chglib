@@ -8,7 +8,7 @@ const output = 'dist/assets';
 /**
  * Собираем JS файлы
  */
-async function buildJavaScript(isProduction) {
+async function buildJavaScript(isProduction: boolean): Promise<void> {
     console.log('= 1 = Сборка JS файлов...');
     await build({
         entryPoints: [`${input}/js/index.js`],
@@ -24,7 +24,7 @@ async function buildJavaScript(isProduction) {
 /**
  * Собираем CSS файлы с помощью PostCSS
  */
-async function buildStyles(isProduction) {
+async function buildStyles(isProduction: boolean): Promise<void> {
     console.log('= 2 = Сборка CSS файлов...');
 
     const postcssInputs = [
@@ -35,7 +35,7 @@ async function buildStyles(isProduction) {
     const noMapOption = isProduction ? '' : '--no-map';
     const postcssCommand = `postcss ${postcssInputs} --dir ${output}/styles --config postcss.config.cjs ${noMapOption}`;
 
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
         exec(postcssCommand, (error, stdout, stderr) => {
             if (error) {
                 console.error('PostCSS Error:', stderr);
@@ -49,7 +49,7 @@ async function buildStyles(isProduction) {
 }
 
 // Main build function exported for Eleventy
-export default async () => {
+export default async (): Promise<void> => {
     const isProduction = process.env.NODE_ENV === 'production';
     console.log(`Проложение запущено в окружении: ${isProduction ? 'production' : 'development'}`);
 

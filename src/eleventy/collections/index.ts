@@ -1,11 +1,12 @@
-import { makeCollection } from './makeCollection.js';
-import { makeBENexCollection } from './makeBENexCollection.js';
+import type { EleventyConfig } from '../../types/eleventy';
+import { makeCollection } from './makeCollection';
+import { makeBENexCollection } from './makeBENexCollection';
 
 /**
  * Регистрирует коллекции в Eleventy
- * @param {Object} eleventyConfig - Конфигурация Eleventy
+ * @param eleventyConfig - Конфигурация Eleventy
  */
-export function registerCollections(eleventyConfig) {
+export function registerCollections(eleventyConfig: EleventyConfig): void {
   /** папки для создания авто-коллекций */
   /** @see makeCollection */
   const folders = ["news"];

@@ -1,24 +1,25 @@
 import dayjs from 'dayjs';
+import type { EleventyCollectionItem } from '../../types/eleventy';
 
 /**
  * Фильтр обрезает коллекцию
- * @param {Array} array - Массив для обрезки
- * @param {number} limit - Количество элементов для возврата
- * @returns {Array} Обрезанный массив
+ * @param array - Массив для обрезки
+ * @param limit - Количество элементов для возврата
+ * @returns Обрезанный массив
  * @example {{ collection | limit(2) }}
  */
-export const limit = (array, limit) => {
-  return array?.slice(0, limit);
+export const limit = <T>(array: T[] | undefined, limit: number): T[] => {
+  return array?.slice(0, limit) || [];
 };
 
 /**
  * Фильтр для создания архива по годам
  * Извлекает годы из коллекции и сортирует их по убыванию (новые первыми)
- * @param {Object} collection - Коллекция с годами в качестве ключей
- * @returns {Array<string>} Массив лет, отсортированных по возрастанию
+ * @param collection - Коллекция с годами в качестве ключей
+ * @returns Массив лет, отсортированных по возрастанию
  * @example {{ collections.benexByYear | getYears }}
  */
-export const getYears = function (collection) {
+export const getYears = function (collection: Record<string, unknown> | undefined): string[] {
   return Object.keys(collection || {})
     .map(year => parseInt(year))
     .sort((a, b) => a - b) /** сортировка по возрастанию */
@@ -28,11 +29,11 @@ export const getYears = function (collection) {
 /**
  * Фильтр для получения всех новостей из всех лет
  * Объединяет новости из всех годов в один массив и сортирует по дате (новые первыми)
- * @param {Object} newsByYear - Объект с новостями, сгруппированными по годам
- * @returns {Array} Массив всех новостей, отсортированных по дате (новые первыми)
+ * @param newsByYear - Объект с новостями, сгруппированными по годам
+ * @returns Массив всех новостей, отсортированных по дате (новые первыми)
  * @example {{ collections.newsByYear | getAllNews }}
  */
-export const getAllNews = function (newsByYear) {
+export const getAllNews = function (newsByYear: Record<string, EleventyCollectionItem[]> | undefined): EleventyCollectionItem[] {
   if (!newsByYear || typeof newsByYear !== 'object') {
     return [];
   }

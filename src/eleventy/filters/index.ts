@@ -1,11 +1,12 @@
-import { getHumanDate, getHumanDateWithYear } from './dateFilters.js';
-import { limit, getYears, getAllNews } from './collectionFilters.js';
+import type { EleventyConfig } from '../../types/eleventy';
+import { getHumanDate, getHumanDateWithYear } from './dateFilters';
+import { limit, getYears, getAllNews } from './collectionFilters';
 
 /**
  * Регистрирует фильтры в Eleventy
- * @param {Object} eleventyConfig - Конфигурация Eleventy
+ * @param eleventyConfig - Конфигурация Eleventy
  */
-export function registerFilters(eleventyConfig) {
+export function registerFilters(eleventyConfig: EleventyConfig): void {
   /** Фильтры для дат */
   eleventyConfig.addFilter("getHumanDate", getHumanDate);
   eleventyConfig.addFilter("getHumanDateWithYear", getHumanDateWithYear);
