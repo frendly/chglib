@@ -1,4 +1,6 @@
-export const getCurrentYear = () => new Date().getFullYear();
+import dayjs from 'dayjs';
+
+export const getCurrentYear = () => dayjs().year();
 
 // current year
 export const setCurrentYear = () => {

@@ -1,4 +1,6 @@
-const now = String(Date.now());
+import dayjs from 'dayjs';
+
+const now = String(dayjs().valueOf());
 
 /**
  * Регистрирует shortcodes в Eleventy

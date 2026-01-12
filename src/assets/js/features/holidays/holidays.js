@@ -3,6 +3,7 @@ import isBetween from 'dayjs/plugin/isBetween';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import { getCurrentYear } from "../../utils/currentYear";
+import { DATE_FORMAT_ISO, DATE_FORMAT_MONTH_DAY } from "../../../../const/dateFormats.js";
 
 import holidays from './data/holidays.yml';
 
@@ -15,7 +16,7 @@ const defaultMonthPicture = `/face/${dayjs().month()}.jpg`;
  * Возвращает дату добавляя текущий год
  * MM-DD -> YYYY-MM-DD
 */
-const getFullDate = (date) => dayjs(date, 'MM-DD').format('YYYY-MM-DD');
+const getFullDate = (date) => dayjs(date, DATE_FORMAT_MONTH_DAY).format(DATE_FORMAT_ISO);
 
 /**
  * Заменяет текст
@@ -35,7 +36,7 @@ const getHolidays = () => {
  * Фильтрует массив праздников по текущей дате
 */
 const getCurrentEvent = (data) => {
-  const today = dayjs().format('YYYY-MM-DD');
+  const today = dayjs().format(DATE_FORMAT_ISO);
 
   const event = data.find(item => {
     const { startDate, endDate } = item;

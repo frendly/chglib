@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 /**
  * Фильтр обрезает коллекцию
  * @param {Array} array - Массив для обрезки
@@ -40,8 +42,10 @@ export const getAllNews = function (newsByYear) {
 
   /** сортируем по дате (новые первыми) */
   return allNews.sort((a, b) => {
-    const dateA = a.date ? new Date(a.date) : new Date(0);
-    const dateB = b.date ? new Date(b.date) : new Date(0);
-    return dateB - dateA; /** сортировка по убыванию (новые первыми) */
+    const dateA = a.date ? dayjs(a.date) : dayjs(0);
+    const dateB = b.date ? dayjs(b.date) : dayjs(0);
+
+    /** сортировка по убыванию (новые первыми) */
+    return dateB.valueOf() - dateA.valueOf();
   });
 };
