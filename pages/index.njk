@@ -3,9 +3,18 @@ title: Библиотека Научного центра РАН в Черног
 ---
 
 {% set year = getGlobalCurrentYear %}
-{% set news = collections.newsByYear[year] %}
-{% set posts = news | limit(2) %}
+{% set currentYearNews = collections.newsByYear[year] %}
 
+{% if currentYearNews and currentYearNews.length > 0 %}
+  {# Если есть новости текущего года - показываем их без года #}
+  {% set posts = currentYearNews | limit(2) %}
+  {% set showYear = false %}
+{% else %}
+  {# Если новостей текущего года нет - показываем последние из всех лет с годом #}
+  {% set allNews = collections.newsByYear | getAllNews %}
+  {% set posts = allNews | limit(2) %}
+  {% set showYear = true %}
+{% endif %}
 
 {% if posts %}
   <section class="get-last-news">

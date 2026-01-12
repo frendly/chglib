@@ -94,6 +94,19 @@ export default function (eleventyConfig) {
     return date.toLocaleDateString("ru-RU", options);
   });
 
+  // Отображаем дату в человеко-понятном виде с годом, например 11 февраля 2025
+  // @example {{ post.date | getHumanDateWithYear }}
+  eleventyConfig.addFilter("getHumanDateWithYear", function (dateObj) {
+    const date = new Date(dateObj);
+    const options = {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+      locale: "ru-RU",
+    };
+    return date.toLocaleDateString("ru-RU", options);
+  });
+
   // фильтр обрезает коллекцию
   // @example {{ collection | limit(2) }}
   eleventyConfig.addNunjucksFilter("limit", (array, limit) => {
@@ -109,6 +122,25 @@ export default function (eleventyConfig) {
       .map(year => parseInt(year))
       .sort((a, b) => a - b) // сортировка по убыванию (новые первыми)
       .map(year => year.toString());
+  });
+
+  // фильтр для получения всех новостей из всех лет
+  // объединяет новости из всех годов в один массив и сортирует по дате (новые первыми)
+  // @example {{ collections.newsByYear | getAllNews }}
+  eleventyConfig.addNunjucksFilter("getAllNews", function (newsByYear) {
+    if (!newsByYear || typeof newsByYear !== 'object') {
+      return [];
+    }
+
+    // объединяем все новости из всех лет в один массив
+    const allNews = Object.values(newsByYear).flat();
+
+    // сортируем по дате (новые первыми)
+    return allNews.sort((a, b) => {
+      const dateA = a.date ? new Date(a.date) : new Date(0);
+      const dateB = b.date ? new Date(b.date) : new Date(0);
+      return dateB - dateA; // сортировка по убыванию (новые первыми)
+    });
   });
 
   // текущий год доступен глобально

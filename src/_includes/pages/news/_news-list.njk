@@ -3,7 +3,11 @@
     <article>
       <h2>
         <time datetime="{{post.date}}">
-          {{ post.date | getHumanDate }}
+          {% if showYear %}
+            {{ post.date | getHumanDateWithYear }}
+          {% else %}
+            {{ post.date | getHumanDate }}
+          {% endif %}
         </time>
       </h2>
 
