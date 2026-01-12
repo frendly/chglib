@@ -22,6 +22,7 @@
   - [Eleventy 3.0](https://www.11ty.dev/) — генератор статических сайтов
   - Node.js >=20 (рекомендуется 22.x)
   - Yarn 1.22.22 — менеджер пакетов
+  - [dayjs](https://day.js.org/) — работа с датами (замена нативного Date)
   - esbuild — сборка JavaScript
   - PostCSS — обработка CSS
 - **Репозиторий**: `git@github.com:frendly/chglib.git`
@@ -141,6 +142,9 @@ chglib/
 │   │   ├── meta.js           # Метаданные сайта
 │   │   ├── eleventyComputed.js # Computed данные
 │   │   └── getNewsDescription.js # Описания новостей
+│   │
+│   ├── const/                # Общие константы
+│   │   └── dateFormats.js   # Константы форматов дат для dayjs
 │   │
 │   ├── eleventy/             # Конфигурация Eleventy (модули)
 │   │   ├── collections/      # Функции создания коллекций
@@ -298,7 +302,7 @@ yarn clear
 **Функция `makeCollection()`** (`src/eleventy/collections/makeCollection.js`):
 - Создает коллекции на основе папок (например, `newsByYear`)
 - Парсит дату из `fileSlug` используя dayjs
-- Валидирует формат даты `YYYY-MM-DD`
+- Валидирует формат даты используя константу `DATE_FORMAT_ISO` из `src/const/dateFormats.js`
 - Группирует по годам из пути файла
 - Сортирует по дате (новые первыми через `unshift`)
 - Регистрируется через `registerCollections()` в `src/eleventy/collections/index.js`
@@ -380,6 +384,9 @@ yarn clear
   - `meta.js` — метаданные сайта (siteName, getNewsDescription)
   - `eleventyComputed.js` — computed свойства (закомментирован)
 
+- **`src/const/`** — общие константы
+  - `dateFormats.js` — константы форматов дат для dayjs (используются в Eleventy и frontend)
+
 - **`src/eleventy/`** — модульная конфигурация Eleventy
   - `collections/` — функции создания коллекций (`makeCollection`, `makeBENexCollection`)
   - `filters/` — кастомные фильтры (`getHumanDate`, `getHumanDateWithYear`, `limit`, `getYears`, `getAllNews`)
@@ -432,12 +439,16 @@ yarn clear
    {{ post.date | getHumanDate }}
    # Вывод: "11 февраля" (русская локализация)
    ```
+   - Использует dayjs с русской локализацией
+   - Формат: `DATE_FORMAT_HUMAN` из `src/const/dateFormats.js`
 
 2. **`getHumanDateWithYear`** (`src/eleventy/filters/dateFilters.js`)
    ```nunjucks
    {{ post.date | getHumanDateWithYear }}
    # Вывод: "11 февраля 2025" (русская локализация с годом)
    ```
+   - Использует dayjs с русской локализацией
+   - Формат: `DATE_FORMAT_HUMAN_WITH_YEAR` из `src/const/dateFormats.js`
 
 3. **`limit`** (`src/eleventy/filters/collectionFilters.js`)
    ```nunjucks
@@ -459,6 +470,7 @@ yarn clear
    # Сортирует по дате (новые первыми)
    # Используется на главной странице для показа последних новостей из всех лет
    ```
+   - Использует dayjs для парсинга и сравнения дат
 
 ### Shortcodes
 
@@ -468,6 +480,8 @@ yarn clear
 # Вывод: timestamp для cache busting
 # Использование: <link rel="stylesheet" href="/styles.css?v={% version %}">
 ```
+- Использует dayjs для получения текущего времени в миллисекундах
+- Использует dayjs для получения текущего времени в миллисекундах
 
 ### Watch Targets
 
@@ -481,6 +495,7 @@ yarn clear
 {{ getGlobalCurrentYear }}
 # Вывод: текущий год (строка)
 ```
+- Использует dayjs для получения текущего года
 
 ### Quiet Mode
 
@@ -641,10 +656,11 @@ eleventyNavigation:
 1. **Актуализация документации**: **КРИТИЧЕСКИ ВАЖНО** — при внесении любых изменений в проект (новые фильтры, функции, изменение логики, структуры файлов и т.д.) необходимо **всегда обновлять CURSOR.md**, чтобы AI всегда знал актуальное состояние проекта. Это обеспечивает корректную работу AI-ассистента с кодом.
 2. **Node.js версия**: Требуется >=20 (рекомендуется 22.x, указано в `.nvmrc`)
 3. **Yarn версия**: Зафиксирована в `package.json:35` (1.22.22)
-4. **Формат дат**: Новости должны иметь формат `YYYY-MM-DD.md` для автоматической обработки
-5. **LEGACY папка**: `src/LEGACY/` не используется в сборке, только для справки
-6. **Production сборка**: Всегда использует `NODE_ENV=production` для минификации
-7. **Watch режим**: Автоматически отслеживает изменения в `src/assets/`
+4. **Работа с датами**: Проект использует **dayjs** вместо нативного JavaScript Date. Все форматы дат вынесены в константы в `src/const/dateFormats.js`
+5. **Формат дат**: Новости должны иметь формат `YYYY-MM-DD.md` для автоматической обработки (используется константа `DATE_FORMAT_ISO`)
+6. **LEGACY папка**: `src/LEGACY/` не используется в сборке, только для справки
+7. **Production сборка**: Всегда использует `NODE_ENV=production` для минификации
+8. **Watch режим**: Автоматически отслеживает изменения в `src/assets/`
 
 ---
 

@@ -1,3 +1,9 @@
+import dayjs from 'dayjs';
+import 'dayjs/locale/ru.js';
+import { DATE_FORMAT_HUMAN, DATE_FORMAT_HUMAN_WITH_YEAR } from '../../const/dateFormats.js';
+
+dayjs.locale('ru');
+
 /**
  * Отображает дату в человеко-понятном виде, например 11 февраля
  * @param {Date|string} dateObj - Объект даты или строка с датой
@@ -5,13 +11,7 @@
  * @example {{ post.date | getHumanDate }}
  */
 export const getHumanDate = function (dateObj) {
-  const date = new Date(dateObj);
-  const options = {
-    day: "2-digit",
-    month: "long",
-    locale: "ru-RU",
-  };
-  return date.toLocaleDateString("ru-RU", options);
+  return dayjs(dateObj).format(DATE_FORMAT_HUMAN);
 };
 
 /**
@@ -21,12 +21,5 @@ export const getHumanDate = function (dateObj) {
  * @example {{ post.date | getHumanDateWithYear }}
  */
 export const getHumanDateWithYear = function (dateObj) {
-  const date = new Date(dateObj);
-  const options = {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-    locale: "ru-RU",
-  };
-  return date.toLocaleDateString("ru-RU", options);
+  return dayjs(dateObj).format(DATE_FORMAT_HUMAN_WITH_YEAR);
 };

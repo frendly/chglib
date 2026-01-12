@@ -1,5 +1,6 @@
 import path from "path";
 import dayjs from 'dayjs';
+import { DATE_FORMAT_ISO } from '../../const/dateFormats.js';
 
 /**
  * Создает коллекции на основе папок
@@ -15,7 +16,7 @@ export const makeCollection = (collection, folderName) => {
      * В коллекцию попадают только файлы с маской 'YYYY-MM-DD'
      * - Проверяем валидность даты
      */
-    const date = dayjs(post.fileSlug, 'YYYY-MM-DD', true);
+    const date = dayjs(post.fileSlug, DATE_FORMAT_ISO, true);
     if (!date.isValid()) {
       return years;
     }
