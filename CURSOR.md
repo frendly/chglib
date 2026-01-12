@@ -142,6 +142,19 @@ chglib/
 │   │   ├── eleventyComputed.js # Computed данные
 │   │   └── getNewsDescription.js # Описания новостей
 │   │
+│   ├── eleventy/             # Конфигурация Eleventy (модули)
+│   │   ├── collections/      # Функции создания коллекций
+│   │   │   ├── index.js      # Регистрация коллекций
+│   │   │   ├── makeCollection.js # Коллекции на основе дат
+│   │   │   └── makeBENexCollection.js # Коллекция BENex
+│   │   ├── filters/          # Кастомные фильтры
+│   │   │   ├── index.js      # Регистрация фильтров
+│   │   │   ├── dateFilters.js # Фильтры для дат
+│   │   │   └── collectionFilters.js # Фильтры для коллекций
+│   │   ├── shortcodes/       # Shortcodes
+│   │   │   └── index.js      # Регистрация shortcodes
+│   │   └── globalData.js     # Глобальные данные
+│   │
 │   ├── _includes/             # Шаблоны Nunjucks
 │   │   ├── layouts/          # Базовые шаблоны
 │   │   │   └── base.njk      # Основной layout
@@ -236,7 +249,7 @@ yarn clear
 
 ### Этапы сборки
 
-1. **Before Build Hook** (`.eleventy.js:92`)
+1. **Before Build Hook** (`.eleventy.js`)
    - Выполняется `buildAssets()` из `build-assets.js`
    - Сборка JavaScript через esbuild
    - Сборка CSS через PostCSS
@@ -282,19 +295,21 @@ yarn clear
 
 ### Автоматические коллекции
 
-**Функция `makeCollection()`** (`.eleventy.js:11-31`):
+**Функция `makeCollection()`** (`src/eleventy/collections/makeCollection.js`):
 - Создает коллекции на основе папок (например, `newsByYear`)
 - Парсит дату из `fileSlug` используя dayjs
 - Валидирует формат даты `YYYY-MM-DD`
 - Группирует по годам из пути файла
 - Сортирует по дате (новые первыми через `unshift`)
+- Регистрируется через `registerCollections()` в `src/eleventy/collections/index.js`
 
-**Функция `makeBENexCollection()`** (`.eleventy.js:33-52`):
+**Функция `makeBENexCollection()`** (`src/eleventy/collections/makeBENexCollection.js`):
 - Создает коллекцию `benexByYear` для бюллетеней BENex
 - Фильтрует файлы с маской `BENex*.md`
 - Извлекает год из пути к папке (не из имени файла)
 - Группирует по годам
 - Сортирует файлы (новые первыми через `unshift`)
+- Регистрируется через `registerCollections()` в `src/eleventy/collections/index.js`
 
 **Пример использования:**
 ```nunjucks
@@ -328,9 +343,14 @@ yarn clear
 - **`.eleventy.js`** — основная конфигурация Eleventy
   - Настройка директорий (input, output, includes, data, layouts)
   - Регистрация плагинов
-  - Кастомные фильтры и shortcodes
-  - Создание коллекций
+  - Импорт и вызов функций регистрации из модулей `src/eleventy/`
   - Watch targets
+
+- **`src/eleventy/`** — модульная конфигурация Eleventy
+  - `collections/` — функции создания и регистрации коллекций
+  - `filters/` — кастомные фильтры для дат и коллекций
+  - `shortcodes/` — shortcodes (например, `version` для cache busting)
+  - `globalData.js` — регистрация глобальных данных
 
 - **`build-assets.js`** — сборка JS и CSS
   - Экспортирует функцию для хука `beforeBuild`
@@ -360,6 +380,12 @@ yarn clear
   - `meta.js` — метаданные сайта (siteName, getNewsDescription)
   - `eleventyComputed.js` — computed свойства (закомментирован)
 
+- **`src/eleventy/`** — модульная конфигурация Eleventy
+  - `collections/` — функции создания коллекций (`makeCollection`, `makeBENexCollection`)
+  - `filters/` — кастомные фильтры (`getHumanDate`, `getHumanDateWithYear`, `limit`, `getYears`, `getAllNews`)
+  - `shortcodes/` — shortcodes (`version`)
+  - `globalData.js` — глобальные данные (`getGlobalCurrentYear`)
+
 - **`src/assets/`** — статические ресурсы
   - `js/` — JavaScript исходники (собираются в bundle)
   - `styles/` — CSS исходники (обрабатываются PostCSS)
@@ -382,49 +408,51 @@ yarn clear
 - Фильтры и макросы
 - Условная логика и циклы
 
-**Поддерживаемые форматы** (`.eleventy.js:97`):
+**Поддерживаемые форматы** (`.eleventy.js`):
 - `.md` — Markdown (обрабатывается в HTML)
 - `.njk` — Nunjucks шаблоны
 - `.html` — HTML (passthrough или обработка)
 
 ### Плагины Eleventy
 
-1. **`@11ty/eleventy-navigation`** (`.eleventy.js:37`)
+1. **`@11ty/eleventy-navigation`** (`.eleventy.js`)
    - Иерархическая навигация
    - Используется в `eleventyNavigation` front matter
    - Пример: `pages/BENex/index.md:3-5`
 
-2. **`EleventyRenderPlugin`** (`.eleventy.js:40`)
+2. **`EleventyRenderPlugin`** (`.eleventy.js`)
    - Рендеринг файлов через `{% renderFile %}`
 
 ### Кастомные фильтры
 
-1. **`getHumanDate`** (`.eleventy.js:87-95`)
+Все фильтры находятся в `src/eleventy/filters/` и регистрируются через `registerFilters()`.
+
+1. **`getHumanDate`** (`src/eleventy/filters/dateFilters.js`)
    ```nunjucks
    {{ post.date | getHumanDate }}
    # Вывод: "11 февраля" (русская локализация)
    ```
 
-2. **`getHumanDateWithYear`** (`.eleventy.js:97-106`)
+2. **`getHumanDateWithYear`** (`src/eleventy/filters/dateFilters.js`)
    ```nunjucks
    {{ post.date | getHumanDateWithYear }}
    # Вывод: "11 февраля 2025" (русская локализация с годом)
    ```
 
-3. **`limit`** (`.eleventy.js:108-111`)
+3. **`limit`** (`src/eleventy/filters/collectionFilters.js`)
    ```nunjucks
    {{ collection | limit(5) }}
    # Ограничивает массив до 5 элементов
    ```
 
-4. **`getYears`** (`.eleventy.js:113-121`)
+4. **`getYears`** (`src/eleventy/filters/collectionFilters.js`)
    ```nunjucks
    {{ collections.benexByYear | getYears }}
    # Извлекает годы из коллекции и возвращает отсортированный массив
    # Используется для автоматической генерации архивов
    ```
 
-5. **`getAllNews`** (`.eleventy.js:123-135`)
+5. **`getAllNews`** (`src/eleventy/filters/collectionFilters.js`)
    ```nunjucks
    {{ collections.newsByYear | getAllNews }}
    # Объединяет все новости из всех лет в один массив
@@ -434,7 +462,7 @@ yarn clear
 
 ### Shortcodes
 
-**`version`** (`.eleventy.js:87-89`)
+**`version`** (`src/eleventy/shortcodes/index.js`)
 ```nunjucks
 {% version %}
 # Вывод: timestamp для cache busting
@@ -443,12 +471,12 @@ yarn clear
 
 ### Watch Targets
 
-**Автоматическая пересборка** (`.eleventy.js:94`):
+**Автоматическая пересборка** (`.eleventy.js`):
 - `./src/assets/` — изменения в JS/CSS/images триггерят пересборку
 
 ### Глобальные данные
 
-**`getGlobalCurrentYear`** (`.eleventy.js:81-84`)
+**`getGlobalCurrentYear`** (`src/eleventy/globalData.js`)
 ```nunjucks
 {{ getGlobalCurrentYear }}
 # Вывод: текущий год (строка)
@@ -456,7 +484,7 @@ yarn clear
 
 ### Quiet Mode
 
-**Уменьшение шума в консоли** (`.eleventy.js:35`):
+**Уменьшение шума в консоли** (`.eleventy.js`):
 - `setQuietMode(true)` — скрывает лишние сообщения
 
 ---
