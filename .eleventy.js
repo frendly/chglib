@@ -101,10 +101,15 @@ export default function (eleventyConfig) {
   }
   );
 
-  // TODO: фильтр для создания архива по годам
-  // eleventyConfig.addFilter("getYears", function (collection) {
-  //   return Object.keys(collection);
-  // });
+  // фильтр для создания архива по годам
+  // извлекает годы из коллекции и сортирует их по убыванию (новые первыми)
+  // @example {{ collections.benexByYear | getYears }}
+  eleventyConfig.addNunjucksFilter("getYears", function (collection) {
+    return Object.keys(collection || {})
+      .map(year => parseInt(year))
+      .sort((a, b) => a - b) // сортировка по убыванию (новые первыми)
+      .map(year => year.toString());
+  });
 
   // текущий год доступен глобально
   eleventyConfig.addGlobalData(

@@ -43,6 +43,7 @@
 - **Внешние платформы**: elibrary.ru, mathnet.ru
 - **Автоматическая группировка**: Коллекция `benexByYear` создается автоматически через `makeBENexCollection()`
 - **Автоматическая генерация**: Индексные страницы по годам генерируются автоматически через пагинацию (`BENex_by_years.njk`)
+- **Автоматический архив**: Архив по годам (`src/_includes/pages/BENex/_archive.njk`) генерируется автоматически на основе папок в `pages/BENex/` через фильтр `getYears`
 - **Логика главной страницы** (`pages/BENex/index.njk`): Компонент `_benex-list.njk` автоматически показывает бюллетени за предыдущий год, если за текущий год еще нет бюллетеней
 
 #### BNP — Новые поступления
@@ -60,6 +61,7 @@
 - **Важно**: Файлы должны иметь формат `YYYY-MM-DD.md` для автоматической обработки коллекций
 - **Пример**: `pages/news/2025/2025-01-15.md`
 - **Автоматическая группировка**: Коллекция `newsByYear` создается автоматически через `makeCollection()`
+- **Автоматический архив**: Архив по годам (`src/_includes/pages/news/_archive.njk`) генерируется автоматически на основе папок в `pages/news/` через фильтр `getYears`
 
 ### 2. Выставки (Exhibition Systems)
 
@@ -289,7 +291,7 @@ yarn clear
 - Сортирует файлы (новые первыми через `unshift`)
 
 **Пример использования:**
-```javascript
+```nunjucks
 // В шаблоне для новостей
 {% for year, posts in collections.newsByYear %}
   <h2>{{ year }}</h2>
@@ -302,6 +304,12 @@ yarn clear
 {% set posts = collections.benexByYear[year] %}
 {% for post in posts %}
   <a href="{{ post.url }}">{{ post.data.title }}</a>
+{% endfor %}
+
+// Автоматическая генерация архива по годам
+{% set years = collections.benexByYear | getYears %}
+{% for year in years %}
+  <a href="/BENex/{{ year }}/">{{ year }}</a>
 {% endfor %}
 ```
 
@@ -395,6 +403,13 @@ yarn clear
    ```nunjucks
    {{ collection | limit(5) }}
    # Ограничивает массив до 5 элементов
+   ```
+
+3. **`getYears`** (`.eleventy.js:104-112`)
+   ```nunjucks
+   {{ collections.benexByYear | getYears }}
+   # Извлекает годы из коллекции и возвращает отсортированный массив
+   # Используется для автоматической генерации архивов
    ```
 
 ### Shortcodes
