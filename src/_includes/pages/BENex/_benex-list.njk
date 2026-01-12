@@ -1,11 +1,25 @@
-{% if posts %}
-  <ul>
-    {% for post in posts %}
-      <li>
-        <a href="{{ post.url }}">{{ post.data.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
+{% if showMessage %}
   <p>Бюллетеней за этот год еще не появилось.</p>
+  {% if posts and posts.length > 0 %}
+    <h2>Бюллетени за {{ prevYear }}</h2>
+    <ul>
+      {% for post in posts %}
+        <li>
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% else %}
+  {% if posts and posts.length > 0 %}
+    <ul>
+      {% for post in posts %}
+        <li>
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Бюллетеней за этот год еще не появилось.</p>
+  {% endif %}
 {% endif %}
