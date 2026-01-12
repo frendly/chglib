@@ -1,11 +1,37 @@
-{% if posts %}
-  <ul>
-    {% for post in posts %}
-      <li>
-        <a href="{{ post.url }}">{{ post.data.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
+{##
+  Компонент отображения списка бюллетеней BENex
+  Параметры:
+  - posts: массив постов (обязательно)
+  - year: год (опционально, если не передан - просто показываем posts)
+  Если year передан и равен текущему году, и posts пуст - показываем предыдущий год
+##}
+{% set currentYear = getGlobalCurrentYear | int %}
+{% if year and year | int == currentYear and (not posts or posts.length == 0) %}
+  {# Показываем предыдущий год, если нет постов за текущий #}
   <p>Бюллетеней за этот год еще не появилось.</p>
+  {% set prevYear = (currentYear - 1) | string %}
+  {% set prevYearPosts = collections.benexByYear[prevYear] %}
+  {% if prevYearPosts and prevYearPosts.length > 0 %}
+    <h2>Бюллетени за {{ prevYear }}</h2>
+    <ul>
+      {% for post in prevYearPosts %}
+        <li>
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% else %}
+  {# Обычное отображение списка #}
+  {% if posts and posts.length > 0 %}
+    <ul>
+      {% for post in posts %}
+        <li>
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Бюллетеней за этот год еще не появилось.</p>
+  {% endif %}
 {% endif %}
