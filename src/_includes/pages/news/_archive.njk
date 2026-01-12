@@ -1,5 +1,9 @@
 <h2>Архив</h2>
 {% set years = collections.newsByYear | getYears %}
+{## Извлекаем год из текущего URL для определения активной ссылки ##}
+{%- set currentPath = page.url -%}
+{%- set currentYear = currentPath | replace("/news/", "") | replace("/", "") -%}
 {% for year in years %}
-<a href="/news/{{ year }}/">{{ year }}</a>
+{## Применяем класс active-link к ссылке, если её год совпадает с текущим годом из URL ##}
+<a href="/news/{{ year }}/"{% if year == currentYear %} class="active-link"{% endif %}>{{ year }}</a>
 {% endfor %}
