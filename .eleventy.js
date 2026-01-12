@@ -1,160 +1,32 @@
-import path from "path";
 import { EleventyRenderPlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
-import dayjs from 'dayjs';
 import buildAssets from "./build-assets.js";
-
-const now = String(Date.now());
-
-// создаем коллекции на основе папок
-// например newsByYear = { 2025: [{}], 2024: [{}], ... }
-const makeCollection = (collection, folderName) => {
-  const files = collection.getFilteredByGlob(`./pages/${folderName}/**/*.md`);
-  return files.reduce((years, post) => {
-    /**
-     * В коллекцию попадают только файлы с маской 'YYYY-MM-DD'
-     * - Проверяем валидность даты
-     */
-    const date = dayjs(post.fileSlug, 'YYYY-MM-DD', true);
-    if (!date.isValid()) {
-      return years;
-    }
-
-    const year = path.dirname(post.inputPath).split("/").pop();
-    if (!years[year]) years[year] = [];
-
-    // добавляем в начало
-    // years[year].push(post);
-    years[year].unshift(post);
-    return years;
-  }, {});
-};
-
-// создаем коллекцию для BENex на основе папок
-// например benexByYear = { 2025: [{}], 2024: [{}], ... }
-const makeBENexCollection = (collection, folderName) => {
-  const files = collection.getFilteredByGlob(`./pages/${folderName}/**/*.md`);
-  return files.reduce((years, post) => {
-    /**
-     * В коллекцию попадают только файлы с маской 'BENex*.md'
-     * - Извлекаем год из пути к папке
-     * - Сортируем файлы по имени (BENex01, BENex02, ...)
-     */
-    const fileName = path.basename(post.filePathStem);
-    if (!fileName.startsWith('BENex')) {
-      return years;
-    }
-
-    const year = path.dirname(post.inputPath).split("/").pop();
-    if (!years[year]) years[year] = [];
-
-    // добавляем в начало для обратного порядка (новые первыми)
-    years[year].unshift(post);
-    return years;
-  }, {});
-};
+import { registerCollections } from './src/eleventy/collections/index.js';
+import { registerFilters } from './src/eleventy/filters/index.js';
+import { registerShortcodes } from './src/eleventy/shortcodes/index.js';
+import { registerGlobalData } from './src/eleventy/globalData.js';
 
 export default function (eleventyConfig) {
-  // Enable quiet mode to reduce console noise
+  /** Enable quiet mode to reduce console noise */
   eleventyConfig.setQuietMode(true);
 
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
-  // https://www.11ty.dev/docs/plugins/render/#renderfile
+  /** https://www.11ty.dev/docs/plugins/render/#renderfile */
   eleventyConfig.addPlugin(EleventyRenderPlugin);
 
-  // Copy all images directly to dist.
+  /** Copy all images directly to dist. */
   eleventyConfig.addPassthroughCopy({ "src/assets/images": "/assets/images" });
-  // Copy robots.txt, etc to dist.
+  /** Copy robots.txt, etc to dist. */
   eleventyConfig.addPassthroughCopy({ "src/assets/static/*": "/" });
 
-  // папки для создания авто-коллекций
-  // @see makeCollection
-  const folders = ["news"];
-  folders.forEach((folderName) => {
-    eleventyConfig.addCollection(`${folderName}ByYear`, (collection) =>
-      makeCollection(collection, folderName)
-    );
-  });
+  /** Регистрация коллекций, фильтров, shortcodes и глобальных данных */
+  registerCollections(eleventyConfig);
+  registerFilters(eleventyConfig);
+  registerShortcodes(eleventyConfig);
+  registerGlobalData(eleventyConfig);
 
-  // коллекция для BENex (использует другую функцию, т.к. файлы не датированные)
-  eleventyConfig.addCollection("benexByYear", (collection) =>
-    makeBENexCollection(collection, "BENex")
-  );
-
-  // Отображаем дату в человеко-понятном виде, например 11 февраля
-  // @example {{ post.date | getHumanDate }}
-  eleventyConfig.addFilter("getHumanDate", function (dateObj) {
-    const date = new Date(dateObj);
-    const options = {
-      day: "2-digit",
-      month: "long",
-      locale: "ru-RU",
-    };
-    return date.toLocaleDateString("ru-RU", options);
-  });
-
-  // Отображаем дату в человеко-понятном виде с годом, например 11 февраля 2025
-  // @example {{ post.date | getHumanDateWithYear }}
-  eleventyConfig.addFilter("getHumanDateWithYear", function (dateObj) {
-    const date = new Date(dateObj);
-    const options = {
-      day: "2-digit",
-      month: "long",
-      year: "numeric",
-      locale: "ru-RU",
-    };
-    return date.toLocaleDateString("ru-RU", options);
-  });
-
-  // фильтр обрезает коллекцию
-  // @example {{ collection | limit(2) }}
-  eleventyConfig.addNunjucksFilter("limit", (array, limit) => {
-    return array?.slice(0, limit);
-  }
-  );
-
-  // фильтр для создания архива по годам
-  // извлекает годы из коллекции и сортирует их по убыванию (новые первыми)
-  // @example {{ collections.benexByYear | getYears }}
-  eleventyConfig.addNunjucksFilter("getYears", function (collection) {
-    return Object.keys(collection || {})
-      .map(year => parseInt(year))
-      .sort((a, b) => a - b) // сортировка по убыванию (новые первыми)
-      .map(year => year.toString());
-  });
-
-  // фильтр для получения всех новостей из всех лет
-  // объединяет новости из всех годов в один массив и сортирует по дате (новые первыми)
-  // @example {{ collections.newsByYear | getAllNews }}
-  eleventyConfig.addNunjucksFilter("getAllNews", function (newsByYear) {
-    if (!newsByYear || typeof newsByYear !== 'object') {
-      return [];
-    }
-
-    // объединяем все новости из всех лет в один массив
-    const allNews = Object.values(newsByYear).flat();
-
-    // сортируем по дате (новые первыми)
-    return allNews.sort((a, b) => {
-      const dateA = a.date ? new Date(a.date) : new Date(0);
-      const dateB = b.date ? new Date(b.date) : new Date(0);
-      return dateB - dateA; // сортировка по убыванию (новые первыми)
-    });
-  });
-
-  // текущий год доступен глобально
-  eleventyConfig.addGlobalData(
-    "getGlobalCurrentYear",
-    new Date().getFullYear().toString()
-  );
-
-  // Add cache busting with {% version %} time string
-  eleventyConfig.addShortcode("version", function () {
-    return now;
-  });
-
-  // Build JS and CSS assets
+  /** Build JS and CSS assets */
   eleventyConfig.on("beforeBuild", buildAssets);
 
   eleventyConfig.addWatchTarget("./src/assets/");
