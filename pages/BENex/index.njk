@@ -15,15 +15,6 @@ eleventyNavigation:
 Смена выставки производится по средам.
 
 {% set year = getGlobalCurrentYear | int %}
-{% set currentYearPosts = collections.benexByYear[year] %}
-{% if currentYearPosts and currentYearPosts.length > 0 %}
-  {% set posts = currentYearPosts %}
-  {% set showMessage = false %}
-  {% set prevYear = null %}
-{% else %}
-  {% set prevYear = (year - 1) | string %}
-  {% set posts = collections.benexByYear[prevYear] %}
-  {% set showMessage = true %}
-{% endif %}
+{% set posts = collections.benexByYear[year] %}
 {% include "pages/BENex/_benex-list.njk" %}
 {% include "pages/BENex/_archive.njk" %}
