@@ -4,9 +4,9 @@ import { EleventyRenderPlugin } from "@11ty/eleventy";
 // @ts-expect-error - Eleventy Navigation не предоставляет официальных типов TypeScript
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 
-import type { EleventyConfig, EleventyConfigReturn } from './src/types/eleventy';
+import type { EleventyConfig, EleventyConfigReturn } from '@/types/eleventy';
 import buildAssets from "./build-assets";
-import { registerCollections, registerFilters, registerShortcodes, registerGlobalData } from './src/eleventy';
+import { registerCollections, registerFilters, registerShortcodes, registerGlobalData } from '@/eleventy';
 
 export default function (eleventyConfig: EleventyConfig): EleventyConfigReturn {
   /** Enable quiet mode to reduce console noise */

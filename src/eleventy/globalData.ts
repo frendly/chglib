@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import type { EleventyConfig } from '../types/eleventy';
-import meta from '../_data/meta';
+import type { EleventyConfig } from '@/types/eleventy';
+import meta from '@/_data/meta';
 
 /**
  * Регистрирует глобальные данные в Eleventy

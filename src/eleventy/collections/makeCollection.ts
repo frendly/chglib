@@ -1,7 +1,7 @@
 import path from "path";
 import dayjs from 'dayjs';
-import type { EleventyCollection, EleventyCollectionItem } from '../../types/eleventy';
-import { DATE_FORMAT_ISO } from '../../const/dateFormats';
+import type { EleventyCollection, EleventyCollectionItem } from '@/types/eleventy';
+import { DATE_FORMAT_ISO } from '@/const/dateFormats';
 
 /**
  * Создает коллекции на основе папок

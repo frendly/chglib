@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru.js';
-import { DATE_FORMAT_HUMAN, DATE_FORMAT_HUMAN_WITH_YEAR } from '../../const/dateFormats';
+import { DATE_FORMAT_HUMAN, DATE_FORMAT_HUMAN_WITH_YEAR } from '@/const/dateFormats';
 
 dayjs.locale('ru');
 

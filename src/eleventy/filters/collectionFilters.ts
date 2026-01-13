@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import type { EleventyCollectionItem } from '../../types/eleventy';
+import type { EleventyCollectionItem } from '@/types/eleventy';
 
 /**
  * Фильтр обрезает коллекцию

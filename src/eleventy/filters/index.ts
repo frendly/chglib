@@ -1,4 +1,4 @@
-import type { EleventyConfig } from '../../types/eleventy';
+import type { EleventyConfig } from '@/types/eleventy';
 import { getHumanDate, getHumanDateWithYear } from './dateFilters';
 import { limit, getYears, getAllNews } from './collectionFilters';
 

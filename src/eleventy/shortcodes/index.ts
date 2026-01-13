@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import type { EleventyConfig } from '../../types/eleventy';
+import type { EleventyConfig } from '@/types/eleventy';
 
 const now = String(dayjs().valueOf());
 

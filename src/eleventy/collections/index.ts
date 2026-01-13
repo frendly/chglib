@@ -1,4 +1,4 @@
-import type { EleventyConfig } from '../../types/eleventy';
+import type { EleventyConfig } from '@/types/eleventy';
 import { makeCollection } from './makeCollection';
 import { makeBENexCollection } from './makeBENexCollection';
 
