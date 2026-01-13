@@ -20,6 +20,8 @@
 - **Архитектура**: Zero-storage directory service (курированные ссылки на внешние платформы, без хранения контента)
 - **Технологический стек**:
   - [Eleventy 3.0](https://www.11ty.dev/) — генератор статических сайтов
+  - [TypeScript 5.3+](https://www.typescriptlang.org/) — типизация кода
+  - [tsx](https://tsx.is/) — выполнение TypeScript файлов
   - Node.js >=20 (рекомендуется 22.x)
   - Yarn 1.22.22 — менеджер пакетов
   - [dayjs](https://day.js.org/) — работа с датами (замена нативного Date)
@@ -116,8 +118,9 @@
 
 ```
 chglib/
-├── .eleventy.js              # Конфигурация Eleventy
-├── build-assets.js           # Сборка JS/CSS (esbuild + PostCSS)
+├── .eleventy.ts              # Конфигурация Eleventy (TypeScript)
+├── build-assets.ts           # Сборка JS/CSS (esbuild + PostCSS)
+├── tsconfig.json             # Конфигурация TypeScript
 ├── postcss.config.cjs        # Конфигурация PostCSS
 ├── package.json              # Зависимости и скрипты
 ├── yarn.lock                 # Зафиксированные версии зависимостей
@@ -139,25 +142,29 @@ chglib/
 │
 ├── src/                      # Исходники
 │   ├── _data/                # Глобальные данные
-│   │   ├── meta.js           # Метаданные сайта
-│   │   ├── eleventyComputed.js # Computed данные
-│   │   └── getNewsDescription.js # Описания новостей
+│   │   ├── meta.ts           # Метаданные сайта
+│   │   ├── eleventyComputed.ts # Computed данные
+│   │   └── getNewsDescription.ts # Описания новостей
+│   │
+│   ├── types/                # TypeScript типы
+│   │   └── eleventy.d.ts     # Типы для Eleventy API
 │   │
 │   ├── const/                # Общие константы
-│   │   └── dateFormats.js   # Константы форматов дат для dayjs
+│   │   └── dateFormats.ts   # Константы форматов дат для dayjs
 │   │
 │   ├── eleventy/             # Конфигурация Eleventy (модули)
+│   │   ├── index.ts          # Общий экспорт всех функций регистрации
 │   │   ├── collections/      # Функции создания коллекций
-│   │   │   ├── index.js      # Регистрация коллекций
-│   │   │   ├── makeCollection.js # Коллекции на основе дат
-│   │   │   └── makeBENexCollection.js # Коллекция BENex
+│   │   │   ├── index.ts      # Регистрация коллекций
+│   │   │   ├── makeCollection.ts # Коллекции на основе дат
+│   │   │   └── makeBENexCollection.ts # Коллекция BENex
 │   │   ├── filters/          # Кастомные фильтры
-│   │   │   ├── index.js      # Регистрация фильтров
-│   │   │   ├── dateFilters.js # Фильтры для дат
-│   │   │   └── collectionFilters.js # Фильтры для коллекций
+│   │   │   ├── index.ts      # Регистрация фильтров
+│   │   │   ├── dateFilters.ts # Фильтры для дат
+│   │   │   └── collectionFilters.ts # Фильтры для коллекций
 │   │   ├── shortcodes/       # Shortcodes
-│   │   │   └── index.js      # Регистрация shortcodes
-│   │   └── globalData.js     # Глобальные данные
+│   │   │   └── index.ts      # Регистрация shortcodes
+│   │   └── globalData.ts     # Глобальные данные
 │   │
 │   ├── _includes/             # Шаблоны Nunjucks
 │   │   ├── layouts/          # Базовые шаблоны
@@ -199,7 +206,7 @@ yarn start
 # или
 yarn watch
 
-# Эквивалент: eleventy --serve --watch
+# Эквивалент: tsx node_modules/.bin/eleventy --config=.eleventy.ts --serve --watch
 ```
 
 **Что происходит:**
@@ -215,7 +222,7 @@ yarn watch
 # Production сборка
 yarn build
 
-# Эквивалент: NODE_ENV=production eleventy
+# Эквивалент: NODE_ENV=production tsx node_modules/.bin/eleventy --config=.eleventy.ts
 ```
 
 **Что происходит:**
@@ -253,8 +260,8 @@ yarn clear
 
 ### Этапы сборки
 
-1. **Before Build Hook** (`.eleventy.js`)
-   - Выполняется `buildAssets()` из `build-assets.js`
+1. **Before Build Hook** (`.eleventy.ts`)
+   - Выполняется `buildAssets()` из `build-assets.ts`
    - Сборка JavaScript через esbuild
    - Сборка CSS через PostCSS
 
@@ -268,7 +275,7 @@ yarn clear
    - Копирование изображений: `src/assets/images` → `dist/assets/images`
    - Копирование статических файлов: `src/assets/static/*` → `dist/`
 
-### Сборка JavaScript (`build-assets.js`)
+### Сборка JavaScript (`build-assets.ts`)
 
 ```javascript
 // Входная точка: src/assets/js/index.js
@@ -283,7 +290,7 @@ yarn clear
 - Target: ES6
 - Bundle: все зависимости объединяются в один файл
 
-### Сборка CSS (`build-assets.js`)
+### Сборка CSS (`build-assets.ts`)
 
 ```javascript
 // Входные файлы:
@@ -299,21 +306,21 @@ yarn clear
 
 ### Автоматические коллекции
 
-**Функция `makeCollection()`** (`src/eleventy/collections/makeCollection.js`):
+**Функция `makeCollection()`** (`src/eleventy/collections/makeCollection.ts`):
 - Создает коллекции на основе папок (например, `newsByYear`)
 - Парсит дату из `fileSlug` используя dayjs
 - Валидирует формат даты используя константу `DATE_FORMAT_ISO` из `src/const/dateFormats.js`
 - Группирует по годам из пути файла
 - Сортирует по дате (новые первыми через `unshift`)
-- Регистрируется через `registerCollections()` в `src/eleventy/collections/index.js`
+- Регистрируется через `registerCollections()` в `src/eleventy/collections/index.ts`
 
-**Функция `makeBENexCollection()`** (`src/eleventy/collections/makeBENexCollection.js`):
+**Функция `makeBENexCollection()`** (`src/eleventy/collections/makeBENexCollection.ts`):
 - Создает коллекцию `benexByYear` для бюллетеней BENex
 - Фильтрует файлы с маской `BENex*.md`
 - Извлекает год из пути к папке (не из имени файла)
 - Группирует по годам
 - Сортирует файлы (новые первыми через `unshift`)
-- Регистрируется через `registerCollections()` в `src/eleventy/collections/index.js`
+- Регистрируется через `registerCollections()` в `src/eleventy/collections/index.ts`
 
 **Пример использования:**
 ```nunjucks
@@ -344,19 +351,31 @@ yarn clear
 
 ### Конфигурационные файлы
 
-- **`.eleventy.js`** — основная конфигурация Eleventy
+- **`.eleventy.ts`** — основная конфигурация Eleventy (TypeScript)
   - Настройка директорий (input, output, includes, data, layouts)
   - Регистрация плагинов
-  - Импорт и вызов функций регистрации из модулей `src/eleventy/`
+  - Импорт и вызов функций регистрации из модулей `src/eleventy/` через общий экспорт
   - Watch targets
+  - Использует `tsx/esm` для поддержки TypeScript data файлов
+
+- **`tsconfig.json`** — конфигурация TypeScript
+  - `moduleResolution: "bundler"` — позволяет импортировать без расширений `.js`
+  - `noEmit: true` — tsx выполняет TypeScript напрямую
+  - `strict: true` — строгая проверка типов
+
+- **`src/types/eleventy.d.ts`** — типы для Eleventy API
+  - Интерфейсы `EleventyConfig`, `EleventyCollection`, `EleventyCollectionItem`
+  - Объявления модулей для `@11ty/eleventy` и `@11ty/eleventy-navigation`
+  - Eleventy не предоставляет официальных типов, поэтому используются собственные
 
 - **`src/eleventy/`** — модульная конфигурация Eleventy
+  - `index.ts` — общий экспорт всех функций регистрации
   - `collections/` — функции создания и регистрации коллекций
   - `filters/` — кастомные фильтры для дат и коллекций
   - `shortcodes/` — shortcodes (например, `version` для cache busting)
-  - `globalData.js` — регистрация глобальных данных
+  - `globalData.ts` — регистрация глобальных данных
 
-- **`build-assets.js`** — сборка JS и CSS
+- **`build-assets.ts`** — сборка JS и CSS
   - Экспортирует функцию для хука `beforeBuild`
   - Параллельная сборка через async/await
 
@@ -381,17 +400,20 @@ yarn clear
 
 - **`src/_data/`** — глобальные данные
   - Доступны во всех шаблонах
-  - `meta.js` — метаданные сайта (siteName, getNewsDescription)
-  - `eleventyComputed.js` — computed свойства (закомментирован)
+  - `meta.ts` — метаданные сайта (siteName, getNewsDescription)
+  - `eleventyComputed.ts` — computed свойства
+  - `getNewsDescription.ts` — функция получения описаний новостей
+  - **Важно**: TypeScript файлы из `_data/` не загружаются автоматически Eleventy, поэтому `meta` регистрируется через `addGlobalData()` в `globalData.ts`
 
 - **`src/const/`** — общие константы
-  - `dateFormats.js` — константы форматов дат для dayjs (используются в Eleventy и frontend)
+  - `dateFormats.ts` — константы форматов дат для dayjs (используются в Eleventy и frontend)
 
 - **`src/eleventy/`** — модульная конфигурация Eleventy
+  - `index.ts` — общий экспорт всех функций регистрации
   - `collections/` — функции создания коллекций (`makeCollection`, `makeBENexCollection`)
   - `filters/` — кастомные фильтры (`getHumanDate`, `getHumanDateWithYear`, `limit`, `getYears`, `getAllNews`)
   - `shortcodes/` — shortcodes (`version`)
-  - `globalData.js` — глобальные данные (`getGlobalCurrentYear`)
+  - `globalData.ts` — глобальные данные (`getGlobalCurrentYear`, `meta`)
 
 - **`src/assets/`** — статические ресурсы
   - `js/` — JavaScript исходники (собираются в bundle)
@@ -415,26 +437,28 @@ yarn clear
 - Фильтры и макросы
 - Условная логика и циклы
 
-**Поддерживаемые форматы** (`.eleventy.js`):
+**Поддерживаемые форматы** (`.eleventy.ts`):
 - `.md` — Markdown (обрабатывается в HTML)
 - `.njk` — Nunjucks шаблоны
 - `.html` — HTML (passthrough или обработка)
 
 ### Плагины Eleventy
 
-1. **`@11ty/eleventy-navigation`** (`.eleventy.js`)
+1. **`@11ty/eleventy-navigation`** (`.eleventy.ts`)
    - Иерархическая навигация
    - Используется в `eleventyNavigation` front matter
    - Пример: `pages/BENex/index.md:3-5`
 
-2. **`EleventyRenderPlugin`** (`.eleventy.js`)
+2. **`EleventyRenderPlugin`** (`.eleventy.ts`)
    - Рендеринг файлов через `{% renderFile %}`
+   - Позволяет рендерить содержимое других файлов (.md, .njk, .html) внутри шаблонов
+   - Используется в `pages/libweb/resbnc/index.njk` для вставки Markdown файлов
 
 ### Кастомные фильтры
 
 Все фильтры находятся в `src/eleventy/filters/` и регистрируются через `registerFilters()`.
 
-1. **`getHumanDate`** (`src/eleventy/filters/dateFilters.js`)
+1. **`getHumanDate`** (`src/eleventy/filters/dateFilters.ts`)
    ```nunjucks
    {{ post.date | getHumanDate }}
    # Вывод: "11 февраля" (русская локализация)
@@ -442,7 +466,7 @@ yarn clear
    - Использует dayjs с русской локализацией
    - Формат: `DATE_FORMAT_HUMAN` из `src/const/dateFormats.js`
 
-2. **`getHumanDateWithYear`** (`src/eleventy/filters/dateFilters.js`)
+2. **`getHumanDateWithYear`** (`src/eleventy/filters/dateFilters.ts`)
    ```nunjucks
    {{ post.date | getHumanDateWithYear }}
    # Вывод: "11 февраля 2025" (русская локализация с годом)
@@ -450,20 +474,20 @@ yarn clear
    - Использует dayjs с русской локализацией
    - Формат: `DATE_FORMAT_HUMAN_WITH_YEAR` из `src/const/dateFormats.js`
 
-3. **`limit`** (`src/eleventy/filters/collectionFilters.js`)
+3. **`limit`** (`src/eleventy/filters/collectionFilters.ts`)
    ```nunjucks
    {{ collection | limit(5) }}
    # Ограничивает массив до 5 элементов
    ```
 
-4. **`getYears`** (`src/eleventy/filters/collectionFilters.js`)
+4. **`getYears`** (`src/eleventy/filters/collectionFilters.ts`)
    ```nunjucks
    {{ collections.benexByYear | getYears }}
    # Извлекает годы из коллекции и возвращает отсортированный массив
    # Используется для автоматической генерации архивов
    ```
 
-5. **`getAllNews`** (`src/eleventy/filters/collectionFilters.js`)
+5. **`getAllNews`** (`src/eleventy/filters/collectionFilters.ts`)
    ```nunjucks
    {{ collections.newsByYear | getAllNews }}
    # Объединяет все новости из всех лет в один массив
@@ -474,7 +498,7 @@ yarn clear
 
 ### Shortcodes
 
-**`version`** (`src/eleventy/shortcodes/index.js`)
+**`version`** (`src/eleventy/shortcodes/index.ts`)
 ```nunjucks
 {% version %}
 # Вывод: timestamp для cache busting
@@ -485,12 +509,12 @@ yarn clear
 
 ### Watch Targets
 
-**Автоматическая пересборка** (`.eleventy.js`):
+**Автоматическая пересборка** (`.eleventy.ts`):
 - `./src/assets/` — изменения в JS/CSS/images триггерят пересборку
 
 ### Глобальные данные
 
-**`getGlobalCurrentYear`** (`src/eleventy/globalData.js`)
+**`getGlobalCurrentYear`** и **`meta`** (`src/eleventy/globalData.ts`)
 ```nunjucks
 {{ getGlobalCurrentYear }}
 # Вывод: текущий год (строка)
@@ -499,8 +523,17 @@ yarn clear
 
 ### Quiet Mode
 
-**Уменьшение шума в консоли** (`.eleventy.js`):
+**Уменьшение шума в консоли** (`.eleventy.ts`):
 - `setQuietMode(true)` — скрывает лишние сообщения
+
+### TypeScript поддержка
+
+**Использование TypeScript в проекте**:
+- Все файлы конфигурации и модули Eleventy переведены на TypeScript
+- Используется `tsx` для выполнения TypeScript файлов
+- Импорты работают без расширений `.js` благодаря `moduleResolution: "bundler"`
+- Типы для Eleventy API определены в `src/types/eleventy.d.ts` (Eleventy не предоставляет официальных типов)
+- TypeScript data файлы из `src/_data/` регистрируются через `addGlobalData()` в `globalData.ts`
 
 ---
 
@@ -655,12 +688,16 @@ eleventyNavigation:
 
 1. **Актуализация документации**: **КРИТИЧЕСКИ ВАЖНО** — при внесении любых изменений в проект (новые фильтры, функции, изменение логики, структуры файлов и т.д.) необходимо **всегда обновлять CURSOR.md**, чтобы AI всегда знал актуальное состояние проекта. Это обеспечивает корректную работу AI-ассистента с кодом.
 2. **Node.js версия**: Требуется >=20 (рекомендуется 22.x, указано в `.nvmrc`)
-3. **Yarn версия**: Зафиксирована в `package.json:35` (1.22.22)
-4. **Работа с датами**: Проект использует **dayjs** вместо нативного JavaScript Date. Все форматы дат вынесены в константы в `src/const/dateFormats.js`
-5. **Формат дат**: Новости должны иметь формат `YYYY-MM-DD.md` для автоматической обработки (используется константа `DATE_FORMAT_ISO`)
-6. **LEGACY папка**: `src/LEGACY/` не используется в сборке, только для справки
-7. **Production сборка**: Всегда использует `NODE_ENV=production` для минификации
-8. **Watch режим**: Автоматически отслеживает изменения в `src/assets/`
+3. **Yarn версия**: Зафиксирована в `package.json` (1.22.22)
+4. **TypeScript**: Проект полностью переведен на TypeScript. Все файлы конфигурации и модули используют `.ts` расширение.
+5. **Импорты**: Благодаря `moduleResolution: "bundler"` в `tsconfig.json`, импорты работают без расширений `.js`
+6. **Работа с датами**: Проект использует **dayjs** вместо нативного JavaScript Date. Все форматы дат вынесены в константы в `src/const/dateFormats.ts`
+7. **Формат дат**: Новости должны иметь формат `YYYY-MM-DD.md` для автоматической обработки (используется константа `DATE_FORMAT_ISO`)
+8. **TypeScript data файлы**: Файлы из `src/_data/*.ts` не загружаются автоматически Eleventy, поэтому данные регистрируются через `addGlobalData()` в `globalData.ts`
+9. **LEGACY папка**: `src/LEGACY/` не используется в сборке, только для справки
+10. **Production сборка**: Всегда использует `NODE_ENV=production` для минификации
+11. **Watch режим**: Автоматически отслеживает изменения в `src/assets/`
+12. **Layout файлы**: Используется только `src/_includes/layouts/base.njk`, дублирующий файл `src/_includes/base.njk` удален
 
 ---
 
@@ -686,5 +723,6 @@ eleventyNavigation:
 
 ---
 
-*Последнее обновление: 2025-01-XX*
-*Версия документации: 1.0*
+*Последнее обновление: 2025-01-12*
+*Версия документации: 2.0*
+*Версия проекта: 4.0.0 (TypeScript)*

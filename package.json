@@ -1,7 +1,7 @@
 {
   "name": "chglib",
-  "version": "3.0.0",
-  "main": ".eleventy.js",
+  "version": "4.0.0",
+  "main": ".eleventy.ts",
   "type": "module",
   "repository": "git@github.com:frendly/chglib.git",
   "author": "frendly <www.zpdf@mail.ru>",
@@ -12,14 +12,16 @@
   "scripts": {
     "clear": "rm -rf ./dist",
     "start": "yarn watch",
-    "watch": "yarn clear && eleventy --serve --watch",
-    "build": "yarn clear && NODE_ENV=production eleventy",
+    "watch": "yarn clear && tsx node_modules/.bin/eleventy --config=.eleventy.ts --serve --watch",
+    "build": "yarn clear && NODE_ENV=production tsx node_modules/.bin/eleventy --config=.eleventy.ts",
+    "typecheck": "tsc --noEmit",
     "deploy": "yarn build && yarn transfer",
     "transfer": "env-cmd -x rsync -az ./dist/ \\$SSH_HOST:\\$SSH_PATH"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@11ty/eleventy-navigation": "^0.3.5",
+    "@types/node": "^20.0.0",
     "env-cmd": "^10.1.0",
     "esbuild": "^0.25.0",
     "esbuild-yaml": "^2.0.0",
@@ -27,7 +29,9 @@
     "postcss-cli": "^11.0.1",
     "postcss-custom-media": "^10.0.4",
     "postcss-import": "^16.1.0",
-    "postcss-preset-env": "^10.2.0"
+    "postcss-preset-env": "^10.2.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
   },
   "dependencies": {
     "dayjs": "^1.11.6"

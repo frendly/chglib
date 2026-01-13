@@ -1,18 +1,26 @@
+import "tsx/esm";
+// @ts-expect-error - Eleventy не предоставляет официальных типов TypeScript
 import { EleventyRenderPlugin } from "@11ty/eleventy";
+// @ts-expect-error - Eleventy Navigation не предоставляет официальных типов TypeScript
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
-import buildAssets from "./build-assets.js";
-import { registerCollections } from './src/eleventy/collections/index.js';
-import { registerFilters } from './src/eleventy/filters/index.js';
-import { registerShortcodes } from './src/eleventy/shortcodes/index.js';
-import { registerGlobalData } from './src/eleventy/globalData.js';
 
-export default function (eleventyConfig) {
+import type { EleventyConfig, EleventyConfigReturn } from '@/types/eleventy';
+import buildAssets from "./build-assets";
+import { registerCollections, registerFilters, registerShortcodes, registerGlobalData } from '@/eleventy';
+
+export default function (eleventyConfig: EleventyConfig): EleventyConfigReturn {
   /** Enable quiet mode to reduce console noise */
   eleventyConfig.setQuietMode(true);
 
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
-  /** https://www.11ty.dev/docs/plugins/render/#renderfile */
+  /**
+   * EleventyRenderPlugin добавляет поддержку тега {% renderFile %} в Nunjucks шаблонах.
+   * Позволяет рендерить содержимое других файлов (.md, .njk, .html) внутри шаблонов
+   * с обработкой front matter и шаблонизацией.
+   * Используется в pages/libweb/resbnc/index.njk для вставки Markdown файлов.
+   * @see https://www.11ty.dev/docs/plugins/render/#renderfile
+   */
   eleventyConfig.addPlugin(EleventyRenderPlugin);
 
   /** Copy all images directly to dist. */
@@ -41,4 +49,4 @@ export default function (eleventyConfig) {
       layouts: "../src/_includes/layouts",
     },
   };
-};
+}
