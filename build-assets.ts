@@ -54,8 +54,10 @@ export default async (): Promise<void> => {
     console.log(`Проложение запущено в окружении: ${isProduction ? 'production' : 'development'}`);
 
     try {
-        await buildJavaScript(isProduction);
-        await buildStyles(isProduction);
+      await Promise.all([
+        buildJavaScript(isProduction),
+        buildStyles(isProduction),
+      ]);
         console.log('✅ CSS и JS файлы собраны корректно.');
     } catch (e) {
         console.error('Overall build failed:', e);
