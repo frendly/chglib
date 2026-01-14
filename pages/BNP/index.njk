@@ -1,0 +1,23 @@
+---
+title: Выставка новых поступлений
+permalink: "/BNP/"
+eleventyNavigation:
+  key: Новые поступления
+  order: 4
+---
+
+{##
+⚠️ ВНИМАНИЕ!
+Этот файл генерирует страницу бюллетеней BNP автоматически.
+Чтобы добавить бюллетень, создайте файл с именем bnpNN.md в соответствующей папке года, пример: pages/BNP/2025/bnp01.md
+##}
+
+Смена выставки производится по четвергам.
+
+{% set year = getGlobalCurrentYear | int %}
+{% set posts = collections.bnpByYear[year] %}
+{% include "pages/BNP/_bnp-list.njk" %}
+
+Информацию о более ранних поступлениях ищите в <a href="https://koha.benran.ru/"> электронном каталоге </a>
+
+{% include "pages/BNP/_archive.njk" %}
