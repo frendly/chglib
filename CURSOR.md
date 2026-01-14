@@ -1,728 +1,366 @@
-# CURSOR.md - Документация проекта chglib
+# CURSOR.md - Project Documentation
 
-Этот файл содержит полную документацию проекта для помощи Cursor AI в понимании структуры, архитектуры и процессов разработки.
+Project documentation for Cursor AI to understand structure, architecture, and development processes.
 
-> 📚 Дополнительная документация: [DeepWiki](https://deepwiki.com/frendly/chglib) | [GitHub Wiki](https://github.com/frendly/chglib/wiki)
+> 📚 Additional docs: [DeepWiki](https://deepwiki.com/frendly/chglib) | [GitHub Wiki](https://github.com/frendly/chglib/wiki)
 
-> ⚠️ **Важно**: Все ответы и комментарии должны быть на русском языке.
+> ⚠️ **Important**: All responses and comments must be in Russian.
 
-> 🔄 **Критически важно**: При внесении любых изменений в проект (добавление новых фильтров, изменение логики, обновление структуры и т.д.) необходимо **всегда актуализировать этот файл CURSOR.md**, чтобы AI всегда знал актуальное состояние проекта и мог корректно работать с кодом.
-
----
-
-## 📋 Обзор проекта
-
-**chglib** — статический сайт для **Библиотеки по естественным наукам Российской академии наук (БЕН РАН)** в Черноголовке.
-
-### Ключевые характеристики
-
-- **Тип проекта**: JAMstack статический сайт
-- **Архитектура**: Zero-storage directory service (курированные ссылки на внешние платформы, без хранения контента)
-- **Технологический стек**:
-  - [Eleventy 3.0](https://www.11ty.dev/) — генератор статических сайтов
-  - [TypeScript 5.3+](https://www.typescriptlang.org/) — типизация кода
-  - [tsx](https://tsx.is/) — выполнение TypeScript файлов
-  - Node.js >=20 (рекомендуется 22.x)
-  - Yarn 1.22.22 — менеджер пакетов
-  - [dayjs](https://day.js.org/) — работа с датами (замена нативного Date)
-  - esbuild — сборка JavaScript
-  - PostCSS — обработка CSS
-- **Репозиторий**: `git@github.com:frendly/chglib.git`
-
-### Назначение
-
-Сайт предоставляет исследователям и сотрудникам доступ к научной литературе через четыре основные системы контента и три системы доступа к ресурсам. Все ссылки ведут на внешние платформы (elibrary.ru, mathnet.ru, koha.benran.ru и др.), сам сайт не хранит контент.
+> 🔄 **Critical**: Always update this file when making changes (filters, logic, structure, etc.) so AI knows the current state.
 
 ---
 
-## 🗂️ Основные системы контента
+## 📋 Overview
 
-### 1. Бюллетени (Bulletin Systems)
+**chglib** — static site for **Library of Natural Sciences RAS (BEN RAS)** in Chernogolovka.
 
-#### BENex — Выставки иностранных журналов
-- **Расположение**: `pages/BENex/YYYY/*.md`
-- **Расписание обновлений**: Каждую среду
-- **Формат файлов**: Markdown → HTML (обрабатываются Eleventy)
-- **Структура**: `BENexNN.md` где NN = 01-21 (номер бюллетеня)
-- **Пример**: `pages/BENex/2025/BENex04.md`
-- **Внешние платформы**: elibrary.ru, mathnet.ru
-- **Автоматическая группировка**: Коллекция `benexByYear` создается автоматически через `makeBENexCollection()`
-- **Автоматическая генерация**: Индексные страницы по годам генерируются автоматически через пагинацию (`BENex_by_years.njk`)
-- **Автоматический архив**: Архив по годам (`src/_includes/pages/BENex/_archive.njk`) генерируется автоматически на основе папок в `pages/BENex/` через фильтр `getYears`
-- **Логика главной страницы** (`pages/BENex/index.njk`): Компонент `_benex-list.njk` автоматически показывает бюллетени за предыдущий год, если за текущий год еще нет бюллетеней
+**Type**: JAMstack static site
+**Architecture**: Zero-storage directory service (curated links to external platforms, no content storage)
+**Stack**: Eleventy 3.0, TypeScript 5.3+, tsx, Node.js >=20 (22.x recommended), Yarn 1.22.22, dayjs, esbuild, PostCSS
+**Repo**: `git@github.com:frendly/chglib.git`
 
-#### BNP — Новые поступления
-- **Расположение**: `pages/BNP/YYYY/*.html`
-- **Расписание обновлений**: Каждый четверг
-- **Формат файлов**: HTML (passthrough)
-- **Структура**: `bnpNN.html` где NN = 01-10
-- **Пример**: `pages/BNP/2025/bnp08.html`
-- **Внешние платформы**: koha.benran.ru (электронный каталог), icp.ac.ru (диссертации)
-
-#### News — Новости и объявления
-- **Расположение**: `pages/news/YYYY/*.md`
-- **Расписание обновлений**: По необходимости
-- **Формат файлов**: Markdown → HTML (обрабатываются Eleventy)
-- **Важно**: Файлы должны иметь формат `YYYY-MM-DD.md` для автоматической обработки коллекций
-- **Пример**: `pages/news/2025/2025-01-15.md`
-- **Автоматическая группировка**: Коллекция `newsByYear` создается автоматически через `makeCollection()`
-- **Автоматический архив**: Архив по годам (`src/_includes/pages/news/_archive.njk`) генерируется автоматически на основе папок в `pages/news/` через фильтр `getYears`
-- **Логика главной страницы** (`pages/index.njk`):
-  - Если в текущем году есть новости — показываются две последние новости текущего года без года в заголовке (например, "13 февраля")
-  - Если в текущем году новостей нет — показываются две последние новости из всех лет с годом в заголовке (например, "13 февраля 2025")
-  - Использует фильтры `getAllNews` для объединения всех новостей и условную логику для показа года
-
-### 2. Выставки (Exhibition Systems)
-
-#### SubjEx — Тематические выставки
-- **Расположение**: `pages/subjex/`
-- **Типы выставок**:
-  - По учреждениям (институты)
-  - По личностям (юбилеи)
-  - По темам (научные области)
-- **Обновления**: Ежемесячно/периодически
-
-### 3. Системы доступа к ресурсам
-
-#### Electronic Reading Room (Электронный читальный зал)
-- **Расположение**: `pages/resbnc/index.html`
-- **Назначение**: Постоянный доступ к базам данных и e-журналам
-- **Клиентское улучшение**: `resbncBbTable.js` — адаптивные таблицы
-
-#### Test Access Portal (Пробный доступ)
-- **Расположение**: `pages/restmp/index.html`
-- **Назначение**: Пробные подписки к платформам издателей
-- **Клиентское улучшение**: `openLinksInPortal.js` — модальные окна для внешних ссылок
-
-#### Electronic Catalog (Электронный каталог)
-- **Расположение**: `pages/ec/index.html`
-- **Назначение**: Алфавитная навигация по фондам библиотеки
-- **Клиентское улучшение**: `elcatToggleList.js` — раскрывающиеся списки журналов с поддержкой DOM Mutation Observer
+Provides access to scientific literature via 4 content systems and 3 resource access systems. All links point to external platforms (elibrary.ru, mathnet.ru, koha.benran.ru, etc.).
 
 ---
 
-## 🔗 Интеграция с внешними платформами
+## 🗂️ Content Systems
 
-Проект работает как куратор ссылок на внешние платформы. Основные интеграции:
+### 1. Bulletins
 
-| Платформа | Паттерн ссылок | Пример использования | Назначение |
-|-----------|----------------|---------------------|------------|
-| **elibrary.ru** | `contents.asp?id=XXXXX` | BENex бюллетени | Содержание журналов |
-| **mathnet.ru** | `archive.phtml?jrnid=rm&volume=...` | BENex математические журналы | Архив математических журналов |
-| **koha.benran.ru** | `opac-detail.pl?biblionumber=XXXXX` | BNP новые поступления | Записи каталога книг |
-| **icp.ac.ru** | `/DISS/AuthorName/Disser_*.pdf` | BNP диссертации | Полные тексты диссертаций |
+#### BENex — Foreign Journal Exhibitions
+- **Path**: `pages/BENex/YYYY/*.md`
+- **Update**: Every Wednesday
+- **Format**: Markdown → HTML (Eleventy)
+- **Naming**: `BENexNN.md` (NN = 01-21)
+- **Platforms**: elibrary.ru, mathnet.ru
+- **Auto-collection**: `benexByYear` via `makeBENexCollection()`
+- **Auto-pages**: Yearly index pages via pagination (`BENex_by_years.njk`)
+- **Auto-archive**: Year archive via `getYears` filter
+- **Homepage logic**: Shows previous year if current year has no bulletins
+
+#### BNP — New Arrivals
+- **Path**: `pages/BNP/YYYY/*.html`
+- **Update**: Every Thursday
+- **Format**: HTML (passthrough)
+- **Naming**: `bnpNN.html` (NN = 01-10)
+- **Platforms**: koha.benran.ru, icp.ac.ru
+
+#### News — News & Announcements
+- **Path**: `pages/news/YYYY/*.md`
+- **Format**: `YYYY-MM-DD.md` (required for auto-processing)
+- **Auto-collection**: `newsByYear` via `makeCollection()`
+- **Auto-archive**: Year archive via `getYears` filter
+- **Homepage logic** (`pages/index.njk`):
+  - Current year has news → show 2 latest from current year (no year in title)
+  - No current year news → show 2 latest from all years (with year in title)
+  - Uses `getAllNews` filter
+
+### 2. Exhibitions
+
+#### SubjEx — Thematic Exhibitions
+- **Path**: `pages/subjex/`
+- **Types**: By institutions, by personalities (anniversaries), by topics
+- **Update**: Monthly/periodically
+
+### 3. Resource Access Systems
+
+- **Electronic Reading Room** (`pages/resbnc/index.html`): Permanent DB/e-journal access. JS: `resbncBbTable.js` (responsive tables)
+- **Test Access Portal** (`pages/restmp/index.html`): Trial subscriptions. JS: `openLinksInPortal.js` (modal windows)
+- **Electronic Catalog** (`pages/ec/index.html`): Alphabetical navigation. JS: `elcatToggleList.js` (expandable lists with Mutation Observer)
 
 ---
 
-## 📁 Структура проекта
+## 🔗 External Platform Integration
+
+| Platform | Link Pattern | Usage | Purpose |
+|----------|-------------|-------|---------|
+| elibrary.ru | `contents.asp?id=XXXXX` | BENex | Journal contents |
+| mathnet.ru | `archive.phtml?jrnid=rm&volume=...` | BENex | Math journal archive |
+| koha.benran.ru | `opac-detail.pl?biblionumber=XXXXX` | BNP | Book catalog records |
+| icp.ac.ru | `/DISS/AuthorName/Disser_*.pdf` | BNP | Dissertation PDFs |
+
+---
+
+## 📁 Project Structure
 
 ```
 chglib/
-├── .eleventy.ts              # Конфигурация Eleventy (TypeScript)
-├── build-assets.ts           # Сборка JS/CSS (esbuild + PostCSS)
-├── tsconfig.json             # Конфигурация TypeScript
-├── postcss.config.cjs        # Конфигурация PostCSS
-├── package.json              # Зависимости и скрипты
-├── yarn.lock                 # Зафиксированные версии зависимостей
+├── .eleventy.ts              # Eleventy config (TS)
+├── build-assets.ts           # JS/CSS build (esbuild + PostCSS)
+├── tsconfig.json             # TS config
+├── postcss.config.cjs        # PostCSS config
+├── package.json, yarn.lock
 │
-├── pages/                    # Исходные страницы (контент)
-│   ├── BENex/                # Выставки журналов
-│   ├── BNP/                  # Новые поступления
-│   ├── news/                 # Новости (Markdown)
-│   ├── subjex/               # Тематические выставки
-│   ├── ec/                   # Электронный каталог
-│   ├── resbnc/               # Электронный читальный зал
-│   ├── restmp/               # Пробный доступ
-│   ├── libweb/               # Дополнительные ресурсы
-│   ├── more/                 # Дополнительные страницы
-│   ├── about/                # О библиотеке
-│   ├── contacts/             # Контакты
-│   ├── index.njk             # Главная страница
-│   └── pages.json            # Глобальные настройки страниц
+├── pages/                    # Source pages
+│   ├── BENex/                # Journal exhibitions
+│   ├── BNP/                  # New arrivals
+│   ├── news/                 # News (Markdown)
+│   ├── subjex/               # Thematic exhibitions
+│   ├── ec/                   # Electronic catalog
+│   ├── resbnc/               # Reading room
+│   ├── restmp/               # Test access
+│   ├── libweb/               # Additional resources
+│   ├── more/                 # Additional pages
+│   ├── about/, contacts/
+│   ├── index.njk             # Homepage
+│   └── pages.json
 │
-├── src/                      # Исходники
-│   ├── _data/                # Глобальные данные
-│   │   ├── meta.ts           # Метаданные сайта
-│   │   ├── eleventyComputed.ts # Computed данные
-│   │   └── getNewsDescription.ts # Описания новостей
-│   │
-│   ├── types/                # TypeScript типы
-│   │   └── eleventy.d.ts     # Типы для Eleventy API
-│   │
-│   ├── const/                # Общие константы
-│   │   └── dateFormats.ts   # Константы форматов дат для dayjs
-│   │
-│   ├── eleventy/             # Конфигурация Eleventy (модули)
-│   │   ├── index.ts          # Общий экспорт всех функций регистрации
-│   │   ├── collections/      # Функции создания коллекций
-│   │   │   ├── index.ts      # Регистрация коллекций
-│   │   │   ├── makeCollection.ts # Коллекции на основе дат
-│   │   │   └── makeBENexCollection.ts # Коллекция BENex
-│   │   ├── filters/          # Кастомные фильтры
-│   │   │   ├── index.ts      # Регистрация фильтров
-│   │   │   ├── dateFilters.ts # Фильтры для дат
-│   │   │   └── collectionFilters.ts # Фильтры для коллекций
-│   │   ├── shortcodes/       # Shortcodes
-│   │   │   └── index.ts      # Регистрация shortcodes
-│   │   └── globalData.ts     # Глобальные данные
-│   │
-│   ├── _includes/             # Шаблоны Nunjucks
-│   │   ├── layouts/          # Базовые шаблоны
-│   │   │   └── base.njk      # Основной layout
-│   │   ├── components/       # Компоненты
-│   │   │   ├── nav.njk       # Навигация
-│   │   │   ├── head.njk      # <head> секция
-│   │   │   ├── footer.njk    # Подвал
-│   │   │   ├── critical_css.njk # Критический CSS
-│   │   │   └── counters/     # Счетчики аналитики
-│   │   └── pages/            # Шаблоны страниц
-│   │       └── news/         # Шаблоны новостей
-│   │
-│   └── assets/               # Статические ресурсы
-│       ├── js/               # JavaScript исходники
-│       │   └── index.js     # Главный JS файл
-│       ├── styles/          # CSS исходники
-│       │   ├── index.css    # Основные стили
-│       │   └── critical.css # Критический CSS
-│       ├── images/          # Изображения
-│       └── static/          # Статические файлы
-│           ├── robots.txt
-│           ├── sitemap.xml
-│           └── favicon.ico
+├── src/
+│   ├── _data/                # Global data
+│   │   ├── meta.ts           # Site metadata
+│   │   ├── eleventyComputed.ts
+│   │   └── getNewsDescription.ts
+│   ├── types/eleventy.d.ts   # Eleventy API types
+│   ├── const/dateFormats.ts  # dayjs format constants
+│   ├── eleventy/             # Eleventy modules
+│   │   ├── index.ts          # Export all registrations
+│   │   ├── collections/      # Collection creators
+│   │   │   ├── index.ts
+│   │   │   ├── makeCollection.ts
+│   │   │   └── makeBENexCollection.ts
+│   │   ├── filters/          # Custom filters
+│   │   │   ├── index.ts
+│   │   │   ├── dateFilters.ts
+│   │   │   └── collectionFilters.ts
+│   │   ├── shortcodes/index.ts
+│   │   └── globalData.ts
+│   ├── _includes/            # Nunjucks templates
+│   │   ├── layouts/base.njk
+│   │   ├── components/       # nav, head, footer, critical_css, counters
+│   │   └── pages/            # Page templates
+│   └── assets/
+│       ├── js/index.js       # Main JS (bundled)
+│       ├── styles/           # CSS (PostCSS)
+│       ├── images/           # Images (copied as-is)
+│       └── static/           # robots.txt, sitemap.xml, favicon.ico
 │
-├── dist/                     # Собранный сайт (генерируется)
-└── src/LEGACY/               # Старые HTML файлы (не используются)
+├── dist/                     # Generated site
+└── src/LEGACY/               # Old HTML (not used)
 ```
 
 ---
 
-## 🚀 Команды запуска и сборки
+## 🚀 Commands
 
-### Разработка
-
+### Development
 ```bash
-# Запуск dev-сервера с hot reload
-yarn start
-# или
-yarn watch
-
-# Эквивалент: tsx node_modules/.bin/eleventy --config=.eleventy.ts --serve --watch
+yarn start  # or yarn watch
+# Dev server with hot reload (localhost:8080)
 ```
 
-**Что происходит:**
-- Очищается папка `dist/`
-- Запускается Eleventy в режиме watch
-- Открывается локальный сервер (обычно http://localhost:8080)
-- Автоматическая пересборка при изменении файлов
-- Live reload в браузере через WebSocket
-
-### Production сборка
-
+### Production
 ```bash
-# Production сборка
 yarn build
-
-# Эквивалент: NODE_ENV=production tsx node_modules/.bin/eleventy --config=.eleventy.ts
+# NODE_ENV=production, minified JS/CSS, no source maps
 ```
 
-**Что происходит:**
-- Очищается папка `dist/`
-- Устанавливается `NODE_ENV=production`
-- Минификация JS и CSS
-- Отключение source maps
-- Генерация оптимизированного статического сайта
-
-### Деплой
-
+### Deploy
 ```bash
-# Сборка и деплой на сервер
-yarn deploy
-
-# Эквивалент: yarn build && yarn transfer
-```
-
-**Что происходит:**
-1. Выполняется `yarn build`
-2. Выполняется `yarn transfer` (rsync через SSH)
-3. Используются переменные окружения: `$SSH_HOST`, `$SSH_PATH`
-4. Настройка через `env-cmd` и `.env` файл
-
-### Вспомогательные команды
-
-```bash
-# Очистка папки dist
-yarn clear
+yarn deploy  # build && transfer (rsync via SSH)
+# Uses $SSH_HOST, $SSH_PATH from .env
 ```
 
 ---
 
-## ⚙️ Процесс сборки
+## ⚙️ Build Process
 
-### Этапы сборки
+1. **Before Build Hook**: `buildAssets()` from `build-assets.ts`
+   - JS: esbuild (entry: `src/assets/js/index.js` → `dist/assets/js/`)
+   - CSS: PostCSS (entry: `src/assets/styles/*.css` → `dist/assets/styles/`)
+   - Minification: production only
+   - Source maps: development only
 
-1. **Before Build Hook** (`.eleventy.ts`)
-   - Выполняется `buildAssets()` из `build-assets.ts`
-   - Сборка JavaScript через esbuild
-   - Сборка CSS через PostCSS
+2. **Eleventy Processing**: Templates (`.md`, `.njk`, `.html`) → HTML
 
-2. **Eleventy Processing**
-   - Обработка шаблонов (`.md`, `.njk`, `.html`)
-   - Создание коллекций
-   - Применение фильтров и shortcodes
-   - Генерация HTML
+3. **Asset Copying**: Images and static files to `dist/`
 
-3. **Asset Copying**
-   - Копирование изображений: `src/assets/images` → `dist/assets/images`
-   - Копирование статических файлов: `src/assets/static/*` → `dist/`
+**PostCSS plugins**: `postcss-import`, `postcss-custom-media`, `postcss-preset-env` (stage 1)
 
-### Сборка JavaScript (`build-assets.ts`)
+### Auto Collections
 
-```javascript
-// Входная точка: src/assets/js/index.js
-// Выходная директория: dist/assets/js/
-// Минификация: только в production
-// Source maps: только в development
-```
+**`makeCollection()`** (`src/eleventy/collections/makeCollection.ts`):
+- Creates collections from folders (e.g., `newsByYear`)
+- Parses date from `fileSlug` using dayjs
+- Validates format with `DATE_FORMAT_ISO` from `src/const/dateFormats.ts`
+- Groups by year from file path
+- Sorts by date (newest first)
 
-**Особенности:**
-- Использует esbuild для быстрой сборки
-- Поддержка YAML через плагин `esbuild-yaml`
-- Target: ES6
-- Bundle: все зависимости объединяются в один файл
-
-### Сборка CSS (`build-assets.ts`)
-
-```javascript
-// Входные файлы:
-// - src/assets/styles/index.css
-// - src/assets/styles/critical.css
-// Выходная директория: dist/assets/styles/
-```
-
-**PostCSS плагины** (`postcss.config.cjs`):
-- `postcss-import` — импорт файлов
-- `postcss-custom-media` — кастомные медиа-запросы
-- `postcss-preset-env` (stage 1) — поддержка черновиков CSS
-
-### Автоматические коллекции
-
-**Функция `makeCollection()`** (`src/eleventy/collections/makeCollection.ts`):
-- Создает коллекции на основе папок (например, `newsByYear`)
-- Парсит дату из `fileSlug` используя dayjs
-- Валидирует формат даты используя константу `DATE_FORMAT_ISO` из `src/const/dateFormats.js`
-- Группирует по годам из пути файла
-- Сортирует по дате (новые первыми через `unshift`)
-- Регистрируется через `registerCollections()` в `src/eleventy/collections/index.ts`
-
-**Функция `makeBENexCollection()`** (`src/eleventy/collections/makeBENexCollection.ts`):
-- Создает коллекцию `benexByYear` для бюллетеней BENex
-- Фильтрует файлы с маской `BENex*.md`
-- Извлекает год из пути к папке (не из имени файла)
-- Группирует по годам
-- Сортирует файлы (новые первыми через `unshift`)
-- Регистрируется через `registerCollections()` в `src/eleventy/collections/index.ts`
-
-**Пример использования:**
-```nunjucks
-// В шаблоне для новостей
-{% for year, posts in collections.newsByYear %}
-  <h2>{{ year }}</h2>
-  {% for post in posts %}
-    {{ post.data.title }}
-  {% endfor %}
-{% endfor %}
-
-// В шаблоне для BENex
-{% set posts = collections.benexByYear[year] %}
-{% for post in posts %}
-  <a href="{{ post.url }}">{{ post.data.title }}</a>
-{% endfor %}
-
-// Автоматическая генерация архива по годам
-{% set years = collections.benexByYear | getYears %}
-{% for year in years %}
-  <a href="/BENex/{{ year }}/">{{ year }}</a>
-{% endfor %}
-```
+**`makeBENexCollection()`** (`src/eleventy/collections/makeBENexCollection.ts`):
+- Creates `benexByYear` collection
+- Filters `BENex*.md` files
+- Extracts year from folder path
+- Groups and sorts by year
 
 ---
 
-## 🔧 Важные директории и файлы
+## 🔧 Key Files & Directories
 
-### Конфигурационные файлы
+### Config Files
+- **`.eleventy.ts`**: Main Eleventy config, registers plugins, imports from `src/eleventy/`, uses `tsx/esm` for TS data files
+- **`tsconfig.json`**: `moduleResolution: "bundler"` (imports without `.js`), `noEmit: true`, `strict: true`
+- **`src/types/eleventy.d.ts`**: Custom Eleventy API types (no official types)
+- **`src/eleventy/`**: Modular Eleventy config
+  - `collections/`: `makeCollection`, `makeBENexCollection`
+  - `filters/`: `getHumanDate`, `getHumanDateWithYear`, `limit`, `getYears`, `getAllNews`
+  - `shortcodes/`: `version` (cache busting)
+  - `globalData.ts`: `getGlobalCurrentYear`, `meta`
+- **`build-assets.ts`**: JS/CSS build function for `beforeBuild` hook
+- **`postcss.config.cjs`**: PostCSS plugins
 
-- **`.eleventy.ts`** — основная конфигурация Eleventy (TypeScript)
-  - Настройка директорий (input, output, includes, data, layouts)
-  - Регистрация плагинов
-  - Импорт и вызов функций регистрации из модулей `src/eleventy/` через общий экспорт
-  - Watch targets
-  - Использует `tsx/esm` для поддержки TypeScript data файлов
-
-- **`tsconfig.json`** — конфигурация TypeScript
-  - `moduleResolution: "bundler"` — позволяет импортировать без расширений `.js`
-  - `noEmit: true` — tsx выполняет TypeScript напрямую
-  - `strict: true` — строгая проверка типов
-
-- **`src/types/eleventy.d.ts`** — типы для Eleventy API
-  - Интерфейсы `EleventyConfig`, `EleventyCollection`, `EleventyCollectionItem`
-  - Объявления модулей для `@11ty/eleventy` и `@11ty/eleventy-navigation`
-  - Eleventy не предоставляет официальных типов, поэтому используются собственные
-
-- **`src/eleventy/`** — модульная конфигурация Eleventy
-  - `index.ts` — общий экспорт всех функций регистрации
-  - `collections/` — функции создания и регистрации коллекций
-  - `filters/` — кастомные фильтры для дат и коллекций
-  - `shortcodes/` — shortcodes (например, `version` для cache busting)
-  - `globalData.ts` — регистрация глобальных данных
-
-- **`build-assets.ts`** — сборка JS и CSS
-  - Экспортирует функцию для хука `beforeBuild`
-  - Параллельная сборка через async/await
-
-- **`postcss.config.cjs`** — конфигурация PostCSS
-  - Плагины для обработки CSS
-
-- **`package.json`** — зависимости и скрипты
-  - Версии инструментов
-  - Команды сборки и деплоя
-
-### Директории контента
-
-- **`pages/`** — все исходные страницы
-  - Структура отражает структуру сайта
-  - Поддерживаются форматы: `.md`, `.njk`, `.html`
-  - Файлы с датами в имени автоматически обрабатываются
-
-- **`src/_includes/`** — шаблоны Nunjucks
-  - `layouts/` — базовые шаблоны страниц
-  - `components/` — переиспользуемые компоненты
-  - `pages/` — специфичные шаблоны страниц
-
-- **`src/_data/`** — глобальные данные
-  - Доступны во всех шаблонах
-  - `meta.ts` — метаданные сайта (siteName, getNewsDescription)
-  - `eleventyComputed.ts` — computed свойства
-  - `getNewsDescription.ts` — функция получения описаний новостей
-  - **Важно**: TypeScript файлы из `_data/` не загружаются автоматически Eleventy, поэтому `meta` регистрируется через `addGlobalData()` в `globalData.ts`
-
-- **`src/const/`** — общие константы
-  - `dateFormats.ts` — константы форматов дат для dayjs (используются в Eleventy и frontend)
-
-- **`src/eleventy/`** — модульная конфигурация Eleventy
-  - `index.ts` — общий экспорт всех функций регистрации
-  - `collections/` — функции создания коллекций (`makeCollection`, `makeBENexCollection`)
-  - `filters/` — кастомные фильтры (`getHumanDate`, `getHumanDateWithYear`, `limit`, `getYears`, `getAllNews`)
-  - `shortcodes/` — shortcodes (`version`)
-  - `globalData.ts` — глобальные данные (`getGlobalCurrentYear`, `meta`)
-
-- **`src/assets/`** — статические ресурсы
-  - `js/` — JavaScript исходники (собираются в bundle)
-  - `styles/` — CSS исходники (обрабатываются PostCSS)
-  - `images/` — изображения (копируются как есть)
-  - `static/` — статические файлы (robots.txt, sitemap.xml, favicon.ico)
-
-- **`src/LEGACY/`** — старые HTML файлы
-  - Не используются в сборке
-  - Хранятся для справки
+### Content Directories
+- **`pages/`**: Source pages (`.md`, `.njk`, `.html`), structure mirrors site structure
+- **`src/_includes/`**: Nunjucks templates (layouts, components, pages)
+- **`src/_data/`**: Global data (available in all templates)
+  - **Note**: TS files from `_data/` don't auto-load, register via `addGlobalData()` in `globalData.ts`
+- **`src/const/dateFormats.ts`**: dayjs format constants (used in Eleventy and frontend)
+- **`src/assets/`**: Static resources (JS bundled, CSS processed, images/static copied)
 
 ---
 
-## 🎨 Особенности и конфигурация
+## 🎨 Features & Configuration
 
-### Шаблонизация
+### Templating
+- **Nunjucks (.njk)**: Main template engine (inheritance, components, filters, macros)
+- **Formats**: `.md` (Markdown → HTML), `.njk` (Nunjucks), `.html` (passthrough/processed)
 
-**Nunjucks (.njk)** — основной движок шаблонов
-- Поддержка наследования (`{% extends %}`)
-- Компоненты (`{% include %}`)
-- Фильтры и макросы
-- Условная логика и циклы
+### Eleventy Plugins
+1. **`@11ty/eleventy-navigation`**: Hierarchical navigation (via `eleventyNavigation` front matter)
+2. **`EleventyRenderPlugin`**: Render files via `{% renderFile %}` (used in `pages/libweb/resbnc/index.njk`)
 
-**Поддерживаемые форматы** (`.eleventy.ts`):
-- `.md` — Markdown (обрабатывается в HTML)
-- `.njk` — Nunjucks шаблоны
-- `.html` — HTML (passthrough или обработка)
-
-### Плагины Eleventy
-
-1. **`@11ty/eleventy-navigation`** (`.eleventy.ts`)
-   - Иерархическая навигация
-   - Используется в `eleventyNavigation` front matter
-   - Пример: `pages/BENex/index.md:3-5`
-
-2. **`EleventyRenderPlugin`** (`.eleventy.ts`)
-   - Рендеринг файлов через `{% renderFile %}`
-   - Позволяет рендерить содержимое других файлов (.md, .njk, .html) внутри шаблонов
-   - Используется в `pages/libweb/resbnc/index.njk` для вставки Markdown файлов
-
-### Кастомные фильтры
-
-Все фильтры находятся в `src/eleventy/filters/` и регистрируются через `registerFilters()`.
-
-1. **`getHumanDate`** (`src/eleventy/filters/dateFilters.ts`)
-   ```nunjucks
-   {{ post.date | getHumanDate }}
-   # Вывод: "11 февраля" (русская локализация)
-   ```
-   - Использует dayjs с русской локализацией
-   - Формат: `DATE_FORMAT_HUMAN` из `src/const/dateFormats.js`
-
-2. **`getHumanDateWithYear`** (`src/eleventy/filters/dateFilters.ts`)
-   ```nunjucks
-   {{ post.date | getHumanDateWithYear }}
-   # Вывод: "11 февраля 2025" (русская локализация с годом)
-   ```
-   - Использует dayjs с русской локализацией
-   - Формат: `DATE_FORMAT_HUMAN_WITH_YEAR` из `src/const/dateFormats.js`
-
-3. **`limit`** (`src/eleventy/filters/collectionFilters.ts`)
-   ```nunjucks
-   {{ collection | limit(5) }}
-   # Ограничивает массив до 5 элементов
-   ```
-
-4. **`getYears`** (`src/eleventy/filters/collectionFilters.ts`)
-   ```nunjucks
-   {{ collections.benexByYear | getYears }}
-   # Извлекает годы из коллекции и возвращает отсортированный массив
-   # Используется для автоматической генерации архивов
-   ```
-
-5. **`getAllNews`** (`src/eleventy/filters/collectionFilters.ts`)
-   ```nunjucks
-   {{ collections.newsByYear | getAllNews }}
-   # Объединяет все новости из всех лет в один массив
-   # Сортирует по дате (новые первыми)
-   # Используется на главной странице для показа последних новостей из всех лет
-   ```
-   - Использует dayjs для парсинга и сравнения дат
+### Custom Filters (`src/eleventy/filters/`)
+1. **`getHumanDate`**: `{{ date | getHumanDate }}` → "11 февраля" (RU locale, `DATE_FORMAT_HUMAN`)
+2. **`getHumanDateWithYear`**: `{{ date | getHumanDateWithYear }}` → "11 февраля 2025" (`DATE_FORMAT_HUMAN_WITH_YEAR`)
+3. **`limit`**: `{{ collection | limit(5) }}` → first 5 items
+4. **`getYears`**: `{{ collections.benexByYear | getYears }}` → sorted years array (for auto-archives)
+5. **`getAllNews`**: `{{ collections.newsByYear | getAllNews }}` → all news merged, sorted by date (for homepage)
 
 ### Shortcodes
+- **`version`**: `{% version %}` → timestamp for cache busting
 
-**`version`** (`src/eleventy/shortcodes/index.ts`)
-```nunjucks
-{% version %}
-# Вывод: timestamp для cache busting
-# Использование: <link rel="stylesheet" href="/styles.css?v={% version %}">
-```
-- Использует dayjs для получения текущего времени в миллисекундах
-- Использует dayjs для получения текущего времени в миллисекундах
+### Global Data
+- **`getGlobalCurrentYear`**: Current year (via dayjs)
+- **`meta`**: Site metadata (registered via `globalData.ts`)
 
 ### Watch Targets
+- `./src/assets/` changes trigger rebuild
 
-**Автоматическая пересборка** (`.eleventy.ts`):
-- `./src/assets/` — изменения в JS/CSS/images триггерят пересборку
-
-### Глобальные данные
-
-**`getGlobalCurrentYear`** и **`meta`** (`src/eleventy/globalData.ts`)
-```nunjucks
-{{ getGlobalCurrentYear }}
-# Вывод: текущий год (строка)
-```
-- Использует dayjs для получения текущего года
-
-### Quiet Mode
-
-**Уменьшение шума в консоли** (`.eleventy.ts`):
-- `setQuietMode(true)` — скрывает лишние сообщения
-
-### TypeScript поддержка
-
-**Использование TypeScript в проекте**:
-- Все файлы конфигурации и модули Eleventy переведены на TypeScript
-- Используется `tsx` для выполнения TypeScript файлов
-- Импорты работают без расширений `.js` благодаря `moduleResolution: "bundler"`
-- Типы для Eleventy API определены в `src/types/eleventy.d.ts` (Eleventy не предоставляет официальных типов)
-- TypeScript data файлы из `src/_data/` регистрируются через `addGlobalData()` в `globalData.ts`
+### TypeScript Support
+- All config/modules use `.ts`
+- `tsx` executes TS files
+- Imports work without `.js` (via `moduleResolution: "bundler"`)
+- Custom types in `src/types/eleventy.d.ts`
+- TS data files registered via `addGlobalData()`
 
 ---
 
-## 🚢 CI/CD и деплой
+## 🚢 CI/CD & Deploy
 
 ### GitHub Actions
+- Auto-deploy on push to `master`
+- File: `.github/workflows/main.yml`
+- Node.js 22, Yarn with `--frozen-lockfile`
+- Production build with `NODE_ENV=production`
+- Deploy via rsync with SSH keys from GitHub Secrets
+- Env vars: `$SSH_HOST`, `$SSH_PATH`
 
-**Автоматический деплой** при push в `master`:
-- Файл: `.github/workflows/main.yml`
-- Использует Node.js 22
-- Yarn с `--frozen-lockfile` (предотвращает drift зависимостей)
-- Production сборка с `NODE_ENV=production`
-- Деплой через rsync с SSH ключами из GitHub Secrets
-
-**Переменные окружения для деплоя:**
-- `$SSH_HOST` — хост сервера
-- `$SSH_PATH` — путь на сервере
-- Настройка через GitHub Secrets
-
-### Локальный деплой
-
+### Local Deploy
 ```bash
-# Требуется настройка .env файла или переменных окружения
-yarn deploy
-```
-
-**Процесс:**
-1. `yarn build` — production сборка
-2. `yarn transfer` — rsync через SSH
-3. Использует `env-cmd` для загрузки переменных из `.env`
-
----
-
-## 💻 Клиентские улучшения
-
-**Главный файл**: `src/assets/js/index.js`
-
-### Модули и функции
-
-1. **`resbncBbTable.js`** (`src/assets/js/pages/resbnc.js`)
-   - Адаптивные таблицы для электронного читального зала
-   - Преобразование таблиц для мобильных устройств
-
-2. **`openLinksInPortal.js`** (`src/assets/js/features.js`)
-   - Модальные окна для внешних ссылок
-   - Используется в Test Access Portal
-
-3. **`elcatToggleList.js`** (`src/assets/js/pages/elcat.js`)
-   - Раскрывающиеся списки журналов
-   - Поддержка DOM Mutation Observer для динамического контента
-
-4. **`menuMobile.js`** (`src/assets/js/features.js`)
-   - Мобильное меню навигации
-
-5. **`targetBlank.js`** (`src/assets/js/utils.js`)
-   - Автоматическое добавление `target="_blank"` к внешним ссылкам
-
-6. **`setCurrentYear.js`** (`src/assets/js/utils.js`)
-   - Установка текущего года в DOM
-
-7. **`getHolidays.js`** (`src/assets/js/features.js`)
-   - Работа с праздничными днями
-
-8. **`analytics.js`** (`src/assets/js/analytics.js`)
-   - Интеграция с аналитикой (Яндекс.Метрика и др.)
-
-### Инициализация
-
-Все модули инициализируются в `DOMContentLoaded`:
-```javascript
-document.addEventListener("DOMContentLoaded", function () {
-  // Инициализация всех функций
-  // Mutation Observer для динамического контента
-});
-```
-
-**Mutation Observer** используется для:
-- `elcatToggleList` — обработка динамически добавленных списков
-- `targetBlank` — обработка динамически добавленных ссылок
-
----
-
-## 📝 Форматы файлов и соглашения
-
-### Новости (News)
-
-**Требования к именованию:**
-- Формат: `YYYY-MM-DD.md`
-- Пример: `2025-01-15.md`
-- Валидация через dayjs в `makeCollection()`
-
-**Front matter:**
-```yaml
----
-title: Заголовок новости
-date: 2025-01-15
----
-```
-
-### Бюллетени BENex
-
-**Именование:**
-- Формат: `BENexNN.md` где NN = 01-21
-- Пример: `BENex04.md`
-- Markdown → HTML (обрабатываются Eleventy)
-
-**Front matter:**
-```yaml
----
-title: Бюллетень новых поступлений N 01 (10 - 23 января 2018)
----
-```
-
-**Автоматическая генерация индексных страниц:**
-- Файл `pages/BENex/BENex_by_years.njk` генерирует страницы `/BENex/YYYY/` автоматически
-- Использует коллекцию `benexByYear` для группировки по годам
-- Ссылки формируются из `title` в frontmatter файлов
-
-### Бюллетени BNP
-
-**Именование:**
-- Формат: `bnpNN.html` где NN = 01-10
-- Пример: `bnp08.html`
-- HTML passthrough
-
-### Шаблоны страниц
-
-**Front matter для навигации:**
-```yaml
----
-title: Название страницы
-eleventyNavigation:
-  key: Ключ навигации
-  order: 5
----
+yarn deploy  # build && transfer
+# Requires .env or env vars
 ```
 
 ---
 
-## 🔍 Полезные ссылки
+## 💻 Client-Side Features
 
-- **DeepWiki**: https://deepwiki.com/frendly/chglib
-- **GitHub Wiki**: https://github.com/frendly/chglib/wiki
-- **Eleventy Docs**: https://www.11ty.dev/docs/
-- **Nunjucks Docs**: https://mozilla.github.io/nunjucks/
-- **esbuild Docs**: https://esbuild.github.io/
-- **PostCSS Docs**: https://postcss.org/
+**Main file**: `src/assets/js/index.js`
 
----
+**Modules**:
+1. `resbncBbTable.js` (pages/resbnc.js): Responsive tables
+2. `openLinksInPortal.js` (features.js): Modal windows for external links
+3. `elcatToggleList.js` (pages/elcat.js): Expandable lists with Mutation Observer
+4. `menuMobile.js` (features.js): Mobile navigation menu
+5. `targetBlank.js` (utils.js): Auto `target="_blank"` for external links
+6. `setCurrentYear.js` (utils.js): Set current year in DOM
+7. `getHolidays.js` (features.js): Holiday handling
+8. `analytics.js` (analytics.js): Analytics integration (Yandex.Metrica, etc.)
 
-## ⚠️ Важные замечания
-
-1. **Актуализация документации**: **КРИТИЧЕСКИ ВАЖНО** — при внесении любых изменений в проект (новые фильтры, функции, изменение логики, структуры файлов и т.д.) необходимо **всегда обновлять CURSOR.md**, чтобы AI всегда знал актуальное состояние проекта. Это обеспечивает корректную работу AI-ассистента с кодом.
-2. **Node.js версия**: Требуется >=20 (рекомендуется 22.x, указано в `.nvmrc`)
-3. **Yarn версия**: Зафиксирована в `package.json` (1.22.22)
-4. **TypeScript**: Проект полностью переведен на TypeScript. Все файлы конфигурации и модули используют `.ts` расширение.
-5. **Импорты**: Благодаря `moduleResolution: "bundler"` в `tsconfig.json`, импорты работают без расширений `.js`
-6. **Работа с датами**: Проект использует **dayjs** вместо нативного JavaScript Date. Все форматы дат вынесены в константы в `src/const/dateFormats.ts`
-7. **Формат дат**: Новости должны иметь формат `YYYY-MM-DD.md` для автоматической обработки (используется константа `DATE_FORMAT_ISO`)
-8. **TypeScript data файлы**: Файлы из `src/_data/*.ts` не загружаются автоматически Eleventy, поэтому данные регистрируются через `addGlobalData()` в `globalData.ts`
-9. **LEGACY папка**: `src/LEGACY/` не используется в сборке, только для справки
-10. **Production сборка**: Всегда использует `NODE_ENV=production` для минификации
-11. **Watch режим**: Автоматически отслеживает изменения в `src/assets/`
-12. **Layout файлы**: Используется только `src/_includes/layouts/base.njk`, дублирующий файл `src/_includes/base.njk` удален
+**Initialization**: All modules init in `DOMContentLoaded`. Mutation Observer used for `elcatToggleList` and `targetBlank`.
 
 ---
 
-## 🐛 Отладка
+## 📝 File Formats & Conventions
 
-### Проблемы со сборкой
+### News
+- **Naming**: `YYYY-MM-DD.md` (validated via dayjs in `makeCollection()`)
+- **Front matter**:
+  ```yaml
+  ---
+  title: News Title
+  date: 2025-01-15
+  ---
+  ```
 
-1. **Ошибки JavaScript сборки**
-   - Проверьте `src/assets/js/index.js` и импорты
-   - Убедитесь, что все модули экспортированы правильно
+### BENex Bulletins
+- **Naming**: `BENexNN.md` (NN = 01-21)
+- **Format**: Markdown → HTML
+- **Front matter**: `title` field
+- **Auto-pages**: `BENex_by_years.njk` generates `/BENex/YYYY/` pages using `benexByYear` collection
 
-2. **Ошибки CSS сборки**
-   - Проверьте `src/assets/styles/index.css` и импорты
-   - Убедитесь в корректности PostCSS синтаксиса
+### BNP Bulletins
+- **Naming**: `bnpNN.html` (NN = 01-10)
+- **Format**: HTML passthrough
 
-3. **Проблемы с коллекциями**
-   - Проверьте формат дат в именах файлов новостей
-   - Убедитесь, что файлы находятся в правильных папках
-
-4. **Проблемы с деплоем**
-   - Проверьте переменные окружения `$SSH_HOST` и `$SSH_PATH`
-   - Убедитесь в наличии SSH ключей в GitHub Secrets
+### Page Templates
+- **Navigation front matter**:
+  ```yaml
+  ---
+  title: Page Title
+  eleventyNavigation:
+    key: nav-key
+    order: 5
+  ---
+  ```
 
 ---
 
-*Последнее обновление: 2025-01-12*
-*Версия документации: 2.0*
-*Версия проекта: 4.0.0 (TypeScript)*
+## 🔍 Links
+
+- [DeepWiki](https://deepwiki.com/frendly/chglib)
+- [GitHub Wiki](https://github.com/frendly/chglib/wiki)
+- [Eleventy Docs](https://www.11ty.dev/docs/)
+- [Nunjucks Docs](https://mozilla.github.io/nunjucks/)
+- [esbuild Docs](https://esbuild.github.io/)
+- [PostCSS Docs](https://postcss.org/)
+
+---
+
+## ⚠️ Important Notes
+
+1. **Always update CURSOR.md** when making changes (filters, functions, logic, structure, etc.)
+2. **Node.js**: >=20 (22.x recommended, see `.nvmrc`)
+3. **Yarn**: Fixed version 1.22.22 in `package.json`
+4. **TypeScript**: All config/modules use `.ts`
+5. **Imports**: No `.js` extension needed (via `moduleResolution: "bundler"`)
+6. **Dates**: Use **dayjs** instead of native Date. Formats in `src/const/dateFormats.ts`
+7. **News format**: `YYYY-MM-DD.md` required (uses `DATE_FORMAT_ISO`)
+8. **TS data files**: Register via `addGlobalData()` in `globalData.ts` (not auto-loaded)
+9. **LEGACY**: `src/LEGACY/` not used in build, reference only
+10. **Production**: Always uses `NODE_ENV=production` for minification
+11. **Watch**: Auto-tracks `src/assets/` changes
+12. **Layout**: Only `src/_includes/layouts/base.njk` used
+
+---
+
+## 🐛 Debugging
+
+1. **JS build errors**: Check `src/assets/js/index.js` and imports
+2. **CSS build errors**: Check `src/assets/styles/index.css` and PostCSS syntax
+3. **Collection issues**: Verify date format in news filenames and folder structure
+4. **Deploy issues**: Check `$SSH_HOST`, `$SSH_PATH` env vars and SSH keys in GitHub Secrets
+
+---
+
+*Last update: 2025-01-12*
+*Doc version: 3.0 (optimized)*
+*Project version: 4.0.0 (TypeScript)*
