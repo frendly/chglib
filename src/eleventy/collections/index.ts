@@ -1,6 +1,7 @@
 import type { EleventyConfig } from '@/types/eleventy';
 import { makeCollection } from './makeCollection';
 import { makeBENexCollection } from './makeBENexCollection';
+import { makeBNPCollection } from './makeBNPCollection';
 
 /**
  * Регистрирует коллекции в Eleventy
@@ -19,5 +20,10 @@ export function registerCollections(eleventyConfig: EleventyConfig): void {
   /** коллекция для BENex (использует другую функцию, т.к. файлы не датированные) */
   eleventyConfig.addCollection("benexByYear", (collection) =>
     makeBENexCollection(collection, "BENex")
+  );
+
+  /** коллекция для BNP (использует другую функцию, т.к. файлы не датированные) */
+  eleventyConfig.addCollection("bnpByYear", (collection) =>
+    makeBNPCollection(collection, "BNP")
   );
 }
