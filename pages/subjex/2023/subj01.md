@@ -6,6 +6,6 @@ end: 2023-12-20
 
 Виртуальная тематическая выставка научной литературы из фондов ЦБС БЕН РАН:
 
-[Электрофизические свойства полимерных композитов, содержащих углеродные наноразмерные структуры.](https://www.benran.ru/resources/virtualnye-vystavki/elektrofizicheskie-svoystva-polimernykh-kompozitov-soderzhashchikh-uglerodnye-nanorazmernye-struktur/)
+1. [Электрофизические свойства полимерных композитов, содержащих углеродные наноразмерные структуры.](https://www.benran.ru/resources/virtualnye-vystavki/elektrofizicheskie-svoystva-polimernykh-kompozitov-soderzhashchikh-uglerodnye-nanorazmernye-struktur/)
 
 При необходимости, для более детального знакомства с представленными книгами, на электронный адрес [chglib@icp.ac.ru](mailto:chglib@icp.ac.ru) можно направлять для выполнения заказ(ы) по МБА.
