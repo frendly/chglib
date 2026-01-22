@@ -17,6 +17,14 @@ jobs:
           node-version: 22.x
           cache: 'yarn'
 
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
       - name: yarn install
         uses: borales/actions-yarn@v5
         with:
