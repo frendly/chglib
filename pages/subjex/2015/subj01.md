@@ -149,21 +149,21 @@ end: 2015-04-30
 
 24.  [**Kirillov Alexander M. Multicopper complexes and coordination polymers for mild oxidative functionalization of alkanes / Alexander M. Kirillov, Marina V. Kirillova, Armando J.L. Pombeiro**](pdf01/CoordChemRev-2012-256(23-24)2741.pdf "полный текст (pdf)") // Coordination Chemistry Reviews.-2012.-Vol.256.-N 23-24.-pp.2741-2759.
 
-25.  [**Kirillov Alexander M. Pyrazinecarboxylic acid and analogs: Highly efficient co-catalysts in the metal-complex-catalyzed oxidation of organic compounds / Alexander M. Kirillov, Georgiy B. Shul’pinb**](pdf01/CoordChemRev-2013-257(3-4)732.pdf "полный текст (pdf)") // Coordination Chemistry Reviews.-2013.-Vol.257.-N 3-4.-pp.732-754.
+25.  [**Kirillov Alexander M. Pyrazinecarboxylic acid and analogs: Highly efficient co-catalysts in the metal-complex-catalyzed oxidation of organic compounds / Alexander M. Kirillov, Georgiy B. Shul'pinb**](pdf01/CoordChemRev-2013-257(3-4)732.pdf "полный текст (pdf)") // Coordination Chemistry Reviews.-2013.-Vol.257.-N 3-4.-pp.732-754.
 
 26.  [**Aminia Mojtaba. Oxido-peroxido molybdenum(VI) complexes in catalytic and stoichiometric oxidations / Mojtaba Aminia, Mohammad Mehdi Haghdoostb, Mojtaba Bagherzadehb**](pdf01/CoordChemRev-2013-257(7-8)1093.pdf "полный текст (pdf)") // Coordination Chemistry Reviews.-2013.-Vol.257.-N 7-8.-pp.1093-1121.
 
 27.  [**Munz Dominik. ortho-Phenylene bridged palladium bis-N-heterocycliccarbene complexes: synthesis, structure and catalysis†/ Dominik Munz \[etc.\]**](pdf01/DaltonTrans-2013-42()7297.pdf "полный текст (pdf)") // Dalton Transactions.-2013.-Vol.42.-pp.7297-7304.
 
-28.  [**Shul’pin Georgiy B. C–H functionalization: thoroughly tuning ligands at a metal ion, a chemist can greatly enhance catalyst’s activity and selectivity / Georgiy B. Shul’pin**](pdf01/DaltonTrans-2013-42()12794.pdf "полный текст (pdf)") // Dalton Transactions.-2013.-Vol.42.-pp.12794-12818.
+28.  [**Shul'pin Georgiy B. C–H functionalization: thoroughly tuning ligands at a metal ion, a chemist can greatly enhance catalyst's activity and selectivity / Georgiy B. Shul'pin**](pdf01/DaltonTrans-2013-42()12794.pdf "полный текст (pdf)") // Dalton Transactions.-2013.-Vol.42.-pp.12794-12818.
 
-29.  [**O’Reilly Matthew E. Reductive functionalization of a rhodium(III)–methyl bond by electronic modification of the supporting ligand / Matthew E. O’Reilly \[etc.\]**](pdf01/DaltonTrans-2014-43()8273.pdf "полный текст (pdf)") // Dalton Transactions.-2014.-Vol.43.-pp.8273-8281.
+29.  [**O'Reilly Matthew E. Reductive functionalization of a rhodium(III)–methyl bond by electronic modification of the supporting ligand / Matthew E. O'Reilly \[etc.\]**](pdf01/DaltonTrans-2014-43()8273.pdf "полный текст (pdf)") // Dalton Transactions.-2014.-Vol.43.-pp.8273-8281.
 
 30.  [**Zaltariov Mirela-Fernanda. Tetranuclear Copper(II) Complexes with Macrocyclic and Open-Chain Disiloxane Ligands as Catalyst Precursors for Hydrocarboxylation and Oxidation of Alkanes and 1-Phenylethanol / Mirela-Fernanda Zaltariov \[etc.\]**](pdf01/EuropJInorganicChem-2014-2014(29)4946.pdf "полный текст (pdf)") // European Journal of Inorganic Chemistry.-2014.-Vol.2014.-N 29.-pp.4946-4956.
 
 31.  [**Tordin E., List M., Monkowius U. et al. Synthesis and characterisation of cobalt, nickel and copper complexes with tripodal 4N ligands as novel catalysts for the homogeneous partial oxidation of alkanes.**](pdf01/InorChimActa-2013-402()90.pdf "полный текст (pdf)") // Inorganica Chimica Acta.-2013.-Vol.402.-pp.90-96.
 
-32.  [**Xu Long, Duan lin’e, Tang M. et al. Catalytic CO2 reforming of CH4 over Cr-promoted Ni/char for H2 production.**](pdf01/IntJourHydrogenEn-2014-39()10141.pdf "полный текст (pdf)") // International journal of hydrogen energy.-2014.-Vol.39.-pp.10141-10153.
+32.  [**Xu Long, Duan lin'e, Tang M. et al. Catalytic CO2 reforming of CH4 over Cr-promoted Ni/char for H2 production.**](pdf01/IntJourHydrogenEn-2014-39()10141.pdf "полный текст (pdf)") // International journal of hydrogen energy.-2014.-Vol.39.-pp.10141-10153.
 
 33.  [**Gunsalus Niles J., Konnick Michael M. Discrete Molecular Catalysts for Methane Functionalization.**](pdf01/IsraelJourChem-2014-54()1467.pdf "полный текст (pdf)") // Israel Journal of Chemistry.-2014.-Vol.54.-pp.1467– 1480.
 

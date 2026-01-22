@@ -5,7 +5,7 @@
     {%- set startDate = start | getHumanDate -%}
     {%- set endDate = end | getHumanDateWithYear -%}
 
-    <p>{{ startDate }} – {{ endDate }} г.</p>
+    <p>Выставка проходит {{ startDate }} – {{ endDate }} г.</p>
   {% endif %}
 
   {{ content | safe }}
