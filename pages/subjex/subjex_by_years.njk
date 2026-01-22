@@ -1,0 +1,24 @@
+---
+pagination:
+  data: collections.subjexByYear
+  size: 1
+  alias: year
+permalink: "/subjex/{{year}}/"
+eleventyComputed:
+  title: "Тематические выставки – {{year}}"
+---
+
+{##
+⚠️ ВНИМАНИЕ!
+Этот файл генерирует страницу тематических выставок subjex автоматически.
+Чтобы добавить выставку, создайте файл с именем subjNN.md в соответствующей папке года, пример: pages/subjex/2025/subj01.md
+##}
+
+{% set posts = collections.subjexByYear[year] %}
+{% include "pages/subjex/_subjex-list.njk" %}
+
+<p>Для организации выставок необходимо заявить интересующие Вас темы и ключевые слова на русском и английском языках (не менее 10 слов) по адресу <a href="mailto:popova@icp.ac.ru">БНЦ/НЦЧ</a></p>
+
+<p>Также просим указать удобное для Вас время (месяц) проведения.</p>
+
+{% include "pages/subjex/_archive.njk" %}

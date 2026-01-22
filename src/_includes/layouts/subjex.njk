@@ -1,0 +1,12 @@
+{% extends "./base.njk" %}
+
+{% block content %}
+  {% if start and end %}
+    {%- set startDate = start | getHumanDate -%}
+    {%- set endDate = end | getHumanDateWithYear -%}
+
+    <p>Выставка проходит {{ startDate }} – {{ endDate }} г.</p>
+  {% endif %}
+
+  {{ content | safe }}
+{% endblock %}

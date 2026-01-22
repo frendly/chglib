@@ -9,7 +9,10 @@
     {% include "components/nav.njk" %}
     <main>
       <h1>{{ title }}</h1>
-      {{ content | safe }}
+      {% block content %}
+        {# Содержимое по умолчанию для страниц без блока content #}
+        {{ content | safe }}
+      {% endblock %}
     </main>
 
     {% include "components/footer.njk" %}
