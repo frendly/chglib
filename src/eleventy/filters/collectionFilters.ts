@@ -50,3 +50,14 @@ export const getAllNews = function (newsByYear: Record<string, EleventyCollectio
     return dateB.valueOf() - dateA.valueOf();
   });
 };
+
+/**
+ * Проверяет, начинается ли строка с указанного префикса
+ * @param str - Строка для проверки
+ * @param prefix - Префикс для проверки
+ * @returns true, если строка начинается с префикса
+ * @example {{ urlPath | hasPrefix("/news/") }}
+ */
+export const hasPrefix = function (str: string, prefix: string): boolean {
+  return str.startsWith(prefix);
+};

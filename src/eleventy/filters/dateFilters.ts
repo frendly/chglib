@@ -23,3 +23,16 @@ export const getHumanDate = function (dateObj: Date | string): string {
 export const getHumanDateWithYear = function (dateObj: Date | string): string {
   return dayjs(dateObj).format(DATE_FORMAT_HUMAN_WITH_YEAR);
 };
+
+/**
+ * Отображает дату в формате ISO 8601 (RFC 3339) для sitemap.xml
+ * @param dateObj - Объект даты или строка с датой
+ * @returns Отформатированная дата в формате YYYY-MM-DDTHH:mm:ss+00:00
+ * @example {{ page.date | getSitemapDate }}
+ */
+export const getSitemapDate = function (dateObj: Date | string | undefined): string {
+  if (!dateObj) {
+    return dayjs().toISOString();
+  }
+  return dayjs(dateObj).toISOString();
+};
