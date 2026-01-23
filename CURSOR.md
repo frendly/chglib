@@ -236,6 +236,7 @@ yarn deploy  # build && transfer (rsync via SSH)
 5. **`getYears`**: `{{ collections.benexByYear | getYears }}` → sorted years array (for auto-archives)
 6. **`getAllNews`**: `{{ collections.newsByYear | getAllNews }}` → all news merged, sorted by date (for homepage)
 7. **`hasPrefix`**: `{{ urlPath | hasPrefix("/news/") }}` → true if string starts with prefix
+8. **`getBreadcrumbs`**: `{{ page | getBreadcrumbs(collections) }}` → breadcrumbs for archive sections (BNP/BENex/news/subjex), URL-based (`page.url`)
 
 ### Shortcodes
 - **`version`**: `{% version %}` → timestamp for cache busting
@@ -314,6 +315,24 @@ yarn deploy  # build && transfer
 - **Naming**: `bnpNN.html` (NN = 01-10)
 - **Format**: HTML passthrough
 
+---
+
+## 🍞 Breadcrumbs
+
+- **Component**: `src/_includes/components/breadcrumbs.njk`
+  - Adds a home link (🏠) before the breadcrumb trail.
+- **Logic**: `src/eleventy/filters/breadcrumbs.ts` (`getBreadcrumbs`)
+  - Single source of truth: `page.url` (no `filePathStem` dependency).
+  - `/BNP/`: breadcrumbs are not shown.
+  - `/BNP/YYYY/`: `New arrivals -> YYYY` (year is not a link).
+  - `/BNP/YYYY/bnpNN`: `New arrivals -> YYYY -> title` (title comes from front matter).
+
+## 🎨 CSS: critical vs non-critical
+
+- Breadcrumbs styles were moved out of critical CSS:
+  - From: `src/assets/styles/critical/_layout.css`
+  - To: `src/assets/styles/_breadcrumbs.css` (imported via `src/assets/styles/index.css`)
+
 ### Page Templates
 - **Navigation front matter**:
   ```yaml
@@ -378,6 +397,6 @@ yarn deploy  # build && transfer
 
 ---
 
-*Last update: 2025-01-15*
+*Last update: 2026-01-23*
 *Doc version: 3.1 (sitemap, filters update)*
-*Project version: 4.1.0 (TypeScript)*
+*Project version: 4.2.2 (TypeScript)*
