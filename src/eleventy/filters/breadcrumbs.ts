@@ -50,11 +50,10 @@ function getSection(urlParts: string[]): SectionInfo | null {
 /**
  * Определяет тип страницы на основе структуры URL
  * @param urlParts - Массив частей URL
- * @param sectionName - Название секции (первая часть URL)
  */
-function getPageType(urlParts: string[], sectionName: string): PageType {
+function getPageType(urlParts: string[]): PageType {
   const urlLength = urlParts.length;
-  // sectionName уже равен urlParts[0] (проверено в getSection), поэтому проверяем только длину
+
   return {
     isSectionPage: urlLength === 1,
     isYearPage: urlLength === 2 && /^\d{4}$/.test(urlParts[1]),
@@ -196,10 +195,8 @@ export function getBreadcrumbs(
     return [];
   }
 
-  const sectionName = urlParts[0];
-
   // Определяем тип страницы
-  const pageType = getPageType(urlParts, sectionName);
+  const pageType = getPageType(urlParts);
 
   // Для страниц раздела не показываем крошки
   if (pageType.isSectionPage) {

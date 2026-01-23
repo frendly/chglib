@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 // Кеш для хранения содержимого файлов, чтобы избежать повторного чтения
 const cache = new Map<string, string>();
@@ -12,7 +12,10 @@ export const getNewsDescription = (year: string): string => {
   const filePath = path.resolve(`./pages/news/${year}/seo_description.md`);
 
   if (cache.has(filePath)) {
-    return cache.get(filePath)!;
+    const cached = cache.get(filePath);
+    if (cached !== undefined) {
+      return cached;
+    }
   }
 
   if (fs.existsSync(filePath)) {

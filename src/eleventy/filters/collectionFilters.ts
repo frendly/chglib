@@ -21,7 +21,7 @@ export const limit = <T>(array: T[] | undefined, limit: number): T[] => {
  */
 export const getYears = (collection: Record<string, unknown> | undefined): string[] =>
   Object.keys(collection || {})
-    .map((year) => parseInt(year))
+    .map((year) => parseInt(year, 10))
     .sort((a, b) => a - b) /** сортировка по возрастанию */
     .map((year) => year.toString());
 

@@ -1,5 +1,5 @@
+import path from 'node:path';
 import dayjs from 'dayjs';
-import path from 'path';
 import { DATE_FORMAT_ISO } from '@/const/dateFormats';
 import type { EleventyCollection, EleventyCollectionItem } from '@/types/eleventy';
 
