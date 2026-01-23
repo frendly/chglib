@@ -1,6 +1,7 @@
 import type { EleventyConfig } from '@/types/eleventy';
 import { getHumanDate, getHumanDateWithYear, getSitemapDate } from './dateFilters';
 import { limit, getYears, getAllNews, hasPrefix } from './collectionFilters';
+import { getBreadcrumbs } from './breadcrumbs';
 
 /**
  * Регистрирует фильтры в Eleventy
@@ -19,4 +20,7 @@ export function registerFilters(eleventyConfig: EleventyConfig): void {
 
   /** Фильтры для строк */
   eleventyConfig.addNunjucksFilter("hasPrefix", hasPrefix);
+
+  /** Фильтры для навигации */
+  eleventyConfig.addNunjucksFilter("getBreadcrumbs", getBreadcrumbs);
 }

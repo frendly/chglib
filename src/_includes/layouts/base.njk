@@ -8,6 +8,7 @@
   <body class="new-body">
     {% include "components/nav.njk" %}
     <main>
+      {% include "components/breadcrumbs.njk" %}
       <h1>{{ title }}</h1>
       {% block content %}
         {# Содержимое по умолчанию для страниц без блока content #}

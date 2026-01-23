@@ -1,0 +1,19 @@
+{% set breadcrumbs = page | getBreadcrumbs(collections) %}
+{% if breadcrumbs and breadcrumbs.length > 0 %}
+<nav aria-label="Хлебные крошки" class="breadcrumbs">
+  <ol class="breadcrumbs__list">
+    <li class="breadcrumbs__item">
+      <a title="На главную страницу" href="/" class="breadcrumbs__link">🏠</a>
+    </li>
+    {% for item in breadcrumbs %}
+    <li class="breadcrumbs__item">
+      {% if item.url and not item.isCurrent %}
+      <a href="{{ item.url | url }}" class="breadcrumbs__link">{{ item.title }}</a>
+      {% else %}
+      <span class="breadcrumbs__current" aria-current="page">{{ item.title }}</span>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</nav>
+{% endif %}
