@@ -1,7 +1,7 @@
 import type { EleventyConfig } from '@/types/eleventy';
-import { makeCollection } from './makeCollection';
 import { makeBENexCollection } from './makeBENexCollection';
 import { makeBNPCollection } from './makeBNPCollection';
+import { makeCollection } from './makeCollection';
 import { makeSubjexCollection } from './makeSubjexCollection';
 
 /**
@@ -11,7 +11,7 @@ import { makeSubjexCollection } from './makeSubjexCollection';
 export function registerCollections(eleventyConfig: EleventyConfig): void {
   /** папки для создания авто-коллекций */
   /** @see makeCollection */
-  const folders = ["news"];
+  const folders = ['news'];
   folders.forEach((folderName) => {
     eleventyConfig.addCollection(`${folderName}ByYear`, (collection) =>
       makeCollection(collection, folderName)
@@ -19,17 +19,15 @@ export function registerCollections(eleventyConfig: EleventyConfig): void {
   });
 
   /** коллекция для BENex (использует другую функцию, т.к. файлы не датированные) */
-  eleventyConfig.addCollection("benexByYear", (collection) =>
-    makeBENexCollection(collection, "BENex")
+  eleventyConfig.addCollection('benexByYear', (collection) =>
+    makeBENexCollection(collection, 'BENex')
   );
 
   /** коллекция для BNP (использует другую функцию, т.к. файлы не датированные) */
-  eleventyConfig.addCollection("bnpByYear", (collection) =>
-    makeBNPCollection(collection, "BNP")
-  );
+  eleventyConfig.addCollection('bnpByYear', (collection) => makeBNPCollection(collection, 'BNP'));
 
   /** коллекция для subjex (использует другую функцию, т.к. файлы не датированные) */
-  eleventyConfig.addCollection("subjexByYear", (collection) =>
-    makeSubjexCollection(collection, "subjex")
+  eleventyConfig.addCollection('subjexByYear', (collection) =>
+    makeSubjexCollection(collection, 'subjex')
   );
 }

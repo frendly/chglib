@@ -7,9 +7,11 @@ const elcatToggleList = () => {
   const handler = (event) => {
     const element = event.currentTarget;
     element.classList.toggle(expandedCls);
-  }
+  };
 
-  selectors.forEach(item => item.addEventListener("click", handler));
-}
+  selectors.forEach((item) => {
+    item.addEventListener('click', handler);
+  });
+};
 
 export default elcatToggleList;

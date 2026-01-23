@@ -4,5 +4,5 @@
 
 export { registerCollections } from './collections';
 export { registerFilters } from './filters';
-export { registerShortcodes } from './shortcodes';
 export { registerGlobalData } from './globalData';
+export { registerShortcodes } from './shortcodes';

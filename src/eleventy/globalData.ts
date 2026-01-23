@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import type { EleventyConfig } from '@/types/eleventy';
 import meta from '@/_data/meta';
+import type { EleventyConfig } from '@/types/eleventy';
 
 /**
  * Регистрирует глобальные данные в Eleventy
@@ -8,11 +8,8 @@ import meta from '@/_data/meta';
  */
 export function registerGlobalData(eleventyConfig: EleventyConfig): void {
   /** текущий год доступен глобально */
-  eleventyConfig.addGlobalData(
-    "getGlobalCurrentYear",
-    dayjs().year().toString()
-  );
+  eleventyConfig.addGlobalData('getGlobalCurrentYear', dayjs().year().toString());
 
   /** Регистрируем meta данные из TypeScript файла */
-  eleventyConfig.addGlobalData("meta", meta);
+  eleventyConfig.addGlobalData('meta', meta);
 }

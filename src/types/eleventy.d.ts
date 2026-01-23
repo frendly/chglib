@@ -4,6 +4,8 @@
  * Eleventy не предоставляет официальных типов TypeScript,
  * поэтому используются собственные объявления модулей.
  */
+// biome-ignore-all lint/suspicious/noExplicitAny: Eleventy types are unknown
+// biome-ignore-all lint/complexity/noBannedTypes: Eleventy uses generic Function types
 
 declare module '@11ty/eleventy' {
   export class EleventyRenderPlugin {
@@ -53,4 +55,6 @@ export interface EleventyConfigReturn {
   };
 }
 
-export type EleventyConfigFunction = (eleventyConfig: EleventyConfig) => EleventyConfigReturn | void;
+export type EleventyConfigFunction = (
+  eleventyConfig: EleventyConfig
+) => EleventyConfigReturn | undefined;

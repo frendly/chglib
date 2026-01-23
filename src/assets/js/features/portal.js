@@ -11,12 +11,12 @@ export const createPortal = () => {
   </div>
   `;
 
-  const node = new DOMParser().parseFromString(template, "text/html").body.firstChild;
+  const node = new DOMParser().parseFromString(template, 'text/html').body.firstChild;
 
   document.body.appendChild(node);
 
   closeWatcher();
-}
+};
 
 /**
  * Удаляет портал из DOM
@@ -24,7 +24,7 @@ export const createPortal = () => {
 const removePortal = () => {
   const portal = document.querySelector('.portal');
   portal.remove();
-}
+};
 
 /**
  * Ожидаем клик на оверлей или кнопку закрытия, чтобы удалить портал
@@ -35,4 +35,4 @@ const closeWatcher = () => {
 
   overlay.addEventListener('click', removePortal);
   portalClose.addEventListener('click', removePortal);
-}
+};

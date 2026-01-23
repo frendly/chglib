@@ -1,13 +1,26 @@
 /**
  * Добавляем target='_blank'
  * - для внешних ссылок
- * - для внутренних ссылок на файлы pdf, jpg, doc, docx,ppt
+ * - для внутренних ссылок на файлы pdf, jpg, doc, docx, ppt
  */
 export const targetBlank = () => {
-  const urls = document.querySelectorAll("a");
-  const host = location.host.replace("www.", "");
-  const pattern = new RegExp('^(https?:\\/\\/)?' + host + '(?!.*\\.(pdf|jpg|doc|docx|ppt))', 'i');
+  const links = document.querySelectorAll('a');
+  if (links.length === 0) return;
 
-  const externalAndResourceUrls = Array.from(urls).filter((url) => !url.href.match(pattern));
-  externalAndResourceUrls.forEach(link => link.setAttribute('target', '_blank'));
+  const currentHost = location.host.replace('www.', '');
+  // Экранируем специальные символы в host для использования в RegExp
+  const escapedHost = currentHost.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Паттерн для внутренних ссылок (не ресурсные файлы)
+  const internalLinkPattern = new RegExp(
+    `^https?:\\/\\/(www\\.)?${escapedHost}(?!.*\\.(pdf|jpg|doc|docx|ppt)(\\?|#|$))`,
+    'i'
+  );
+
+  for (const link of links) {
+    if (!link.href) continue;
+    // Добавляем target='_blank' если ссылка не соответствует паттерну внутренних ссылок
+    if (!internalLinkPattern.test(link.href)) {
+      link.setAttribute('target', '_blank');
+    }
+  }
 };
