@@ -2,13 +2,7 @@
 permalink: /sitemap.xml
 layout: false
 eleventyExcludeFromCollections: true
----
-{##
-  Динамически генерируемый sitemap.xml для всех страниц сайта.
-  Использует коллекцию collections.all для получения всех HTML страниц.
-  Статические файлы (PDF, изображения) не включаются в sitemap.
-##}
-<?xml version="1.0" encoding="UTF-8"?>
+---<?xml version="1.0" encoding="UTF-8"?>
 <urlset
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -16,29 +10,20 @@ eleventyExcludeFromCollections: true
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for page in collections.all %}
   {%- if page.url %}
-    {# Нормализуем путь URL: убираем /index.html и .html для определения типа страницы #}
     {%- set urlPath = page.url | replace("/index.html", "/") | replace(".html", "") %}
-
-    {# Определяем priority и changefreq на основе типа страницы #}
     {%- if urlPath == "/" %}
-      {# Главная страница: максимальный приоритет, обновляется ежедневно #}
       {%- set priority = "1.0000" %}
       {%- set changefreq = "daily" %}
     {%- elif urlPath == "/news/" or urlPath == "/BENex/" or urlPath == "/BNP/" or urlPath == "/subjex/" or urlPath == "/ec/" or urlPath == "/libweb/" %}
-      {# Основные разделы сайта: высокий приоритет, обновляются еженедельно #}
       {%- set priority = "0.8000" %}
       {%- set changefreq = "weekly" %}
     {%- elif urlPath | hasPrefix("/news/") or urlPath | hasPrefix("/BENex/") or urlPath | hasPrefix("/BNP/") %}
-      {# Подстраницы основных разделов (новости, бюллетени): высокий приоритет, обновляются еженедельно #}
       {%- set priority = "0.8000" %}
       {%- set changefreq = "weekly" %}
     {%- else %}
-      {# Остальные страницы: стандартный приоритет, обновляются ежемесячно #}
       {%- set priority = "0.6000" %}
       {%- set changefreq = "monthly" %}
     {%- endif %}
-
-    {# Форматируем дату последней модификации в ISO 8601 (RFC 3339) #}
     {%- set lastmodDate = page.date | getSitemapDate %}
 <url>
    <loc>https://chglib.icp.ac.ru{{ page.url }}</loc>
