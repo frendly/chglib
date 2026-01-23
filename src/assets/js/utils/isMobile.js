@@ -1,1 +1,1 @@
-export const isMobile = "ontouchstart" in document.documentElement;
+export const isMobile = 'ontouchstart' in document.documentElement;

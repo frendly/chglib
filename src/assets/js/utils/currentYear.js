@@ -6,5 +6,5 @@ export const getCurrentYear = () => dayjs().year();
 export const setCurrentYear = () => {
   const selector = document.querySelector('.current-year');
   const currentYear = getCurrentYear();
-  selector.innerText = `– ${currentYear}`
-}
+  selector.innerText = `– ${currentYear}`;
+};

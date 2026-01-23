@@ -3,6 +3,6 @@ export const menuMobile = () => {
   const menuClasses = document.querySelector('.menu-list').classList;
 
   menuButton.addEventListener('click', () => {
-      menuClasses.toggle("menu-list--open");
+    menuClasses.toggle('menu-list--open');
   });
-}
+};

@@ -1,12 +1,16 @@
-import "tsx/esm";
+import 'tsx/esm';
 // @ts-expect-error - Eleventy не предоставляет официальных типов TypeScript
-import { EleventyRenderPlugin } from "@11ty/eleventy";
+import { EleventyRenderPlugin } from '@11ty/eleventy';
 // @ts-expect-error - Eleventy Navigation не предоставляет официальных типов TypeScript
-import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
-
+import eleventyNavigationPlugin from '@11ty/eleventy-navigation';
+import {
+  registerCollections,
+  registerFilters,
+  registerGlobalData,
+  registerShortcodes,
+} from '@/eleventy';
 import type { EleventyConfig, EleventyConfigReturn } from '@/types/eleventy';
-import buildAssets from "./build-assets";
-import { registerCollections, registerFilters, registerShortcodes, registerGlobalData } from '@/eleventy';
+import buildAssets from './build-assets';
 
 export default function (eleventyConfig: EleventyConfig): EleventyConfigReturn {
   /** Enable quiet mode to reduce console noise */
@@ -24,9 +28,9 @@ export default function (eleventyConfig: EleventyConfig): EleventyConfigReturn {
   eleventyConfig.addPlugin(EleventyRenderPlugin);
 
   /** Copy all images directly to dist. */
-  eleventyConfig.addPassthroughCopy({ "src/assets/images": "/assets/images" });
+  eleventyConfig.addPassthroughCopy({ 'src/assets/images': '/assets/images' });
   /** Copy robots.txt, etc to dist. */
-  eleventyConfig.addPassthroughCopy({ "src/assets/static/*": "/" });
+  eleventyConfig.addPassthroughCopy({ 'src/assets/static/*': '/' });
 
   /** Регистрация коллекций, фильтров, shortcodes и глобальных данных */
   registerCollections(eleventyConfig);
@@ -35,18 +39,18 @@ export default function (eleventyConfig: EleventyConfig): EleventyConfigReturn {
   registerGlobalData(eleventyConfig);
 
   /** Build JS and CSS assets */
-  eleventyConfig.on("beforeBuild", buildAssets);
+  eleventyConfig.on('beforeBuild', buildAssets);
 
-  eleventyConfig.addWatchTarget("./src/assets/");
+  eleventyConfig.addWatchTarget('./src/assets/');
 
   return {
-    templateFormats: ["md", "njk", "html"],
+    templateFormats: ['md', 'njk', 'html'],
     dir: {
-      input: "pages",
-      output: "dist",
-      includes: "../src/_includes",
-      data: "../src/_data",
-      layouts: "../src/_includes/layouts",
+      input: 'pages',
+      output: 'dist',
+      includes: '../src/_includes',
+      data: '../src/_data',
+      layouts: '../src/_includes/layouts',
     },
   };
 }

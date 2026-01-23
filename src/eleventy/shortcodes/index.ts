@@ -9,7 +9,5 @@ const now = String(dayjs().valueOf());
  */
 export function registerShortcodes(eleventyConfig: EleventyConfig): void {
   /** Add cache busting with {% version %} time string */
-  eleventyConfig.addShortcode("version", function () {
-    return now;
-  });
+  eleventyConfig.addShortcode('version', () => now);
 }

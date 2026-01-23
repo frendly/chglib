@@ -10,9 +10,8 @@ dayjs.locale('ru');
  * @returns Отформатированная дата
  * @example {{ post.date | getHumanDate }}
  */
-export const getHumanDate = function (dateObj: Date | string): string {
-  return dayjs(dateObj).format(DATE_FORMAT_HUMAN);
-};
+export const getHumanDate = (dateObj: Date | string): string =>
+  dayjs(dateObj).format(DATE_FORMAT_HUMAN);
 
 /**
  * Отображает дату в человеко-понятном виде с годом, например 11 февраля 2025
@@ -20,9 +19,8 @@ export const getHumanDate = function (dateObj: Date | string): string {
  * @returns Отформатированная дата с годом
  * @example {{ post.date | getHumanDateWithYear }}
  */
-export const getHumanDateWithYear = function (dateObj: Date | string): string {
-  return dayjs(dateObj).format(DATE_FORMAT_HUMAN_WITH_YEAR);
-};
+export const getHumanDateWithYear = (dateObj: Date | string): string =>
+  dayjs(dateObj).format(DATE_FORMAT_HUMAN_WITH_YEAR);
 
 /**
  * Отображает дату в формате ISO 8601 (RFC 3339) для sitemap.xml
@@ -30,7 +28,7 @@ export const getHumanDateWithYear = function (dateObj: Date | string): string {
  * @returns Отформатированная дата в формате YYYY-MM-DDTHH:mm:ss+00:00
  * @example {{ page.date | getSitemapDate }}
  */
-export const getSitemapDate = function (dateObj: Date | string | undefined): string {
+export const getSitemapDate = (dateObj: Date | string | undefined): string => {
   if (!dateObj) {
     return dayjs().toISOString();
   }

@@ -6,12 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": [
-      "**/*.ts",
-      "**/*.js",
-      "CURSOR.md",
-      "readme.md"
-    ]
+    "includes": ["**/*.ts", "**/*.js", "CURSOR.md", "readme.md"]
   },
   "formatter": {
     "enabled": true,

@@ -53,4 +53,6 @@ export interface EleventyConfigReturn {
   };
 }
 
-export type EleventyConfigFunction = (eleventyConfig: EleventyConfig) => EleventyConfigReturn | void;
+export type EleventyConfigFunction = (
+  eleventyConfig: EleventyConfig
+) => EleventyConfigReturn | void;

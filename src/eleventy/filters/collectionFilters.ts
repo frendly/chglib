@@ -19,12 +19,11 @@ export const limit = <T>(array: T[] | undefined, limit: number): T[] => {
  * @returns Массив лет, отсортированных по возрастанию
  * @example {{ collections.benexByYear | getYears }}
  */
-export const getYears = function (collection: Record<string, unknown> | undefined): string[] {
-  return Object.keys(collection || {})
-    .map(year => parseInt(year))
+export const getYears = (collection: Record<string, unknown> | undefined): string[] =>
+  Object.keys(collection || {})
+    .map((year) => parseInt(year))
     .sort((a, b) => a - b) /** сортировка по возрастанию */
-    .map(year => year.toString());
-};
+    .map((year) => year.toString());
 
 /**
  * Фильтр для получения всех новостей из всех лет
@@ -33,7 +32,9 @@ export const getYears = function (collection: Record<string, unknown> | undefine
  * @returns Массив всех новостей, отсортированных по дате (новые первыми)
  * @example {{ collections.newsByYear | getAllNews }}
  */
-export const getAllNews = function (newsByYear: Record<string, EleventyCollectionItem[]> | undefined): EleventyCollectionItem[] {
+export const getAllNews = (
+  newsByYear: Record<string, EleventyCollectionItem[]> | undefined
+): EleventyCollectionItem[] => {
   if (!newsByYear || typeof newsByYear !== 'object') {
     return [];
   }
@@ -58,6 +59,4 @@ export const getAllNews = function (newsByYear: Record<string, EleventyCollectio
  * @returns true, если строка начинается с префикса
  * @example {{ urlPath | hasPrefix("/news/") }}
  */
-export const hasPrefix = function (str: string, prefix: string): boolean {
-  return str.startsWith(prefix);
-};
+export const hasPrefix = (str: string, prefix: string): boolean => str.startsWith(prefix);

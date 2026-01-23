@@ -1,7 +1,7 @@
 import type { EleventyConfig } from '@/types/eleventy';
-import { getHumanDate, getHumanDateWithYear, getSitemapDate } from './dateFilters';
-import { limit, getYears, getAllNews, hasPrefix } from './collectionFilters';
 import { getBreadcrumbs } from './breadcrumbs';
+import { getAllNews, getYears, hasPrefix, limit } from './collectionFilters';
+import { getHumanDate, getHumanDateWithYear, getSitemapDate } from './dateFilters';
 
 /**
  * Регистрирует фильтры в Eleventy
@@ -9,18 +9,18 @@ import { getBreadcrumbs } from './breadcrumbs';
  */
 export function registerFilters(eleventyConfig: EleventyConfig): void {
   /** Фильтры для дат */
-  eleventyConfig.addFilter("getHumanDate", getHumanDate);
-  eleventyConfig.addFilter("getHumanDateWithYear", getHumanDateWithYear);
-  eleventyConfig.addFilter("getSitemapDate", getSitemapDate);
+  eleventyConfig.addFilter('getHumanDate', getHumanDate);
+  eleventyConfig.addFilter('getHumanDateWithYear', getHumanDateWithYear);
+  eleventyConfig.addFilter('getSitemapDate', getSitemapDate);
 
   /** Фильтры для коллекций */
-  eleventyConfig.addNunjucksFilter("limit", limit);
-  eleventyConfig.addNunjucksFilter("getYears", getYears);
-  eleventyConfig.addNunjucksFilter("getAllNews", getAllNews);
+  eleventyConfig.addNunjucksFilter('limit', limit);
+  eleventyConfig.addNunjucksFilter('getYears', getYears);
+  eleventyConfig.addNunjucksFilter('getAllNews', getAllNews);
 
   /** Фильтры для строк */
-  eleventyConfig.addNunjucksFilter("hasPrefix", hasPrefix);
+  eleventyConfig.addNunjucksFilter('hasPrefix', hasPrefix);
 
   /** Фильтры для навигации */
-  eleventyConfig.addNunjucksFilter("getBreadcrumbs", getBreadcrumbs);
+  eleventyConfig.addNunjucksFilter('getBreadcrumbs', getBreadcrumbs);
 }

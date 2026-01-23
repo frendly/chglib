@@ -19,10 +19,10 @@ interface PageType {
 
 // Разделы с архивом (показываем крошки только для них)
 const SECTION_MAP: Record<string, SectionInfo> = {
-  'BNP': { baseUrl: '/BNP/', navKey: 'Новые поступления' },
-  'BENex': { baseUrl: '/BENex/', navKey: 'Журналы БЕН' },
-  'news': { baseUrl: '/news/', navKey: 'Новости' },
-  'subjex': { baseUrl: '/subjex/', navKey: 'Тематические выставки' },
+  BNP: { baseUrl: '/BNP/', navKey: 'Новые поступления' },
+  BENex: { baseUrl: '/BENex/', navKey: 'Журналы БЕН' },
+  news: { baseUrl: '/news/', navKey: 'Новости' },
+  subjex: { baseUrl: '/subjex/', navKey: 'Тематические выставки' },
 };
 
 /**
