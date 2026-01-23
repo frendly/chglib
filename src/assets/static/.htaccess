@@ -1,119 +1,61 @@
-Order Allow,Deny
-Allow from all
+# Совместимость с Apache 2.4+ (Require all granted) и Apache 2.2 (Allow from all)
+<IfModule mod_authz_core.c>
+    Require all granted
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order Allow,Deny
+    Allow from all
+</IfModule>
 
 Options +FollowSymLinks
 RewriteEngine On
 RewriteBase /
 
-Redirect 301 /bncpost.html /BNP/
-Redirect 301 /bnp2018.html /BNP/2018/
-Redirect 301 /bnp2017.html /BNP/2017/
-Redirect 301 /bnp2016.html /BNP/2016/
-Redirect 301 /bnp2015.html /BNP/2015/
-Redirect 301 /bnp2014.html /BNP/2014/
-Redirect 301 /bnp2013.html /BNP/2013/
-Redirect 301 /bnp2012.html /BNP/2012/
+# Редирект с HTTP на HTTPS (должен быть первым)
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Редирект с http://chglib.icp.ac.ru/index.html на http://chglib.icp.ac.ru/
-RewriteRule ^index\.html$ / [NC,R,L]
+# Редирект index.html на корень
+RewriteRule ^index\.html$ / [NC,R=301,L]
 
-# Редирект старых главных страниц
-Redirect 301 /lib0.html /
-Redirect 301 /lib0_e.html /
-Redirect 301 /lib1.html /
-Redirect 301 /lib10.html /
-Redirect 301 /lib10_e.html /
-Redirect 301 /lib11.html /
-Redirect 301 /lib11_e.html /
-Redirect 301 /lib1_23.html /
-Redirect 301 /lib1_e.html /
-Redirect 301 /lib2.html /
-Redirect 301 /lib2_0.html /
-Redirect 301 /lib2_8.html /
-Redirect 301 /lib2_e.html /
-Redirect 301 /lib3.html /
-Redirect 301 /lib3_e.html /
-Redirect 301 /lib4.html /
-Redirect 301 /lib4_27.html /
-Redirect 301 /lib4_9.html /
-Redirect 301 /lib4_e.html /
-Redirect 301 /lib5.html /
-Redirect 301 /lib511.html /
-Redirect 301 /lib513.html /
-Redirect 301 /lib515.html /
-Redirect 301 /lib517.html /
-Redirect 301 /lib519.html /
-Redirect 301 /lib521.html /
-Redirect 301 /lib523.html /
-Redirect 301 /lib525.html /
-Redirect 301 /lib527.html /
-Redirect 301 /lib529.html /
-Redirect 301 /lib53.html /
-Redirect 301 /lib55.html /
-Redirect 301 /lib57.html /
-Redirect 301 /lib59.html /
-Redirect 301 /lib5_e.html /
-Redirect 301 /lib6.html /
-Redirect 301 /lib6_e.html /
-Redirect 301 /lib7.html /
-Redirect 301 /lib7_e.html /
-Redirect 301 /lib8.html /
-Redirect 301 /lib8_e.html /
-Redirect 301 /lib9.html /
-Redirect 301 /lib9_e.html /
-Redirect 301 /lib_ny.html /
-Redirect 301 /lib_ny1.html /
-Redirect 301 /lib_ny2.html /
-Redirect 301 /lib_ny2015.html /
-Redirect 301 /lib_ny2017.html /
-Redirect 301 /lib_nyold.html /
-Redirect 301 /lib_oy.html /
-Redirect 301 /lib_oy2016.html /
+# Редиректы BNP (объединены в паттерны)
+RewriteRule ^bncpost\.html$ /BNP/ [R=301,L]
+RewriteRule ^bnp(201[2-8])\.html$ /BNP/$1/ [R=301,L]
 
-# Редирект Электронный каталог
-Redirect 301 /elcat.html /ec/
+# Редиректы старых главных страниц (объединены в паттерны)
+# lib0.html, lib1.html, ..., lib11.html
+RewriteRule ^lib([0-9]|1[0-1])\.html$ / [R=301,L]
+# lib_ny.html, lib_ny1.html, lib_ny2.html, lib_ny2015.html, lib_ny2017.html, lib_nyold.html
+RewriteRule ^lib_ny([0-9]*|old)\.html$ / [R=301,L]
+# lib_oy.html, lib_oy2016.html
+RewriteRule ^lib_oy([0-9]*)?\.html$ / [R=301,L]
+# lib0_e.html, lib1_e.html, ..., lib9_e.html
+RewriteRule ^lib([0-9])_e\.html$ / [R=301,L]
+# lib1_23.html, lib2_0.html, lib2_8.html, lib4_9.html, lib4_27.html
+RewriteRule ^lib([0-9])_([0-9]+)\.html$ / [R=301,L]
+# lib53.html, lib55.html, lib57.html, lib59.html, lib511.html, lib513.html, ..., lib529.html
+RewriteRule ^lib5(3|5|7|9|1[1-9]|2[1-9])\.html$ / [R=301,L]
 
-# Редирект Выставка журналов из БЕН РАН
-Redirect 301 /BENex.html /BENex/
+# Редиректы основных разделов
+RewriteRule ^elcat\.html$ /ec/ [R=301,L]
+RewriteRule ^BENex\.html$ /BENex/ [R=301,L]
+RewriteRule ^onas\.html$ /about/ [R=301,L]
+RewriteRule ^adres\.html$ /contacts/ [R=301,L]
+RewriteRule ^subjex\.html$ /subjex/ [R=301,L]
+RewriteRule ^news\.html$ /news/ [R=301,L]
+RewriteRule ^libweb\.html$ /libweb/ [R=301,L]
 
-# Редирект О библиотеке
-Redirect 301 /onas.html /about/
+# Редиректы подстраниц subjex (объединены в паттерн)
+# subjex/2008/subjex.html, ..., subjex/2017/subjex.html
+RewriteRule ^subjex/(20(0[8-9]|1[0-7]))/subjex\.html$ /subjex/$1/ [R=301,L]
 
-# Редирект Контакты
-Redirect 301 /adres.html /contacts/
+# Редиректы новостей по годам (объединены в паттерн)
+# more/news2008.html, ..., more/news2020.html
+RewriteRule ^more/news(20(0[8-9]|1[0-9]|20))\.html$ /news/$1/ [R=301,L]
 
-# Редирект Тематические выставки
-Redirect 301 /subjex.html /subjex/
-Redirect 301 /subjex/2017/subjex.html /subjex/2017/
-Redirect 301 /subjex/2015/subjex.html /subjex/2015/
-Redirect 301 /subjex/2014/subjex.html /subjex/2014/
-Redirect 301 /subjex/2013/subjex.html /subjex/2013/
-Redirect 301 /subjex/2012/subjex.html /subjex/2012/
-Redirect 301 /subjex/2011/subjex.html /subjex/2011/
-Redirect 301 /subjex/2010/subjex.html /subjex/2010/
-Redirect 301 /subjex/2009/subjex.html /subjex/2009/
-Redirect 301 /subjex/2008/subjex.html /subjex/2008/
-
-# Редирект Новостей
-Redirect 301 /news.html /news/
-Redirect 301 /more/news2008.html /news/2008/
-Redirect 301 /more/news2009.html /news/2009/
-Redirect 301 /more/news2010.html /news/2010/
-Redirect 301 /more/news2011.html /news/2011/
-Redirect 301 /more/news2012.html /news/2012/
-Redirect 301 /more/news2013.html /news/2013/
-Redirect 301 /more/news2014.html /news/2014/
-Redirect 301 /more/news2015.html /news/2015/
-Redirect 301 /more/news2016.html /news/2016/
-Redirect 301 /more/news2017.html /news/2017/
-Redirect 301 /more/news2018.html /news/2018/
-Redirect 301 /more/news2019.html /news/2019/
-Redirect 301 /more/news2020.html /news/2020/
-
-# Редирект веб-библиотеки (libweb)
-Redirect 301 /libweb.html /libweb/
-Redirect 301 /e-jour.html /libweb/e-jour.html
-Redirect 301 /ResBNC.html /libweb/ResBNC.html
-Redirect 301 /libweb/ResBNC.html /libweb/resbnc/
-Redirect 301 /Restmp.html /libweb/Restmp.html
-Redirect 301 /science.html /libweb/science.html
+# Редиректы веб-библиотеки (libweb)
+RewriteRule ^e-jour\.html$ /libweb/e-jour.html [R=301,L]
+RewriteRule ^ResBNC\.html$ /libweb/ResBNC.html [R=301,L]
+RewriteRule ^libweb/ResBNC\.html$ /libweb/resbnc/ [R=301,L]
+RewriteRule ^Restmp\.html$ /libweb/Restmp.html [R=301,L]
+RewriteRule ^science\.html$ /libweb/science.html [R=301,L]
