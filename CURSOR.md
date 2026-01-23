@@ -199,7 +199,8 @@ yarn deploy  # build && transfer (rsync via SSH)
 ### Config Files
 - **`.eleventy.ts`**: Main Eleventy config, registers plugins, imports from `src/eleventy/`, uses `tsx/esm` for TS data files
 - **`tsconfig.json`**: `moduleResolution: "bundler"` (imports without `.js`), `noEmit: true`, `strict: true`
-- **`src/types/eleventy.d.ts`**: Custom Eleventy API types (no official types)
+- **`biome.json`**: Biome linter/formatter config (uses `biome-ignore-all` in `eleventy.d.ts` for type definitions)
+- **`src/types/eleventy.d.ts`**: Custom Eleventy API types (no official types). Uses `biome-ignore-all` comments to suppress `noExplicitAny` and `noBannedTypes` rules since Eleventy types are unknown
 - **`src/eleventy/`**: Modular Eleventy config
   - `collections/`: `makeCollection`, `makeBENexCollection`
   - `filters/`: `getHumanDate`, `getHumanDateWithYear`, `getSitemapDate`, `limit`, `getYears`, `getAllNews`, `hasPrefix`
@@ -398,5 +399,5 @@ yarn deploy  # build && transfer
 ---
 
 *Last update: 2026-01-23*
-*Doc version: 3.1 (sitemap, filters update)*
-*Project version: 4.2.2 (TypeScript)*
+*Doc version: 3.2 (Biome linter config, eleventy.d.ts suppressions)*
+*Project version: 4.3.2 (TypeScript)*

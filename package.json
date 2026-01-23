@@ -1,6 +1,6 @@
 {
   "name": "chglib",
-  "version": "4.2.2",
+  "version": "4.3.2",
   "main": ".eleventy.ts",
   "type": "module",
   "repository": "git@github.com:frendly/chglib.git",
