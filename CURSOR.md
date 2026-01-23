@@ -103,6 +103,7 @@ chglib/
 │   ├── more/                 # Additional pages
 │   ├── about/, contacts/
 │   ├── index.njk             # Homepage
+│   ├── sitemap.xml.njk       # Dynamic sitemap generator
 │   └── pages.json
 │
 ├── src/
@@ -132,7 +133,7 @@ chglib/
 │       ├── js/index.js       # Main JS (bundled)
 │       ├── styles/           # CSS (PostCSS)
 │       ├── images/           # Images (copied as-is)
-│       └── static/           # robots.txt, sitemap.xml, favicon.ico
+│       └── static/           # robots.txt, favicon.ico, .htaccess (sitemap.xml generated dynamically)
 │
 ├── dist/                     # Generated site
 └── src/LEGACY/               # Old HTML (not used)
@@ -201,7 +202,7 @@ yarn deploy  # build && transfer (rsync via SSH)
 - **`src/types/eleventy.d.ts`**: Custom Eleventy API types (no official types)
 - **`src/eleventy/`**: Modular Eleventy config
   - `collections/`: `makeCollection`, `makeBENexCollection`
-  - `filters/`: `getHumanDate`, `getHumanDateWithYear`, `limit`, `getYears`, `getAllNews`
+  - `filters/`: `getHumanDate`, `getHumanDateWithYear`, `getSitemapDate`, `limit`, `getYears`, `getAllNews`, `hasPrefix`
   - `shortcodes/`: `version` (cache busting)
   - `globalData.ts`: `getGlobalCurrentYear`, `meta`
 - **`build-assets.ts`**: JS/CSS build function for `beforeBuild` hook
@@ -230,9 +231,11 @@ yarn deploy  # build && transfer (rsync via SSH)
 ### Custom Filters (`src/eleventy/filters/`)
 1. **`getHumanDate`**: `{{ date | getHumanDate }}` → "11 февраля" (RU locale, `DATE_FORMAT_HUMAN`)
 2. **`getHumanDateWithYear`**: `{{ date | getHumanDateWithYear }}` → "11 февраля 2025" (`DATE_FORMAT_HUMAN_WITH_YEAR`)
-3. **`limit`**: `{{ collection | limit(5) }}` → first 5 items
-4. **`getYears`**: `{{ collections.benexByYear | getYears }}` → sorted years array (for auto-archives)
-5. **`getAllNews`**: `{{ collections.newsByYear | getAllNews }}` → all news merged, sorted by date (for homepage)
+3. **`getSitemapDate`**: `{{ page.date | getSitemapDate }}` → ISO 8601 (RFC 3339) format for sitemap.xml
+4. **`limit`**: `{{ collection | limit(5) }}` → first 5 items
+5. **`getYears`**: `{{ collections.benexByYear | getYears }}` → sorted years array (for auto-archives)
+6. **`getAllNews`**: `{{ collections.newsByYear | getAllNews }}` → all news merged, sorted by date (for homepage)
+7. **`hasPrefix`**: `{{ urlPath | hasPrefix("/news/") }}` → true if string starts with prefix
 
 ### Shortcodes
 - **`version`**: `{% version %}` → timestamp for cache busting
@@ -361,6 +364,20 @@ yarn deploy  # build && transfer
 
 ---
 
-*Last update: 2025-01-12*
-*Doc version: 3.0 (optimized)*
-*Project version: 4.0.0 (TypeScript)*
+---
+
+## 🗺️ Sitemap
+
+- **Dynamic generation**: `pages/sitemap.xml.njk` generates sitemap from `collections.all`
+- **Output**: `/sitemap.xml` in root
+- **Includes**: All HTML pages (static files like PDF/images excluded)
+- **Base URL**: `https://chglib.icp.ac.ru` (HTTPS)
+- **Priority logic**: Homepage (1.0), main sections (0.8), others (0.6)
+- **Change frequency**: Homepage (daily), sections (weekly), others (monthly)
+- **Date format**: ISO 8601 (RFC 3339) via `getSitemapDate` filter
+
+---
+
+*Last update: 2025-01-15*
+*Doc version: 3.1 (sitemap, filters update)*
+*Project version: 4.1.0 (TypeScript)*
