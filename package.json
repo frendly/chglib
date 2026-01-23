@@ -15,12 +15,17 @@
     "watch": "yarn clear && tsx node_modules/.bin/eleventy --config=.eleventy.ts --serve --watch",
     "build": "yarn clear && NODE_ENV=production tsx node_modules/.bin/eleventy --config=.eleventy.ts",
     "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
     "deploy": "yarn build && yarn transfer",
     "transfer": "env-cmd -x rsync -az ./dist/ \\$SSH_HOST:\\$SSH_PATH"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@11ty/eleventy-navigation": "^0.3.5",
+    "@biomejs/biome": "^2.0.6",
     "@types/node": "^20.0.0",
     "env-cmd": "^10.1.0",
     "esbuild": "^0.25.0",
