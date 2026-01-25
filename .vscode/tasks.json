@@ -14,10 +14,18 @@
         ]
       },
       "osx": {
-        "command": "node .vscode/install_extensions.js | xargs -L 1 code --install-extension"
+        "command": "bash",
+        "args": [
+          "-c",
+          "EDITOR=$([ -n \"$CURSOR_PID\" ] || [ -n \"$CURSOR_SESSION_ID\" ] && echo 'cursor' || (command -v cursor >/dev/null 2>&1 && echo 'cursor' || echo 'code')); node .vscode/install_extensions.js | xargs -L 1 $EDITOR --install-extension"
+        ]
       },
       "linux": {
-        "command": "node .vscode/install_extensions.js | xargs -L 1 code --install-extension"
+        "command": "bash",
+        "args": [
+          "-c",
+          "EDITOR=$([ -n \"$CURSOR_PID\" ] || [ -n \"$CURSOR_SESSION_ID\" ] && echo 'cursor' || (command -v cursor >/dev/null 2>&1 && echo 'cursor' || echo 'code')); node .vscode/install_extensions.js | xargs -L 1 $EDITOR --install-extension"
+        ]
       },
       "runOptions": {
         "runOn": "folderOpen"

@@ -12,13 +12,41 @@ if (!fs.existsSync(extensionsJsonPath)) {
   process.exit(1);
 }
 
+// Определить редактор (VS Code или Cursor)
+function detectEditor() {
+  // Проверка переменных окружения
+  if (process.env.CURSOR_PID || process.env.CURSOR_SESSION_ID) {
+    return 'cursor';
+  }
+  if (process.env.VSCODE_PID || process.env.VSCODE_INJECTION) {
+    return 'code';
+  }
+  
+  // Попробовать выполнить команды для определения доступности
+  try {
+    execSync('cursor --version', { stdio: 'ignore' });
+    return 'cursor';
+  } catch {
+    try {
+      execSync('code --version', { stdio: 'ignore' });
+      return 'code';
+    } catch {
+      // По умолчанию используем code (VS Code)
+      return 'code';
+    }
+  }
+}
+
+const editor = detectEditor();
+
 const extensionsJson = JSON.parse(fs.readFileSync(extensionsJsonPath, 'utf8'));
 const recommendations = extensionsJson.recommendations || [];
 
 // Получить список установленных расширений
 let installedExtensions = new Set();
 try {
-  const installed = execSync('code --list-extensions', { encoding: 'utf8' });
+  const listCommand = `${editor} --list-extensions`;
+  const installed = execSync(listCommand, { encoding: 'utf8' });
   installedExtensions = new Set(installed.trim().split('\n').filter(Boolean));
 } catch (error) {
   // Если команда недоступна, выводим все рекомендованные (fallback поведение)
