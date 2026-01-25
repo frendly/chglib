@@ -1,0 +1,47 @@
+<section class="styleguide-section" id="navigation">
+  <h2>Навигация</h2>
+  <p><strong>Требует Nunjucks компоненты.</strong> Нельзя использовать в Markdown.</p>
+
+  <h3>Хлебные крошки (Breadcrumbs)</h3>
+  <div class="styleguide-example">
+    <nav aria-label="Хлебные крошки" class="breadcrumbs">
+      <ol class="breadcrumbs__list">
+        <li class="breadcrumbs__item">
+          <a title="На главную страницу" href="/" class="breadcrumbs__link">🏠</a>
+        </li>
+        <li class="breadcrumbs__item">
+          <a href="/styleguide/" class="breadcrumbs__link">Гайд стилей</a>
+        </li>
+        <li class="breadcrumbs__item">
+          <span class="breadcrumbs__current" aria-current="page">Навигация</span>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>{% raw %}{% include "components/breadcrumbs.njk" %}{% endraw %}</code></pre>
+    </div>
+  </details>
+  <p><strong>Описание:</strong> Компонент breadcrumbs автоматически генерируется на основе структуры страницы. Использует фильтр <code>getBreadcrumbs</code> для построения пути.</p>
+  <p><strong>HTML структура:</strong></p>
+  <details>
+    <summary>Показать HTML структуру</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;nav aria-label="Хлебные крошки" class="breadcrumbs"&gt;
+  &lt;ol class="breadcrumbs__list"&gt;
+    &lt;li class="breadcrumbs__item"&gt;
+      &lt;a href="/" class="breadcrumbs__link"&gt;🏠&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="breadcrumbs__item"&gt;
+      &lt;a href="/path/" class="breadcrumbs__link"&gt;Раздел&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="breadcrumbs__item"&gt;
+      &lt;span class="breadcrumbs__current" aria-current="page"&gt;Текущая страница&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+    </div>
+  </details>
+</section>

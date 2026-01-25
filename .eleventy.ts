@@ -41,6 +41,17 @@ export default function (eleventyConfig: EleventyConfig): EleventyConfigReturn {
   /** Build JS and CSS assets */
   eleventyConfig.on('beforeBuild', buildAssets);
 
+  /** Добавляем сообщение о стилгайде после сборки в режиме сервера */
+  eleventyConfig.on('afterBuild', () => {
+    const isServeMode = process.argv.includes('--serve');
+    if (isServeMode) {
+      // Небольшая задержка, чтобы сообщение появилось после сообщения о запуске сервера
+      setTimeout(() => {
+        console.log('[11ty] Стайлгайд здесь http://localhost:8080/styleguide');
+      }, 100);
+    }
+  });
+
   eleventyConfig.addWatchTarget('./src/assets/');
 
   return {

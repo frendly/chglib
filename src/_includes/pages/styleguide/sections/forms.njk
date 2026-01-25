@@ -1,0 +1,49 @@
+<section class="styleguide-section" id="forms">
+  <h2>Формы</h2>
+  <p><strong>Требует HTML с классами.</strong> Нельзя использовать в Markdown.</p>
+
+  <h3>Поля ввода</h3>
+  <div class="styleguide-example">
+    <form class="form" novalidate>
+      <label for="example-text">Текстовое поле</label>
+      <input type="text" id="example-text" name="text" class="form__input" placeholder="Введите текст" />
+      
+      <label for="example-email">Email</label>
+      <input type="email" id="example-email" name="email" class="form__input" placeholder="example@mail.ru" />
+    </form>
+  </div>
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;form class="form" novalidate&gt;
+  &lt;label for="text-input"&gt;Текстовое поле&lt;/label&gt;
+  &lt;input type="text" id="text-input" name="text" class="form__input" placeholder="Введите текст" /&gt;
+  
+  &lt;label for="email-input"&gt;Email&lt;/label&gt;
+  &lt;input type="email" id="email-input" name="email" class="form__input" placeholder="example@mail.ru" /&gt;
+&lt;/form&gt;</code></pre>
+    </div>
+  </details>
+
+  <h3>Сообщения формы</h3>
+  <div class="styleguide-example">
+    <div class="form__message form__message--success" role="alert" aria-live="polite" style="display: block;">
+      Форма успешно отправлена!
+    </div>
+    <div class="form__message form__message--error" role="alert" aria-live="polite" style="display: block;">
+      Произошла ошибка при отправке формы.
+    </div>
+  </div>
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;div class="form__message form__message--success" role="alert" aria-live="polite"&gt;
+  Форма успешно отправлена!
+&lt;/div&gt;
+
+&lt;div class="form__message form__message--error" role="alert" aria-live="polite"&gt;
+  Произошла ошибка при отправке формы.
+&lt;/div&gt;</code></pre>
+    </div>
+  </details>
+</section>

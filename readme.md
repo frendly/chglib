@@ -2,10 +2,10 @@
 
 ```
 chglib/
-├── .eleventy.js                 # Конфигурация Eleventy
-├── build-assets.js              # Сборка JS/CSS
+├── .eleventy.ts                 # Конфигурация Eleventy (TypeScript)
+├── build-assets.ts              # Сборка JS/CSS (TypeScript)
 ├── package.json                 # yarn start
-├── .nvmrc                       # Версия Node.js
+├── .nvmrc                       # Версия Node.js (22.6)
 ├── .github/workflows/main.yml   # CI/CD пайплайн для деплоя
 ├── pages/                       # Контент страниц
 │   └── news/                    # Новости
