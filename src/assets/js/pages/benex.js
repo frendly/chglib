@@ -61,9 +61,26 @@ const initJournalOrder = () => {
 function createOrderButton() {
   const btn = document.createElement('button');
   btn.type = 'button';
-  btn.className = 'journal-order-btn';
-  btn.textContent = 'Заказ журнала';
+  btn.className = 'download-btn-compact journal-order-btn';
   btn.setAttribute('aria-label', 'Заказать журнал');
+
+  // Добавляем SVG иконку
+  const iconSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  iconSvg.setAttribute('viewBox', '0 0 24 24');
+  iconSvg.setAttribute('class', 'download-icon');
+  iconSvg.setAttribute('aria-hidden', 'true');
+  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('d', 'M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z');
+  iconSvg.appendChild(path);
+
+  // Добавляем текст
+  const textSpan = document.createElement('span');
+  textSpan.className = 'download-text';
+  textSpan.textContent = 'Заказ журнала';
+
+  btn.appendChild(iconSvg);
+  btn.appendChild(textSpan);
+
   return btn;
 }
 

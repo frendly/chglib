@@ -6,6 +6,7 @@
 
 @import "_modal.css";
 @import "_form.css";
+@import "_download-button.css";
 
 @import "pages/elcat.css";
 @import "pages/libweb.css";

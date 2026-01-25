@@ -1,0 +1,105 @@
+/* Стили для компактной кнопки/ссылки скачивания */
+
+.download-link-compact,
+.download-btn-compact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-decoration: none;
+  color: var(--linkColor);
+  transition: color 0.2s ease;
+  vertical-align: middle;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+.download-link-compact:hover,
+.download-btn-compact:hover {
+  color: var(--hoverColor);
+}
+
+.download-link-compact:focus,
+.download-btn-compact:focus {
+  outline: 2px solid var(--linkColor);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.download-link-compact:active,
+.download-btn-compact:active {
+  color: var(--hoverColor);
+}
+
+/* Иконка */
+.download-link-compact .download-icon,
+.download-btn-compact .download-icon {
+  width: 0.875em;
+  height: 0.875em;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* Текст */
+.download-link-compact .download-text,
+.download-btn-compact .download-text {
+  white-space: nowrap;
+}
+
+/* Бейдж с типом файла */
+.download-link-compact .download-badge,
+.download-btn-compact .download-badge {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  background: var(--bgColor);
+  border: 1px solid var(--borderColor);
+  border-radius: 3px;
+  font-size: 0.75rem;
+  color: #666;
+  margin-left: 0.5rem;
+  font-weight: normal;
+}
+
+/* Размер файла */
+.download-link-compact .download-size,
+.download-btn-compact .download-size {
+  font-size: 0.875rem;
+  color: #666;
+  margin-left: 0.5rem;
+  font-weight: normal;
+}
+
+/* Вариант кнопки с фоном (если понадобится) */
+.download-btn-compact--filled {
+  padding: 0.375rem 0.75rem;
+  background-color: var(--linkColor);
+  color: #fff;
+  border-radius: 0.25rem;
+  border: 1px solid var(--linkColor);
+}
+
+.download-btn-compact--filled:hover {
+  background-color: var(--hoverColor);
+  border-color: var(--hoverColor);
+  color: #fff;
+}
+
+.download-btn-compact--filled:focus {
+  outline-color: var(--linkColor);
+}
+
+.download-btn-compact--filled .download-icon {
+  fill: currentColor;
+}
+
+/* Адаптивность */
+@media (max-width: 640px) {
+  .download-link-compact,
+  .download-btn-compact {
+    font-size: 0.8125rem;
+  }
+}
