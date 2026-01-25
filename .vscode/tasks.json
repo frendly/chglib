@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install All Recommended Extensions",
+      "type": "shell",
+      "windows": {
+        "command": "powershell",
+        "args": [
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "${workspaceFolder}/.vscode/install_extensions.ps1"
+        ]
+      },
+      "osx": {
+        "command": "node .vscode/install_extensions.js | xargs -L 1 code --install-extension"
+      },
+      "linux": {
+        "command": "node .vscode/install_extensions.js | xargs -L 1 code --install-extension"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
