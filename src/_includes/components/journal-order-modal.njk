@@ -1,0 +1,20 @@
+<template id="journal-order-modal-tpl">
+  <div class="journal-order-modal" role="dialog" aria-labelledby="journal-order-title" aria-modal="true" style="display: none">
+    <div class="journal-order-modal__content">
+      <h2 id="journal-order-title" class="journal-order-modal__title">Заказ журнала</h2>
+      <form class="journal-order-form" novalidate>
+        <div class="journal-order-form__message" role="alert" aria-live="polite" hidden></div>
+        <label for="journal-title-input">Название</label>
+        <input type="text" id="journal-title-input" name="title" readonly class="journal-order-form__input" autocomplete="off" />
+        <label for="journal-pages-input">Страницы</label>
+        <input type="text" id="journal-pages-input" name="pages" class="journal-order-form__input" placeholder="Введите страницы" autocomplete="off" />
+        <label for="journal-email-input">Email</label>
+        <input type="email" id="journal-email-input" name="email" class="journal-order-form__input" placeholder="example@mail.ru" autocomplete="email" />
+        <div class="journal-order-form__actions">
+          <button type="submit" class="journal-order-form__submit">Отправить</button>
+          <button type="button" class="journal-order-form__cancel">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
