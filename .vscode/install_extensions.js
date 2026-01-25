@@ -1,7 +1,7 @@
+import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { execSync } from 'child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -21,7 +21,7 @@ function detectEditor() {
   if (process.env.VSCODE_PID || process.env.VSCODE_INJECTION) {
     return 'code';
   }
-  
+
   // Попробовать выполнить команды для определения доступности
   try {
     execSync('cursor --version', { stdio: 'ignore' });
@@ -48,12 +48,12 @@ try {
   const listCommand = `${editor} --list-extensions`;
   const installed = execSync(listCommand, { encoding: 'utf8' });
   installedExtensions = new Set(installed.trim().split('\n').filter(Boolean));
-} catch (error) {
+} catch {
   // Если команда недоступна, выводим все рекомендованные (fallback поведение)
 }
 
 // Фильтруем только не установленные расширения
-const toInstall = recommendations.filter(ext => !installedExtensions.has(ext));
+const toInstall = recommendations.filter((ext) => !installedExtensions.has(ext));
 
 if (toInstall.length > 0) {
   console.log(toInstall.join('\n'));
