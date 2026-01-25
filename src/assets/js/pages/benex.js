@@ -1,8 +1,10 @@
 /**
  * Модуль заказа журналов на страницах BENex (HTML-first: разметка в template, JS — логика).
- * Кнопка «Заказ журнала» у каждой записи, модалка с формой из <template>, отправка в Google Apps Script.
+ * Использует переиспользуемые модалку и форму (modalForm), GAS и localStorage — специфика BENex.
  * @module pages/benex
  */
+
+import { closeModal, initModalFromTemplate, openModal, showMessage } from '../utils/modalForm';
 
 /**
  * URL веб-приложения Google Apps Script для приёма заказов.
@@ -17,7 +19,7 @@ const STORAGE_KEY_EMAIL = 'benex-journal-order-email';
 
 /**
  * Инициализирует функциональность заказа журналов на страницах /BENex/.
- * Клонирует `<template id="journal-order-modal-tpl">`, вешает обработчики на форму и кнопки «Заказ журнала» у каждой записи.
+ * Клонирует template модалки (modalForm), вешает submit, кнопки «Заказ журнала» у каждой записи.
  * @returns {void}
  */
 const initJournalOrder = () => {
@@ -29,31 +31,14 @@ const initJournalOrder = () => {
   const entries = main.querySelectorAll('ol > li, ul > li');
   if (entries.length === 0) return;
 
-  const tpl = document.getElementById('journal-order-modal-tpl');
-  if (!tpl) return;
+  const result = initModalFromTemplate('journal-order-modal-tpl');
+  if (!result) return;
 
-  const fragment = tpl.content.cloneNode(true);
-  const modal = fragment.querySelector('.journal-order-modal');
-  if (!modal) return;
-
-  document.body.appendChild(fragment);
-
-  const form = modal.querySelector('.journal-order-form');
-  const cancelBtn = modal.querySelector('.journal-order-form__cancel');
-  if (!form || !cancelBtn) return;
-
-  const close = () => closeModal(modal, form);
+  const { modal, form } = result;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     handleSubmit(form, modal);
-  });
-  cancelBtn.addEventListener('click', close);
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) close();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.style.display !== 'none') close();
   });
 
   for (const entry of entries) {
@@ -64,7 +49,7 @@ const initJournalOrder = () => {
     entry.appendChild(btn);
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      openModal(modal, form, strong.textContent.trim());
+      openJournalModal(modal, form, strong.textContent.trim());
     });
   }
 };
@@ -83,18 +68,18 @@ function createOrderButton() {
 }
 
 /**
- * Открывает модалку заказа, подставляет название журнала и email из localStorage, фокусирует «Страницы».
- * @param {HTMLElement} modal — корень модалки (`.journal-order-modal`)
- * @param {HTMLFormElement} form — форма заказа
- * @param {string} journalTitle — название журнала для readonly-поля
+ * Открывает модалку заказа: подставляет название и email из localStorage, сбрасывает сообщение и submit, фокус на «Страницы».
+ * @param {HTMLElement} modal — корень модалки (.modal)
+ * @param {HTMLFormElement} form — форма
+ * @param {string} journalTitle — название журнала
  * @returns {void}
  */
-function openModal(modal, form, journalTitle) {
+function openJournalModal(modal, form, journalTitle) {
   const titleInput = form.elements.title;
   const pagesInput = form.elements.pages;
   const emailInput = form.elements.email;
-  const messageEl = form.querySelector('.journal-order-form__message');
-  const submitBtn = form.querySelector('.journal-order-form__submit');
+  const messageEl = form.querySelector('.form__message');
+  const submitBtn = form.querySelector('.form__submit');
 
   if (titleInput) titleInput.value = journalTitle;
   if (pagesInput) pagesInput.value = '';
@@ -109,47 +94,20 @@ function openModal(modal, form, journalTitle) {
   if (messageEl) {
     messageEl.hidden = true;
     messageEl.textContent = '';
-    messageEl.className = 'journal-order-form__message';
+    messageEl.className = 'form__message';
   }
   if (submitBtn) {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Отправить';
   }
 
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  pagesInput?.focus();
+  openModal(modal, form, { focusSelector: 'input[name="pages"]' });
 }
 
 /**
- * Закрывает модалку, сбрасывает сообщения и кнопку «Отправить».
+ * Обрабатывает submit: payload → GAS, при успехе сохраняет email в localStorage, showMessage, closeModal через 2 с.
+ * @param {HTMLFormElement} form — форма
  * @param {HTMLElement} modal — корень модалки
- * @param {HTMLFormElement} form — форма заказа
- * @returns {void}
- */
-function closeModal(modal, form) {
-  modal.style.display = 'none';
-  document.body.style.overflow = '';
-
-  const msg = form.querySelector('.journal-order-form__message');
-  if (msg) {
-    msg.hidden = true;
-    msg.textContent = '';
-    msg.className = 'journal-order-form__message';
-    msg.style.display = '';
-  }
-
-  const submitBtn = form.querySelector('.journal-order-form__submit');
-  if (submitBtn) {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Отправить';
-  }
-}
-
-/**
- * Обрабатывает отправку формы: собирает payload (включая email), отправляет в GAS, при успехе сохраняет email в localStorage.
- * @param {HTMLFormElement} form — форма заказа
- * @param {HTMLElement} modal — корень модалки (для закрытия после успеха)
  * @returns {Promise<void>}
  */
 async function handleSubmit(form, modal) {
@@ -168,14 +126,14 @@ async function handleSubmit(form, modal) {
     return;
   }
 
-  const msg = form.querySelector('.journal-order-form__message');
+  const msg = form.querySelector('.form__message');
   if (msg) {
     msg.hidden = true;
     msg.textContent = '';
-    msg.className = 'journal-order-form__message';
+    msg.className = 'form__message';
   }
 
-  const submitBtn = form.querySelector('.journal-order-form__submit');
+  const submitBtn = form.querySelector('.form__submit');
   if (!submitBtn) return;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Отправка...';
@@ -201,25 +159,8 @@ async function handleSubmit(form, modal) {
 }
 
 /**
- * Показывает сообщение в блоке `.journal-order-form__message` (успех или ошибка).
- * @param {HTMLFormElement} form — форма заказа
- * @param {string} message — текст сообщения
- * @param {'success'|'error'} [type='success'] — тип (влияет на класс `--success` / `--error`)
- * @returns {void}
- */
-function showMessage(form, message, type) {
-  const el = form.querySelector('.journal-order-form__message');
-  if (!el) return;
-  el.textContent = message;
-  el.className = `journal-order-form__message journal-order-form__message--${type}`;
-  el.hidden = false;
-  el.style.display = 'block';
-  el.setAttribute('aria-live', 'assertive');
-}
-
-/**
- * Отправляет данные заказа в Google Apps Script (POST, `data` — JSON в FormData, mode `no-cors`).
- * @param {{ title: string; pages: string; email: string; timestamp: string; url: string }} payload — данные заказа
+ * Отправляет данные заказа в Google Apps Script (POST, data — JSON в FormData, no-cors).
+ * @param {{ title: string; pages: string; email: string; timestamp: string; url: string }} payload
  * @returns {Promise<Response>}
  */
 async function sendToGoogleAppsScript(payload) {
