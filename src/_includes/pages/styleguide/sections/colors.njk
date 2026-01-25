@@ -1,0 +1,96 @@
+<section class="styleguide-section" id="colors">
+  <h2>Цветовая палитра</h2>
+  <p>Цвета определены через CSS переменные в <code>_variables.css</code>. Все цвета используются в различных компонентах сайта.</p>
+  
+  <h3>Основные цвета ссылок</h3>
+  <div class="color-palette">
+    <div class="color-swatch">
+      <div class="color-swatch__color color-link">linkColor</div>
+      <div class="color-swatch__info">
+        <div class="color-swatch__name">Цвет ссылок</div>
+        <div class="color-swatch__value">#0060a0</div>
+        <div class="color-swatch__description">Используется в: обычных ссылках (a), кнопках скачивания, focus состояниях элементов</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch__color color-link-visited">linkColorVisited</div>
+      <div class="color-swatch__info">
+        <div class="color-swatch__name">Цвет посещенных ссылок</div>
+        <div class="color-swatch__value">#70a0b0</div>
+        <div class="color-swatch__description">Используется в: посещенных ссылках (a:visited)</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch__color color-hover">hoverColor</div>
+      <div class="color-swatch__info">
+        <div class="color-swatch__name">Цвет при наведении</div>
+        <div class="color-swatch__value">#b03000</div>
+        <div class="color-swatch__description">Используется в: hover состояниях ссылок (a:hover), активных элементах меню (.menu-list__link--active), кнопках скачивания при hover</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Цвета подчеркивания</h3>
+  <div class="color-palette">
+    <div class="color-swatch">
+      <div class="color-swatch__color" style="background-color: rgba(0, 96, 160, 0.15);">linkUnderlineColor</div>
+      <div class="color-swatch__info">
+        <div class="color-swatch__name">Подчеркивание ссылок</div>
+        <div class="color-swatch__value">rgba(0, 96, 160, 0.15)</div>
+        <div class="color-swatch__description">Используется в: border-bottom-color обычных ссылок</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch__color" style="background-color: rgba(112, 160, 176, 0.15);">linkUnderlineColorVisited</div>
+      <div class="color-swatch__info">
+        <div class="color-swatch__name">Подчеркивание посещенных ссылок</div>
+        <div class="color-swatch__value">rgba(112, 160, 176, 0.15)</div>
+        <div class="color-swatch__description">Используется в: border-bottom-color посещенных ссылок</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch__color" style="background-color: rgba(176, 48, 0, 0.15);">hoverUnderlineColor</div>
+      <div class="color-swatch__info">
+        <div class="color-swatch__name">Подчеркивание при наведении</div>
+        <div class="color-swatch__value">rgba(176, 48, 0, 0.15)</div>
+        <div class="color-swatch__description">Используется в: border-bottom-color ссылок при hover</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Фоновые цвета и границы</h3>
+  <div class="color-palette">
+    <div class="color-swatch">
+      <div class="color-swatch__color color-bg">bgColor</div>
+      <div class="color-swatch__info">
+        <div class="color-swatch__name">Цвет фона</div>
+        <div class="color-swatch__value">#f5f5f5</div>
+        <div class="color-swatch__description">Используется в: фоне бейджей кнопок скачивания (.download-badge), фоне элементов интерфейса</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch__color color-border">borderColor</div>
+      <div class="color-swatch__info">
+        <div class="color-swatch__name">Цвет границ</div>
+        <div class="color-swatch__value">#ddd</div>
+        <div class="color-swatch__description">Используется в: границах бейджей кнопок скачивания, границах элементов интерфейса</div>
+      </div>
+    </div>
+  </div>
+
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>{% raw %}:root {
+  --linkColor: #0060a0;
+  --linkUnderlineColor: rgba(0, 96, 160, 0.15);
+  --linkColorVisited: #70a0b0;
+  --linkUnderlineColorVisited: rgba(112, 160, 176, 0.15);
+  --hoverColor: #b03000;
+  --hoverUnderlineColor: rgba(176, 48, 0, 0.15);
+  --bgColor: #f5f5f5;
+  --borderColor: #ddd;
+}{% endraw %}</code></pre>
+    </div>
+  </details>
+</section>

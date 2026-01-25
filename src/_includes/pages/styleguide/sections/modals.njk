@@ -1,0 +1,41 @@
+<section class="styleguide-section" id="modals">
+  <h2>Модальные окна</h2>
+  <p><strong>Требует Nunjucks компоненты.</strong> Модальные окна используют компонент <code>_modal-form.njk</code>. Нельзя использовать в Markdown.</p>
+  
+  <h3>Визуальный пример</h3>
+  <div class="styleguide-example">
+    <div class="modal" role="dialog" aria-modal="true" style="display: flex; position: relative; background: rgba(0, 0, 0, 0.5); width: 100%; height: auto; min-height: 200px; padding: 2rem;">
+      <div class="modal__content" style="position: relative; max-width: 500px; width: 100%; margin: 0 auto;">
+        <h2 class="modal__title" style="margin: 0 0 1rem 0;">Заголовок модального окна</h2>
+        <form class="form" novalidate>
+          <label for="modal-demo-input">Поле ввода</label>
+          <input type="text" id="modal-demo-input" name="input" class="form__input" placeholder="Введите текст" />
+          <div class="form__actions">
+            <button type="submit" class="form__submit">Отправить</button>
+            <button type="button" class="form__cancel">Отмена</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>{% raw %}{% from "components/_modal-form.njk" import modalShell, formShell %}
+{% call modalShell("my-modal-tpl", "my-modal-title") %}
+  &lt;h2 id="my-modal-title" class="modal__title"&gt;Заголовок модального окна&lt;/h2&gt;
+  {% call formShell() %}
+    &lt;label for="modal-input"&gt;Поле ввода&lt;/label&gt;
+    &lt;input type="text" id="modal-input" name="input" class="form__input" /&gt;
+  {% endcall %}
+{% endcall %}{% endraw %}</code></pre>
+    </div>
+  </details>
+  <p><strong>Описание:</strong> Модальное окно создается через макрос <code>modalShell</code> с указанием ID шаблона и ID заголовка. Внутри можно использовать <code>formShell</code> для создания формы.</p>
+  <p><strong>Параметры modalShell:</strong></p>
+  <ul>
+    <li><code>templateId</code> - уникальный ID шаблона модального окна</li>
+    <li><code>titleId</code> - ID заголовка для accessibility (опционально)</li>
+  </ul>
+</section>

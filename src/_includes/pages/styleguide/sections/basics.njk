@@ -1,0 +1,257 @@
+<section class="styleguide-section" id="basics">
+  <h2>Базовые элементы (для Markdown)</h2>
+  <p>Эти элементы можно использовать напрямую в <code>.md</code> файлах без дополнительных классов.</p>
+  
+  <h3>Заголовки</h3>
+  <div class="styleguide-example">
+    <h1>Заголовок H1</h1>
+    <h2>Заголовок H2</h2>
+    <h3>Заголовок H3</h3>
+    <h4>Заголовок H4</h4>
+    <h5>Заголовок H5</h5>
+    <h6>Заголовок H6</h6>
+  </div>
+  <details>
+    <summary>Показать код (Markdown)</summary>
+    <div class="styleguide-code">
+      <pre><code># Заголовок H1
+## Заголовок H2
+### Заголовок H3
+#### Заголовок H4
+##### Заголовок H5
+###### Заголовок H6</code></pre>
+    </div>
+  </details>
+  <details>
+    <summary>Показать код (HTML)</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;h1&gt;Заголовок H1&lt;/h1&gt;
+&lt;h2&gt;Заголовок H2&lt;/h2&gt;
+&lt;h3&gt;Заголовок H3&lt;/h3&gt;
+&lt;h4&gt;Заголовок H4&lt;/h4&gt;
+&lt;h5&gt;Заголовок H5&lt;/h5&gt;
+&lt;h6&gt;Заголовок H6&lt;/h6&gt;</code></pre>
+    </div>
+  </details>
+
+  <h3>Параграфы</h3>
+  <div class="styleguide-example">
+    <p>Это обычный параграф текста.</p>
+    <p>Второй параграф.</p>
+  </div>
+  <details>
+    <summary>Показать код (Markdown)</summary>
+    <div class="styleguide-code">
+      <pre><code>Это обычный параграф текста.
+
+Второй параграф.</code></pre>
+    </div>
+  </details>
+  <details>
+    <summary>Показать код (HTML)</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;p&gt;Это обычный параграф текста.&lt;/p&gt;
+&lt;p&gt;Второй параграф.&lt;/p&gt;</code></pre>
+    </div>
+  </details>
+
+  <h3>Ссылки</h3>
+  <div class="styleguide-example">
+    <p>
+      <a href="#example">Обычная ссылка</a>
+    </p>
+  </div>
+  <details>
+    <summary>Показать код (Markdown)</summary>
+    <div class="styleguide-code">
+      <pre><code>[Текст ссылки](/path)</code></pre>
+    </div>
+  </details>
+  <details>
+    <summary>Показать код (HTML)</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;a href="/path"&gt;Текст ссылки&lt;/a&gt;</code></pre>
+    </div>
+  </details>
+  <p><strong>Описание:</strong> Ссылки используют CSS переменные для цветов.</p>
+
+  <h3>Списки</h3>
+  <div class="styleguide-example">
+    <h4>Маркированный список (ul)</h4>
+    <ul>
+      <li>Первый элемент списка</li>
+      <li>Второй элемент списка</li>
+      <li>Третий элемент списка</li>
+    </ul>
+    <h4>Нумерованный список (ol)</h4>
+    <ol>
+      <li>Первый элемент</li>
+      <li>Второй элемент</li>
+      <li>Третий элемент</li>
+    </ol>
+  </div>
+  <details>
+    <summary>Показать код (Markdown)</summary>
+    <div class="styleguide-code">
+      <pre><code>- Первый элемент списка
+- Второй элемент списка
+- Третий элемент списка
+
+1. Первый элемент
+2. Второй элемент
+3. Третий элемент</code></pre>
+    </div>
+  </details>
+  <details>
+    <summary>Показать код (HTML)</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;ul&gt;
+  &lt;li&gt;Элемент списка&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Элемент списка&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+    </div>
+  </details>
+
+  <h3>Выделение текста</h3>
+  <div class="styleguide-example">
+    <p>Это <strong>жирный текст</strong> и это <em>наклонный текст</em>.</p>
+    <p>Это <strong><em>жирный и наклонный текст</em></strong> одновременно.</p>
+    <p>Это <del>зачеркнутый текст</del>.</p>
+    <p>Это <code>встроенный код</code> в тексте.</p>
+  </div>
+  <details>
+    <summary>Показать код (Markdown)</summary>
+    <div class="styleguide-code">
+      <pre><code>Это **жирный текст** и это *наклонный текст*.
+
+Это ***жирный и наклонный текст*** одновременно.
+
+Это ~~зачеркнутый текст~~.
+
+Это `встроенный код` в тексте.</code></pre>
+    </div>
+  </details>
+  <details>
+    <summary>Показать код (HTML)</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;p&gt;Это &lt;strong&gt;жирный текст&lt;/strong&gt; и это &lt;em&gt;наклонный текст&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Это &lt;strong&gt;&lt;em&gt;жирный и наклонный текст&lt;/em&gt;&lt;/strong&gt; одновременно.&lt;/p&gt;
+&lt;p&gt;Это &lt;del&gt;зачеркнутый текст&lt;/del&gt;.&lt;/p&gt;
+&lt;p&gt;Это &lt;code&gt;встроенный код&lt;/code&gt; в тексте.&lt;/p&gt;</code></pre>
+    </div>
+  </details>
+  <p><strong>Описание:</strong> Можно использовать альтернативные синтаксисы: <code>__жирный__</code> вместо <code>**жирный**</code>, <code>_наклонный_</code> вместо <code>*наклонный*</code>.</p>
+
+  <h3>Цитаты</h3>
+  <div class="styleguide-example">
+    <blockquote>
+      <p>Это цитата. Она может содержать несколько параграфов.</p>
+      <p>Второй параграф в цитате.</p>
+    </blockquote>
+  </div>
+  <details>
+    <summary>Показать код (Markdown)</summary>
+    <div class="styleguide-code">
+      <pre><code>&gt; Это цитата. Она может содержать несколько параграфов.
+&gt;
+&gt; Второй параграф в цитате.</code></pre>
+    </div>
+  </details>
+  <details>
+    <summary>Показать код (HTML)</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;blockquote&gt;
+  &lt;p&gt;Это цитата. Она может содержать несколько параграфов.&lt;/p&gt;
+  &lt;p&gt;Второй параграф в цитате.&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+    </div>
+  </details>
+
+  <h3>Горизонтальная линия</h3>
+  <div class="styleguide-example">
+    <p>Текст перед линией</p>
+    <hr>
+    <p>Текст после линии</p>
+  </div>
+  <details>
+    <summary>Показать код (Markdown)</summary>
+    <div class="styleguide-code">
+      <pre><code>Текст перед линией
+
+---
+
+Текст после линии</code></pre>
+    </div>
+  </details>
+  <details>
+    <summary>Показать код (HTML)</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;p&gt;Текст перед линией&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Текст после линии&lt;/p&gt;</code></pre>
+    </div>
+  </details>
+  <p><strong>Описание:</strong> Можно использовать <code>---</code>, <code>***</code> или <code>___</code> для создания горизонтальной линии.</p>
+
+  <h3>Изображения</h3>
+  <div class="styleguide-example">
+    <p>
+      <img src="/assets/images/logos/bnc.gif" alt="Альтернативный текст" title="Подсказка при наведении" style="max-width: 200px;">
+    </p>
+  </div>
+  <details>
+    <summary>Показать код (Markdown)</summary>
+    <div class="styleguide-code">
+      <pre><code>![Альтернативный текст](/path/to/image.png)
+
+![Альтернативный текст](/path/to/image.png "Подсказка при наведении")</code></pre>
+    </div>
+  </details>
+  <details>
+    <summary>Показать код (HTML)</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;img src="/path/to/image.png" alt="Альтернативный текст"&gt;
+
+&lt;img src="/path/to/image.png" alt="Альтернативный текст" title="Подсказка при наведении"&gt;</code></pre>
+    </div>
+  </details>
+
+  <h3>Блоки кода</h3>
+  <div class="styleguide-example">
+    <pre><code>function example() {
+  return "Это блок кода";
+}</code></pre>
+  </div>
+  <details>
+    <summary>Показать код (Markdown)</summary>
+    <div class="styleguide-code">
+      <pre><code>```
+function example() {
+  return "Это блок кода";
+}
+```</code></pre>
+    </div>
+  </details>
+  <details>
+    <summary>Показать код (Markdown с подсветкой синтаксиса)</summary>
+    <div class="styleguide-code">
+      <pre><code>```javascript
+function example() {
+  return "Это блок кода";
+}
+```</code></pre>
+    </div>
+  </details>
+  <details>
+    <summary>Показать код (HTML)</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;pre&gt;&lt;code&gt;function example() {
+  return "Это блок кода";
+}&lt;/code&gt;&lt;/pre&gt;</code></pre>
+    </div>
+  </details>
+  <p><strong>Описание:</strong> Укажите язык после открывающих трёх обратных кавычек для подсветки синтаксиса (например, <code>```javascript</code>, <code>```python</code>, <code>```html</code>).</p>
+</section>

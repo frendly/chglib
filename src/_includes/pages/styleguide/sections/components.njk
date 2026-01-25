@@ -1,0 +1,69 @@
+<section class="styleguide-section" id="components">
+  <h2>Компоненты с классами (HTML/Nunjucks)</h2>
+  <p>Эти элементы требуют использования специальных классов или компонентов Nunjucks.</p>
+
+  <h3>Кнопки форм</h3>
+  <div class="styleguide-example">
+    <button type="submit" class="form__submit">Отправить</button>
+    <button type="button" class="form__cancel">Отмена</button>
+  </div>
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>&lt;button type="submit" class="form__submit"&gt;Отправить&lt;/button&gt;
+&lt;button type="button" class="form__cancel"&gt;Отмена&lt;/button&gt;</code></pre>
+    </div>
+  </details>
+  <p><strong>Описание:</strong> Требует классы <code>.form__submit</code> и <code>.form__cancel</code>. Нельзя использовать в Markdown.</p>
+
+  <h3>Кнопки скачивания (Link вариант)</h3>
+  <div class="styleguide-example">
+    <p>
+      <a href="#" class="download-link-compact">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="download-icon" aria-hidden="true" style="width: 0.875em; height: 0.875em; fill: currentColor;">
+          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+        </svg>
+        <span class="download-text">Скачать файл</span>
+      </a>
+    </p>
+    <p>
+      <a href="#" class="download-link-compact">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="download-icon" aria-hidden="true" style="width: 0.875em; height: 0.875em; fill: currentColor;">
+          <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+        </svg>
+        <span class="download-text">Скачать документ</span>
+        <span class="download-badge">DOC</span>
+        <span class="download-size">2.5 МБ</span>
+      </a>
+    </p>
+    <p>
+      <a href="#" class="download-link-compact">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="download-icon" aria-hidden="true" style="width: 0.875em; height: 0.875em; fill: currentColor;">
+          <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zm5 7h-5v-1.5h5V16.5z"/>
+          <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z"/>
+        </svg>
+        <span class="download-text">Скачать PDF</span>
+        <span class="download-badge">PDF</span>
+        <span class="download-size">1.2 МБ</span>
+      </a>
+    </p>
+  </div>
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>{% raw %}{% from "components/download-button.njk" import downloadButton %}
+{{ downloadButton("/files/document.pdf", "Скачать документ") }}
+{{ downloadButton("/files/file.pdf", "Скачать PDF", "pdf", "1.2 МБ", "PDF") }}{% endraw %}</code></pre>
+    </div>
+  </details>
+  <p><strong>Описание:</strong> Используйте макрос <code>downloadButton</code> из компонента <code>download-button.njk</code>. Требует Nunjucks шаблон, нельзя использовать в Markdown.</p>
+  <p><strong>Параметры:</strong></p>
+  <ul>
+    <li><code>href</code> - URL для скачивания (обязательно)</li>
+    <li><code>text</code> - текст кнопки (обязательно)</li>
+    <li><code>icon</code> - тип иконки: "download", "document", "pdf" (по умолчанию "download")</li>
+    <li><code>size</code> - размер файла (опционально)</li>
+    <li><code>fileType</code> - тип файла (опционально)</li>
+    <li><code>variant</code> - вариант стиля: "link" или "button" (по умолчанию "link")</li>
+  </ul>
+</section>
