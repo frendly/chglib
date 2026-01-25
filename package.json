@@ -24,7 +24,7 @@
     "transfer": "env-cmd -x rsync -az ./dist/ \\$SSH_HOST:\\$SSH_PATH"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy": "^3.1.2",
     "@11ty/eleventy-navigation": "^0.3.5",
     "@biomejs/biome": "^2.0.6",
     "@types/node": "^20.0.0",
