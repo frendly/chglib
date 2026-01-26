@@ -1,13 +1,24 @@
+import { initJournalOrderForPortal } from '../pages/benex';
 import { isMobile } from '../utils';
 import { createPortal } from './portal';
 
-const fetchData = (data) => {
-  const container = document.querySelector('.portal__content');
-
+const fetchData = (data, container) => {
   const htmlDocument = new DOMParser().parseFromString(data, 'text/html');
   const trimData = htmlDocument.querySelector('main') || htmlDocument.body;
 
   container.appendChild(trimData);
+
+  // Инициализируем кнопки заказа журналов для контента в портале
+  // Проверяем, является ли загруженный контент страницей BENex
+  // trimData уже является main или body, поэтому проверяем его напрямую
+  const main = trimData.tagName === 'MAIN' ? trimData : trimData.querySelector('main');
+  if (main) {
+    // Проверяем наличие записей журналов (ol > li или ul > li с strong)
+    const hasJournalEntries = main.querySelectorAll('ol > li strong, ul > li strong').length > 0;
+    if (hasJournalEntries) {
+      initJournalOrderForPortal(main);
+    }
+  }
 };
 
 export const openLinksInPortal = () => {
@@ -25,11 +36,25 @@ export const openLinksInPortal = () => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
 
-      fetch(e.target.href)
-        .then((response) => response.text())
+      // Используем currentTarget для получения правильного href
+      // (e.target может быть дочерним элементом ссылки)
+      const href = e.currentTarget.href || link.href;
+      if (!href) return;
+
+      fetch(href)
         .then((response) => {
-          createPortal();
-          fetchData(response);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.text();
+        })
+        .then((response) => {
+          const container = createPortal();
+          fetchData(response, container);
+        })
+        .catch((error) => {
+          console.error('Ошибка загрузки контента в портал:', error);
+          // Можно показать сообщение пользователю
         });
     });
   });

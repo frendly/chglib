@@ -17,48 +17,113 @@ const GOOGLE_APPS_SCRIPT_URL =
 /** Ключ localStorage для сохранения email пользователя. */
 const STORAGE_KEY_EMAIL = 'benex-journal-order-email';
 
+// Глобальные переменные для модалки и формы (инициализируются один раз)
+let globalModal = null;
+let globalForm = null;
+let isModalInitialized = false;
+
 /**
- * Инициализирует функциональность заказа журналов на страницах /BENex/.
- * Клонирует template модалки (modalForm), вешает submit, кнопки «Заказ журнала» у каждой записи.
- * @returns {void}
+ * Инициализирует модалку и форму (вызывается один раз).
+ * @returns {{ modal: HTMLElement; form: HTMLFormElement } | null}
  */
-const initJournalOrder = () => {
-  if (!window.location.pathname.includes('/BENex/')) return;
-
-  const main = document.querySelector('main');
-  if (!main) return;
-
-  const entries = main.querySelectorAll('ol > li, ul > li');
-  if (entries.length === 0) return;
+const initModalOnce = () => {
+  if (isModalInitialized && globalModal && globalForm) {
+    return { modal: globalModal, form: globalForm };
+  }
 
   const result = initModalFromTemplate('journal-order-modal-tpl');
-  if (!result) return;
+  if (!result) return null;
 
   const { modal, form } = result;
+  if (!form) return null;
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    handleSubmit(form, modal);
-  });
-
-  // Очищаем ошибки при вводе текста в поля
-  const inputs = form.querySelectorAll('.form__input');
-  inputs.forEach((input) => {
-    input.addEventListener('input', () => {
-      clearFieldError(input);
+  // Инициализируем обработчики только один раз
+  if (!isModalInitialized) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleSubmit(form, modal);
     });
-  });
+
+    // Очищаем ошибки при вводе текста в поля
+    const inputs = form.querySelectorAll('.form__input');
+    inputs.forEach((input) => {
+      input.addEventListener('input', () => {
+        clearFieldError(input);
+      });
+    });
+
+    globalModal = modal;
+    globalForm = form;
+    isModalInitialized = true;
+  }
+
+  return { modal: globalModal, form: globalForm };
+};
+
+/**
+ * Инициализирует кнопки «Заказ журнала» для контейнера.
+ * @param {HTMLElement} container — контейнер для поиска записей (main или другой элемент)
+ * @param {HTMLElement} modal — корень модалки
+ * @param {HTMLFormElement} form — форма
+ * @returns {void}
+ */
+const initJournalOrderButtons = (container, modal, form) => {
+  const entries = container.querySelectorAll('ol > li, ul > li');
+  if (entries.length === 0) return;
 
   for (const entry of entries) {
+    // Проверяем, не добавлена ли уже кнопка
+    if (entry.querySelector('.journal-order-btn')) continue;
+
     const strong = entry.querySelector('strong');
     if (!strong) continue;
 
     const btn = createOrderButton();
     entry.appendChild(btn);
+    // Находим все ссылки в элементе
+    const links = Array.from(entry.querySelectorAll('a'));
+    const linkUrls = links.map((link) => link.href);
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      openJournalModal(modal, form, strong.textContent.trim());
+      openJournalModal(modal, form, strong.textContent.trim(), linkUrls);
     });
+  }
+};
+
+/**
+ * Инициализирует функциональность заказа журналов на страницах /BENex/.
+ * Проверяет как обычный main, так и контент в портале.
+ * @returns {void}
+ */
+const initJournalOrder = () => {
+  // Проверяем, есть ли контент BENex на странице или в портале
+  const main = document.querySelector('main');
+  const portalMain = document.querySelector('.portal__content main');
+
+  // Если нет контента BENex, выходим
+  if (!main && !portalMain) return;
+
+  // Проверяем наличие записей в обычном main или в портале
+  const hasEntriesInMain = main && main.querySelectorAll('ol > li, ul > li').length > 0;
+  const hasEntriesInPortal =
+    portalMain && portalMain.querySelectorAll('ol > li, ul > li').length > 0;
+
+  if (!hasEntriesInMain && !hasEntriesInPortal) return;
+
+  // Инициализируем модалку один раз
+  const modalResult = initModalOnce();
+  if (!modalResult) return;
+
+  const { modal, form } = modalResult;
+
+  // Инициализируем кнопки для обычного main
+  if (hasEntriesInMain) {
+    initJournalOrderButtons(main, modal, form);
+  }
+
+  // Инициализируем кнопки для портала
+  if (hasEntriesInPortal) {
+    initJournalOrderButtons(portalMain, modal, form);
   }
 };
 
@@ -97,9 +162,10 @@ function createOrderButton() {
  * @param {HTMLElement} modal — корень модалки (.modal)
  * @param {HTMLFormElement} form — форма
  * @param {string} journalTitle — название журнала
+ * @param {string[]} linkUrls — массив URL ссылок на оглавление журнала (если есть)
  * @returns {void}
  */
-function openJournalModal(modal, form, journalTitle) {
+function openJournalModal(modal, form, journalTitle, linkUrls = []) {
   const titleInput = form.elements.title;
   const pagesInput = form.elements.pages;
   const emailInput = form.elements.email;
@@ -113,6 +179,33 @@ function openJournalModal(modal, form, journalTitle) {
       emailInput.value = localStorage.getItem(STORAGE_KEY_EMAIL) ?? '';
     } catch {
       emailInput.value = '';
+    }
+  }
+
+  // Показываем/скрываем hint для поля "Страницы" в зависимости от наличия ссылок
+  const pagesField = pagesInput?.closest('.form__field');
+  if (pagesField) {
+    const hintEl = pagesField.querySelector('.form__field-hint');
+    if (hintEl) {
+      if (linkUrls.length > 0) {
+        let hintHTML;
+
+        if (linkUrls.length === 1) {
+          // Одна ссылка: [оглавление журнала]
+          hintHTML = `Укажите страницы или ссылку на конкретную статью,<br><a href="${linkUrls[0]}" target="_blank" rel="noopener noreferrer">[оглавление журнала]</a>`;
+        } else {
+          // Несколько ссылок: оглавление журнала [1, 2, 3]
+          const linkElements = linkUrls.map((url, index) => {
+            const linkNumber = index + 1;
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer">${linkNumber}</a>`;
+          });
+          hintHTML = `Укажите страницы или ссылку на конкретную статью,<br>оглавление журнала [${linkElements.join(', ')}]`;
+        }
+
+        hintEl.innerHTML = hintHTML;
+      } else {
+        hintEl.textContent = '';
+      }
     }
   }
 
@@ -305,5 +398,24 @@ async function sendToGoogleAppsScript(payload) {
 
   return res;
 }
+
+/**
+ * Инициализирует кнопки заказа журналов для контента в портале.
+ * Экспортируется для использования в openLinksInPortal.
+ * @param {HTMLElement} container — контейнер с контентом (обычно .portal__content main)
+ * @returns {void}
+ */
+export const initJournalOrderForPortal = (container) => {
+  if (!container) return;
+
+  const entries = container.querySelectorAll('ol > li, ul > li');
+  if (entries.length === 0) return;
+
+  const modalResult = initModalOnce();
+  if (!modalResult) return;
+
+  const { modal, form } = modalResult;
+  initJournalOrderButtons(container, modal, form);
+};
 
 export default initJournalOrder;

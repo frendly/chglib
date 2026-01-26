@@ -62,6 +62,62 @@
     </div>
   </details>
 
+  <h3>Поле с подсказкой (hint)</h3>
+  <div class="styleguide-example">
+    {% from "components/_form.njk" import formField %}
+    <form class="form" novalidate>
+      {{ formField({ input: 'pages', label: 'Страницы', placeholder: 'Введите страницы', hint: 'Укажите страницы или ссылку на конкретную статью,<br><a href="#" target="_blank" rel="noopener noreferrer">[оглавление журнала]</a>' }) }}
+    </form>
+  </div>
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>{% raw %}{% from "components/_form.njk" import formField %}
+&lt;form class="form" novalidate&gt;
+  {{ formField({ 
+    input: 'pages', 
+    label: 'Страницы', 
+    placeholder: 'Введите страницы', 
+    hint: 'Укажите страницы или ссылку на конкретную статью,<br><a href="#" target="_blank" rel="noopener noreferrer">[оглавление журнала]</a>' 
+  }) }}
+&lt;/form&gt;{% endraw %}</code></pre>
+    </div>
+  </details>
+
+  <h3>Поле с ошибкой валидации</h3>
+  <div class="styleguide-example">
+    <form class="form" novalidate>
+      <div class="form__field">
+        <label for="email-error-input">Email</label>
+        <input
+          type="email"
+          id="email-error-input"
+          name="email"
+          class="form__input"
+          placeholder="example@mail.ru"
+        />
+        <span class="form__field-hint"></span>
+        <output class="form__field-error" data-error="Пожалуйста, укажите email" for="email-error-input">Пожалуйста, укажите email</output>
+      </div>
+    </form>
+  </div>
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>{% raw %}{% from "components/_form.njk" import formField %}
+&lt;form class="form" novalidate&gt;
+  {{ formField({ 
+    input: 'email', 
+    label: 'Email', 
+    type: 'email', 
+    placeholder: 'example@mail.ru', 
+    error: 'Пожалуйста, укажите email' 
+  }) }}
+&lt;/form&gt;{% endraw %}</code></pre>
+    </div>
+  </details>
+  <p><strong>Примечание:</strong> Ошибка отображается через JavaScript, когда в элемент <code>.form__field-error</code> устанавливается текст из атрибута <code>data-error</code>. Поле автоматически получает красную рамку через CSS селектор <code>:has(.form__field-error:not(:empty))</code>.</p>
+
   <h3>Сообщения формы</h3>
   <div class="styleguide-example">
     <div class="form__message form__message--success" role="alert" aria-live="polite" style="display: block;">
