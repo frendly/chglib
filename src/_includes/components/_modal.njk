@@ -1,0 +1,22 @@
+{#
+  Макрос для создания оболочки модального окна.
+  Создает template элемент с модалкой, которая может быть клонирована и использована в JavaScript.
+
+  @param {string} templateId - ID для template элемента
+  @param {string} [title] - Опциональный заголовок модального окна
+#}
+{% macro modalShell(templateId, title) %}
+<template id="{{ templateId }}">
+  <div class="modal" role="dialog" aria-modal="true" style="display: none">
+    <div class="modal__content">
+      <button class="modal__close" aria-label="Закрыть" type="button">×</button>
+      {% if title %}
+        <header class="modal__header">
+          <h2 class="modal__title">{{ title }}</h2>
+        </header>
+      {% endif %}
+      {{ caller() }}
+    </div>
+  </div>
+</template>
+{% endmacro %}

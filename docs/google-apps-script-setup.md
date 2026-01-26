@@ -10,6 +10,7 @@
    - `Дата и время`
    - `Название журнала`
    - `Страницы`
+   - `Email`
    - `URL страницы`
 4. Сохраните таблицу и запомните её название
 
@@ -34,6 +35,7 @@ function doPost(e) {
       data = {
         title: e.parameter.title || '',
         pages: e.parameter.pages || '',
+        email: e.parameter.email || '',
         timestamp: e.parameter.timestamp || new Date().toISOString(),
         url: e.parameter.url || ''
       };
@@ -47,25 +49,48 @@ function doPost(e) {
       data.timestamp ? new Date(data.timestamp) : new Date(),
       data.title || '',
       data.pages || '',
+      data.email || '',
       data.url || ''
     ]);
 
-    // Настройте email адрес для получения уведомлений
-    const recipientEmail = 'your-email@example.com'; // ЗАМЕНИТЕ на ваш email
+    // Настройте email адрес для получения уведомлений администратору
+    const adminEmail = 'your-email@example.com'; // ЗАМЕНИТЕ на ваш email
     
-    // Формируем текст письма
-    const emailBody = `Новый заказ журнала:\n\n` +
+    // Формируем текст письма для администратора
+    const adminEmailBody = `Новый заказ журнала:\n\n` +
       `Название: ${data.title}\n` +
       `Страницы: ${data.pages}\n` +
+      `Email заказчика: ${data.email || 'не указан'}\n` +
       `URL страницы: ${data.url}\n` +
       `Дата и время: ${data.timestamp || new Date().toLocaleString('ru-RU')}`;
     
-    // Отправляем email
+    // Отправляем email администратору
     MailApp.sendEmail({
-      to: recipientEmail,
+      to: adminEmail,
       subject: 'Заказ журнала',
-      body: emailBody
+      body: adminEmailBody
     });
+
+    // Отправляем подтверждение пользователю (если email указан)
+    if (data.email && data.email.trim() !== '') {
+      const userEmailBody = `Спасибо за ваш заказ!\n\n` +
+        `Ваш заказ принят:\n` +
+        `Название журнала: ${data.title}\n` +
+        `Страницы: ${data.pages}\n` +
+        `Дата заказа: ${data.timestamp ? new Date(data.timestamp).toLocaleString('ru-RU') : new Date().toLocaleString('ru-RU')}\n\n` +
+        `Мы свяжемся с вами в ближайшее время.`;
+      
+      try {
+        MailApp.sendEmail({
+          to: data.email,
+          subject: 'Подтверждение заказа журнала',
+          body: userEmailBody
+        });
+      } catch (emailError) {
+        // Логируем ошибку, но не прерываем выполнение
+        console.error('Ошибка отправки email пользователю:', emailError);
+      }
+    }
 
     // Возвращаем успешный ответ
     return ContentService.createTextOutput(JSON.stringify({
@@ -83,7 +108,7 @@ function doPost(e) {
 }
 ```
 
-5. **ВАЖНО:** Замените `your-email@example.com` на ваш реальный email адрес (строка 25)
+5. **ВАЖНО:** Замените `your-email@example.com` на ваш реальный email адрес (строка 54)
 
 ## Шаг 3: Настройка веб-приложения
 
@@ -116,10 +141,11 @@ function doPost(e) {
 1. Соберите проект: `yarn build` или `yarn watch`
 2. Откройте страницу с формой заказа журнала (например, `/BENex/2025/BENex21.html`)
 3. Нажмите на кнопку "Заказ журнала" рядом с любой записью
-4. Заполните поле "Страницы" и нажмите "Отправить"
+4. Заполните поля "Страницы" и "Email" и нажмите "Отправить"
 5. Проверьте:
    - В Google Таблице должна появиться новая строка с данными
-   - На указанный email должно прийти письмо с данными заказа
+   - На указанный email администратора должно прийти письмо с данными заказа
+   - На email пользователя должно прийти письмо с подтверждением заказа
 
 ## Дополнительные настройки
 

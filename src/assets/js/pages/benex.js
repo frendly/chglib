@@ -12,7 +12,7 @@ import { closeModal, initModalFromTemplate, openModal, showMessage } from '../ut
  * @type {string}
  */
 const GOOGLE_APPS_SCRIPT_URL =
-  'https://script.google.com/macros/s/AKfycbzvfwraJh3pVksi4zPAFUNapTkmj4zh-xd9rWxJk8sszd2TRSnPrBYB1PQ6I7puiSxb/exec';
+  'https://script.google.com/macros/s/AKfycbymTm1w1UVoPYBb00F6Qw3A4MqXmBnV1dx7RxLbuvKd6sDxoRBXsDscBJTsZ998OhVC/exec';
 
 /** Ключ localStorage для сохранения email пользователя. */
 const STORAGE_KEY_EMAIL = 'benex-journal-order-email';
@@ -39,6 +39,14 @@ const initJournalOrder = () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     handleSubmit(form, modal);
+  });
+
+  // Очищаем ошибки при вводе текста в поля
+  const inputs = form.querySelectorAll('.form__input');
+  inputs.forEach((input) => {
+    input.addEventListener('input', () => {
+      clearFieldError(input);
+    });
   });
 
   for (const entry of entries) {
@@ -108,6 +116,9 @@ function openJournalModal(modal, form, journalTitle) {
     }
   }
 
+  // Очищаем ошибки полей
+  clearFieldErrors(form);
+
   if (messageEl) {
     messageEl.hidden = true;
     messageEl.textContent = '';
@@ -122,17 +133,119 @@ function openJournalModal(modal, form, journalTitle) {
 }
 
 /**
+ * Показывает ошибку для конкретного поля.
+ * @param {HTMLElement} fieldContainer — контейнер .form__field
+ * @param {string} message — текст ошибки
+ * @returns {void}
+ */
+function showFieldError(fieldContainer, message) {
+  const errorEl = fieldContainer.querySelector('.form__field-error');
+  if (errorEl) {
+    errorEl.textContent = message || errorEl.getAttribute('data-error') || '';
+  }
+}
+
+/**
+ * Очищает ошибку конкретного поля.
+ * @param {HTMLInputElement} input — поле ввода
+ * @returns {void}
+ */
+function clearFieldError(input) {
+  const fieldContainer = input.closest('.form__field');
+  if (fieldContainer) {
+    const errorEl = fieldContainer.querySelector('.form__field-error');
+    if (errorEl) {
+      errorEl.textContent = '';
+    }
+  }
+}
+
+/**
+ * Очищает все ошибки полей в форме.
+ * @param {HTMLFormElement} form — форма
+ * @returns {void}
+ */
+function clearFieldErrors(form) {
+  const errorElements = form.querySelectorAll('.form__field-error');
+  errorElements.forEach((el) => {
+    el.textContent = '';
+  });
+}
+
+/**
+ * Проверяет валидность email.
+ * @param {string} email — email адрес
+ * @returns {boolean}
+ */
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+/**
  * Обрабатывает submit: payload → GAS, при успехе сохраняет email в localStorage, showMessage, closeModal через 2 с.
  * @param {HTMLFormElement} form — форма
  * @param {HTMLElement} modal — корень модалки
  * @returns {Promise<void>}
  */
 async function handleSubmit(form, modal) {
-  const email = String(form.elements.email?.value ?? '').trim();
+  const titleInput = form.elements.title;
+  const pagesInput = form.elements.pages;
+  const emailInput = form.elements.email;
+
+  // Очищаем предыдущие ошибки
+  clearFieldErrors(form);
+
+  // Валидация полей
+  let hasErrors = false;
+  let firstErrorField = null;
+
+  const titleValue = String(titleInput?.value ?? '').trim();
+  if (!titleValue) {
+    const titleField = titleInput?.closest('.form__field');
+    if (titleField) {
+      showFieldError(titleField, 'Пожалуйста, укажите название журнала.');
+      if (!firstErrorField) firstErrorField = titleInput;
+      hasErrors = true;
+    }
+  }
+
+  const pagesValue = String(pagesInput?.value ?? '').trim();
+  if (!pagesValue) {
+    const pagesField = pagesInput?.closest('.form__field');
+    if (pagesField) {
+      showFieldError(pagesField, 'Пожалуйста, укажите страницы.');
+      if (!firstErrorField) firstErrorField = pagesInput;
+      hasErrors = true;
+    }
+  }
+
+  const emailValue = String(emailInput?.value ?? '').trim();
+  if (!emailValue) {
+    const emailField = emailInput?.closest('.form__field');
+    if (emailField) {
+      showFieldError(emailField, 'Пожалуйста, укажите email.');
+      if (!firstErrorField) firstErrorField = emailInput;
+      hasErrors = true;
+    }
+  } else if (!isValidEmail(emailValue)) {
+    const emailField = emailInput?.closest('.form__field');
+    if (emailField) {
+      showFieldError(emailField, 'Пожалуйста, введите корректный email адрес.');
+      if (!firstErrorField) firstErrorField = emailInput;
+      hasErrors = true;
+    }
+  }
+
+  if (hasErrors) {
+    // Фокус на первое поле с ошибкой
+    firstErrorField?.focus();
+    return;
+  }
+
   const payload = {
-    title: String(form.elements.title?.value ?? '').trim(),
-    pages: String(form.elements.pages?.value ?? '').trim(),
-    email,
+    title: titleValue,
+    pages: pagesValue,
+    email: emailValue,
     timestamp: new Date().toISOString(),
     url: window.location.href,
   };
@@ -159,9 +272,9 @@ async function handleSubmit(form, modal) {
     await sendToGoogleAppsScript(payload);
     showMessage(form, 'Заказ успешно отправлен!', 'success');
     form.elements.pages.value = '';
-    if (email) {
+    if (emailValue) {
       try {
-        localStorage.setItem(STORAGE_KEY_EMAIL, email);
+        localStorage.setItem(STORAGE_KEY_EMAIL, emailValue);
       } catch {
         /* ignore */
       }

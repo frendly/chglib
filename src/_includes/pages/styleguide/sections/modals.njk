@@ -1,41 +1,117 @@
 <section class="styleguide-section" id="modals">
   <h2>Модальные окна</h2>
-  <p><strong>Требует Nunjucks компоненты.</strong> Модальные окна используют компонент <code>_modal-form.njk</code>. Нельзя использовать в Markdown.</p>
+  <p><strong>Требует Nunjucks компоненты.</strong> Модальные окна используют компоненты <code>_modal.njk</code> и <code>_form.njk</code>. Нельзя использовать в Markdown.</p>
   
-  <h3>Визуальный пример</h3>
+  <h3>Модальное окно с заголовком (без формы)</h3>
   <div class="styleguide-example">
     <div class="modal" role="dialog" aria-modal="true" style="display: flex; position: relative; background: rgba(0, 0, 0, 0.5); width: 100%; height: auto; min-height: 200px; padding: 2rem;">
       <div class="modal__content" style="position: relative; max-width: 500px; width: 100%; margin: 0 auto;">
-        <h2 class="modal__title" style="margin: 0 0 1rem 0;">Заголовок модального окна</h2>
-        <form class="form" novalidate>
-          <label for="modal-demo-input">Поле ввода</label>
-          <input type="text" id="modal-demo-input" name="input" class="form__input" placeholder="Введите текст" />
-          <div class="form__actions">
-            <button type="submit" class="form__submit">Отправить</button>
-            <button type="button" class="form__cancel">Отмена</button>
-          </div>
-        </form>
+        <button class="modal__close" aria-label="Закрыть" type="button" style="position: absolute; top: 1rem; right: 1rem; z-index: 1001; background: transparent; border: none; font-size: 2rem; line-height: 1; color: #666; cursor: pointer; padding: 0; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center;">×</button>
+        <header class="modal__header" style="margin-bottom: 1rem;">
+          <h2 class="modal__title" style="margin: 0 0 1rem 0;">Заголовок модального окна</h2>
+        </header>
+        <p>Произвольный контент модального окна.</p>
+        <p>Модалка может содержать любой HTML контент.</p>
       </div>
     </div>
   </div>
-  
   <details>
     <summary>Показать код</summary>
     <div class="styleguide-code">
-      <pre><code>{% raw %}{% from "components/_modal-form.njk" import modalShell, formShell %}
-{% call modalShell("my-modal-tpl", "my-modal-title") %}
-  &lt;h2 id="my-modal-title" class="modal__title"&gt;Заголовок модального окна&lt;/h2&gt;
-  {% call formShell() %}
-    &lt;label for="modal-input"&gt;Поле ввода&lt;/label&gt;
-    &lt;input type="text" id="modal-input" name="input" class="form__input" /&gt;
-  {% endcall %}
+      <pre><code>{% raw %}{% from "components/_modal.njk" import modalShell %}
+{% call modalShell("my-modal-tpl", "Заголовок модального окна") %}
+  <p>Произвольный контент модального окна.</p>
+  <p>Модалка может содержать любой HTML контент.</p>
 {% endcall %}{% endraw %}</code></pre>
     </div>
   </details>
-  <p><strong>Описание:</strong> Модальное окно создается через макрос <code>modalShell</code> с указанием ID шаблона и ID заголовка. Внутри можно использовать <code>formShell</code> для создания формы.</p>
+
+  <h3>Модальное окно без заголовка (без формы)</h3>
+  <div class="styleguide-example">
+    <div class="modal" role="dialog" aria-modal="true" style="display: flex; position: relative; background: rgba(0, 0, 0, 0.5); width: 100%; height: auto; min-height: 200px; padding: 2rem;">
+      <div class="modal__content" style="position: relative; max-width: 500px; width: 100%; margin: 0 auto;">
+        <button class="modal__close" aria-label="Закрыть" type="button" style="position: absolute; top: 1rem; right: 1rem; z-index: 1001; background: transparent; border: none; font-size: 2rem; line-height: 1; color: #666; cursor: pointer; padding: 0; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center;">×</button>
+        <p>Произвольный контент модального окна.</p>
+        <p>Модалка может содержать любой HTML контент.</p>
+      </div>
+    </div>
+  </div>
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>{% raw %}{% from "components/_modal.njk" import modalShell %}
+{% call modalShell("my-modal-tpl") %}
+  <p>Произвольный контент модального окна.</p>
+  <p>Модалка может содержать любой HTML контент.</p>
+{% endcall %}{% endraw %}</code></pre>
+    </div>
+  </details>
+
+  <h3>Модальное окно с формой</h3>
+  <p>Использование единого макроса <code>form()</code> для создания формы с заголовком и полями:</p>
+  <div class="styleguide-example">
+    {% from "components/_form.njk" import form %}
+    <div class="modal" role="dialog" aria-modal="true" style="display: flex; position: relative; background: rgba(0, 0, 0, 0.5); width: 100%; height: auto; min-height: 200px; padding: 2rem;">
+      <div class="modal__content" style="position: relative; max-width: 500px; width: 100%; margin: 0 auto;">
+        <button class="modal__close" aria-label="Закрыть" type="button" style="position: absolute; top: 1rem; right: 1rem; z-index: 1001; background: transparent; border: none; font-size: 2rem; line-height: 1; color: #666; cursor: pointer; padding: 0; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center;">×</button>
+        <header class="modal__header" style="margin-bottom: 1rem;">
+          <h2 class="modal__title" style="margin: 0 0 1rem 0;">Заголовок модального окна</h2>
+        </header>
+        {% set fields = [
+          {
+            input: 'email',
+            label: 'Email',
+            type: 'email',
+            required: true,
+            placeholder: 'example@mail.ru'
+          },
+          {
+            input: 'name',
+            label: 'Имя',
+            required: true,
+            placeholder: 'Введите имя'
+          }
+        ] %}
+        {{ form('', fields) }}
+      </div>
+    </div>
+  </div>
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>{% raw %}{% from "components/_modal.njk" import modalShell %}
+{% from "components/_form.njk" import form %}
+{% call modalShell("my-modal-tpl", "Заголовок модального окна") %}
+  {% set fields = [
+    {
+      input: 'email',
+      label: 'Email',
+      type: 'email',
+      required: true,
+      error: 'Пожалуйста, укажите email',
+      placeholder: 'example@mail.ru'
+    },
+    {
+      input: 'name',
+      label: 'Имя',
+      required: true,
+      error: 'Пожалуйста, укажите имя'
+    }
+  ] %}
+  {{ form('', fields) }}
+{% endcall %}{% endraw %}</code></pre>
+    </div>
+  </details>
+  
+  <p><strong>Описание:</strong> Модальное окно создается через макрос <code>modalShell</code> с указанием ID шаблона и опционального заголовка. Модалка автоматически получает кнопку закрытия (крестик), закрывается по клику вне модалки и по нажатию ESC. Для создания формы используется макрос <code>form()</code>, который принимает заголовок и массив полей. Для расширенного использования доступен макрос <code>formField</code> для создания отдельных полей. Модалка может содержать не только форму, но и любой другой контент.</p>
   <p><strong>Параметры modalShell:</strong></p>
   <ul>
-    <li><code>templateId</code> - уникальный ID шаблона модального окна</li>
-    <li><code>titleId</code> - ID заголовка для accessibility (опционально)</li>
+    <li><code>templateId</code> - уникальный ID шаблона модального окна (обязательно)</li>
+    <li><code>title</code> - заголовок модального окна (опционально, отображается в header)</li>
+  </ul>
+  <p><strong>Параметры form():</strong></p>
+  <ul>
+    <li><code>title</code> - заголовок формы (если заголовок уже задан в modalShell, можно передать пустую строку)</li>
+    <li><code>fields</code> - массив объектов полей</li>
   </ul>
 </section>

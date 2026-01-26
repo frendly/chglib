@@ -1,0 +1,55 @@
+{#
+  Макросы для создания форм в модальных окнах.
+
+  Доступные макросы:
+  
+  1. form(title, fields) - Единый макрос для создания формы с заголовком и полями
+     @param {string} title - Заголовок формы
+     @param {array} fields - Массив объектов полей
+     Пример: {{ form('Заказ журнала', [{ input: 'email', label: 'Email', type: 'email', required: true }]) }}
+  
+  2. formField(field) - Создание одного поля формы с поддержкой ошибок и пояснений (для расширенного использования)
+     @param {object} field - Объект с параметрами:
+       - field.input (string, обязательно) - name атрибут поля
+       - field.label (string, обязательно) - Текст лейбла
+       - field.type (string, опционально) - Тип input (по умолчанию 'text')
+       - field.required (boolean, опционально) - Обязательность поля
+       - field.error (string, опционально) - Текст ошибки (сохраняется в data-error)
+       - field.placeholder (string, опционально) - Placeholder для поля
+       - field.readonly (boolean, опционально) - Readonly атрибут
+       - field.autocomplete (string, опционально) - Autocomplete атрибут
+       - field.hint (string, опционально) - Текст пояснения под полем
+     Пример: {{ formField({ input: 'email', label: 'Email', type: 'email', required: true }) }}
+#}
+
+{% macro formField(field) %}
+<div class="form__field">
+  <label for="{{ field.input }}-input">{{ field.label }}</label>
+  <input
+    type="{{ field.type | default('text') }}"
+    id="{{ field.input }}-input"
+    name="{{ field.input }}"
+    class="form__input"
+    {% if field.placeholder %}placeholder="{{ field.placeholder }}"{% endif %}
+    {% if field.readonly %}readonly{% endif %}
+    {% if field.required %}required{% endif %}
+    {% if field.autocomplete %}autocomplete="{{ field.autocomplete }}"{% endif %}
+  />
+  <span class="form__field-hint">{{ field.hint or '' }}</span>
+  <output class="form__field-error" data-error="{{ field.error or '' }}" for="{{ field.input }}-input"></output>
+</div>
+{% endmacro %}
+
+{% macro form(title, fields) %}
+{% if title %}<h2 class="modal__title">{{ title }}</h2>{% endif %}
+<form class="form" novalidate>
+  <output class="form__message" role="alert" aria-live="polite" hidden></output>
+  {% for field in fields %}
+    {{ formField(field) }}
+  {% endfor %}
+  <div class="form__actions">
+    <button type="submit" class="form__submit">Отправить</button>
+    <button type="button" class="form__cancel">Отмена</button>
+  </div>
+</form>
+{% endmacro %}
