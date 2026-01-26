@@ -1,0 +1,16 @@
+/* Стили для функциональности заказа журналов на страницах BENex (триггер) */
+/* Использует стили из _download-button.css, добавляет специфичные отступы */
+
+.journal-order-btn {
+  margin-left: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .journal-order-btn {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.5rem;
+    width: 100%;
+    text-align: center;
+  }
+}

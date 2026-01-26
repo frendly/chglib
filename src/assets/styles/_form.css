@@ -1,0 +1,196 @@
+/* Переиспользуемые стили формы в модалке */
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  display: block;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.3rem;
+  margin-top: 1rem;
+}
+
+.form__input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form__input:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.form__input[readonly] {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.form__input::placeholder {
+  color: #999;
+}
+
+/* Структура полей формы */
+.form__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__field-hint {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.form__field-hint:empty {
+  display: none;
+}
+
+.form__field-error {
+  display: block;
+  min-height: 1.4em;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #721c24;
+  line-height: 1.4;
+  visibility: hidden;
+}
+
+.form__field-error:not(:empty) {
+  visibility: visible;
+}
+
+/* Стили для невалидных полей */
+.form__field:has(.form__field-error:not(:empty)) .form__input {
+  border-color: #dc3545;
+}
+
+.form__field:has(.form__field-error:not(:empty)) .form__input:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.form__actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.form__submit,
+.form__cancel {
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.form__submit {
+  color: #fff;
+  background-color: #0066cc;
+  border-color: #0052a3;
+}
+
+.form__submit:hover {
+  background-color: #0052a3;
+  border-color: #004080;
+}
+
+.form__submit:active {
+  background-color: #004080;
+  border-color: #003366;
+}
+
+.form__submit:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.form__cancel {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.form__cancel:hover {
+  background-color: #f5f5f5;
+  border-color: #999;
+}
+
+.form__cancel:active {
+  background-color: #e5e5e5;
+  border-color: #666;
+}
+
+.form__cancel:focus {
+  outline: 2px solid #ccc;
+  outline-offset: 2px;
+}
+
+.form__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form__submit:disabled:hover {
+  background-color: #0066cc;
+  border-color: #0052a3;
+}
+
+.form__loading {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.form__message {
+  display: none;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.form__message:not([hidden]) {
+  display: block;
+}
+
+.form__message--success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.form__message--error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+@media (max-width: 640px) {
+  .form__actions {
+    flex-direction: column;
+  }
+
+  .form__submit,
+  .form__cancel {
+    width: 100%;
+  }
+}

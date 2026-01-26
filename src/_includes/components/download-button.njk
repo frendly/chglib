@@ -1,0 +1,76 @@
+{##
+  Макрос для создания компактной кнопки/ссылки для скачивания файлов
+  
+  Параметры:
+  - href: URL для скачивания (обязательно для ссылки, можно использовать "#" для кнопок)
+  - text: текст кнопки (обязательно)
+  - icon: тип иконки ("download", "document", "pdf") - по умолчанию "download"
+  - size: размер файла (опционально, например "2.5 МБ")
+  - fileType: тип файла (опционально, например "PDF", "DOC", "ZIP")
+  - variant: вариант стиля ("link" или "button") - по умолчанию "link"
+  - class: дополнительные CSS классы (опционально)
+  
+  Примеры использования:
+  
+  1. Простая ссылка для скачивания:
+  {% from "components/download-button.njk" import downloadButton %}
+  {{ downloadButton("/files/document.pdf", "Скачать документ") }}
+  
+  2. С указанием типа файла и размера:
+  {{ downloadButton("/files/document.pdf", "Скачать документ", "pdf", "2.5 МБ", "PDF") }}
+  
+  3. Кнопка вместо ссылки:
+  {{ downloadButton("#", "Скачать", "download", null, null, "button") }}
+  
+  4. С иконкой документа:
+  {{ downloadButton("/files/file.doc", "Скачать документ", "document", "856 КБ", "DOC") }}
+  
+  5. С дополнительным классом:
+  {{ downloadButton("/files/file.zip", "Скачать архив", "download", "5.3 МБ", "ZIP", "link", "my-custom-class") }}
+##}
+{% macro downloadButton(href, text, icon="download", size, fileType, variant="link", class) %}
+  {%- set iconSvg -%}
+    {%- if icon == "document" -%}
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="download-icon" aria-hidden="true">
+        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+      </svg>
+    {%- elif icon == "pdf" -%}
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="download-icon" aria-hidden="true">
+        <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zm5 7h-5v-1.5h5V16.5z"/>
+        <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z"/>
+      </svg>
+    {%- else -%}
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="download-icon" aria-hidden="true">
+        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+      </svg>
+    {%- endif -%}
+  {%- endset -%}
+
+  {%- set baseClass = "download-link-compact" if variant == "link" else "download-btn-compact" -%}
+  {%- set additionalClass = class if class is defined and class else "" -%}
+  {%- set fullClass = baseClass + (additionalClass ? " " + additionalClass : "") -%}
+
+  {%- if variant == "button" -%}
+    <button type="button" class="{{ fullClass }}">
+      {{ iconSvg | safe }}
+      <span class="download-text">{{ text }}</span>
+      {%- if fileType -%}
+        <span class="download-badge">{{ fileType }}</span>
+      {%- endif -%}
+      {%- if size -%}
+        <span class="download-size">{{ size }}</span>
+      {%- endif -%}
+    </button>
+  {%- else -%}
+    <a href="{{ href }}" class="{{ fullClass }}">
+      {{ iconSvg | safe }}
+      <span class="download-text">{{ text }}</span>
+      {%- if fileType -%}
+        <span class="download-badge">{{ fileType }}</span>
+      {%- endif -%}
+      {%- if size -%}
+        <span class="download-size">{{ size }}</span>
+      {%- endif -%}
+    </a>
+  {%- endif -%}
+{% endmacro %}

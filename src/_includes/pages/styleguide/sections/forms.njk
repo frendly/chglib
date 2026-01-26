@@ -1,29 +1,122 @@
 <section class="styleguide-section" id="forms">
   <h2>Формы</h2>
-  <p><strong>Требует HTML с классами.</strong> Нельзя использовать в Markdown.</p>
+  <p><strong>Требует Nunjucks компоненты.</strong> Формы используют компонент <code>_form.njk</code>. Нельзя использовать в Markdown.</p>
 
-  <h3>Поля ввода</h3>
+  <h3>Полная форма (form)</h3>
   <div class="styleguide-example">
+    {% from "components/_form.njk" import form %}
+    {% set fields = [
+      {
+        input: 'email',
+        label: 'Email',
+        type: 'email',
+        required: true,
+        placeholder: 'example@mail.ru'
+      },
+      {
+        input: 'name',
+        label: 'Имя',
+        required: true,
+        placeholder: 'Введите имя'
+      }
+    ] %}
+    {{ form('Заголовок формы', fields) }}
+  </div>
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>{% raw %}{% from "components/_form.njk" import form %}
+{% set fields = [
+  {
+    input: 'email',
+    label: 'Email',
+    type: 'email',
+    required: true,
+    placeholder: 'example@mail.ru'
+  },
+  {
+    input: 'name',
+    label: 'Имя',
+    required: true,
+    placeholder: 'Введите имя'
+  }
+] %}
+{{ form('Заголовок формы', fields) }}{% endraw %}</code></pre>
+    </div>
+  </details>
+
+  <h3>Отдельное поле (formField)</h3>
+  <div class="styleguide-example">
+    {% from "components/_form.njk" import formField %}
     <form class="form" novalidate>
-      <label for="example-text">Текстовое поле</label>
-      <input type="text" id="example-text" name="text" class="form__input" placeholder="Введите текст" />
-      
-      <label for="example-email">Email</label>
-      <input type="email" id="example-email" name="email" class="form__input" placeholder="example@mail.ru" />
+      {{ formField({ input: 'text', label: 'Текстовое поле', placeholder: 'Введите текст' }) }}
     </form>
   </div>
   <details>
     <summary>Показать код</summary>
     <div class="styleguide-code">
-      <pre><code>&lt;form class="form" novalidate&gt;
-  &lt;label for="text-input"&gt;Текстовое поле&lt;/label&gt;
-  &lt;input type="text" id="text-input" name="text" class="form__input" placeholder="Введите текст" /&gt;
-  
-  &lt;label for="email-input"&gt;Email&lt;/label&gt;
-  &lt;input type="email" id="email-input" name="email" class="form__input" placeholder="example@mail.ru" /&gt;
-&lt;/form&gt;</code></pre>
+      <pre><code>{% raw %}{% from "components/_form.njk" import formField %}
+&lt;form class="form" novalidate&gt;
+  {{ formField({ input: 'text', label: 'Текстовое поле', placeholder: 'Введите текст' }) }}
+&lt;/form&gt;{% endraw %}</code></pre>
     </div>
   </details>
+
+  <h3>Поле с подсказкой (hint)</h3>
+  <div class="styleguide-example">
+    {% from "components/_form.njk" import formField %}
+    <form class="form" novalidate>
+      {{ formField({ input: 'pages', label: 'Страницы', placeholder: 'Введите страницы', hint: 'Укажите страницы или ссылку на конкретную статью,<br><a href="#" target="_blank" rel="noopener noreferrer">[оглавление журнала]</a>' }) }}
+    </form>
+  </div>
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>{% raw %}{% from "components/_form.njk" import formField %}
+&lt;form class="form" novalidate&gt;
+  {{ formField({ 
+    input: 'pages', 
+    label: 'Страницы', 
+    placeholder: 'Введите страницы', 
+    hint: 'Укажите страницы или ссылку на конкретную статью,<br><a href="#" target="_blank" rel="noopener noreferrer">[оглавление журнала]</a>' 
+  }) }}
+&lt;/form&gt;{% endraw %}</code></pre>
+    </div>
+  </details>
+
+  <h3>Поле с ошибкой валидации</h3>
+  <div class="styleguide-example">
+    <form class="form" novalidate>
+      <div class="form__field">
+        <label for="email-error-input">Email</label>
+        <input
+          type="email"
+          id="email-error-input"
+          name="email"
+          class="form__input"
+          placeholder="example@mail.ru"
+        />
+        <span class="form__field-hint"></span>
+        <output class="form__field-error" data-error="Пожалуйста, укажите email" for="email-error-input">Пожалуйста, укажите email</output>
+      </div>
+    </form>
+  </div>
+  <details>
+    <summary>Показать код</summary>
+    <div class="styleguide-code">
+      <pre><code>{% raw %}{% from "components/_form.njk" import formField %}
+&lt;form class="form" novalidate&gt;
+  {{ formField({ 
+    input: 'email', 
+    label: 'Email', 
+    type: 'email', 
+    placeholder: 'example@mail.ru', 
+    error: 'Пожалуйста, укажите email' 
+  }) }}
+&lt;/form&gt;{% endraw %}</code></pre>
+    </div>
+  </details>
+  <p><strong>Примечание:</strong> Ошибка отображается через JavaScript, когда в элемент <code>.form__field-error</code> устанавливается текст из атрибута <code>data-error</code>. Поле автоматически получает красную рамку через CSS селектор <code>:has(.form__field-error:not(:empty))</code>.</p>
 
   <h3>Сообщения формы</h3>
   <div class="styleguide-example">

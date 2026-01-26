@@ -4,7 +4,12 @@
 @import "_portal.css";
 @import "_breadcrumbs.css";
 
+@import "_modal.css";
+@import "_form.css";
+@import "_download-button.css";
+
 @import "pages/elcat.css";
 @import "pages/libweb.css";
 @import "pages/ec.css";
 @import "pages/contacts.css";
+@import "pages/benex.css";

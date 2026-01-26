@@ -1,6 +1,6 @@
 import analytics from './analytics';
 import { getHolidays, menuMobile, openLinksInPortal } from './features';
-
+import initJournalOrder from './pages/benex';
 import elcatToggleList from './pages/elcat';
 import { resbncBbTable } from './pages/resbnc';
 
@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   analytics();
   elcatToggleList();
   resbncBbTable();
+  initJournalOrder();
 
   // observer
   mutationObserver(elcatToggleList);

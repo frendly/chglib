@@ -1,0 +1,30 @@
+{% from "components/_modal.njk" import modalShell %}
+{% from "components/_form.njk" import form %}
+{% call modalShell("journal-order-modal-tpl") %}
+  {% set fields = [
+    {
+      input: 'title',
+      label: 'Название',
+      required: true,
+      error: 'Пожалуйста, укажите название журнала',
+      readonly: true
+    },
+    {
+      input: 'pages',
+      label: 'Страницы',
+      required: true,
+      error: 'Пожалуйста, укажите страницы',
+      placeholder: 'Введите страницы'
+    },
+    {
+      input: 'email',
+      label: 'Email',
+      type: 'email',
+      required: true,
+      error: 'Пожалуйста, укажите email',
+      placeholder: 'example@mail.ru',
+      autocomplete: 'email'
+    }
+  ] %}
+  {{ form('Заказ журнала', fields) }}
+{% endcall %}
