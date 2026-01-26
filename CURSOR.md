@@ -37,6 +37,10 @@ Provides access to scientific literature via 4 content systems and 3 resource ac
 - **Auto-pages**: Yearly index pages via pagination (`BENex_by_years.njk`)
 - **Auto-archive**: Year archive via `getYears` filter
 - **Homepage logic**: Shows previous year if current year has no bulletins
+- **Journal Order**: Each journal entry has "Заказ журнала" button (via `benex.js`)
+  - Opens modal form for ordering journal pages
+  - Shows dynamic hint with links to table of contents if available
+  - Submits to Google Apps Script (see `docs/google-apps-script-setup.md`)
 
 #### BNP — New Arrivals
 - **Path**: `pages/BNP/YYYY/*.html`
@@ -127,7 +131,7 @@ chglib/
 │   │   └── globalData.ts
 │   ├── _includes/            # Nunjucks templates
 │   │   ├── layouts/base.njk
-│   │   ├── components/       # nav, head, footer, critical_css, counters
+│   │   ├── components/       # nav, head, footer, critical_css, counters, _form.njk, _modal.njk
 │   │   └── pages/            # Page templates
 │   └── assets/
 │       ├── js/index.js       # Main JS (bundled)
@@ -225,6 +229,16 @@ yarn deploy  # build && transfer (rsync via SSH)
 - **Nunjucks (.njk)**: Main template engine (inheritance, components, filters, macros)
 - **Formats**: `.md` (Markdown → HTML), `.njk` (Nunjucks), `.html` (passthrough/processed)
 
+### Form Components (`src/_includes/components/`)
+- **`_form.njk`**: Reusable form component with macros:
+  - `form(title, fields)`: Complete form with title and fields
+  - `formField(field)`: Single form field with label, input, hint, and error output
+  - Supports: `input`, `label`, `type`, `required`, `placeholder`, `readonly`, `autocomplete`, `hint`, `error`
+  - Hint supports HTML (e.g., links to journal table of contents)
+  - Error validation via `data-error` attribute and JavaScript
+- **`_modal.njk`**: Modal shell component (`modalShell` macro)
+- **`journal-order-modal.njk`**: Journal order modal template (uses `_form.njk` and `_modal.njk`)
+
 ### Eleventy Plugins
 1. **`@11ty/eleventy-navigation`**: Hierarchical navigation (via `eleventyNavigation` front matter)
 2. **`EleventyRenderPlugin`**: Render files via `{% renderFile %}` (used in `pages/libweb/resbnc/index.njk`)
@@ -289,6 +303,12 @@ yarn deploy  # build && transfer
 6. `setCurrentYear.js` (utils.js): Set current year in DOM
 7. `getHolidays.js` (features.js): Holiday handling
 8. `analytics.js` (analytics.js): Analytics integration (Yandex.Metrica, etc.)
+9. `benex.js` (pages/benex.js): Journal order functionality for BENex pages
+   - Adds "Заказ журнала" buttons to journal entries
+   - Modal form with title, pages, and email fields
+   - Dynamic hint with links to journal table of contents (if available)
+   - Form validation and submission to Google Apps Script
+   - Uses `modalForm.js` utility for modal/form management
 
 **Initialization**: All modules init in `DOMContentLoaded`. Mutation Observer used for `elcatToggleList` and `targetBlank`.
 
@@ -399,5 +419,5 @@ yarn deploy  # build && transfer
 ---
 
 *Last update: 2026-01-23*
-*Doc version: 3.2 (Biome linter config, eleventy.d.ts suppressions)*
-*Project version: 4.3.2 (TypeScript)*
+*Doc version: 3.3 (Form components, journal order functionality)*
+*Project version: 4.4.0 (TypeScript)*
