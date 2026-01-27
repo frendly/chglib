@@ -3,8 +3,8 @@
  * - для внешних ссылок
  * - для внутренних ссылок на файлы pdf, jpg, doc, docx, ppt
  */
-export const targetBlank = () => {
-  const links = document.querySelectorAll('a');
+export const targetBlank = (): void => {
+  const links = document.querySelectorAll<HTMLAnchorElement>('a');
   if (links.length === 0) return;
 
   const currentHost = location.host.replace('www.', '');
@@ -16,7 +16,7 @@ export const targetBlank = () => {
     'i'
   );
 
-  for (const link of links) {
+  for (const link of Array.from(links)) {
     if (!link.href) continue;
     // Добавляем target='_blank' если ссылка не соответствует паттерну внутренних ссылок
     if (!internalLinkPattern.test(link.href)) {

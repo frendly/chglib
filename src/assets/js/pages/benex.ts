@@ -9,7 +9,6 @@ import { closeModal, initModalFromTemplate, openModal, showMessage } from '../ut
 /**
  * URL веб-приложения Google Apps Script для приёма заказов.
  * TODO: Замените на ваш URL после настройки. Инструкция: docs/google-apps-script-setup.md
- * @type {string}
  */
 const GOOGLE_APPS_SCRIPT_URL =
   'https://script.google.com/macros/s/AKfycbymTm1w1UVoPYBb00F6Qw3A4MqXmBnV1dx7RxLbuvKd6sDxoRBXsDscBJTsZ998OhVC/exec';
@@ -17,16 +16,35 @@ const GOOGLE_APPS_SCRIPT_URL =
 /** Ключ localStorage для сохранения email пользователя. */
 const STORAGE_KEY_EMAIL = 'benex-journal-order-email';
 
+interface ModalResult {
+  modal: HTMLElement;
+  form: HTMLFormElement;
+}
+
+interface FormElements extends HTMLFormControlsCollection {
+  title: HTMLInputElement;
+  pages: HTMLInputElement;
+  email: HTMLInputElement;
+}
+
+interface Payload {
+  title: string;
+  pages: string;
+  email: string;
+  timestamp: string;
+  url: string;
+}
+
 // Глобальные переменные для модалки и формы (инициализируются один раз)
-let globalModal = null;
-let globalForm = null;
+let globalModal: HTMLElement | null = null;
+let globalForm: HTMLFormElement | null = null;
 let isModalInitialized = false;
 
 /**
  * Инициализирует модалку и форму (вызывается один раз).
- * @returns {{ modal: HTMLElement; form: HTMLFormElement } | null}
+ * @returns объект с модалкой и формой или null
  */
-const initModalOnce = () => {
+const initModalOnce = (): ModalResult | null => {
   if (isModalInitialized && globalModal && globalForm) {
     return { modal: globalModal, form: globalForm };
   }
@@ -45,8 +63,8 @@ const initModalOnce = () => {
     });
 
     // Очищаем ошибки при вводе текста в поля
-    const inputs = form.querySelectorAll('.form__input');
-    inputs.forEach((input) => {
+    const inputs = form.querySelectorAll<HTMLInputElement>('.form__input');
+    inputs.forEach((input: HTMLInputElement) => {
       input.addEventListener('input', () => {
         clearFieldError(input);
       });
@@ -57,35 +75,40 @@ const initModalOnce = () => {
     isModalInitialized = true;
   }
 
+  if (!globalModal || !globalForm) return null;
   return { modal: globalModal, form: globalForm };
 };
 
 /**
  * Инициализирует кнопки «Заказ журнала» для контейнера.
- * @param {HTMLElement} container — контейнер для поиска записей (main или другой элемент)
- * @param {HTMLElement} modal — корень модалки
- * @param {HTMLFormElement} form — форма
- * @returns {void}
+ * @param container — контейнер для поиска записей (main или другой элемент)
+ * @param modal — корень модалки
+ * @param form — форма
+ * @returns void
  */
-const initJournalOrderButtons = (container, modal, form) => {
-  const entries = container.querySelectorAll('ol > li, ul > li');
+const initJournalOrderButtons = (
+  container: HTMLElement,
+  modal: HTMLElement,
+  form: HTMLFormElement
+): void => {
+  const entries = container.querySelectorAll<HTMLElement>('ol > li, ul > li');
   if (entries.length === 0) return;
 
-  for (const entry of entries) {
+  for (const entry of Array.from(entries)) {
     // Проверяем, не добавлена ли уже кнопка
     if (entry.querySelector('.journal-order-btn')) continue;
 
-    const strong = entry.querySelector('strong');
+    const strong = entry.querySelector<HTMLElement>('strong');
     if (!strong) continue;
 
     const btn = createOrderButton();
     entry.appendChild(btn);
     // Находим все ссылки в элементе
-    const links = Array.from(entry.querySelectorAll('a'));
+    const links = Array.from(entry.querySelectorAll<HTMLAnchorElement>('a'));
     const linkUrls = links.map((link) => link.href);
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', (e: MouseEvent) => {
       e.preventDefault();
-      openJournalModal(modal, form, strong.textContent.trim(), linkUrls);
+      openJournalModal(modal, form, strong.textContent?.trim() || '', linkUrls);
     });
   }
 };
@@ -93,12 +116,12 @@ const initJournalOrderButtons = (container, modal, form) => {
 /**
  * Инициализирует функциональность заказа журналов на страницах /BENex/.
  * Проверяет как обычный main, так и контент в портале.
- * @returns {void}
+ * @returns void
  */
-const initJournalOrder = () => {
+const initJournalOrder = (): void => {
   // Проверяем, есть ли контент BENex на странице или в портале
-  const main = document.querySelector('main');
-  const portalMain = document.querySelector('.portal__content main');
+  const main = document.querySelector<HTMLElement>('main');
+  const portalMain = document.querySelector<HTMLElement>('.portal__content main');
 
   // Если нет контента BENex, выходим
   if (!main && !portalMain) return;
@@ -117,21 +140,21 @@ const initJournalOrder = () => {
   const { modal, form } = modalResult;
 
   // Инициализируем кнопки для обычного main
-  if (hasEntriesInMain) {
+  if (hasEntriesInMain && main) {
     initJournalOrderButtons(main, modal, form);
   }
 
   // Инициализируем кнопки для портала
-  if (hasEntriesInPortal) {
+  if (hasEntriesInPortal && portalMain) {
     initJournalOrderButtons(portalMain, modal, form);
   }
 };
 
 /**
  * Создаёт кнопку «Заказ журнала».
- * @returns {HTMLButtonElement}
+ * @returns HTMLButtonElement
  */
-function createOrderButton() {
+function createOrderButton(): HTMLButtonElement {
   const btn = document.createElement('button');
   btn.type = 'button';
   btn.className = 'download-btn-compact journal-order-btn';
@@ -159,18 +182,24 @@ function createOrderButton() {
 
 /**
  * Открывает модалку заказа: подставляет название и email из localStorage, сбрасывает сообщение и submit, фокус на «Страницы».
- * @param {HTMLElement} modal — корень модалки (.modal)
- * @param {HTMLFormElement} form — форма
- * @param {string} journalTitle — название журнала
- * @param {string[]} linkUrls — массив URL ссылок на оглавление журнала (если есть)
- * @returns {void}
+ * @param modal — корень модалки (.modal)
+ * @param form — форма
+ * @param journalTitle — название журнала
+ * @param linkUrls — массив URL ссылок на оглавление журнала (если есть)
+ * @returns void
  */
-function openJournalModal(modal, form, journalTitle, linkUrls = []) {
-  const titleInput = form.elements.title;
-  const pagesInput = form.elements.pages;
-  const emailInput = form.elements.email;
-  const messageEl = form.querySelector('.form__message');
-  const submitBtn = form.querySelector('.form__submit');
+function openJournalModal(
+  modal: HTMLElement,
+  form: HTMLFormElement,
+  journalTitle: string,
+  linkUrls: string[] = []
+): void {
+  const formElements = form.elements as FormElements;
+  const titleInput = formElements.title;
+  const pagesInput = formElements.pages;
+  const emailInput = formElements.email;
+  const messageEl = form.querySelector<HTMLElement>('.form__message');
+  const submitBtn = form.querySelector<HTMLButtonElement>('.form__submit');
 
   if (titleInput) titleInput.value = journalTitle;
   if (pagesInput) pagesInput.value = '';
@@ -183,12 +212,12 @@ function openJournalModal(modal, form, journalTitle, linkUrls = []) {
   }
 
   // Показываем/скрываем hint для поля "Страницы" в зависимости от наличия ссылок
-  const pagesField = pagesInput?.closest('.form__field');
+  const pagesField = pagesInput?.closest<HTMLElement>('.form__field');
   if (pagesField) {
-    const hintEl = pagesField.querySelector('.form__field-hint');
+    const hintEl = pagesField.querySelector<HTMLElement>('.form__field-hint');
     if (hintEl) {
       if (linkUrls.length > 0) {
-        let hintHTML;
+        let hintHTML: string;
 
         if (linkUrls.length === 1) {
           // Одна ссылка: [оглавление журнала]
@@ -227,12 +256,12 @@ function openJournalModal(modal, form, journalTitle, linkUrls = []) {
 
 /**
  * Показывает ошибку для конкретного поля.
- * @param {HTMLElement} fieldContainer — контейнер .form__field
- * @param {string} message — текст ошибки
- * @returns {void}
+ * @param fieldContainer — контейнер .form__field
+ * @param message — текст ошибки
+ * @returns void
  */
-function showFieldError(fieldContainer, message) {
-  const errorEl = fieldContainer.querySelector('.form__field-error');
+function showFieldError(fieldContainer: HTMLElement, message: string): void {
+  const errorEl = fieldContainer.querySelector<HTMLElement>('.form__field-error');
   if (errorEl) {
     errorEl.textContent = message || errorEl.getAttribute('data-error') || '';
   }
@@ -240,13 +269,13 @@ function showFieldError(fieldContainer, message) {
 
 /**
  * Очищает ошибку конкретного поля.
- * @param {HTMLInputElement} input — поле ввода
- * @returns {void}
+ * @param input — поле ввода
+ * @returns void
  */
-function clearFieldError(input) {
-  const fieldContainer = input.closest('.form__field');
+function clearFieldError(input: HTMLInputElement): void {
+  const fieldContainer = input.closest<HTMLElement>('.form__field');
   if (fieldContainer) {
-    const errorEl = fieldContainer.querySelector('.form__field-error');
+    const errorEl = fieldContainer.querySelector<HTMLElement>('.form__field-error');
     if (errorEl) {
       errorEl.textContent = '';
     }
@@ -255,46 +284,47 @@ function clearFieldError(input) {
 
 /**
  * Очищает все ошибки полей в форме.
- * @param {HTMLFormElement} form — форма
- * @returns {void}
+ * @param form — форма
+ * @returns void
  */
-function clearFieldErrors(form) {
-  const errorElements = form.querySelectorAll('.form__field-error');
-  errorElements.forEach((el) => {
+function clearFieldErrors(form: HTMLFormElement): void {
+  const errorElements = form.querySelectorAll<HTMLElement>('.form__field-error');
+  errorElements.forEach((el: HTMLElement) => {
     el.textContent = '';
   });
 }
 
 /**
  * Проверяет валидность email.
- * @param {string} email — email адрес
- * @returns {boolean}
+ * @param email — email адрес
+ * @returns boolean
  */
-function isValidEmail(email) {
+function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 /**
  * Обрабатывает submit: payload → GAS, при успехе сохраняет email в localStorage, showMessage, closeModal через 2 с.
- * @param {HTMLFormElement} form — форма
- * @param {HTMLElement} modal — корень модалки
- * @returns {Promise<void>}
+ * @param form — форма
+ * @param modal — корень модалки
+ * @returns Promise<void>
  */
-async function handleSubmit(form, modal) {
-  const titleInput = form.elements.title;
-  const pagesInput = form.elements.pages;
-  const emailInput = form.elements.email;
+async function handleSubmit(form: HTMLFormElement, modal: HTMLElement): Promise<void> {
+  const formElements = form.elements as FormElements;
+  const titleInput = formElements.title;
+  const pagesInput = formElements.pages;
+  const emailInput = formElements.email;
 
   // Очищаем предыдущие ошибки
   clearFieldErrors(form);
 
   // Валидация полей
   let hasErrors = false;
-  let firstErrorField = null;
+  let firstErrorField: HTMLInputElement | null = null;
 
   const titleValue = String(titleInput?.value ?? '').trim();
   if (!titleValue) {
-    const titleField = titleInput?.closest('.form__field');
+    const titleField = titleInput?.closest<HTMLElement>('.form__field');
     if (titleField) {
       showFieldError(titleField, 'Пожалуйста, укажите название журнала.');
       if (!firstErrorField) firstErrorField = titleInput;
@@ -304,7 +334,7 @@ async function handleSubmit(form, modal) {
 
   const pagesValue = String(pagesInput?.value ?? '').trim();
   if (!pagesValue) {
-    const pagesField = pagesInput?.closest('.form__field');
+    const pagesField = pagesInput?.closest<HTMLElement>('.form__field');
     if (pagesField) {
       showFieldError(pagesField, 'Пожалуйста, укажите страницы.');
       if (!firstErrorField) firstErrorField = pagesInput;
@@ -314,14 +344,14 @@ async function handleSubmit(form, modal) {
 
   const emailValue = String(emailInput?.value ?? '').trim();
   if (!emailValue) {
-    const emailField = emailInput?.closest('.form__field');
+    const emailField = emailInput?.closest<HTMLElement>('.form__field');
     if (emailField) {
       showFieldError(emailField, 'Пожалуйста, укажите email.');
       if (!firstErrorField) firstErrorField = emailInput;
       hasErrors = true;
     }
   } else if (!isValidEmail(emailValue)) {
-    const emailField = emailInput?.closest('.form__field');
+    const emailField = emailInput?.closest<HTMLElement>('.form__field');
     if (emailField) {
       showFieldError(emailField, 'Пожалуйста, введите корректный email адрес.');
       if (!firstErrorField) firstErrorField = emailInput;
@@ -335,7 +365,7 @@ async function handleSubmit(form, modal) {
     return;
   }
 
-  const payload = {
+  const payload: Payload = {
     title: titleValue,
     pages: pagesValue,
     email: emailValue,
@@ -349,14 +379,14 @@ async function handleSubmit(form, modal) {
     return;
   }
 
-  const msg = form.querySelector('.form__message');
+  const msg = form.querySelector<HTMLElement>('.form__message');
   if (msg) {
     msg.hidden = true;
     msg.textContent = '';
     msg.className = 'form__message';
   }
 
-  const submitBtn = form.querySelector('.form__submit');
+  const submitBtn = form.querySelector<HTMLButtonElement>('.form__submit');
   if (!submitBtn) return;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Отправка...';
@@ -364,7 +394,7 @@ async function handleSubmit(form, modal) {
   try {
     await sendToGoogleAppsScript(payload);
     showMessage(form, 'Заказ успешно отправлен!', 'success');
-    form.elements.pages.value = '';
+    formElements.pages.value = '';
     if (emailValue) {
       try {
         localStorage.setItem(STORAGE_KEY_EMAIL, emailValue);
@@ -383,10 +413,10 @@ async function handleSubmit(form, modal) {
 
 /**
  * Отправляет данные заказа в Google Apps Script (POST, data — JSON в FormData, no-cors).
- * @param {{ title: string; pages: string; email: string; timestamp: string; url: string }} payload
- * @returns {Promise<Response>}
+ * @param payload — данные заказа
+ * @returns Promise<Response>
  */
-async function sendToGoogleAppsScript(payload) {
+async function sendToGoogleAppsScript(payload: Payload): Promise<Response> {
   const body = new FormData();
   body.append('data', JSON.stringify(payload));
 
@@ -402,13 +432,13 @@ async function sendToGoogleAppsScript(payload) {
 /**
  * Инициализирует кнопки заказа журналов для контента в портале.
  * Экспортируется для использования в openLinksInPortal.
- * @param {HTMLElement} container — контейнер с контентом (обычно .portal__content main)
- * @returns {void}
+ * @param container — контейнер с контентом (обычно .portal__content main)
+ * @returns void
  */
-export const initJournalOrderForPortal = (container) => {
+export const initJournalOrderForPortal = (container: HTMLElement): void => {
   if (!container) return;
 
-  const entries = container.querySelectorAll('ol > li, ul > li');
+  const entries = Array.from(container.querySelectorAll<HTMLElement>('ol > li, ul > li'));
   if (entries.length === 0) return;
 
   const modalResult = initModalOnce();

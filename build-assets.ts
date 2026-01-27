@@ -6,17 +6,21 @@ const input = 'src/assets';
 const output = 'dist/assets';
 
 /**
- * Собираем JS файлы
+ * Собираем TypeScript файлы
  */
 async function buildJavaScript(isProduction: boolean): Promise<void> {
-  console.log('= 1 = Сборка JS файлов...');
+  console.log('= 1 = Сборка TypeScript файлов...');
   await build({
-    entryPoints: [`${input}/js/index.js`],
+    entryPoints: [`${input}/js/index.ts`], // Точка входа в TypeScript
     bundle: true,
     outdir: `${output}/js`,
     minify: isProduction,
     sourcemap: !isProduction,
     target: 'es6',
+    loader: {
+      '.ts': 'ts',
+      '.js': 'js',
+    },
     plugins: [YAMLPlugin()],
   });
 }
@@ -52,7 +56,7 @@ export default async (): Promise<void> => {
 
   try {
     await Promise.all([buildJavaScript(isProduction), buildStyles(isProduction)]);
-    console.log('✅ CSS и JS файлы собраны корректно.');
+    console.log('✅ CSS и TypeScript файлы собраны корректно.');
   } catch (e) {
     console.error('Overall build failed:', e);
     process.exit(1); // Ensure process exits on failure

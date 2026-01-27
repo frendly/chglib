@@ -14,7 +14,7 @@ chglib/
 │   ├── _includes/
 │   │   └── layouts/             # Шаблоны страниц
 │   └── assets/
-│       ├── js/index.js          # Основной JS файл
+│       ├── js/index.ts          # Основной TypeScript файл
 │       ├── styles/              # CSS файлы
 │       ├── images/              # Изображения
 │       └── static/              # Статические файлы (robots.txt и др.)

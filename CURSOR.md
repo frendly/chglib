@@ -37,7 +37,7 @@ Provides access to scientific literature via 4 content systems and 3 resource ac
 - **Auto-pages**: Yearly index pages via pagination (`BENex_by_years.njk`)
 - **Auto-archive**: Year archive via `getYears` filter
 - **Homepage logic**: Shows previous year if current year has no bulletins
-- **Journal Order**: Each journal entry has "Заказ журнала" button (via `benex.js`)
+- **Journal Order**: Each journal entry has "Заказ журнала" button (via `benex.ts`)
   - Opens modal form for ordering journal pages
   - Shows dynamic hint with links to table of contents if available
   - Submits to Google Apps Script (see `docs/google-apps-script-setup.md`)
@@ -68,9 +68,9 @@ Provides access to scientific literature via 4 content systems and 3 resource ac
 
 ### 3. Resource Access Systems
 
-- **Electronic Reading Room** (`pages/resbnc/index.html`): Permanent DB/e-journal access. JS: `resbncBbTable.js` (responsive tables)
-- **Test Access Portal** (`pages/restmp/index.html`): Trial subscriptions. JS: `openLinksInPortal.js` (modal windows)
-- **Electronic Catalog** (`pages/ec/index.html`): Alphabetical navigation. JS: `elcatToggleList.js` (expandable lists with Mutation Observer)
+- **Electronic Reading Room** (`pages/resbnc/index.html`): Permanent DB/e-journal access. TS: `resbncBbTable.ts` (responsive tables)
+- **Test Access Portal** (`pages/restmp/index.html`): Trial subscriptions. TS: `openLinksInPortal.ts` (modal windows)
+- **Electronic Catalog** (`pages/ec/index.html`): Alphabetical navigation. TS: `elcatToggleList.ts` (expandable lists with Mutation Observer)
 
 ---
 
@@ -90,7 +90,7 @@ Provides access to scientific literature via 4 content systems and 3 resource ac
 ```
 chglib/
 ├── .eleventy.ts              # Eleventy config (TS)
-├── build-assets.ts           # JS/CSS build (esbuild + PostCSS)
+├── build-assets.ts           # TS/CSS build (esbuild + PostCSS)
 ├── tsconfig.json             # TS config
 ├── postcss.config.cjs        # PostCSS config
 ├── package.json, yarn.lock
@@ -134,7 +134,7 @@ chglib/
 │   │   ├── components/       # nav, head, footer, critical_css, counters, _form.njk, _modal.njk
 │   │   └── pages/            # Page templates
 │   └── assets/
-│       ├── js/index.js       # Main JS (bundled)
+│       ├── js/index.ts       # Main TypeScript (bundled)
 │       ├── styles/           # CSS (PostCSS)
 │       ├── images/           # Images (copied as-is)
 │       └── static/           # robots.txt, favicon.ico, .htaccess (sitemap.xml generated dynamically)
@@ -156,7 +156,7 @@ yarn start  # or yarn watch
 ### Production
 ```bash
 yarn build
-# NODE_ENV=production, minified JS/CSS, no source maps
+# NODE_ENV=production, minified TS/CSS, no source maps
 ```
 
 ### Deploy
@@ -170,7 +170,7 @@ yarn deploy  # build && transfer (rsync via SSH)
 ## ⚙️ Build Process
 
 1. **Before Build Hook**: `buildAssets()` from `build-assets.ts`
-   - JS: esbuild (entry: `src/assets/js/index.js` → `dist/assets/js/`)
+   - TS: esbuild (entry: `src/assets/js/index.ts` → `dist/assets/js/`)
    - CSS: PostCSS (entry: `src/assets/styles/*.css` → `dist/assets/styles/`)
    - Minification: production only
    - Source maps: development only
@@ -202,7 +202,7 @@ yarn deploy  # build && transfer (rsync via SSH)
 
 ### Config Files
 - **`.eleventy.ts`**: Main Eleventy config, registers plugins, imports from `src/eleventy/`, uses `tsx/esm` for TS data files
-- **`tsconfig.json`**: `moduleResolution: "bundler"` (imports without `.js`), `noEmit: true`, `strict: true`
+- **`tsconfig.json`**: `moduleResolution: "bundler"` (imports without `.ts`), `noEmit: true`, `strict: true`
 - **`biome.json`**: Biome linter/formatter config (uses `biome-ignore-all` in `eleventy.d.ts` for type definitions)
 - **`src/types/eleventy.d.ts`**: Custom Eleventy API types (no official types). Uses `biome-ignore-all` comments to suppress `noExplicitAny` and `noBannedTypes` rules since Eleventy types are unknown
 - **`src/eleventy/`**: Modular Eleventy config
@@ -210,7 +210,7 @@ yarn deploy  # build && transfer (rsync via SSH)
   - `filters/`: `getHumanDate`, `getHumanDateWithYear`, `getSitemapDate`, `limit`, `getYears`, `getAllNews`, `hasPrefix`
   - `shortcodes/`: `version` (cache busting)
   - `globalData.ts`: `getGlobalCurrentYear`, `meta`
-- **`build-assets.ts`**: JS/CSS build function for `beforeBuild` hook
+- **`build-assets.ts`**: TS/CSS build function for `beforeBuild` hook
 - **`postcss.config.cjs`**: PostCSS plugins
 
 ### Content Directories
@@ -219,7 +219,7 @@ yarn deploy  # build && transfer (rsync via SSH)
 - **`src/_data/`**: Global data (available in all templates)
   - **Note**: TS files from `_data/` don't auto-load, register via `addGlobalData()` in `globalData.ts`
 - **`src/const/dateFormats.ts`**: dayjs format constants (used in Eleventy and frontend)
-- **`src/assets/`**: Static resources (JS bundled, CSS processed, images/static copied)
+- **`src/assets/`**: Static resources (TS bundled, CSS processed, images/static copied)
 
 ---
 
@@ -235,7 +235,7 @@ yarn deploy  # build && transfer (rsync via SSH)
   - `formField(field)`: Single form field with label, input, hint, and error output
   - Supports: `input`, `label`, `type`, `required`, `placeholder`, `readonly`, `autocomplete`, `hint`, `error`
   - Hint supports HTML (e.g., links to journal table of contents)
-  - Error validation via `data-error` attribute and JavaScript
+  - Error validation via `data-error` attribute and TypeScript
 - **`_modal.njk`**: Modal shell component (`modalShell` macro)
 - **`journal-order-modal.njk`**: Journal order modal template (uses `_form.njk` and `_modal.njk`)
 
@@ -266,7 +266,7 @@ yarn deploy  # build && transfer (rsync via SSH)
 ### TypeScript Support
 - All config/modules use `.ts`
 - `tsx` executes TS files
-- Imports work without `.js` (via `moduleResolution: "bundler"`)
+- Imports work without `.ts` (via `moduleResolution: "bundler"`)
 - Custom types in `src/types/eleventy.d.ts`
 - TS data files registered via `addGlobalData()`
 
@@ -292,23 +292,23 @@ yarn deploy  # build && transfer
 
 ## 💻 Client-Side Features
 
-**Main file**: `src/assets/js/index.js`
+**Main file**: `src/assets/js/index.ts`
 
 **Modules**:
-1. `resbncBbTable.js` (pages/resbnc.js): Responsive tables
-2. `openLinksInPortal.js` (features.js): Modal windows for external links
-3. `elcatToggleList.js` (pages/elcat.js): Expandable lists with Mutation Observer
-4. `menuMobile.js` (features.js): Mobile navigation menu
-5. `targetBlank.js` (utils.js): Auto `target="_blank"` for external links
-6. `setCurrentYear.js` (utils.js): Set current year in DOM
-7. `getHolidays.js` (features.js): Holiday handling
-8. `analytics.js` (analytics.js): Analytics integration (Yandex.Metrica, etc.)
-9. `benex.js` (pages/benex.js): Journal order functionality for BENex pages
+1. `resbncBbTable.ts` (pages/resbnc.ts): Responsive tables
+2. `openLinksInPortal.ts` (features.ts): Modal windows for external links
+3. `elcatToggleList.ts` (pages/elcat.ts): Expandable lists with Mutation Observer
+4. `menuMobile.ts` (features.ts): Mobile navigation menu
+5. `targetBlank.ts` (utils.ts): Auto `target="_blank"` for external links
+6. `setCurrentYear.ts` (utils.ts): Set current year in DOM
+7. `getHolidays.ts` (features.ts): Holiday handling
+8. `analytics.ts` (analytics.ts): Analytics integration (Yandex.Metrica, etc.)
+9. `benex.ts` (pages/benex.ts): Journal order functionality for BENex pages
    - Adds "Заказ журнала" buttons to journal entries
    - Modal form with title, pages, and email fields
    - Dynamic hint with links to journal table of contents (if available)
    - Form validation and submission to Google Apps Script
-   - Uses `modalForm.js` utility for modal/form management
+   - Uses `modalForm.ts` utility for modal/form management
 
 **Initialization**: All modules init in `DOMContentLoaded`. Mutation Observer used for `elcatToggleList` and `targetBlank`.
 
@@ -384,7 +384,7 @@ yarn deploy  # build && transfer
 2. **Node.js**: >=20 (22.x recommended, see `.nvmrc`)
 3. **Yarn**: Fixed version 1.22.22 in `package.json`
 4. **TypeScript**: All config/modules use `.ts`
-5. **Imports**: No `.js` extension needed (via `moduleResolution: "bundler"`)
+5. **Imports**: No `.ts` extension needed (via `moduleResolution: "bundler"`)
 6. **Dates**: Use **dayjs** instead of native Date. Formats in `src/const/dateFormats.ts`
 7. **News format**: `YYYY-MM-DD.md` required (uses `DATE_FORMAT_ISO`)
 8. **TS data files**: Register via `addGlobalData()` in `globalData.ts` (not auto-loaded)
@@ -397,7 +397,7 @@ yarn deploy  # build && transfer
 
 ## 🐛 Debugging
 
-1. **JS build errors**: Check `src/assets/js/index.js` and imports
+1. **TS build errors**: Check `src/assets/js/index.ts` and imports
 2. **CSS build errors**: Check `src/assets/styles/index.css` and PostCSS syntax
 3. **Collection issues**: Verify date format in news filenames and folder structure
 4. **Deploy issues**: Check `$SSH_HOST`, `$SSH_PATH` env vars and SSH keys in GitHub Secrets
@@ -419,5 +419,5 @@ yarn deploy  # build && transfer
 ---
 
 *Last update: 2026-01-23*
-*Doc version: 3.3 (Form components, journal order functionality)*
-*Project version: 4.4.0 (TypeScript)*
+*Doc version: 3.4 (TypeScript-only migration, removed allowJs)*
+*Project version: 4.5.0 (TypeScript)*

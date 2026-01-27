@@ -1,12 +1,12 @@
 /**
  * Создаем DOM структуру для портала и добавляет на страницу.
  * Если портал уже существует, очищает его контент.
- * @returns {HTMLElement} — элемент .portal__content для вставки контента
+ * @returns элемент .portal__content для вставки контента
  */
-export const createPortal = () => {
+export const createPortal = (): HTMLElement => {
   // Проверяем, существует ли портал
-  let portal = document.querySelector('.portal');
-  let content = document.querySelector('.portal__content');
+  let portal = document.querySelector<HTMLElement>('.portal');
+  let content = document.querySelector<HTMLElement>('.portal__content');
 
   if (!portal) {
     // Создаем новый портал
@@ -20,16 +20,26 @@ export const createPortal = () => {
     `;
 
     const node = new DOMParser().parseFromString(template, 'text/html').body.firstChild;
+    if (!node || !(node instanceof HTMLElement)) {
+      throw new Error('Failed to create portal element');
+    }
     document.body.appendChild(node);
 
-    portal = document.querySelector('.portal');
-    content = document.querySelector('.portal__content');
+    portal = document.querySelector<HTMLElement>('.portal');
+    content = document.querySelector<HTMLElement>('.portal__content');
+
+    if (!portal || !content) {
+      throw new Error('Failed to find portal elements after creation');
+    }
 
     // Инициализируем обработчики закрытия один раз
     initCloseWatchers(portal);
   } else {
+    if (!content) {
+      throw new Error('Portal exists but content not found');
+    }
     // Очищаем старый контент, оставляя кнопку закрытия
-    const closeBtn = content.querySelector('.portal__close');
+    const closeBtn = content.querySelector<HTMLButtonElement>('.portal__close');
     // Сохраняем кнопку закрытия перед очисткой
     if (closeBtn) {
       content.innerHTML = '';
@@ -51,10 +61,10 @@ export const createPortal = () => {
 
 /**
  * Удаляет портал из DOM.
- * @returns {void}
+ * @returns void
  */
-export const removePortal = () => {
-  const portal = document.querySelector('.portal');
+export const removePortal = (): void => {
+  const portal = document.querySelector<HTMLElement>('.portal');
   if (portal) {
     portal.remove();
   }
@@ -62,12 +72,12 @@ export const removePortal = () => {
 
 /**
  * Инициализирует обработчики закрытия портала (overlay и кнопка закрытия).
- * @param {HTMLElement} portal — элемент портала
- * @returns {void}
+ * @param portal — элемент портала
+ * @returns void
  */
-const initCloseWatchers = (portal) => {
-  const overlay = portal.querySelector('.portal__overlay');
-  const portalClose = portal.querySelector('.portal__close');
+const initCloseWatchers = (portal: HTMLElement): void => {
+  const overlay = portal.querySelector<HTMLElement>('.portal__overlay');
+  const portalClose = portal.querySelector<HTMLButtonElement>('.portal__close');
 
   if (overlay) {
     overlay.addEventListener('click', removePortal);

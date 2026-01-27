@@ -5,29 +5,39 @@
  */
 
 // Глобальный обработчик ESC для всех модалок
-let escapeHandler = null;
+let escapeHandler: ((e: KeyboardEvent) => void) | null = null;
+
+interface ModalResult {
+  modal: HTMLElement;
+  form?: HTMLFormElement;
+}
+
+interface OpenModalOptions {
+  focusSelector?: string;
+}
 
 /**
  * Инициализирует модалку из template: клонирует, вставляет в body, вешает закрытие (overlay, Escape, крестик, Отмена).
  * Submit не вешается — его навешивает вызывающий код.
- * @param {string} templateId — id элемента <template>
- * @returns {{ modal: HTMLElement; form?: HTMLFormElement } | null} — корень модалки и форма (если есть) или null
+ * @param templateId — id элемента <template>
+ * @returns корень модалки и форма (если есть) или null
  */
-export function initModalFromTemplate(templateId) {
+export function initModalFromTemplate(templateId: string): ModalResult | null {
   const tpl = document.getElementById(templateId);
-  if (!tpl) return null;
+  if (!tpl || !(tpl instanceof HTMLTemplateElement)) return null;
 
   const fragment = tpl.content.cloneNode(true);
-  const modal = fragment.querySelector('.modal');
+  if (!(fragment instanceof DocumentFragment)) return null;
+  const modal = fragment.querySelector<HTMLElement>('.modal');
   if (!modal) return null;
 
   document.body.appendChild(fragment);
 
-  const form = modal.querySelector('.form');
-  const closeBtn = modal.querySelector('.modal__close');
-  const cancelBtn = modal.querySelector('.form__cancel');
+  const form = modal.querySelector<HTMLFormElement>('.form');
+  const closeBtn = modal.querySelector<HTMLButtonElement>('.modal__close');
+  const cancelBtn = modal.querySelector<HTMLButtonElement>('.form__cancel');
 
-  const close = () => closeModal(modal, form);
+  const close = () => closeModal(modal, form || undefined);
 
   // Обработчик для кнопки закрытия (крестик)
   if (closeBtn) {
@@ -40,19 +50,19 @@ export function initModalFromTemplate(templateId) {
   }
 
   // Закрытие по клику на overlay
-  modal.addEventListener('click', (e) => {
+  modal.addEventListener('click', (e: MouseEvent) => {
     if (e.target === modal) close();
   });
 
   // Глобальный обработчик ESC (добавляется один раз для всех модалок)
   if (!escapeHandler) {
-    escapeHandler = (e) => {
+    escapeHandler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         // Находим открытую модалку
-        const openModal = document.querySelector('.modal[style*="flex"]');
+        const openModal = document.querySelector<HTMLElement>('.modal[style*="flex"]');
         if (openModal) {
-          const modalForm = openModal.querySelector('.form');
-          closeModal(openModal, modalForm);
+          const modalForm = openModal.querySelector<HTMLFormElement>('.form');
+          closeModal(openModal, modalForm || undefined);
         }
       }
     };
@@ -64,33 +74,37 @@ export function initModalFromTemplate(templateId) {
 
 /**
  * Открывает модалку, блокирует скролл body, опционально даёт фокус.
- * @param {HTMLElement} modal — корень модалки (.modal)
- * @param {HTMLFormElement} [form] — форма (опционально)
- * @param {{ focusSelector?: string }} [options]
- * @returns {void}
+ * @param modal — корень модалки (.modal)
+ * @param form — форма (опционально)
+ * @param options — опции (focusSelector для фокуса)
+ * @returns void
  */
-export function openModal(modal, form, options = {}) {
+export function openModal(
+  modal: HTMLElement,
+  form: HTMLFormElement | undefined,
+  options: OpenModalOptions = {}
+): void {
   modal.style.display = 'flex';
   document.body.style.overflow = 'hidden';
   const sel = options.focusSelector;
   if (sel) {
-    const el = form?.querySelector(sel) ?? modal.querySelector(sel);
+    const el = form?.querySelector<HTMLElement>(sel) ?? modal.querySelector<HTMLElement>(sel);
     el?.focus();
   }
 }
 
 /**
  * Закрывает модалку, сбрасывает overflow, сообщение и кнопку «Отправить» (если есть форма).
- * @param {HTMLElement} modal — корень модалки
- * @param {HTMLFormElement} [form] — форма (опционально)
- * @returns {void}
+ * @param modal — корень модалки
+ * @param form — форма (опционально)
+ * @returns void
  */
-export function closeModal(modal, form) {
+export function closeModal(modal: HTMLElement, form?: HTMLFormElement): void {
   modal.style.display = 'none';
   document.body.style.overflow = '';
 
   if (form) {
-    const msg = form.querySelector('.form__message');
+    const msg = form.querySelector<HTMLElement>('.form__message');
     if (msg) {
       msg.hidden = true;
       msg.textContent = '';
@@ -98,7 +112,7 @@ export function closeModal(modal, form) {
       msg.style.display = '';
     }
 
-    const submitBtn = form.querySelector('.form__submit');
+    const submitBtn = form.querySelector<HTMLButtonElement>('.form__submit');
     if (submitBtn) {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Отправить';
@@ -108,13 +122,17 @@ export function closeModal(modal, form) {
 
 /**
  * Показывает сообщение в блоке .form__message (успех или ошибка).
- * @param {HTMLFormElement} form — форма
- * @param {string} message — текст
- * @param {'success'|'error'} [type='success']
- * @returns {void}
+ * @param form — форма
+ * @param message — текст
+ * @param type — тип сообщения ('success' или 'error')
+ * @returns void
  */
-export function showMessage(form, message, type = 'success') {
-  const el = form.querySelector('.form__message');
+export function showMessage(
+  form: HTMLFormElement,
+  message: string,
+  type: 'success' | 'error' = 'success'
+): void {
+  const el = form.querySelector<HTMLElement>('.form__message');
   if (!el) return;
   el.textContent = message;
   el.className = `form__message form__message--${type}`;
