@@ -2,7 +2,7 @@ import { initJournalOrderForPortal } from '../pages/benex';
 import { isMobile } from '../utils';
 import { createPortal } from './portal';
 
-const fetchData = (data, container) => {
+const fetchData = (data: string, container: HTMLElement): void => {
   const htmlDocument = new DOMParser().parseFromString(data, 'text/html');
   const trimData = htmlDocument.querySelector('main') || htmlDocument.body;
 
@@ -21,24 +21,24 @@ const fetchData = (data, container) => {
   }
 };
 
-export const openLinksInPortal = () => {
+export const openLinksInPortal = (): void => {
   // на мобильных устройствах открываем ссылки без портала
   if (isMobile) {
     return;
   }
 
   // исключаем открытие ссылок /libweb/* в портале
-  const links = document.querySelectorAll(
+  const links = document.querySelectorAll<HTMLAnchorElement>(
     'main a[href*=".html"]:not([href*="ResBNC.html"]):not([href*="Restmp.html"]):not([href*="e-jour.html"])'
   );
 
-  links.forEach((link) => {
-    link.addEventListener('click', (e) => {
+  links.forEach((link: HTMLAnchorElement) => {
+    link.addEventListener('click', (e: MouseEvent) => {
       e.preventDefault();
 
       // Используем currentTarget для получения правильного href
       // (e.target может быть дочерним элементом ссылки)
-      const href = e.currentTarget.href || link.href;
+      const href = (e.currentTarget as HTMLAnchorElement).href || link.href;
       if (!href) return;
 
       fetch(href)

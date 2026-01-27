@@ -128,7 +128,7 @@ function doPost(e) {
 
 ## Шаг 4: Настройка в коде проекта
 
-1. Откройте файл `src/assets/js/pages/benex.js`
+1. Откройте файл `src/assets/js/pages/benex.ts`
 2. Найдите строку:
    ```javascript
    const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
@@ -156,7 +156,7 @@ function doPost(e) {
 ### Добавление дополнительных полей
 
 Если нужно добавить дополнительные поля в форму:
-1. Обновите форму в `src/assets/js/pages/benex.js`
+1. Обновите форму в `src/assets/js/pages/benex.ts`
 2. Добавьте соответствующие колонки в Google Таблицу
 3. Обновите код `doPost` для обработки новых полей
 
