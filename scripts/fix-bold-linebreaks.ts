@@ -1,26 +1,30 @@
 #!/usr/bin/env tsx
 
 /**
- * Fix Bold Tag Line Breaks Script
+ * Скрипт исправления переносов строк внутри тегов <b>
  *
- * This script removes unnecessary line breaks inside <b>...</b> tags in HTML files
- * within the LEGACY_BNP folder. It normalizes whitespace by:
- * - Replacing newlines with single spaces
- * - Collapsing multiple spaces into one
- * - Trimming leading/trailing whitespace inside tags
+ * Описание:
+ * Этот скрипт удаляет ненужные переносы строк внутри тегов <b>...</b>
+ * в HTML-файлах из папки LEGACY_BNP. Нормализует пробелы:
+ * - Заменяет переносы строк на одинарные пробелы
+ * - Объединяет множественные пробелы в один
+ * - Удаляет начальные и конечные пробелы внутри тегов
  *
- * Usage:
- *   # Process all years
+ * Это необходимо для правильной обработки текста при конвертации в Markdown,
+ * так как переносы строк внутри жирного текста могут нарушать форматирование.
+ *
+ * Использование:
+ *   # Обработать все годы
  *   yarn tsx scripts/fix-bold-linebreaks.ts
- *   # Or: yarn fix-bold-linebreaks
+ *   # Или: yarn fix-bold-linebreaks
  *
- *   # Process specific year
+ *   # Обработать конкретный год
  *   yarn tsx scripts/fix-bold-linebreaks.ts 2012
- *   # Or: yarn fix-bold-linebreaks 2012
+ *   # Или: yarn fix-bold-linebreaks 2012
  *
- *   # Dry run (preview changes without modifying files)
+ *   # Пробный запуск (предварительный просмотр изменений без записи)
  *   yarn tsx scripts/fix-bold-linebreaks.ts 2012 --dry-run
- *   # Or: yarn fix-bold-linebreaks 2012 --dry-run
+ *   # Или: yarn fix-bold-linebreaks 2012 --dry-run
  */
 
 import fs from 'node:fs';

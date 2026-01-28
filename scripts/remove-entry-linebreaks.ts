@@ -1,20 +1,31 @@
 #!/usr/bin/env tsx
 
 /**
- * Remove Entry Line Breaks Script
+ * Скрипт удаления переносов строк в библиографических записях
  *
- * This script removes unnecessary line breaks in bibliography entries in HTML files
- * within the LEGACY_BNP folder. It joins continuation lines that are part of the same
- * entry but were split across multiple lines.
+ * Описание:
+ * Этот скрипт удаляет ненужные переносы строк в библиографических записях
+ * в HTML-файлах из папки LEGACY_BNP. Объединяет строки-продолжения,
+ * которые являются частью одной записи, но были разбиты на несколько строк.
  *
- * Usage:
- *   # Process all years
+ * Строка считается продолжением предыдущей, если:
+ * - Она начинается с пробелов
+ * - Это НЕ нумерованная запись (например, "  1. ", "  10. ")
+ * - Это НЕ HTML-тег (например, "  <a href=...")
+ * - Она не пустая
+ * - Предыдущая строка существует и не пустая
+ *
+ * Это улучшает форматирование библиографических записей и делает их более
+ * компактными и читаемыми.
+ *
+ * Использование:
+ *   # Обработать все годы
  *   yarn tsx scripts/remove-entry-linebreaks.ts
  *
- *   # Process specific year
+ *   # Обработать конкретный год
  *   yarn tsx scripts/remove-entry-linebreaks.ts 2012
  *
- *   # Dry run (preview changes without modifying files)
+ *   # Пробный запуск (предварительный просмотр изменений без записи)
  *   yarn tsx scripts/remove-entry-linebreaks.ts 2012 --dry-run
  */
 
@@ -53,7 +64,7 @@ function parseFrontmatter(content: string): {
 
 /**
  * Remove line breaks by joining continuation lines with previous lines
- * 
+ *
  * A line is considered a continuation if:
  * - It starts with whitespace
  * - It is NOT a numbered entry (e.g., "  1. ", "  10. ")
@@ -72,15 +83,15 @@ function removeLinebreaks(html: string): { content: string; modified: boolean } 
 
     // Check if this is a continuation line that should be joined
     if (
-      /^\s+/.test(line) &&           // Starts with whitespace
-      !/^\s+\d+\.\s/.test(line) &&   // NOT a numbered entry
-      !/^\s+</.test(line) &&         // NOT an HTML tag
-      line.trim() !== '' &&          // NOT empty
-      prevLine !== undefined &&      // Has previous line
-      prevLine.trim() !== ''         // Previous line not empty
+      /^\s+/.test(line) && // Starts with whitespace
+      !/^\s+\d+\.\s/.test(line) && // NOT a numbered entry
+      !/^\s+</.test(line) && // NOT an HTML tag
+      line.trim() !== '' && // NOT empty
+      prevLine !== undefined && // Has previous line
+      prevLine.trim() !== '' // Previous line not empty
     ) {
       // Join with previous line
-      result[result.length - 1] = prevLine + ' ' + line.trim();
+      result[result.length - 1] = `${prevLine} ${line.trim()}`;
       modified = true;
     } else {
       result.push(line);

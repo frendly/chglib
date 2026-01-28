@@ -1,5 +1,25 @@
 #!/usr/bin/env tsx
 
+/**
+ * Скрипт конвертации HTML в Markdown для файлов LEGACY_BNP
+ *
+ * Описание:
+ * Этот скрипт преобразует HTML-файлы из папки LEGACY_BNP в формат Markdown.
+ * Выполняет следующие операции:
+ * - Очищает проблемные HTML-теги (сломанные закрывающие теги, пустые теги)
+ * - Удаляет устаревшие блоки <span class="content"> и <span class="content-link">
+ * - Конвертирует HTML-ссылки (<a href>) в синтаксис Markdown ([текст](ссылка))
+ * - Преобразует заголовки разделов (<b>КНИГИ</b>) в заголовки Markdown (## КНИГИ)
+ * - Конвертирует теги <b> в синтаксис Markdown (**текст**)
+ * - Исправляет URL-адреса с %20 в начале
+ * - Сохраняет frontmatter из исходных файлов
+ *
+ * После конвертации оригинальные HTML-файлы удаляются, остаются только .md файлы.
+ *
+ * Использование:
+ *   yarn tsx scripts/convert-legacy-bnp-to-md.ts
+ */
+
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

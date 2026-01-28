@@ -1,26 +1,31 @@
 #!/usr/bin/env tsx
 
 /**
- * Fix List Indentation Script
+ * Скрипт исправления отступов в нумерованных списках
  *
- * This script removes leading whitespace (any amount) before numbered lists
- * in HTML files within the LEGACY_BNP folder. This allows Markdown to properly
- * recognize and convert these lists to <ol> and <li> tags.
+ * Описание:
+ * Этот скрипт удаляет начальные пробелы (любое количество) перед нумерованными
+ * списками в HTML-файлах из папки LEGACY_BNP. Это позволяет Markdown правильно
+ * распознавать и преобразовывать эти списки в теги <ol> и <li>.
  *
- * The script also ensures there's a blank line after <h2> tags before numbered lists.
+ * Дополнительно скрипт обеспечивает наличие пустой строки после тегов <h2>
+ * перед нумерованными списками, что улучшает читаемость и корректность разметки.
  *
- * Usage:
- *   # Process all years
+ * Проблема возникает из-за того, что Markdown не распознаёт списки с отступами,
+ * поэтому необходимо выравнивать их по левому краю.
+ *
+ * Использование:
+ *   # Обработать все годы
  *   yarn tsx scripts/fix-list-indentation.ts
- *   # Or: yarn fix-list-indentation
+ *   # Или: yarn fix-list-indentation
  *
- *   # Process specific year
+ *   # Обработать конкретный год
  *   yarn tsx scripts/fix-list-indentation.ts 2012
- *   # Or: yarn fix-list-indentation 2012
+ *   # Или: yarn fix-list-indentation 2012
  *
- *   # Dry run (preview changes without modifying files)
+ *   # Пробный запуск (предварительный просмотр изменений без записи)
  *   yarn tsx scripts/fix-list-indentation.ts 2012 --dry-run
- *   # Or: yarn fix-list-indentation 2012 --dry-run
+ *   # Или: yarn fix-list-indentation 2012 --dry-run
  */
 
 import fs from 'node:fs';
