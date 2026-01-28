@@ -21,8 +21,8 @@
     "format": "biome format --write .",
     "format:check": "biome format .",
     "format:html:legacy-bnp": "prettier --write \"pages/LEGACY_BNP/**/*.html\"",
-    "html-validate": "html-validate",
-    "html-validate:legacy-bnp": "yarn html-validate \"pages/LEGACY_BNP/**/*.html\"",
+    "html-validate": "html-validate \"pages/LEGACY_BNP/**/*.html\"",
+    "fix-bold-linebreaks": "tsx scripts/fix-bold-linebreaks.ts",
     "deploy": "yarn build && yarn transfer",
     "transfer": "env-cmd -x rsync -az ./dist/ \\$SSH_HOST:\\$SSH_PATH"
   },
