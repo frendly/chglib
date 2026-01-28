@@ -20,6 +20,7 @@
     "lint:fix:unsafe": "biome check --write --unsafe .",
     "format": "biome format --write .",
     "format:check": "biome format .",
+    "format:html:legacy-bnp": "prettier --write \"pages/LEGACY_BNP/**/*.html\"",
     "html-validate": "html-validate",
     "html-validate:legacy-bnp": "yarn html-validate \"pages/LEGACY_BNP/**/*.html\"",
     "deploy": "yarn build && yarn transfer",
@@ -39,6 +40,7 @@
     "postcss-custom-media": "^10.0.4",
     "postcss-import": "^16.1.0",
     "postcss-preset-env": "^10.2.0",
+    "prettier": "^3.8.1",
     "tsx": "^4.7.0",
     "typescript": "^5.3.0"
   },
