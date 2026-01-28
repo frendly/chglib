@@ -23,6 +23,7 @@
     "format:html:legacy-bnp": "prettier --write \"pages/LEGACY_BNP/**/*.html\"",
     "html-validate": "html-validate \"pages/LEGACY_BNP/**/*.html\"",
     "fix-bold-linebreaks": "tsx scripts/fix-bold-linebreaks.ts",
+    "remove-entry-linebreaks": "tsx scripts/remove-entry-linebreaks.ts",
     "deploy": "yarn build && yarn transfer",
     "transfer": "env-cmd -x rsync -az ./dist/ \\$SSH_HOST:\\$SSH_PATH"
   },
