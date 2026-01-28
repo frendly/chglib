@@ -1,0 +1,9 @@
+<h2>Архив</h2>
+{% set years = collections.legacyBnpByYear | getYears %}
+{## Извлекаем год из текущего URL для определения активной ссылки ##}
+{%- set currentPath = page.url -%}
+{%- set currentYear = currentPath | replace("/LEGACY_BNP/", "") | replace("/", "") -%}
+{% for year in years %}
+{## Применяем класс active-link к ссылке, если её год совпадает с текущим годом из URL ##}
+<a href="/LEGACY_BNP/{{ year }}/"{% if year == currentYear %} class="active-link"{% endif %}>{{ year }}</a>
+{% endfor %}

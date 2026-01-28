@@ -1,0 +1,23 @@
+---
+title: Выставка новых поступлений (архив)
+permalink: "/LEGACY_BNP/"
+eleventyNavigation:
+  key: Новые поступления (архив)
+  order: 5
+---
+
+{##
+⚠️ ВНИМАНИЕ!
+Этот файл генерирует страницу архивных бюллетеней LEGACY_BNP автоматически.
+Архивные бюллетени хранятся в папках pages/LEGACY_BNP/YYYY/ как HTML файлы.
+##}
+
+Архивные бюллетени новых поступлений.
+
+{% set year = getGlobalCurrentYear | int %}
+{% set posts = collections.legacyBnpByYear[year] %}
+{% include "pages/LEGACY_BNP/_legacy-bnp-list.njk" %}
+
+Информацию о более ранних поступлениях ищите в <a href="https://koha.benran.ru/"> электронном каталоге </a>
+
+{% include "pages/LEGACY_BNP/_archive.njk" %}
