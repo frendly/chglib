@@ -13,7 +13,7 @@ export const makeLegacyBNPCollection = (
   folderName: string
 ): Record<string, EleventyCollectionItem[]> => {
   const files = collection.getFilteredByGlob(`./pages/${folderName}/**/*.html`);
-  return files.reduce(
+  const yearGroups = files.reduce(
     (years, post) => {
       /**
        * В коллекцию попадают только файлы с маской 'bnp*.html'
@@ -28,10 +28,20 @@ export const makeLegacyBNPCollection = (
       const year = path.dirname(post.inputPath).split('/').pop() || '';
       if (!years[year]) years[year] = [];
 
-      /** добавляем в начало для обратного порядка (новые первыми) */
-      years[year].unshift(post);
+      years[year].push(post);
       return years;
     },
     {} as Record<string, EleventyCollectionItem[]>
   );
+
+  /** Сортируем файлы в каждом году: новые первыми (bnp46, bnp45, ... bnp02, bnp01) */
+  Object.keys(yearGroups).forEach((year) => {
+    yearGroups[year].sort((a, b) => {
+      const fileNameA = path.basename(a.filePathStem);
+      const fileNameB = path.basename(b.filePathStem);
+      return fileNameB.localeCompare(fileNameA);
+    });
+  });
+
+  return yearGroups;
 };
