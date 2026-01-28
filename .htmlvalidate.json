@@ -2,7 +2,6 @@
   "extends": ["html-validate:recommended"],
   "rules": {
     "attr-quotes": "off",
-    "wcag/h30": "off",
     "unrecognized-char-ref": "off",
     "no-raw-characters": "off",
     "doctype-style": "off",
