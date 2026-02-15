@@ -12,7 +12,8 @@
   "scripts": {
     "clear": "rm -rf ./dist",
     "start": "yarn watch",
-    "watch": "yarn clear && tsx node_modules/.bin/eleventy --config=.eleventy.ts --serve --watch",
+    "watch_OLD": "yarn clear && tsx node_modules/.bin/eleventy --config=.eleventy.ts --serve --watch",
+    "watch": "yarn clear && node --import tsx node_modules/.bin/eleventy --config=.eleventy.ts --serve --watch",
     "build": "yarn clear && NODE_ENV=production tsx node_modules/.bin/eleventy --config=.eleventy.ts",
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
