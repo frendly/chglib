@@ -7,14 +7,20 @@
   "author": "frendly <www.zpdf@mail.ru>",
   "license": "MIT",
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
+  },
+  "imports": {
+    "#eleventy": "./src/eleventy/index.ts",
+    "#types/eleventy": "./src/types/eleventy.d.ts",
+    "#_data/meta": "./src/_data/meta.ts",
+    "#const/dateFormats": "./src/const/dateFormats.ts",
+    "#*": "./src/*.ts"
   },
   "scripts": {
     "clear": "rm -rf ./dist",
     "start": "yarn watch",
-    "watch_OLD": "yarn clear && tsx node_modules/.bin/eleventy --config=.eleventy.ts --serve --watch",
-    "watch": "yarn clear && node --import tsx node_modules/.bin/eleventy --config=.eleventy.ts --serve --watch",
-    "build": "yarn clear && NODE_ENV=production tsx node_modules/.bin/eleventy --config=.eleventy.ts",
+    "watch": "yarn clear && node node_modules/@11ty/eleventy/cmd.cjs --config=.eleventy.ts --serve --watch",
+    "build": "yarn clear && NODE_ENV=production node node_modules/@11ty/eleventy/cmd.cjs --config=.eleventy.ts",
     "typecheck": "tsc --noEmit",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
@@ -37,7 +43,6 @@
     "postcss-custom-media": "^10.0.4",
     "postcss-import": "^16.1.0",
     "postcss-preset-env": "^10.2.0",
-    "tsx": "^4.7.0",
     "typescript": "^5.3.0"
   },
   "dependencies": {

@@ -33,22 +33,29 @@
     // Разрешить импорт JSON файлов как модулей
     "resolveJsonModule": true,
 
-    // Не генерировать .d.ts файлы (типы не нужны, т.к. используется tsx для запуска)
+    // Не генерировать .d.ts файлы (типы не нужны, Node выполняет TS напрямую)
     "declaration": false,
 
     // Не генерировать source maps для .d.ts файлов
     "declarationMap": false,
 
-    // Не генерировать source maps (не нужны, т.к. используется tsx для запуска)
+    // Не генерировать source maps (не нужны, Node выполняет TS напрямую)
     "sourceMap": false,
 
-    // Не компилировать файлы в JavaScript (tsx выполняет TypeScript напрямую)
+    // Не компилировать файлы в JavaScript (Node выполняет TypeScript с type stripping)
     "noEmit": true,
+
+    // Разрешить импорты с расширением .ts (нужно для Node ESM при запуске без сборки)
+    "allowImportingTsExtensions": true,
 
     // Алиасы путей для импортов
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "#eleventy": ["./src/eleventy/index.ts"],
+      "#types/eleventy": ["./src/types/eleventy.d.ts"],
+      "#_data/meta": ["./src/_data/meta.ts"],
+      "#const/dateFormats": ["./src/const/dateFormats.ts"]
     }
   },
 

@@ -1,7 +1,7 @@
-import type { EleventyConfig } from '@/types/eleventy';
-import { getBreadcrumbs } from './breadcrumbs';
-import { getAllNews, getYears, hasPrefix, limit } from './collectionFilters';
-import { getHumanDate, getHumanDateWithYear, getSitemapDate } from './dateFilters';
+import type { EleventyConfig } from '#types/eleventy';
+import { getBreadcrumbs } from './breadcrumbs.ts';
+import { getAllNews, getYears, hasPrefix, limit } from './collectionFilters.ts';
+import { getHumanDate, getHumanDateWithYear, getSitemapDate } from './dateFilters.ts';
 
 /**
  * Регистрирует фильтры в Eleventy
