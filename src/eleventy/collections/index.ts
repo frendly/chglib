@@ -1,8 +1,8 @@
-import type { EleventyConfig } from '@/types/eleventy';
-import { makeBENexCollection } from './makeBENexCollection';
-import { makeBNPCollection } from './makeBNPCollection';
-import { makeCollection } from './makeCollection';
-import { makeSubjexCollection } from './makeSubjexCollection';
+import type { EleventyConfig } from '#types/eleventy';
+import { makeBENexCollection } from './makeBENexCollection.ts';
+import { makeBNPCollection } from './makeBNPCollection.ts';
+import { makeCollection } from './makeCollection.ts';
+import { makeSubjexCollection } from './makeSubjexCollection.ts';
 
 /**
  * Регистрирует коллекции в Eleventy

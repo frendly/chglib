@@ -2,7 +2,7 @@
  * Общий экспорт всех функций регистрации для Eleventy
  */
 
-export { registerCollections } from './collections';
-export { registerFilters } from './filters';
-export { registerGlobalData } from './globalData';
-export { registerShortcodes } from './shortcodes';
+export { registerCollections } from './collections/index.ts';
+export { registerFilters } from './filters/index.ts';
+export { registerGlobalData } from './globalData.ts';
+export { registerShortcodes } from './shortcodes/index.ts';

@@ -16,7 +16,7 @@ Project documentation for Cursor AI to understand structure, architecture, and d
 
 **Type**: JAMstack static site
 **Architecture**: Zero-storage directory service (curated links to external platforms, no content storage)
-**Stack**: Eleventy 3.0, TypeScript 5.3+, tsx, Node.js >=20 (22.x recommended), Yarn 1.22.22, dayjs, esbuild, PostCSS
+**Stack**: Eleventy 3.0, TypeScript 5.3+, Node.js >=24 (native type stripping), Yarn 1.22.22, dayjs, esbuild, PostCSS
 **Repo**: `git@github.com:frendly/chglib.git`
 
 Provides access to scientific literature via 4 content systems and 3 resource access systems. All links point to external platforms (elibrary.ru, mathnet.ru, koha.benran.ru, etc.).
@@ -201,8 +201,8 @@ yarn deploy  # build && transfer (rsync via SSH)
 ## 🔧 Key Files & Directories
 
 ### Config Files
-- **`.eleventy.ts`**: Main Eleventy config, registers plugins, imports from `src/eleventy/`, uses `tsx/esm` for TS data files
-- **`tsconfig.json`**: `moduleResolution: "bundler"` (imports without `.ts`), `noEmit: true`, `strict: true`
+- **`.eleventy.ts`**: Main Eleventy config, registers plugins, imports from `src/eleventy/` via `#eleventy` (package.json `"imports"`), Node 24 runs TS natively
+- **`tsconfig.json`**: `moduleResolution: "bundler"`, `noEmit: true`, `allowImportingTsExtensions: true` (relative imports use `.ts`), `strict: true`
 - **`biome.json`**: Biome linter/formatter config (uses `biome-ignore-all` in `eleventy.d.ts` for type definitions)
 - **`src/types/eleventy.d.ts`**: Custom Eleventy API types (no official types). Uses `biome-ignore-all` comments to suppress `noExplicitAny` and `noBannedTypes` rules since Eleventy types are unknown
 - **`src/eleventy/`**: Modular Eleventy config
@@ -265,8 +265,8 @@ yarn deploy  # build && transfer (rsync via SSH)
 
 ### TypeScript Support
 - All config/modules use `.ts`
-- `tsx` executes TS files
-- Imports work without `.ts` (via `moduleResolution: "bundler"`)
+- Node 24 runs TS natively (type stripping), no tsx/ts-node
+- Relative imports use explicit `.ts` / `index.ts` (ESM requirement); aliases `#eleventy`, `#types/eleventy` etc. via `package.json` `"imports"`
 - Custom types in `src/types/eleventy.d.ts`
 - TS data files registered via `addGlobalData()`
 
@@ -277,7 +277,7 @@ yarn deploy  # build && transfer (rsync via SSH)
 ### GitHub Actions
 - Auto-deploy on push to `master`
 - File: `.github/workflows/main.yml`
-- Node.js 22, Yarn with `--frozen-lockfile`
+- Node.js 24, Yarn with `--frozen-lockfile`
 - Production build with `NODE_ENV=production`
 - Deploy via rsync with SSH keys from GitHub Secrets
 - Env vars: `$SSH_HOST`, `$SSH_PATH`
@@ -381,10 +381,10 @@ yarn deploy  # build && transfer
 ## ⚠️ Important Notes
 
 1. **Always update CURSOR.md** when making changes (filters, functions, logic, structure, etc.)
-2. **Node.js**: >=20 (22.x recommended, see `.nvmrc`)
+2. **Node.js**: >=24 (see `.nvmrc`), native TypeScript execution (type stripping)
 3. **Yarn**: Fixed version 1.22.22 in `package.json`
-4. **TypeScript**: All config/modules use `.ts`
-5. **Imports**: No `.ts` extension needed (via `moduleResolution: "bundler"`)
+4. **TypeScript**: All config/modules use `.ts`; relative imports must include `.ts` or `index.ts`
+5. **Imports**: Aliases `#eleventy`, `#types/eleventy` etc. in `package.json` `"imports"`; relative paths need explicit `.ts`
 6. **Dates**: Use **dayjs** instead of native Date. Formats in `src/const/dateFormats.ts`
 7. **News format**: `YYYY-MM-DD.md` required (uses `DATE_FORMAT_ISO`)
 8. **TS data files**: Register via `addGlobalData()` in `globalData.ts` (not auto-loaded)
@@ -418,6 +418,6 @@ yarn deploy  # build && transfer
 
 ---
 
-*Last update: 2026-01-23*
-*Doc version: 3.4 (TypeScript-only migration, removed allowJs)*
-*Project version: 4.5.0 (TypeScript)*
+*Last update: 2026-02-23*
+*Doc version: 3.5 (Node 24 native TS, no tsx/ts-node/rimraf/cross-env)*
+*Project version: 4.5.0*

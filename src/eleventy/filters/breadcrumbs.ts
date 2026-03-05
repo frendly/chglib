@@ -1,4 +1,4 @@
-import type { EleventyCollectionItem } from '@/types/eleventy';
+import type { EleventyCollectionItem } from '#types/eleventy';
 
 export interface BreadcrumbItem {
   title: string;

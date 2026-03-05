@@ -1,5 +1,5 @@
 import path from 'node:path';
-import type { EleventyCollection, EleventyCollectionItem } from '@/types/eleventy';
+import type { EleventyCollection, EleventyCollectionItem } from '#types/eleventy';
 
 /**
  * Создает коллекцию для BNP на основе папок

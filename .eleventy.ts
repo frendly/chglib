@@ -1,4 +1,3 @@
-import 'tsx/esm';
 // @ts-expect-error - Eleventy не предоставляет официальных типов TypeScript
 import { EleventyRenderPlugin } from '@11ty/eleventy';
 // @ts-expect-error - Eleventy Navigation не предоставляет официальных типов TypeScript
@@ -8,9 +7,9 @@ import {
   registerFilters,
   registerGlobalData,
   registerShortcodes,
-} from '@/eleventy';
-import type { EleventyConfig, EleventyConfigReturn } from '@/types/eleventy';
-import buildAssets from './build-assets';
+} from '#eleventy';
+import type { EleventyConfig, EleventyConfigReturn } from '#types/eleventy';
+import buildAssets from './build-assets.ts';
 
 export default function (eleventyConfig: EleventyConfig): EleventyConfigReturn {
   /** Enable quiet mode to reduce console noise */
