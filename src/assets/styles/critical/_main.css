@@ -13,6 +13,10 @@
   max-width: 600px;
 }
 
+.last-news img[src$="8march2026.jpg"] {
+  max-width: 100%;
+}
+
 .last-news-list {
   padding: 0;
   list-style: none;
