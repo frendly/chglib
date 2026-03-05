@@ -31,14 +31,9 @@
   image: "/face/1_23.jpg"
 
 - name: 8 марта
-  startDate: 03-08
-  endDate: 03-08
-  image: "/face/8mar.jpg"
-  text: |-
-    Дорогие, чудесные, симпатичные, умные, славные!<br>
-    С праздником!<br>
-    С весной!<br>
-    Будьте счастливы!!!
+  startDate: 03-05
+  endDate: 03-09
+  image: "/face/8march2026.jpg"
 
 - name: День победы
   startDate: 05-09
