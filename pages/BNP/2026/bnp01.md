@@ -40,7 +40,7 @@ title: Бюллетень новых поступлений в НЦЧ № 03 (19
 ## ЖУРНАЛЫ
 
 1. **Известия АН. Серия Химическая.** -2026.-№ 2.
-[Содержание](</Izvestiya Akademii nauk Seriya himicheskay-2026-(2).pdf>)
+[Содержание](</BNP/2026/Izvestiya Akademii nauk Seriya himicheskay-2026-(2).pdf)
 
 
 
