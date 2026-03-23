@@ -2,7 +2,7 @@ import { initJournalOrderForPortal } from '../pages/benex';
 import { isMobile } from '../utils';
 import { createPortal } from './portal';
 
-const fetchData = (data: string, container: HTMLElement): void => {
+const fetchData = (data: string, container: HTMLElement, sourcePathname: string): void => {
   const htmlDocument = new DOMParser().parseFromString(data, 'text/html');
   const trimData = htmlDocument.querySelector('main') || htmlDocument.body;
 
@@ -16,7 +16,9 @@ const fetchData = (data: string, container: HTMLElement): void => {
     // Проверяем наличие записей журналов (ol > li или ul > li с strong)
     const hasJournalEntries = main.querySelectorAll('ol > li strong, ul > li strong').length > 0;
     if (hasJournalEntries) {
-      initJournalOrderForPortal(main);
+      const shouldInit = sourcePathname.startsWith('/BENex/');
+
+      if (shouldInit) initJournalOrderForPortal(main);
     }
   }
 };
@@ -50,7 +52,13 @@ export const openLinksInPortal = (): void => {
         })
         .then((response) => {
           const container = createPortal();
-          fetchData(response, container);
+          let sourcePathname = '';
+          try {
+            sourcePathname = new URL(href, window.location.origin).pathname;
+          } catch {
+            // fallback: оставляем пустую строку
+          }
+          fetchData(response, container, sourcePathname);
         })
         .catch((error) => {
           console.error('Ошибка загрузки контента в портал:', error);

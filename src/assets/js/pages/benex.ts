@@ -80,7 +80,7 @@ const initModalOnce = (): ModalResult | null => {
 };
 
 /**
- * Инициализирует кнопки «Заказ журнала» для контейнера.
+ * Инициализирует кнопки «Заказ статьи для контейнера.
  * @param container — контейнер для поиска записей (main или другой элемент)
  * @param modal — корень модалки
  * @param form — форма
@@ -119,7 +119,7 @@ const initJournalOrderButtons = (
  * @returns void
  */
 const initJournalOrder = (): void => {
-  // Функциональность "Заказ журнала" должна работать только на страницах BENex.
+  // Функциональность "Заказ статьи" должна работать только на страницах BENex.
   // Иначе на BNP (где в контенте могут быть <strong> из markdown) скрипт ошибочно
   // добавляет кнопки в блоки книги.
   const pathname = window.location.pathname;
@@ -157,7 +157,7 @@ const initJournalOrder = (): void => {
 };
 
 /**
- * Создаёт кнопку «Заказ журнала».
+ * Создаёт кнопку «Заказ статьи.
  * @returns HTMLButtonElement
  */
 function createOrderButton(): HTMLButtonElement {
@@ -178,7 +178,7 @@ function createOrderButton(): HTMLButtonElement {
   // Добавляем текст
   const textSpan = document.createElement('span');
   textSpan.className = 'download-text';
-  textSpan.textContent = 'Заказ журнала';
+  textSpan.textContent = 'Заказ статьи';
 
   btn.appendChild(iconSvg);
   btn.appendChild(textSpan);
