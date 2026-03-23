@@ -37,7 +37,7 @@ Provides access to scientific literature via 4 content systems and 3 resource ac
 - **Auto-pages**: Yearly index pages via pagination (`BENex_by_years.njk`)
 - **Auto-archive**: Year archive via `getYears` filter
 - **Homepage logic**: Shows previous year if current year has no bulletins
-- **Journal Order**: Each journal entry has "Заказ журнала" button (via `benex.ts`)
+- **Journal Order**: Each journal entry has "Заказ статьи" button (via `benex.ts`)
   - Opens modal form for ordering journal pages
   - Shows dynamic hint with links to table of contents if available
   - Submits to Google Apps Script (see `docs/google-apps-script-setup.md`)
@@ -304,7 +304,7 @@ yarn deploy  # build && transfer
 7. `getHolidays.ts` (features.ts): Holiday handling
 8. `analytics.ts` (analytics.ts): Analytics integration (Yandex.Metrica, etc.)
 9. `benex.ts` (pages/benex.ts): Journal order functionality for BENex pages
-   - Adds "Заказ журнала" buttons to journal entries
+   - Adds "Заказ статьи" buttons to journal entries
    - Modal form with title, pages, and email fields
    - Dynamic hint with links to journal table of contents (if available)
    - Form validation and submission to Google Apps Script

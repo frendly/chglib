@@ -57,7 +57,7 @@ function doPost(e) {
     const adminEmail = 'your-email@example.com'; // ЗАМЕНИТЕ на ваш email
     
     // Формируем текст письма для администратора
-    const adminEmailBody = `Новый заказ журнала:\n\n` +
+    const adminEmailBody = `Новый заказ статьи:\n\n` +
       `Название: ${data.title}\n` +
       `Страницы: ${data.pages}\n` +
       `Email заказчика: ${data.email || 'не указан'}\n` +
@@ -67,7 +67,7 @@ function doPost(e) {
     // Отправляем email администратору
     MailApp.sendEmail({
       to: adminEmail,
-      subject: 'Заказ журнала',
+      subject: 'Заказ статьи',
       body: adminEmailBody
     });
 
@@ -140,7 +140,7 @@ function doPost(e) {
 
 1. Соберите проект: `yarn build` или `yarn watch`
 2. Откройте страницу с формой заказа журнала (например, `/BENex/2025/BENex21.html`)
-3. Нажмите на кнопку "Заказ журнала" рядом с любой записью
+3. Нажмите на кнопку "Заказ статьи" рядом с любой записью
 4. Заполните поля "Страницы" и "Email" и нажмите "Отправить"
 5. Проверьте:
    - В Google Таблице должна появиться новая строка с данными
