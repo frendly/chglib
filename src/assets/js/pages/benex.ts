@@ -119,6 +119,12 @@ const initJournalOrderButtons = (
  * @returns void
  */
 const initJournalOrder = (): void => {
+  // Функциональность "Заказ журнала" должна работать только на страницах BENex.
+  // Иначе на BNP (где в контенте могут быть <strong> из markdown) скрипт ошибочно
+  // добавляет кнопки в блоки книги.
+  const pathname = window.location.pathname;
+  if (!pathname.startsWith('/BENex')) return;
+
   // Проверяем, есть ли контент BENex на странице или в портале
   const main = document.querySelector<HTMLElement>('main');
   const portalMain = document.querySelector<HTMLElement>('.portal__content main');
