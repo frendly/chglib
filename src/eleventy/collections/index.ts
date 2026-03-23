@@ -20,14 +20,14 @@ export function registerCollections(eleventyConfig: EleventyConfig): void {
 
   /** коллекция для BENex (использует другую функцию, т.к. файлы не датированные) */
   eleventyConfig.addCollection('benexByYear', (collection) =>
-    makeBENexCollection(collection, 'BENex')
+    makeBENexCollection(collection)
   );
 
   /** коллекция для BNP (использует другую функцию, т.к. файлы не датированные) */
-  eleventyConfig.addCollection('bnpByYear', (collection) => makeBNPCollection(collection, 'BNP'));
+  eleventyConfig.addCollection('bnpByYear', (collection) => makeBNPCollection(collection));
 
   /** коллекция для subjex (использует другую функцию, т.к. файлы не датированные) */
   eleventyConfig.addCollection('subjexByYear', (collection) =>
-    makeSubjexCollection(collection, 'subjex')
+    makeSubjexCollection(collection)
   );
 }

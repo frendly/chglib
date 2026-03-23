@@ -1,9 +1,15 @@
 <h2>Архив</h2>
 {% set years = collections.benexByYear | getYears %}
+{% set globalCurrentYear = getGlobalCurrentYear | int %}
 {## Извлекаем год из текущего URL для определения активной ссылки ##}
 {%- set currentPath = page.url -%}
 {%- set currentYear = currentPath | replace("/BENex/", "") | replace("/", "") -%}
+{%- set isRootPage = currentPath == "/BENex/" or currentPath == "/BENex" -%}
 {% for year in years %}
 {## Применяем класс active-link к ссылке, если её год совпадает с текущим годом из URL ##}
-<a href="/BENex/{{ year }}/"{% if year == currentYear %} class="active-link"{% endif %}>{{ year }}</a>
+{% if isRootPage and (year | int == globalCurrentYear) %}
+  {# Текущий год на корневой странице /BENex/ уже выводится в index #}
+{% else %}
+  <a href="/BENex/{{ year }}/"{% if year == currentYear %} class="active-link"{% endif %}>{{ year }}</a>
+{% endif %}
 {% endfor %}
