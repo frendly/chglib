@@ -174,27 +174,27 @@ end: 2026-05-08
 12. Semenov N.N., Kondratiev V.N. Academician A.F. Joffe: Obituary. — Nature 190, 761–763 (1961). — [Nature](https://www.nature.com/articles/190761a0).
 
 
-**Это интересно.** В 1945 году академика Семёнова привлекли к Атомному проекту. В зоне его ответственности оказались подготовка полигона для ядерных испытаний, изготовление фиксирующей все параметры взрыва измерительной аппаратуры. В 1949 году за успешное испытание атомной бомбы Семёнов вновь получил Сталинскую премию. В конце 1940 – начале 1950 гг. Николаю Николаевичу пришлось отстаивать свой приоритет в открытии природы цепных реакций в борьбе с физиком Н.С. Акуловым, обвинявшим Семёнова то в плагиате, то в низкопоклонстве перед Западом. Точку в дискуссии о приоритете поставило присуждение Нобелевской премии 1956 года, но почивать на научных лаврах было не в натуре лауреата.
+**Это интересно** В 1945 году академика Семёнова привлекли к Атомному проекту. В зоне его ответственности оказались подготовка полигона для ядерных испытаний, изготовление фиксирующей все параметры взрыва измерительной аппаратуры. В 1949 году за успешное испытание атомной бомбы Семёнов вновь получил Сталинскую премию. В конце 1940 – начале 1950 гг. Николаю Николаевичу пришлось отстаивать свой приоритет в открытии природы цепных реакций в борьбе с физиком Н.С. Акуловым, обвинявшим Семёнова то в плагиате, то в низкопоклонстве перед Западом. Точку в дискуссии о приоритете поставило присуждение Нобелевской премии 1956 года, но почивать на научных лаврах было не в натуре лауреата.
 
 13. Semenov N.N. Some problems relating to chain reactions and to the theory of combustion: Nobel Lecture, 11 December 1956. — [PDF на сайте Нобелевской премии](https://www.nobelprize.org/uploads/2018/06/semenov-lecture.pdf).
 
-14. Semenov N.N. Kinetics of Chain Reactions. — Chem. Rev. 6 (3), 347–379 (1929).
+14. Semenov N.N. Kinetics of Chain Reactions. — Chem. Rev. 6 (3), 347–379 (1929). - [PDF](</subjex/2026/pdf01/ChemRev-1929-6(3)347.pdf>)
 
-15. Khariton Y., Semenov N., Shal'nikov A. On the Behaviour of Adsorbed Atoms. — Trans. Faraday Soc. 28, 169–176 (1932).
+15. Khariton Y., Semenov N., Shal'nikov A. On the Behaviour of Adsorbed Atoms. — Trans. Faraday Soc. 28, 169–176 (1932). - [PDF](</subjex/2026/pdf01/TransactionFaradaySociety-1932-28(130)169.pdf>)
 
-16. Semenov N.N. Some General Considerations in Connection with the Chain Reaction Theory. — Trans. Faraday Soc. 28, 818–822 (1932).
+16. Semenov N.N. Some General Considerations in Connection with the Chain Reaction Theory. — Trans. Faraday Soc. 28, 818–822 (1932). - [PDF](</subjex/2026/pdf01/TransactionFaradaySociety-1932-28Pt()818.pdf>)
 
-17. Semenov N.N., Nalbandyan A.B., Dubovitskii F.I. The mechanism of the upper Limit of Inflammation of Electrolytic Gas Mixture. — Trans. Faraday Soc. 29, 606–611 (1933).
+17. Semenov N.N., Nalbandyan A.B., Dubovitskii F.I. The mechanism of the upper Limit of Inflammation of Electrolytic Gas Mixture. — Trans. Faraday Soc. 29, 606–611 (1933). - [PDF](</subjex/2026/pdf01/TransactionFaradaySociety-1933-29()606.pdf>)
 
-18. Semenov N.N. On the Kinetics of Complex Reactions. — J. Chem. Phys. 7, 683–699 (1939).
+18. Semenov N.N. On the Kinetics of Complex Reactions. — J. Chem. Phys. 7, 683–699 (1939). - [PDF](</subjex/2026/pdf01/JournalChemicalPhysics-1939-7(8)683.pdf>)
 
-19. Semenov N.N. Collective Interactions in Polymerization Processes at Low Temperatures and in Polymers with Conjugated Bonds. — J. Polym. Sci. 55 (162), 563–596 (1961).
+19. Semenov N.N. Collective Interactions in Polymerization Processes at Low Temperatures and in Polymers with Conjugated Bonds. — J. Polym. Sci. 55 (162), 563–596 (1961). - [PDF](</subjex/2026/pdf01/JournalPolymerScience-1961-55(162)563.pdf>)
 
-20. Semenov N.N. Certain Chemical Reactions at Reduced Temperatures and Related Problems of Energy Transfer. — Pure Appl. Chem. 5 (3–4), 353–376 (1962).
+20. Semenov N.N. Certain Chemical Reactions at Reduced Temperatures and Related Problems of Energy Transfer. — Pure Appl. Chem. 5 (3–4), 353–376 (1962). - [PDF](</subjex/2026/pdf01/PureApplChem-1962-5(3-4)353.pdf>)
 
-21. Semenov N.N. Einige Probleme der Kettenreaktionen und der Verbrennungstheorie. — Angew. Chem. 24, 767–777 (1957).
+21. Semenov N.N. Einige Probleme der Kettenreaktionen und der Verbrennungstheorie. — Angew. Chem. 24, 767–777 (1957). Оригинал
 
-**Это интересно:**
+**Это интересно**
 С 1960 по 1963 гг. Семёнов возглавлял научное общество «Знание», с 1963 по 1971 гг. являлся вице-президентом АН СССР, с 1981 года – главным редактором журнала «Химическая физика». Но важнейшей оставалась работа в ИХФ. Как директор института, Семёнов прилагал все усилия для усовершенствования научно-технической базы, привлечения квалифицированных специалистов. Под его руководством был возведён крупный научный центр в Черноголовке, насчитывающий свыше 10 институтов. Созданный Семёновым коллектив сотрудников достойно продолжил его дело.
 
 ## Литература об академике Н.Н. Семёнове
