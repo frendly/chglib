@@ -13,8 +13,8 @@ title: Бюллетень № 08 (29 июня - 21 июля)
 9. **Вестник Российской Академии наук.**- 2026.-Т.92, [№ 3](https://www.elibrary.ru/contents.asp?id=89107492).
 10. **Геология и геофизика.**- 2026.- Т.67, [№ 1](https://www.elibrary.ru/contents.asp?id=88828982).
 11. **Геология рудных месторождений.**- 2026.- Т.68, [№1](https://www.elibrary.ru/contents.asp?id=89156305).
-12. **Жунал аналитической химии.**- 2026.- Т.81, [№ 1](https://www.elibrary.ru/contents.asp?id=89000584).
-13. **Жунал аналитической химии.**- 2026.- Т.81, [№ 2](https://www.elibrary.ru/contents.asp?id=89068798).
+12. **Журнал аналитической химии.**- 2026.- Т.81, [№ 1](https://www.elibrary.ru/contents.asp?id=89000584).
+13. **Журнал аналитической химии.**- 2026.- Т.81, [№ 2](https://www.elibrary.ru/contents.asp?id=89068798).
 14. **Журнал структурной химии.**- 2025.- Т.66, [№ 7](https://www.elibrary.ru/contents.asp?id=82649084).
 15. **Журнал структурной химии.**- 2025.- Т.66, [№ 12](https://www.elibrary.ru/contents.asp?id=87635926).
 16. **Журнал структурной химии.**- 2026.- Т.67, [№ 1](https://www.elibrary.ru/contents.asp?id=88861210).
@@ -23,7 +23,7 @@ title: Бюллетень № 08 (29 июня - 21 июля)
 19. **Природа.**- 2025.- [№ 12](https://www.elibrary.ru/contents.asp?id=89208367).
 20. **Химическая физика.**- 2026.- Т.45, [№ 2](https://www.elibrary.ru/contents.asp?id=89175523).
 21. **Химическая физика.**- 2026.- Т.45, [№ 3](https://www.elibrary.ru/contents.asp?id=89175850).
-22. **Химии высоких энергий.**- 2026.- Т.60, [№ 1](https://www.elibrary.ru/contents.asp?id=89193557).
+22. **Химия высоких энергий.**- 2026.- Т.60, [№ 1](https://www.elibrary.ru/contents.asp?id=89193557).
 23. **Цитология.**- 2026.- Т.67, [№ 3](https://www.elibrary.ru/contents.asp?id=89163049).
 24. **Цитология.**- 2026.- Т.67, [№ 4](https://www.elibrary.ru/contents.asp?id=89165887).
 
