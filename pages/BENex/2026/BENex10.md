@@ -3,7 +3,7 @@ title: Бюллетень № 10 (19 августа - 07 сентября )
 ---
 
 
-1. **Биофизика.**- 2026.- Т.72, [№ 2](https://www.elibrary.ru/contents.asp?id=90773365).
+1. **Биофизика.**- 2026.- Т.71, [№ 2](https://www.elibrary.ru/contents.asp?id=90773365).
 2. **Биохимия.**- 2026.- Т.91, [№1](https://www.elibrary.ru/contents.asp?id=91178875).
 3. **Бюллетень экспериментальной биологии и медицины.**- 2026.- Т.181, [№ 4](https://elibrary.ru/contents.asp?id=89899062).
 4. **Вестник Российской академии наук.**- 2026.- Т.96, [№ 5](https://www.elibrary.ru/contents.asp?id=89897803).
