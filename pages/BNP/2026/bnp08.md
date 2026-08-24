@@ -43,19 +43,19 @@ title: Бюллетень новых поступлений № 08 (20 авгу�
 1. **XXI век: итоги прошлого и проблемы настоящего плюс.** -2026.- Т. 15, № 1.
 [Содержание](</BNP/2026/pdf08/XXI vek itogi proshlogo i problemy nastoyachshchego plyus-2026-15(1).pdf>)
 2. **Библиотечка электротехника.** -2025.- № 10.
-[Содержание](</BNP/2026/pdf08/>)
+[Содержание](</BNP/2026/pdf08/Bibliotechka elektrotekhnika-2025(10).pdf>)
 3. **Библиотечка электротехника.** -2025.- № 11.
-[Содержание](</BNP/2026/pdf08/Bibliotechka elektrotekhnika-2025(11)>)
+[Содержание](</BNP/2026/pdf08/Bibliotechka elektrotekhnika-2025(11).pdf>)
 4. **Библиотечка электротехника.** -2025.- № 12.
 [Содержание](</BNP/2026/pdf08/Bibliotechka elektrotekhnika-2025(12).pdf>)
 5. **Библиотечка электротехника.** -2026.- № 1.
-[Содержание](</BNP/2026/pdf08/Bibliotechka elektrotekhnika-2026(1).pdf>)
+[Содержание](</BNP/2026/pdf08/Bibliotechka elektrotekhnika-2026-(1).pdf>)
 6. **Библиотечка электротехника.** -2026.- № 2.
-[Содержание](</BNP/2026/pdf08/Bibliotechka elektrotekhnika-2026(2).pdf>)
+[Содержание](</BNP/2026/pdf08/Bibliotechka elektrotekhnika-2026-(2).pdf>)
 7. **Биологические мембраны.** -2026.- Т. 43, № 1.
 [Содержание](</BNP/2026/pdf08/Biologicheskie membrany-2026-43(1).pdf>)
 8. **Известия АН. Серия Химическая.** -2026.- № 7.
-[Содержание](</BNP/2026/pdf08/Izvestiya Akademii nauk, seriya himicheskaya-2026-75(7) прав.pdf>)
+[Содержание](</BNP/2026/pdf08/Izvestiya Akademii nauk. Seriya himicheskaya-2026-75(7).pdf>)
 9. **Наукоёмкие технологии.** -2026.- Т. 27, № 1.
 [Содержание](</BNP/2026/pdf08/Naukoemkie tekhnologii-2026-27(1).pdf>)
 10. **Наукоёмкие технологии.** -2026.- Т. 27, № 2.
