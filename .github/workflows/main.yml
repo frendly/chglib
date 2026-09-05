@@ -9,30 +9,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set Node.js 24.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 24.x
-
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
+          cache: yarn
 
       - name: yarn install
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: install --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: yarn build
-        uses: borales/actions-yarn@v5
-        with:
-          cmd: build # will run `yarn build` command
+        run: yarn build
 
       - name: rsync deployments
         uses: burnett01/rsync-deployments@6.0.0
