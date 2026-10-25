@@ -50,73 +50,94 @@ title: Бюллетень новых поступлений № 10 (15 октя�
 ## ЖУРНАЛЫ
 
 1. **Библиотечка электротехника.** -2026.- № 3.
-[Содержание](</BNP/2026/pdf10/Bibliotechka elektrotekhnika. Prilozhenie k zhurnalu Energetik-2026(3)>)
+[Содержание](</BNP/2026/pdf10/Bibliotechka elektrotekhnika. Prilozhenie k zhurnalu Energetik-2026(3).pdf>)
 2. **Высокомолекулярные соединения. Серия А. Физика полимеров.** -2026.- Т. 68, № 3.
-[Содержание](</BNP/2026/pdf10/Vysokomolekulyarnye soedineniya. Seriya A. Fizika polimerov-2026-68(3)>)
+[Содержание](</BNP/2026/pdf10/Vysokomolekulyarnye soedineniya. Seriya A. Fizika polimerov-2026-68(3).pdf>)
 3. **Высокомолекулярные соединения. Серия Б. Химия полимеров.** -2026.- Т. 68, № 3.
-[Содержание](</BNP/2026/pdf10/Vysokomolekulyarnye soedineniya. Seriya B-2026-68(3)>)
+[Содержание](</BNP/2026/pdf10/Vysokomolekulyarnye soedineniya. Seriya B-2026-68(3).pdf>)
 4. **Горение и взрыв.** -2026.- Т. 19, № 1.
-[Содержание](</BNP/2026/pdf10/Gorenie i vzryv-2026-19(1)>)
+[Содержание](</BNP/2026/pdf10/Gorenie i vzryv-2026-19(1).pdf>)
 5. **Известия ВУЗов. Серия Порошковая металлургия и функциональные покрытия.** -2026.- Т. 20, № 1.
-[Содержание](</BNP/2026/pdf10/Izvestiya vuzov. Poroshkovaya metallurgiya i funkcional'nye pokrytiya-2026-20(1)>)
+[Содержание](</BNP/2026/pdf10/Izvestiya vuzov. Poroshkovaya metallurgiya i funkcionalnye pokrytiya-2026-20(1).pdf>)
 6. **Известия РАН. Серия Физическая.** -2026.- Т. 90, № 1.
-[Содержание](</BNP/2026/pdf10/Izvestiya RAN. Seriya Fizicheskaya-2026-90(1)>)
+[Содержание](</BNP/2026/pdf10/Izvestiya RAN. Seriya Fizicheskaya-2026-90(1).pdf>)
 7. **Известия РАН. Серия Химическая.** -2026.- № 8.
-[Содержание](</BNP/2026/pdf10/Izvestiya Akademii nauk. Seriya himicheskaya-2026-75(8>)
+[Содержание](</BNP/2026/pdf10/Izvestiya Akademii nauk. Seriya himicheskaya-2026-75(8).pdf>)
 8. **Конструкции из композиционных материалов.** -2026.- № 2.
-[Содержание](</BNP/2026/pdf10/Konstrukcii iz kompozicionnyh materialov-2026(2)>)
+[Содержание](</BNP/2026/pdf10/Konstrukcii iz kompozicionnyh materialov-2026(2).pdf>)
 9. **Микроэлектроника.** -2026.- Т. 55, № 1.
-[Содержание](</BNP/2026/pdf10/Mikroelektronika-2026-55(1)>)
+[Содержание](</BNP/2026/pdf10/Mikroelektronika-2026-55(1).pdf>)
 10. **Надёжность и безопасность энергетики.** -2026.- Т. 19, № 1.
-[Содержание](</BNP/2026/pdf10/Nadezhnost' i bezopasnost' energetiki-2026-19(1)>)
+[Содержание](</BNP/2026/pdf10/Nadezhnost_bezopasnost_energetiki-2026-19(1).pdf>)
 11. **Обработка металлов (технология, оборудование, инструменты).** -2026.- Т. 28, № 2.
-[Содержание](</BNP/2026/pdf10/Obrabotka metallov-2026-28(2)>)
+[Содержание](</BNP/2026/pdf10/Obrabotka metallov-2026-28(2).pdf>)
 12. **Оптика и спектроскопия.** -2026.- Т. 134, № 3.
-[Содержание](</BNP/2026/pdf10/Optika i spektroskopiya-2026-134(3)>)
+[Содержание](</BNP/2026/pdf10/Optika i spektroskopiya-2026-134(3).pdf>)
 13. **Оптика и спектроскопия.** -2026.- Т. 134, № 4.
-[Содержание](</BNP/2026/pdf10/Optika i spektroskopiya-2026-134(4)>)
+[Содержание](</BNP/2026/pdf10/Optika i spektroskopiya-2026-134(4).pdf>)
 14. **Перспективные материалы.** -2026.- № 5.
-[Содержание](</BNP/2026/pdf10/Perspektivnye materialy-2026-(5)>)
+[Содержание](</BNP/2026/pdf10/Perspektivnye materialy-2026-(5).pdf>)
 15. **Перспективные материалы.** -2026.- № 6.
-[Содержание](</BNP/2026/pdf10/Perspektivnye materialy-2026-(6)>)
+[Содержание](</BNP/2026/pdf10/Perspektivnye materialy-2026-(6).pdf>)
 16. **Прикладная физика.** -2026.- № 2.
-[Содержание](</BNP/2026/pdf10/Prikladnaya fizika-2026(-2)>)
+[Содержание](</BNP/2026/pdf10/Prikladnaya fizika-2026(-2).pdf>)
 17. **Прикладная физика.** -2026.- № 3.
-[Содержание](</BNP/2026/pdf10/Prikladnaya fizika-2026-(3)>)
+[Содержание](</BNP/2026/pdf10/Prikladnaya fizika-2026-(3).pdf>)
 18. **Теоретическая и математическая физика.** -2026.- Т. 227, № 1.
-[Содержание](</BNP/2026/pdf10/Teoreticheskaya i matematicheskaya fizika-2026-227(1)>)
+[Содержание](</BNP/2026/pdf10/Teoreticheskaya i matematicheskaya fizika-2026-227(1).pdf>)
 19. **Теоретические основы химической технологии.** -2026.- Т. 60, № 2.
-[Содержание](</BNP/2026/pdf10/Teoreticheskie osnovy himicheskoj tekhnologii-2026-60(2)>)
+[Содержание](</BNP/2026/pdf10/Teoreticheskie osnovy himicheskoj tekhnologii-2026-60(2).pdf>)
 20. **Физика горения и взрыва.** -2026.- Т. 62, № 3.
-[Содержание](</BNP/2026/pdf10/Fizika goreniya i vzryva-2026-62(3)>)
+[Содержание](</BNP/2026/pdf10/Fizika goreniya i vzryva-2026-62(3).pdf>)
 21. **Физика плазмы.** -2026.- Т.52, № 1.
-[Содержание](</BNP/2026/pdf10/Fizika plazmy-2026-52(1)>)
+[Содержание](</BNP/2026/pdf10/Fizika plazmy-2026-52(1).pdf>)
 22. **Физика плазмы.** -2026.- Т.52, № 2.
-[Содержание](</BNP/2026/pdf10/Fizika plazmy-2026-52(2)>)
+[Содержание](</BNP/2026/pdf10/Fizika plazmy-2026-52(2).pdf>)
 23. **Физическое образование в вузах.** -2026.- Т. 32, № 1.
-[Содержание](</BNP/2026/pdf10/Fizicheskoe obrazovanie v vuzah-2026-32(1)>)
+[Содержание](</BNP/2026/pdf10/Fizicheskoe obrazovanie v vuzah-2026-32(1).pdf>)
 24. **Химическая физика.** -2026.- Т. 45, № 7.
-[Содержание](</BNP/2026/pdf10/Himicheskaya fizika-2026-45(7)>)
+[Содержание](</BNP/2026/pdf10/Himicheskaya fizika-2026-45(7).pdf>)
 25. **Химия в интересах устойчивого развития.** -2026.- Т. 34, № 3.
-[Содержание](</BNP/2026/pdf10/Himiya v interesah ustojchivogo razvitiya-2026-34(3)>)
+[Содержание](</BNP/2026/pdf10/Himiya v interesah ustojchivogo razvitiya-2026-34(3).pdf>)
 26. **Электрические станции.** -2026.- № 4.
-[Содержание](</BNP/2026/pdf10/Elektricheskie stancii-2026-(4)>)
+[Содержание](</BNP/2026/pdf10/Elektricheskie stancii-2026-(4).pdf>)
 27. **Электрические станции.** -2026.- № 5.
-[Содержание](</BNP/2026/pdf10/Elektrnicheskie stancii-2026-(5)>)
+[Содержание](</BNP/2026/pdf10/Elektrnicheskie stancii-2026-(5).pdf>)
 28. **Энергетик.** -2026.- № 4.
-[Содержание](</BNP/2026/pdf10/Energetik-2026-(4)>)
+[Содержание](</BNP/2026/pdf10/Energetik-2026-(4).pdf>)
 29. **Энергетик.** -2026.- № 5.
-[Содержание](</BNP/2026/pdf10/Energetik-2026-(5)>)
+[Содержание](</BNP/2026/pdf10/Energetik-2026-(5).pdf>)
 30. **Энергетика за рубежом.** -2026.- № 2.
-[Содержание](</BNP/2026/pdf10/Energetika za rubezhom-2026-(2)>)
+[Содержание](</BNP/2026/pdf10/Energetika za rubezhom-2026-(2).pdf>)
 
 ## ДИССЕРТАЦИИ
 
-1. Ильященко Виринея Юрьевна. [«Биомиметическое окисление воды в присутствии 
+1. Ашмеев Дмитрий Юрьевич. [«Электрохимическое поведение платины и титана в растворах, 
+моделирующих биологическую среду»](https://icp-ras.ru/wp-content/uploads/DISS/Amsheev/Disser_Amsheev.pdf). Диссертация на соискание ученой степени кандидата 
+химических наук 1.4.6.- Электрохимия. Черноголовка, 2026. [автореферат](https://icp-ras.ru/wp-content/uploads/DISS/Amsheev/AR_Amsheev.pdf)
+
+2. Ильященко Виринея Юрьевна. [«Биомиметическое окисление воды в присутствии 
 многоядерных комплексов рутения».](https://icp-ras.ru/wp-content/uploads/DISS/Ilyashchenko/Disser_Ilyashchenko.pdf) Диссертация на соискание ученой степени кандидата химических наук 1.4.4. – Физическая химия. Черноголовка, 2026. [автореферат](https://icp-ras.ru/wp-content/uploads/DISS/Ilyashchenko/AR_Ilyashchenko.pdf)
-2. Сорин Евгений Сергеевич. [«Новые самозаживляющиеся металлосополимеры акриловой
+
+3. Конаков Артём Олегович. [«Синтез и каталитические свойства органо-неорганического
+гибридного материала йодид меди – полипиррол»](https://icp-ras.ru/wp-content/uploads/DISS/Konakov/Disser_Konakov.pdf). Диссертация на соискание кандидата
+химических наук 1.4.6.- Электрохимия. Черноголовка, 2026. [автореферат](https://icp-ras.ru/wp-content/uploads/DISS/Konakov/AR_Konakov.pdf)
+
+4. Можжухин Сергей Александрович. [«Водород-аккумулирующие композиты магния с 
+Ni-графеноподобными материалами»](https://icp-ras.ru/wp-content/uploads/DISS/Mozhzhukhin/Dissert_-Mozhzhukhin.pdf). Диссертация на соискание ученой степени кандидата химических наук 1.4.4.- Физическая химия. Черноголовка, 2026. [автореферат](https://icp-ras.ru/wp-content/uploads/DISS/Mozhzhukhin/AR_Mozhzhukhin.pdf)
+
+5. Озерова Виктория Викторовна. [«Влияние модификаторов на стабильность комплексных
+галогенидов свинца и солнечных батарей на их основе»](https://icp-ras.ru/wp-content/uploads/DISS/Ozerova/Dissert_Ozerova.pdf). Диссертация на соискание ученой степени кандидата химических наук 1.4.4.- Физическая химия. Черноголовка, 2026. [автореферат](https://icp-ras.ru/wp-content/uploads/DISS/Ozerova/AR_Ozerova.pdf)
+
+6. Сорин Евгений Сергеевич. [«Новые самозаживляющиеся металлосополимеры акриловой
 кислоты и акриламида».](https://icp-ras.ru/wp-content/uploads/DISS/Sorin/Disser_Sorin.pdf) Диссертация на соискание ученой степени кандидата
 химических наук 1.4.7. – Высокомолекулярные соединения. Черноголовка, 2026. [автореферат](https://icp-ras.ru/wp-content/uploads/DISS/Sorin/ARef_Sorin.pdf)
+
+7. Цветкова Юлия Юрьевна. [«Поглощение серосодержащих газов кальциевыми сорбентами при
+фильтрационном горении конденсированных топлив и горючих отходов»](https://icp-ras.ru/wp-content/uploads/DISS/Tsvetkova/Disser_Tsvetkova.pdf). Диссертация на соискание ученой степени кандидата химических наук 1.3.17. – Химическая физика, горение и взрыв, физика экстремальных состояний вещества. Черноголовка, 2026. [автореферат](https://icp-ras.ru/wp-content/uploads/DISS/Tsvetkova/AR_Tsvetkova.pdf)
+
+8. Шакула Михаил Юрьевич. [«Влияние микросфер на детонационные свойства взрывчатых
+веществ на основе нитрометана»](https://icp-ras.ru/wp-content/uploads/DISS/Shakula/Disser_Shakula.pdf). Диссертация на соискание ученой степени кандидата физико-математических наук 1.3.17. – Химическая физика, горение и взрыв, физика экстремальных состояний вещества. Черноголовка, 2026. [автореферат](https://icp-ras.ru/wp-content/uploads/DISS/Shakula/AR_Shakula.pdf)
 
 
 
